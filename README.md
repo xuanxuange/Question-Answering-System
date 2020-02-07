@@ -1,3 +1,3 @@
-# 11611-Final-Project
+Natural Language Processing - Question Answering system
 
-Dongtai Du
+Dongtai Du, Xuanxuan Ge, Thomas Li, Jarrett
