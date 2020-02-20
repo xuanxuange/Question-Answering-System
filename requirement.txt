@@ -1,2 +1,2 @@
-nltk
-rake_nltk
+nltk==3.4.5
+rake_nltk==1.0.4
