@@ -71,7 +71,21 @@ def text_to_sentence(text):
     text = re.sub(r'[^\x00-\x7f]',r'', text)
     return sent_tokenize(text)
 
+def file_rmextra(file_path):
+    """
+    Remove the extra contents in the file 
+    Arg: file_path(str) - the path of the file needs to be parsed
+    Return: the parsed file as a string 
+    """
+    with open(file_path) as f:
+        corpus = f.read()
+    # remove references at the end of file
+    corpus = remove_ref(corpus)
 
+    # remove subtitles
+    corpus = re.sub(r'\n*[\w+\s+\-*]+\n+', r'\n', corpus).strip()
+
+    return corpus
 # for test
 # if __name__ == "__main__":
 #     t = file_to_paragraph('./set1/a1.txt')[3]
