@@ -1,0 +1,78 @@
+a1.txt
+Was King Djoser the first king of the Fourth Dynasty of the Old Kingdom?
+Who is the King of Egypt?
+When did the Old Kingdom and its power reach a zenith?
+How did the scholars construct a history of the 4th-6th Dynasties of Egypt?
+Why did the ancient Egyptians build ships for navigation of the sea?
+
+
+a2.txt
+When was the First Intermediate Period?
+How long did Neferhotep I rule?
+Was Amenehet built by Amenemhat I?
+Why did Senusret build a series of massive forts?
+Which name was given to a conflation of Senusret and New Kingdom warrior pharaohs?
+
+
+a3.txt
+What is the Egyptian Empire?
+Where was the tomb for sons of Ramesses II?
+Was the last great pharaoh form the New Kingdom Ramesses II?
+Who expanded Egypt's army and wielded it with great success to consolidate the empire created by his predecessors?
+Why did Egyptian Empire in Asia gradually decline?
+
+
+a4.txt
+Was the Egyptian language a branch of the Afro-Asiatic language?
+Which language prefers triradical roots?
+What are six major chronological divisions of the Egyptian language?
+How was Demotic written?
+When was Coptic alphabet first developed?
+
+
+a5.txt
+Was Late Egyptian written using the hieratic scripts?
+What is Demotic?
+How many hieroglyphs does Middle Egyptian make use of?
+Which is the best-documented variety of the Egyptian?
+Why does Egyptian not show great dialectal differences in the written language?
+
+
+a6.txt
+1. Have the Egyptian soldiers ever used composite bows?  (Line 17)
+2. What is the primary weapon of Egyptian armies during the new Kingdom?  (Line 42) 
+3. When is the Old Kingdom of Egypt? (Line 9)
+4. How many military branches do the Egyptian military usually consist of as in the New Kingdom? (Line 52)
+5. Why is the composite bow not used as much while simple stave bow never disappeared from the battlefield? (Line 107, This is super difficult, 3 sentences involved,)
+
+
+a7.txt (Can be discorded, these questions are at Human reading difficulty)
+1. Is it clear that How long Khufu ruled over Egypt? (Line 67)
+2. Which person built the Great Pyramid? (Line 145, Line 163, Line 196, triple answer)
+3. Who is Khufu? (Line 4)
+4. How long did Khufu rule over Egypt? (Line 67, tricky one since the answer is literally ‘unknown’)
+5. Is the small figurine the only preserved statue of Khufu? (Line 94, this is super tricky because 2 sentences are involved)
+
+
+a8.txt
+1. Does Tutankhamun have a wet nurse? (Line 10)
+2. What leads to the death of Tutankhamun? (Line 35)
+3. How tall is Tutankhamun? (Line 26)
+4. When is the Tutankhamun’s tomb discovered? (Line 59)
+5. Why do historians believe that Tutankhamun did not personally involved in the battles with Nubians and Asiatics? (Line 21, two sentences involved)
+
+
+a9.txt
+1. Is Osiris a god? (Line 4)
+2. What kind of god was Osiris described as? (Line 5 / Line 60)
+3. Who is the father of the god Horus? (Line 35)
+4. Where is the Osirian temple? (Line 82)
+5. Why was Osiris associated with death? (Line 6)
+
+
+a10.txt
+1. Is Cleopatra a man or a woman? (Line 6)
+2. What is the meaning of the name Cleopatra? (Line 13)
+3. When is Caesar murdered? (Line 7) 
+4. What is the name of the children between Cleopatra and Caesar? (Line 6)
+5. How many people have Cleopatra married or loved during her life? (Tricky one, Line 6, Line  7, Line 40)
