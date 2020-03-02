@@ -4,13 +4,23 @@ from nltk.parse import corenlp
 text = 'He came around the corner, and he spotted the crimson bird .'
 tokens = text.split()
 
-parser = CoreNLPParser(tagtype='pos')
+parser = corenlp.CoreNLPParser(tagtype='pos')
 
-pos_list = parser.tag(tokens) # Gives standard list of (token, POS) tuples
-tree, = parser.raw_parse(text)  # native output is a listiterator over detected sentences
-test_pos_list = tree.pos()
+with open('../data/development/set1/a1.txt') as f:
+    line = f.readline()
+    while line:
+        if len(line.split()) > 0:  # check for empty line
+            parsed_iter = parser.parse_text(line)  # native output is a listiterator over detected sentences
 
-tree.pretty_print()
+            while True:
+                try:
+                    next_item = next(parsed_iter)
+
+                    next_item.pretty_print()
+                except StopIteration:
+                    break 
+        line = f.readline()
+    f.close()
 
 # Navigating the tree
 #
