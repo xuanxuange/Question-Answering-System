@@ -36,7 +36,7 @@ Direct sentence ==> final form:
 if <VB?> != form of <to be>:
 <VBZ> ===> Has <NP> <VB? convert to past participle> <??> ?
 <VBP> ===> Has/Have <NP> <VB? convert to past participle> <??> ?
-<VBD> ===> Had <S> ?
+<VBD> ===> Had <NP> <VB? convert to past participle> <??> ?
 
 else:
 <VBZ>/<VBP> ===> Does <NP> have <??> ?
@@ -58,7 +58,7 @@ ROOT
              |             |           |
             <VBD>/       <VBN>/       <??>
             <VBP>/       <VBG>
-            <VBG>
+            <VBZ>
             (has/have)
 
-===> [<VBD> / <VBP> / <VBG>] <NP> [<VBN> / <VBG>] <??> ?
+===> [<VBD> / <VBP> / <VBZ>] <NP> [<VBN> / <VBG>] <??> ?
