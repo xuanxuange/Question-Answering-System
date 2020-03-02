@@ -34,8 +34,8 @@ will _____ technically exists, but should be rare in wikipedia articles
 
 Direct sentence ==> final form:
 if <VB?> != form of <to be>:
-<VBZ> ===> Has <NP> <VB? convert past tense> <??> ?
-<VBP> ===> Has/Have <NP> <VB? convert past tense> <??> ?
+<VBZ> ===> Has <NP> <VB? convert to past participle> <??> ?
+<VBP> ===> Has/Have <NP> <VB? convert to past participle> <??> ?
 <VBD> ===> Had <S> ?
 
 else:
@@ -44,9 +44,9 @@ else:
 
 Sentence ==> auxiliary form (to then use rule 4. on later):
 if <VB?> != form of <to be>:
-<VBZ> ===> <NP> has <VB? convert past tense> <??>
-<VBP> ===> <NP> has/have <VB? convert past tense> <??>
-<VBD> ===> <NP> had <VB? convert past tense> <??>
+<VBZ> ===> <NP> has <VB? convert to past participle> <??>
+<VBP> ===> <NP> has/have <VB? convert to past participle> <??>
+<VBD> ===> <NP> had <VB? convert to past participle> <??>
 
 
 4. Binary questions (from existing auxiliary form):
