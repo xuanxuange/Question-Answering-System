@@ -58,7 +58,7 @@ ROOT
              |             |           |
             <VBD>/       <VBN>/       <??>
             <VBP>/       <VBG>
-            <VBG>
+            <VBZ>
             (has/have)
 
-===> [<VBD> / <VBP> / <VBG>] <NP> [<VBN> / <VBG>] <??> ?
+===> [<VBD> / <VBP> / <VBZ>] <NP> [<VBN> / <VBG>] <??> ?
