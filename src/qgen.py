@@ -40,7 +40,7 @@ def getBinarySimple(t):
                     vbn = candidate[1][0].leaves()[0]
                     if candidate[1][0].label() != "VBN":
                         try:
-                            vbn = pattern.en.conjugate(vbn, tense=pattern.en.PAST)
+                            vbn = pattern.en.conjugate(vbn, tense=pattern.en.PAST+pattern.en.PARTICIPLE)
                         except:
                             continue
                     vptext = " ".join(candidate[1].leaves())
