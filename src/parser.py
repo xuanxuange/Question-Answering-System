@@ -1,26 +1,39 @@
 import nltk
+import pickle
+import os
+from os import path
 from nltk.parse import corenlp
 
-text = 'He came around the corner, and he spotted the crimson bird .'
-tokens = text.split()
+sample = 'a1'
 
 parser = corenlp.CoreNLPParser(tagtype='pos')
 
-with open('../data/development/set1/a1.txt') as f:
-    line = f.readline()
-    while line:
-        if len(line.split()) > 0:  # check for empty line
-            parsed_iter = parser.parse_text(line)  # native output is a listiterator over detected sentences
-
-            while True:
-                try:
-                    next_item = next(parsed_iter)
-
-                    next_item.pretty_print()
-                except StopIteration:
-                    break 
+tree_list = []
+if path.exists(sample + '.pkl'):
+    print("loading from pkl")
+    tree_list = pickle.load(open(sample + '.pkl', 'rb'))
+else:
+    print("pkl not found")
+    with open('../data/development/set1/' + sample + '.txt') as f:
         line = f.readline()
-    f.close()
+        while line:
+            if len(line.split()) > 0:  # check for empty line
+                parsed_iter = parser.parse_text(line)  # native output is a listiterator over detected sentences
+
+                while True:
+                    try:
+                        next_item = next(parsed_iter)
+
+                        tree_list.append(next_item)
+                    except StopIteration:
+                        break 
+            line = f.readline()
+        f.close()
+    pickle.dump(tree_list, open(sample + '.pkl', 'wb'))
+    print("pkl dumped")
+
+print("sample loaded")
+
 
 # Navigating the tree
 #
@@ -30,4 +43,5 @@ with open('../data/development/set1/a1.txt') as f:
 # T.label() = node label
 # T.pos() = list of POS tags extracted
 # T.leaves() = tree leaves
-# T.subtrees() <== generates subtrees (children pointers)
+# T.subtrees() <== generates all subtrees
+# T[i] for children indexing
