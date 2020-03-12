@@ -1,0 +1,64 @@
+Nota Bene: Tag values are taken from nltk default (Penn Treebank)
+
+1. Who/What questions:
+ROOT
+<S>
+<NP> <VP>       ==> <who/what> <VP>? (as appropriate)
+
+
+2. When/Where questions:
+ROOT
+ |
+<S>-----------
+ |           |
+<NP1>        <VP>----------
+              |           |
+             <VBZ>       <NP>----------
+            (to be)       |           |
+                         <NP2>       <PP> <== (Analyze: location/time?)
+
+===> Where was <NP> located ? / Where did <NP1> <VBZ> <NP2> ? (I don't know about this one)
+===> When did <NP1> occur/exist ?
+
+
+3. Binary questions (from simple case):
+ROOT
+ |
+<S>-----------
+ |           |
+<NP>        <VP>----------
+             |           |
+            <VB?>       <??>  <== the VB? is the only VB? in this level of the VP
+
+will _____ technically exists, but should be rare in wikipedia articles
+
+Direct sentence ==> final form:
+if <VB?> != form of <to be>:
+<VBZ> ===> Has <NP> <VB? convert to past participle> <??> ?
+<VBP> ===> Has/Have <NP> <VB? convert to past participle> <??> ?
+<VBD> ===> Had <NP> <VB? convert to past participle> <??> ?
+
+else:
+<VBZ>/<VBP> ===> Does <NP> have <??> ?
+<VBD> ===> Did <NP> have <??> ?
+
+Sentence ==> auxiliary form (to then use rule 4. on later):
+if <VB?> != form of <to be>:
+<VBZ> ===> <NP> has <VB? convert to past participle> <??>
+<VBP> ===> <NP> has/have <VB? convert to past participle> <??>
+<VBD> ===> <NP> had <VB? convert to past participle> <??>
+
+
+4. Binary questions (from existing auxiliary form):
+ROOT
+ |
+<S>-----------
+ |           |
+<NP>        <VP>------------------------
+             |             |           |
+            <VBD>/       <VBN>/       <??>
+            <VBP>/       <VBG>
+            <VBZ>
+            (has/have)
+
+===> [<VBD> / <VBP> / <VBZ>] <NP> [<VBN> / <VBG>] <??> ?

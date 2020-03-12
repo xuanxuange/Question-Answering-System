@@ -12,7 +12,7 @@ def remove_ref(corpus):
     # remove non-ascii char
     corpus = re.sub(r'[^\x00-\x7f]',r'', corpus)
     # remove references at the end of file
-    del_list = ['References', 'See also', 'Notes', 'External Links']
+    del_list = ['References', 'See also', 'Notes', 'External Links', 'Gallery', 'Further reading', 'Notelist']
     del_pos = sys.maxsize
     for word in del_list:
         tmp = re.search(r'\n+%s\n+' % re.escape(word), corpus, re.IGNORECASE)
@@ -21,6 +21,7 @@ def remove_ref(corpus):
         del_pos = min(del_pos, tmp.start())
     if del_pos != sys.maxsize:
         corpus = corpus[:del_pos]
+    corpus += '\n'
     return corpus
 
 def file_to_sentence(file_path):
@@ -82,9 +83,10 @@ def file_rmextra(file_path):
         corpus = f.read()
     # remove references at the end of file
     corpus = remove_ref(corpus)
+    print(corpus)
 
     # remove subtitles
-    corpus = re.sub(r'\n*[\w+\s+\-*]+\n+', r'\n', corpus).strip()
+    corpus = re.sub(r"\n*[\w+\s+\-*\'\"]+\n+", r'\n', corpus).strip()
 
     return corpus
 # for test
