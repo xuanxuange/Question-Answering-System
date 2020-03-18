@@ -1,0 +1,35 @@
+Parse input into constituent tree
+
+Replace <NN_> <PRP> turn of phrase
+-  Rerun the parser on modified sentences
+
+1) Replace the "<has been> <____> to be" turn of phrase, flag this sentence and location accordingly (for future question gen. Store the turn of phrase somewhere)
+-  Rerun the parser on the modified sentences. Keep the flags on the sentence and location (should be on the word in particular)
+
+2) Fix/Separate SINV phraseology
+-  Rerun the parser on the modified sentences
+
+3) Remove NP-prefixed SBAR from the sentence    ====> Generate some questions immediately
+-  Rerun the parser on the modified sentences
+
+4) Separate root-level <S> <CC> <S> into two separate sentences (assuming <S>'s are valid)
+-  Run the parser on the new sentences (remove the progenitor from the pool)
+
+Run NER, replace ambiguous identifiers accordingly <== IMPORTANT: only do this step once (on the first passthrough)
+
+5) Rearrange <SBAR/PP>, <S> phrases into <S> <SBAR/PP> (Assuming <S> is a valid <NP> <VP> combination)
+-  Rerun the parser on the modified sentences
+
+7) Rearrange <NP> <VP> phrases' NP components based on complexity (Assuming validity)
+-  Run the parser on the modified sentences (remove the progenitor)
+
+8) Run appositive removal/manipulation (include all valid combinations)
+-  Run the parser on all of the new sentences (keep the progenitor, flag so you only do this step on a sentence once)
+
+9) Run parenthetical removal, flag the sentence and location accordingly (for future question gen. Keep the removed parenthetical stored somewhere)
+-  Run the parser on the new sentences (remove the progenitor)
+
+10) Include every valid <NP> <VP> combo located within the sentence. Copy flag values to new sentence where applicable
+-  Run the parser on every new sentence found (keep the progenitor, flag so you only do this step on a sentence once)
+
+Loop back to step 2), only stop looping when no new sentences are produced

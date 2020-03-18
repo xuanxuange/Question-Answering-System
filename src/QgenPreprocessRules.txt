@@ -1,0 +1,94 @@
+1) Replace the "<has been> <____> <to be>" turn of phrase, flag this sentence and location accordingly (for future question gen. Store the turn of phrase somewhere)
+
+    "has been" <some verb> to be" has been noticed as an english turn of phrase the parser dislikes.
+    Examples include "Has been said to be", "has been proposed to be", "has been identified as", etc.
+
+    replace the phrase with "is", or "was", or "will be" as appropriate (tense-dependent)
+
+
+2) Fix/Separate SINV phraseology
+
+    SINV refers to inverted declarative sentences
+    examples found online include:
+
+        i.      Do you understand Finnish? [interrogative]
+
+        ii.     <Were she available>, we would surely invite her. [conditional]
+
+        iii.    Not only <is the standard American aluminum can light in weight and rugged> but <it is also about the same height and diameter as the traditional drinking tumbler>.
+
+    Only two cases that apply are ii and iii.
+
+        Case ii:
+        <SINV> , <S>        ==> [<S> <SINV>, <S> if <SINV-MOD>]
+
+        Case iii:
+        Not only <SINV> <, optional> but <S>    ==> [<S-MOD>, <SINV-MOD>]
+
+    <S-MOD> = <S>, but remove any "also" that appears right after the main VB (directly under the main VP, and directly after a sequence of VB_)
+
+
+3) Remove NP-prefixed SBAR from the sentence
+
+    Somwhere in the sentence, you have <NP> <SBAR> as children of the same node.
+    <SBAR> acts as a modifier upon the <NP> in this case, and is thus not essential to the meaning of the sentence.
+
+    Additionally, because it is a modifier, we are able to create a constructor for questions asked in the following form:
+
+           <S>
+            |
+    |---------------|
+    |               |
+    <NP1>     |------<VP>------|
+              |       |        |
+            <VB_>   <NP2>    <SBAR>
+
+    Here, <SBAR> describes <NP2>, and can thus act as a stand in, in the question: "What did <NP1> <VB_> <SBAR> ?"
+    After generating this question, remove SBAR from the sentence, return it to the pool
+
+
+4) Separate root-level <S> <,> <CC> <S> into two separate sentences (assuming <S>'s are valid)
+
+    <,> may or may not appear. Separate regardless
+
+    Valid <S> have <NP> and <VP> as children, in that order, possibly with stuff prefixing or suffixing it
+    <NP> and <VP> must both be valid for <S> to be valid
+    <NP> is valid when it contains a <NN_> word
+    <VP> is valid when it contains a <VB_> word
+
+
+5) Rearrange <SBAR/PP>, <S> phrases into <S> <SBAR/PP> (Assuming <S> is a valid <NP> <VP> combination, as defined above)
+
+    sentence will be of the form <SBAR/PP> <,> <S> (<,> is optional)
+    Irrespective of presence of <,>, return the two sentences: [<S> <SBAR/PP>, <S>]
+
+
+6) Rearrange <NP> <VP> phrases' NP components based on complexity (Assuming validity)
+
+    If you have a <NP> <VP> adjacency of the following form:
+           <?>
+            |
+     ---------------------
+     |                   |
+   <NP1>          ------<VP>-------
+                  |               |
+                <VB_>           <NP2>
+
+    and <NP1> and <NP2> are both valid noun phrases, and <VB_> is a conjugation of "to be", then that establishes equivalence between <NP1> and <NP2>, which means they can be swapped around at will.
+
+    Add the sentence that swaps <NP1> and <NP2> to the pool (keeping flags attached to the correct word)
+    (should have both variants present. Probably should add a flag to the sentence so you don't end up with multiple copies of the same sentence getting added each passthrough)
+
+
+7) Run appositive removal/manipulation (include all valid combinations)
+
+
+
+8) Run parenthetical removal, flag the sentence and location accordingly (for future question gen. Keep the removed parenthetical stored somewhere)
+
+
+
+9) Include every valid <NP> <VP> combo located within the sentence. Copy flag values to new sentence where applicable
+
+    If, on any level, you have a valid <NP>, and a valid <VP> directly adjacent to each other, that forms a sentence.
+    Add <NP> <VP> to the sentence pool
