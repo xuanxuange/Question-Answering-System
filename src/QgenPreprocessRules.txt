@@ -28,6 +28,13 @@
     <S-MOD> = <S>, but remove any "also" that appears right after the main VB (directly under the main VP, and directly after a sequence of VB_)
 
 
+8) Run parenthetical removal, flag the sentence and location accordingly (for future question gen. Keep the removed parenthetical stored somewhere)
+
+    Find a <-LRB-> ? <-RRB-> pair in the sentence? remove it.
+    Keep it (the paren) around in storage (add a tag that points the former parenthesized contents towards what they were most likely describing (the grouping of the word directly to the left of the PAREN, that is a child of the same parent as the PAREN))
+    Sentences should now be free of parenthesized material
+
+
 3) Remove NP-prefixed SBAR from the sentence
 
     Somwhere in the sentence, you have <NP> <SBAR> as children of the same node.
@@ -82,10 +89,33 @@
 
 7) Run appositive removal/manipulation (include all valid combinations)
 
+    Apositive detection:
+              <NP>
+               |
+     ----------------------
+     |          |         |
+    <NP1>    <DELIM>     <NP2> ...
 
+    Delim should be of type : , .
+    Have 2 sentences after you run this (per apositive)
 
-8) Run parenthetical removal, flag the sentence and location accordingly (for future question gen. Keep the removed parenthetical stored somewhere)
+    1, where you keep <NP1>, and remove <DELIM> and <NP2>
+    2, where you keep <NP2>, and remove <NP1> and <DELIM>
 
+    In case 1, you may need to do some further modifications.
+    English verb plurality is determined by the noun plurality of the noun directly in front of it, not necessarily what it describes.
+
+    After removing the apositive, start from the edge of NP1, and move right until you meet the first word that is <VB_>.
+    If no words in the middle are under a node marked <NP> (that <NP1> is not directly under), then said <VB_> will be affected by the change in rightmost noun.
+    Determine the plurality of NP1, modify the <VB_> accordingly
+
+    To determine plurality of NP1:
+    continuously go further down the tree, always picking the rightnost <NP>, until none of the children are <NP>
+    Once at that stage, take the <NN_> that is furthest right within this node.
+
+    NN, NNP are singular, NNS, NNPS are plural
+
+    Note: This is theoretically extensible to more than 2 <NP> directly under another <NP>, all separated by <DELIM>
 
 
 9) Include every valid <NP> <VP> combo located within the sentence. Copy flag values to new sentence where applicable

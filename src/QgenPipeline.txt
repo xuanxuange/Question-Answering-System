@@ -9,6 +9,9 @@ Replace <NN_> <PRP> turn of phrase
 2) Fix/Separate SINV phraseology
 -  Rerun the parser on the modified sentences
 
+8) Run appositive removal/manipulation (include all valid combinations)
+-  Run the parser on all of the modified sentences (Flag what words belong are described by which parens, keep parens in storage somewhere)
+
 3) Remove NP-prefixed SBAR from the sentence    ====> Generate some questions immediately
 -  Rerun the parser on the modified sentences
 
@@ -22,9 +25,6 @@ Run NER, replace ambiguous identifiers accordingly <== IMPORTANT: only do this s
 
 7) Rearrange <NP> <VP> phrases' NP components based on complexity (Assuming validity)
 -  Run the parser on the modified sentences (remove the progenitor)
-
-8) Run appositive removal/manipulation (include all valid combinations)
--  Run the parser on all of the new sentences (keep the progenitor, flag so you only do this step on a sentence once)
 
 9) Run parenthetical removal, flag the sentence and location accordingly (for future question gen. Keep the removed parenthetical stored somewhere)
 -  Run the parser on the new sentences (remove the progenitor)
