@@ -33,3 +33,5 @@ Run NER, replace ambiguous identifiers accordingly <== IMPORTANT: only do this s
 -  Run the parser on every new sentence found (keep the progenitor, flag so you only do this step on a sentence once)
 
 Loop back to step 2), only stop looping when no new sentences are produced
+
+Run the Qgen rules on the set of simplified sentences
