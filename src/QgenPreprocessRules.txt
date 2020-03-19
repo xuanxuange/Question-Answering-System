@@ -44,14 +44,26 @@
 
            <S>
             |
-    |---------------|
-    |               |
+      |---------------|
+      |               |
     <NP1>     |------<VP>------|
               |       |        |
             <VB_>   <NP2>    <SBAR>
 
     Here, <SBAR> describes <NP2>, and can thus act as a stand in, in the question: "What did <NP1> <VB_> <SBAR> ?"
     After generating this question, remove SBAR from the sentence, return it to the pool
+
+    If we have, however, a <NP> of the form: (<,> optional)
+               <NP>
+                |
+     --------------------------
+     |         |              |
+    <NP>      <,>      |----<SBAR>---|
+                    <WHNP>          <S>
+                                     |
+                                    <VP>
+    
+    SBAR describes the lower NP, so we can ask the question: "Who/What <VP> ?"
 
 
 4) Separate root-level <S> <,> <CC> <S> into two separate sentences (assuming <S>'s are valid)
