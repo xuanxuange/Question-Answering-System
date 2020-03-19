@@ -23,8 +23,11 @@ Run NER, replace ambiguous identifiers accordingly <== IMPORTANT: only do this s
 5) Rearrange <SBAR/PP>, <S> phrases into <S> <SBAR/PP> (Assuming <S> is a valid <NP> <VP> combination)
 -  Rerun the parser on the modified sentences
 
-7) Rearrange <NP> <VP> phrases' NP components based on complexity (Assuming validity)
+6) Rearrange <NP> <VP> phrases' NP components based on complexity (Assuming validity)
 -  Run the parser on the modified sentences (remove the progenitor)
+
+7) Run appositive removal/manipulation (include all valid combinations)
+-  Rerun the parser on the modified/new sentences
 
 9) Run parenthetical removal, flag the sentence and location accordingly (for future question gen. Keep the removed parenthetical stored somewhere)
 -  Run the parser on the new sentences (remove the progenitor)

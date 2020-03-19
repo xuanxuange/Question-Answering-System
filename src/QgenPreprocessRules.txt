@@ -91,7 +91,7 @@
 
     Apositive detection:
               <NP>
-               |
+                |
      ----------------------
      |          |         |
     <NP1>    <DELIM>     <NP2> ...
