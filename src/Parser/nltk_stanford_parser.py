@@ -31,3 +31,7 @@ def ner_tagging(tokens):
     :return:list[(token, tag))]
     """
     return list(ner_parser.tag(tokens))
+
+def dep_parse(text):
+    result = dep_parser.parse(text.split())
+    return result
