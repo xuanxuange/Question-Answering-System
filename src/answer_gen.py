@@ -3,21 +3,6 @@ import spacy
 import sys
 from spacy.symbols import *
 
-def get_vn(self, curr, result):
-    verbforms = ["VBD", "VBG", "VBN", "VBP", "VBZ"]
-    pforms = ['VP', 'NP']
-    if not curr.leaves():
-        return result
-    if curr.label() in verbforms or curr.label() == 'TO':
-        result.append(curr)
-        if curr.leaves():
-            result.append(curr.leaves())
-        return result
-    elif curr.label() in pforms:
-        pass
-    for i in range(len(curr)):
-        return get_vn(curr[i], result)
-
 def answer_whn(question, rel_sentence):
     """
     Generate answer for whn questions, focus on nouns
@@ -48,7 +33,7 @@ def answer_whn(question, rel_sentence):
     for i, word in enumerate(s_dep):
         if word.head == word:
             root_index = i
-            
+
     # check if main subj is the wh word
     if q_tokens[0] == main_subj.text:
         flag = True
@@ -70,6 +55,37 @@ def answer_whn(question, rel_sentence):
     flat_answer = [item for sub in answer for item in sub]
     flat_answer[-1] = '.'
     return ' '.join(flat_answer)
+
+def answer_how(question, rel_sentence):
+    """
+    Generate answer for how many, how long and how much questions
+    Return: the answer in str, if cannot process, return rel_sentence
+    """
+    q_tokens = question.split()
+    nlp = spacy.load("en_core_web_sm")
+    answer = []
+    sent = nlp(rel_sentence)
+    if q_tokens[1] == 'many':
+        main = q_tokens[2]
+        for i, ent in enumerate(sent.ents):
+            if ent.label_ == "CARDINAL":
+                answer.append(ent.text)
+    elif q_tokens[1] == 'long':
+        for i, ent in enumerate(sent.ents):
+            if ent.label_ == "DATE":
+                answer.append(ent.text)
+    elif q_tokens[1] == 'much':
+        for i, ent in enumerate(sent.ents):
+            if ent.label_ == "MONEY":
+                answer.append(ent.text)
+    else:
+        return rel_sentence
+    if len(answer) == 0:
+        return rel_sentence
+    answer.append('.')
+    return ' '.join(answer)
+
+            
 
 if __name__ == "__main__":
     # question = "What is the primary weapon of Egyptian armies during the new Kingdom ?"
