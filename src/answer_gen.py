@@ -1,17 +1,26 @@
 from Parser.nltk_stanford_parser import *
 import spacy
 import sys
+import string
 from spacy.symbols import *
+
+def find_sv(word):
+    if word.dep == nsubj and (word.head.pos == VERB or word.head.pos == AUX or (len(rights) > 0 and word.head.pos == NOUN and rights[0] == ADP)):
+        return True
+    else:
+        return False
+
 
 def answer_whn(question, rel_sentence):
     """
-    Generate answer for whn questions, focus on nouns
+    Generate answer for whn questions which focus on nouns
     Return: the answer in str, if fail to process, return rel_sentence
     """
     answer = []
     sent_tokens = rel_sentence.split()
     q_tokens = question.split()
     main_subj = ''
+    main_obj = ''
     main_v = ''
     main_v_index = 0
     root_index = 0
@@ -23,37 +32,57 @@ def answer_whn(question, rel_sentence):
     s_dep = nlp(rel_sentence)
     for i, word in enumerate(q_dep):
         rights = [token.pos for token in word.rights]
-        if word.dep == nsubj and (word.head.pos == VERB or word.head.pos == AUX or (len(rights) > 0 and word.head.pos == NOUN and rights[0] == ADP)):
+        if find_sv(word):
             main_v = word.head
             main_subj = word
             main_v_index = q_tokens.index(main_v.text)
-            break
-
     # find matched v in sentence
     for i, word in enumerate(s_dep):
         if word.head == word:
+            root_index = i     
+            root = word
+        if word.head.head == word.head and word.lemma_ == main_v.lemma_:
             root_index = i
-
+        
     # check if main subj is the wh word
     if q_tokens[0] == main_subj.text:
+        meaningful_pos = [NOUN, VERB, ADJ, ADV, AUX, PROPN]
         flag = True
-        main_subj_index = sys.maxsize
+        curr = main_v.children
+        for child in curr:
+            if child.dep == dobj or child.dep == pobj or child.pos in meaningful_pos:
+                main_obj = child
+                break
+            if child.dep == prep:
+                for cc in child.children:
+                    if cc.dep == dobj or cc.dep == pobj or cc.pos in meaningful_pos:
+                        main_obj = cc
+                        break
+        main_obj_index = sent_tokens.index(main_obj.text)
+                
     else:
         if main_subj.text not in sent_tokens and not flag:
             return rel_sentence
         main_subj_index = sent_tokens.index(main_subj.text)
 
     # append answer
-    if main_subj_index < root_index:
-        answer.append(sent_tokens[root_index + 1 : ])
-    else:
-        if main_v.text == sent_tokens[root_index]:
+    if not flag:
+        if main_subj_index > root_index:
             answer.append(sent_tokens[ : root_index])
-        else:
+        else: 
             answer.append(sent_tokens[root_index + 1 : ])
-    answer.append(q_tokens[main_v_index : ])
+    else:
+        if main_obj_index > root_index:
+            answer.append(sent_tokens[ : root_index])
+        else: 
+            answer.append(sent_tokens[root_index + 1 : ])
     flat_answer = [item for sub in answer for item in sub]
-    flat_answer[-1] = '.'
+
+    # add/change the last element to be period
+    if flat_answer[-1] not in string.punctuation: 
+        flat_answer.append('.')
+    else:
+        flat_answer[-1] = '.'
     return ' '.join(flat_answer)
 
 def answer_how(question, rel_sentence):
