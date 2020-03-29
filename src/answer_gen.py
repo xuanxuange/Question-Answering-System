@@ -160,6 +160,48 @@ def answer_where(question, rel_sentence):
                 answer = rel_sentence # or return pos_answer[0]?
     return answer
 
+def answer_when(question, rel_sentence):
+    """
+    Generate answer for when questions
+    Return: the answer in str, if fail to process, return rel_sentence
+    """
+    ner = ['DATE', 'TIME']
+    nlp = spacy.load("en_core_web_sm") 
+    sent = nlp(rel_sentence)
+    q = nlp(question)
+    pos_answer = []
+    answer = ''
+    for ent in sent.ents:
+        if ent.label_ in ner:
+            pos_answer.append(ent.text)
+    # check if the ner text is part of a noun chunk
+    for i in range(len(pos_answer)):
+        for chunk in sent.noun_chunks:
+            if pos_answer[i] in chunk.text:
+                pos_answer[i] = chunk.text
+                break
+    if len(pos_answer) == 1:
+        answer = pos_answer[0] + ' .'
+    elif len(pos_answer) < 1:
+        return rel_sentence
+    # > 1 possible answer, return the one closest to the main verb in question
+    else:
+        s_tokens = rel_sentence.split()
+        for word in q:
+            if find_sv(word):
+                main_v = word.head.text
+        if not main_v or main_v not in rel_sentence:
+            return rel_sentence
+        main_v_index = rel_sentence.index(main_v)
+        min_dist = sys.maxsize
+        for a in pos_answer:
+            a_index = rel_sentence.index(a)
+            if abs(a_index - main_v_index) < min_dist:
+                answer = a + ' .'
+        if not answer:
+            return rel_sentence
+    return answer
+        
 
 if __name__ == "__main__":
     # question = "What is the primary weapon of Egyptian armies during the new Kingdom ?"
