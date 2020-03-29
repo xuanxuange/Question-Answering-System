@@ -85,7 +85,7 @@ def answer_whn(question, rel_sentence):
         flat_answer[-1] = '.'
     return ' '.join(flat_answer)
 
-def answer_how(question, rel_sentence):
+def answer_howx(question, rel_sentence):
     """
     Generate answer for how many, how long and how much questions
     Return: the answer in str, if cannot process, return rel_sentence
@@ -114,7 +114,52 @@ def answer_how(question, rel_sentence):
     answer.append('.')
     return ' '.join(answer)
 
-            
+def answer_where(question, rel_sentence):
+    """
+    Generate answer for where questions
+    Return: the answer in str, if fail to process, return rel_sentence
+    """
+    nlp = spacy.load("en_core_web_sm") 
+    sent = nlp(rel_sentence)
+    q = nlp(question)
+    pos_answer = []
+    answer = ''
+    for ent in sent.ents:
+        if ent.label_ == 'LOC':
+            pos_answer.append(ent.text)
+    if len(pos_answer) == 1:
+        answer = pos_answer[0] + ' .'
+    elif len(pos_answer) < 1:
+        return rel_sentence
+
+    # > 1 possible answer
+    else:
+        q_tokens = question.split()
+        s_tokens = rel_sentence.split()
+        q_subj = ''
+        # find the main subj in question
+        for word in q:
+            if find_sv(word):
+                q_subj = word.text
+        if not q_subj or not (q_subj in s_tokens):
+            return rel_sentence
+        # traverse to find the LOC NP related to q_subj
+        else:
+            for word in sent:
+                if word.text == q_subj:
+                    curr = word
+                while(curr.head and not answer):
+                    if curr.head.dep == prep:
+                        r = [w.text for w in curr.head.rights]
+                        if len(r) == 0: continue
+                        for a in pos_answer:
+                            if r[0] in a:
+                                answer = a + ' .'
+                                break       
+            if not answer:
+                answer = rel_sentence # or return pos_answer[0]?
+    return answer
+
 
 if __name__ == "__main__":
     # question = "What is the primary weapon of Egyptian armies during the new Kingdom ?"
