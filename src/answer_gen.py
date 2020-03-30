@@ -271,6 +271,27 @@ def answer_other_adv(question, rel_sentence):
     return answer
 
 
+def answer_whadv(question, rel_sentence):
+    """
+    Wrapper for wh_adv questions
+    Return: the answer in str, if fail to process, return rel_sentence
+    """
+    q_tokens = question.split()
+    if q_tokens[0].lower() == 'where':
+        answer = answer_where(question, rel_sentence)
+    elif q_tokens[0].lower() == 'when':
+        answer = answer_when(question, rel_sentence)
+    else:
+        answer = answer_other_adv(question, rel_sentence)
+    return answer
+
+def answer_why(question, rel_sentence):
+    """
+    Generate answer for why questions
+    Return: the answer in str, if fail to process, return rel_sentence
+    """
+    pass
+
 
 if __name__ == "__main__":
     # question = "What is the primary weapon of Egyptian armies during the new Kingdom ?"
