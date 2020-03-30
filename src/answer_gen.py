@@ -80,7 +80,7 @@ def answer_whn(question, rel_sentence):
 
     # add/change the last element to be period
     if flat_answer[-1] not in string.punctuation: 
-        flat_answer.append('.')
+        flat_answer.append(' .')
     else:
         flat_answer[-1] = '.'
     return ' '.join(flat_answer)
@@ -94,7 +94,7 @@ def answer_howx(question, rel_sentence):
     nlp = spacy.load("en_core_web_sm")
     answer = []
     sent = nlp(rel_sentence)
-    if q_tokens[1] == 'many':
+    if q_tokens[1] == 'many' or q_tokens[1] == 'tall':
         main = q_tokens[2]
         for i, ent in enumerate(sent.ents):
             if ent.label_ == "CARDINAL":
@@ -111,7 +111,7 @@ def answer_howx(question, rel_sentence):
         return rel_sentence
     if len(answer) == 0:
         return rel_sentence
-    answer.append('.')
+    answer.append(' .')
     return ' '.join(answer)
 
 def answer_where(question, rel_sentence):
@@ -192,16 +192,85 @@ def answer_when(question, rel_sentence):
                 main_v = word.head.text
         if not main_v or main_v not in rel_sentence:
             return rel_sentence
-        main_v_index = rel_sentence.index(main_v)
-        min_dist = sys.maxsize
-        for a in pos_answer:
-            a_index = rel_sentence.index(a)
-            if abs(a_index - main_v_index) < min_dist:
-                answer = a + ' .'
+        
+        answer = find_closest_answer(pos_answer, main_v, rel_sentence) + ' .'
         if not answer:
             return rel_sentence
     return answer
         
+def dfs_tree(curr, label, pos_answer, visited):
+    """
+    Traverse the given tree and save the leaves of given label to pos_answer
+    Return: None
+    """
+    visited.append(curr)
+    for child in curr:
+        if not isinstance(child, str) and child.label() == label:
+            pos_answer.append(child.leaves())
+        if child not in visited:
+            dfs_tree(child, label, pos_answer, visited)
+    return 
+
+def find_closest_answer(pos_answer, main_v, rel_sentence):
+    """
+    Given a list of possible answer, return the one that is closest to the main verb in rel_sentence
+    Return: a string
+    """
+    main_v_index = rel_sentence.find(main_v)
+    min_dist = sys.maxsize
+    answer = ''
+    for a in pos_answer:
+        a_index = rel_sentence.find(a)
+        if abs(a_index - main_v_index) < min_dist:
+            answer = a
+    return answer
+
+def answer_other_adv(question, rel_sentence):
+    """
+    Generate answer for questions besides where/when which focus on adv (e.g. how) by returning a meaning adv phrase
+    Return: the answer in str, if fail to process, return rel_sentence
+    """
+    ADV_STOP_LIST = ['almost', 'also', 'further', 'generally', 'greatly',
+    'however', 'just', 'later', 'longer', 'often', 'only', 'typically', 
+    'similarly', 'initially', 'for', 'basically', 'already', 'literally']
+    nlp = spacy.load("en_core_web_sm") 
+    sent = nlp(rel_sentence)
+    q = nlp(question)
+    answer = ''
+    main_v = ''
+    # find the main verb in question
+    for word in q:
+        if find_sv(word):
+            main_v = word.head
+    if (main_v.text not in rel_sentence and main_v.lemma_.text not in rel_sentence) or not main_v:
+        return rel_sentence
+    for word in sent:
+        if word.head.lemma_ == main_v.lemma_ and word.dep == advmod and word.text.lower() not in ADV_STOP_LIST:
+            answer = word.text + ' '
+        if word.head.lemma_ == main_v.lemma_ and (word.dep == advcl or word.dep == prep):
+            span = str(sent[word.left_edge.i : word.right_edge.i+1])
+            answer += span
+    if answer:
+        answer += ' .'
+    # find the advp in parse tree
+    else:
+        tree = parse_raw_text(rel_sentence)
+        pos_answer = []
+        visited = []
+        dfs_tree(tree[0], 'ADVP', pos_answer, visited)
+        pos_answer = [a for sublist in pos_answer for a in sublist]
+        if not pos_answer:
+            return rel_sentence
+        elif len(pos_answer) == 1 and pos_answer[0].lower() not in ADV_STOP_LIST:
+            answer = pos_answer[0].lower() + ' .'
+        else:
+            answer = find_closest_answer(pos_answer, main_v.text, rel_sentence) + ' .'
+
+    if not answer:
+        return rel_sentence
+    return answer
+
+
 
 if __name__ == "__main__":
     # question = "What is the primary weapon of Egyptian armies during the new Kingdom ?"
