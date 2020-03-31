@@ -26,16 +26,16 @@ if __name__ == "__main__":
         
         # Generate answer
         if q_type == "WH_ADV":
-            pos_answer = answer_whadv(curr_q, rel_sentence)
+            pos_answer = answer_whadv(curr_q[0], rel_sentence)
         elif q_type == "BINARY" or q_type == "EITHER_OR":
             #TODO(xuanxuan): answer binary question
             pass
         elif q_type == "WH_N":
-            pos_answer = answer_whn(curr_q, rel_sentence)
+            pos_answer = answer_whn(curr_q[0], rel_sentence)
         elif q_type == "HOW":
-            pos_answer = answer_howx(curr_q, rel_sentence)
+            pos_answer = answer_howx(curr_q[0], rel_sentence)
         elif q_type == "WHY":
-            pos_answer = answer_why(curr_q, rel_sentence)
+            pos_answer = answer_why(curr_q[0], rel_sentence)
         else:
             pos_answer = rel_sentence
         
