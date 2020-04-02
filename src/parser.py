@@ -4,12 +4,20 @@ import os
 from os import path
 from nltk.parse import corenlp
 
-sample = 'a1'
+
+# cd ~/Documents/11-411/stanford-corenlp-full-2018-10-05; java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer
+
+sample = 'a4'
+
+debug = True
 
 parser = corenlp.CoreNLPParser(tagtype='pos')
 
+corefparser = corenlp.CoreNLPParser()
+corefparser.parser_annotator='pos,ner,parse'
+
 tree_list = []
-if path.exists(sample + '.pkl'):
+if path.exists(sample + '.pkl') and not debug:
     print("loading from pkl")
     tree_list = pickle.load(open(sample + '.pkl', 'rb'))
 else:
@@ -18,15 +26,25 @@ else:
         line = f.readline()
         while line:
             if len(line.split()) > 0:  # check for empty line
-                parsed_iter = parser.parse_text(line)  # native output is a listiterator over detected sentences
+                parsed_iter = parser.parse_text(line, timeout=5000)  # native output is a listiterator over detected sentences
+                res = corefparser.api_call(line, timeout=5000)
+                # res["parse"]
+
+                print(line)
+
+                for sentence in res["sentences"]:
+                    print(sentences["parse"])
 
                 while True:
                     try:
                         next_item = next(parsed_iter)
+                        print(next_item)
 
                         tree_list.append(next_item)
                     except StopIteration:
                         break 
+                
+                print("\n\n")
             line = f.readline()
         f.close()
     pickle.dump(tree_list, open(sample + '.pkl', 'wb'))
