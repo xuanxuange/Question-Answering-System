@@ -187,8 +187,8 @@ def get_most_relevent_sent(question, doc):
 
 if __name__ == "__main__":
     # file_rmextra('../data/development/set1/a6.txt')
-    path = '../data/Questions_set1(1-10).txt'
-    psg_path = '../data/development/set1/a1.txt'
+    path = '../../data/Questions_set1(1-10).txt'
+    psg_path = '../../data/development/set1/a1.txt'
     paren_pattern = r"\(.*\)"
     subtitle_pattern = r"a?\d+\.(txt)?\s?"
     doc = file_rmextra(path)
