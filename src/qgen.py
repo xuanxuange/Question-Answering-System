@@ -49,7 +49,7 @@ def getBinarySimple(t):
                     vpptext = " ".join([vbn]+candidate[1].leaves()[1:])
                     if vpptext and vpptext[-1] in ".!?":
                         vpptext = vpptext[:-1]
-                    prefdict = {"VBG": "Has", "VBN": "Has/Have", "VBD":"Had"}
+                    prefdict = {"VBZ": "Has", "VBG": "Has", "VBP": "Has/Have", "VBD":"Had", "VBN":"Had"}
                     if lemmatizer.lemmatize(candidate[1][0].leaves()[0]) != "be":
                         if candidate[1][0].label() in prefdict:
                             out.append("%s %s %s?" % (prefdict[candidate[1][0].label()],nptext,vpptext))
