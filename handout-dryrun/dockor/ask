@@ -1,0 +1,19 @@
+#!/usr/bin/python3 -W ignore::DeprecationWarning
+# -*- coding:utf8 -*-
+
+import sys
+import spacy
+import codecs
+
+
+
+
+if __name__ == "__main__":
+    input_file = sys.argv[1]
+    N = int(sys.argv[2])
+
+    for i in range(N):
+        print('Q' + str(i + 1))
+    
+
+
