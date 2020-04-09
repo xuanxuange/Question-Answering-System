@@ -2,8 +2,6 @@
 
 import re
 import sys
-import os
-from os import path
 
 def format_question(question):
     question = question.replace('-LRB- ', '(')

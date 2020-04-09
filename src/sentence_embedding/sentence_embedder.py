@@ -1,12 +1,9 @@
 from pathlib import Path
 from src.answer_generation.tokenizer import file_to_sentence as f_to_sentences
-from src.utils import get_project_root
+from src.utils import get_project_root, cosine
 
-import numpy as np
+
 import torch
-import sys
-
-#sys.path.append('.../InferSent')
 from InferSent.models import InferSent
 
 class InferSentEmbedder:
@@ -33,12 +30,6 @@ class InferSentEmbedder:
     def encode(self, sentences):
         embeddings = self.model.encode(sentences, bsize=128, tokenize=False, verbose=True)
         return embeddings
-
-
-def cosine(u, v):
-    return np.dot(u, v) / (np.linalg.norm(u) * np.linalg.norm(v))
-
-#%%
 
 
 
