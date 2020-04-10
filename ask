@@ -3,6 +3,9 @@
 import re
 import sys
 
+import nltk
+from nltk.parse import corenlp
+
 def format_question(question):
     question = question.replace('-LRB- ', '(')
     question = question.replace(' -RRB-', ')')
@@ -14,11 +17,8 @@ if __name__ == "__main__":
     article = sys.argv[1]
     nquestions = int(sys.argv[2])
 
-    import nltk
-    from nltk.parse import corenlp
-
-    from question_gen import *
-    from question_gen_preprocess import preprocess
+    from src.question_generation.question_gen import *
+    from src.question_generation.question_gen_preprocess import preprocess
 
     parser = corenlp.CoreNLPParser(tagtype='pos')
 

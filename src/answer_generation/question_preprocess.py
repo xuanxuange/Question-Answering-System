@@ -1,7 +1,7 @@
 from rake_nltk import Rake
 import spacy
 from spacy.symbols import nsubj, VERB, dobj, NOUN, PROPN, PRON
-from Parser.nltk_stanford_parser import *
+from src.parser.nltk_stanford_parser import *
 
 """
 Preprocess the question, generate keywords, question type and processed complete question
@@ -40,6 +40,7 @@ class q_preprocess:
         Arg: question - the question to process
         Return: a label (str), a modified question (str)
         """
+        print("question: {}".format(self.quesiton))
         words = self.quesiton.split()
         if words[1] == 'or' or words[1] == '/':
             words = words[2 :]

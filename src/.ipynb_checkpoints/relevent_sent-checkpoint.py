@@ -3,7 +3,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from rake_nltk import Rake
 import re
-from src.answer_generation.tokenizer import *
+from tokenizer import *
 
 
 def generate_keywords(sentence):
@@ -18,8 +18,6 @@ def generate_keywords(sentence):
     keywords = r.get_ranked_phrases()
     if not keywords:
         print('No keywords generated. Please rephrase your question.')
-    if len(keywords) == 1:
-        splited = keywords[0].split()
     return keywords
 
 def cal_similarities(sentence1, sentence2):
@@ -79,7 +77,7 @@ def check_kw_match(sentences, keywords):
     return rel_sentence
 
 def find_complete_psg(doc, content):
-    pattern = r"\.?[\s\n]+[\w\s,;:_\'\"\-\–\(\)]*" + re.escape(content) + "[\w\s,;:_\'\"\–\-\(\)]*\.[\s\n]+"
+    pattern = r"\.[\s\n]+[\w\s,;_\'\"\-\–\(\)]*" + re.escape(content) + "[\w\s,;_\'\"\–\-\(\)]*\.[\s\n]+"
     match = re.finditer(pattern, doc, re.IGNORECASE)
     psg = []
 
@@ -115,12 +113,6 @@ def get_most_relevent_sent(question, doc):
     # if none of the keyword is found, output error msg
     if not found_keywords:
         print("Keywords not found in the document given.")
-        psg = text_to_sentence(doc)
-        min_dist = sys.maxsize
-        for i in psg:
-            if cal_similarities(i, question) < min_dist:
-                rel_sentence = i
-        # rel_sentence = "Keywords not found in the document given."
         return rel_sentence
 
     # print('pos-listindex: ', pos_to_keyword)
@@ -131,7 +123,6 @@ def get_most_relevent_sent(question, doc):
         psg = find_complete_psg(doc, found_keywords[0])
         if not psg:
             print("Content not found in the document given.")
-            rel_sentence = "Content not found in the document given."
         min_sim = sys.maxsize
         for sentence in psg:
             similarity = cal_similarities(sentence, question)
@@ -149,6 +140,8 @@ def get_most_relevent_sent(question, doc):
         tmp = sorted(tmp)
     min_interval = (tmp[0], tmp[-1])
     while len(pos_list[pos_to_keyword[tmp[0]]]) > 0:
+        # print(tmp)
+        # print('list of pos: ', pos_list)
         leftmost = pos_list[pos_to_keyword[tmp[0]]]
         p = leftmost.pop(0)
         q = tmp[1]
@@ -162,15 +155,14 @@ def get_most_relevent_sent(question, doc):
         else:
             r = min_interval[1]
             min_interval = (min(p,q), r)
+    # print(min_interval)
 
     # find the complete sentences span the interval
     content = doc[min_interval[0]: min_interval[1]]
-    print(content)
     # print(content)
     psg = find_complete_psg(doc, content)
     if not psg:
         print("Content not found in the document given.")
-        rel_sentence = "Content not found in the document given."
         return rel_sentence
     # print(psg)
 
@@ -185,36 +177,23 @@ def get_most_relevent_sent(question, doc):
     return rel_sentence
     
 
+
+ 
+
+
+
+
 if __name__ == "__main__":
-    # file_rmextra('../data/development/set1/a6.txt')
-    path = '../../data/Questions_set1(1-10).txt'
-    psg_path = '../../data/development/set1/a1.txt'
-    paren_pattern = r"\(.*\)"
-    subtitle_pattern = r"a?\d+\.(txt)?\s?"
+    question1 = 'When does the Old Kingdom and royal power reach a zenith?'
+    question2 = 'Who ruled the Lower Egypt in 10th Dynasty?'
+    question3 = 'What marked The Fifth Dynasty?'
+    question4 = 'Which dynasty is the dynamic periods in the development of Egyptian art'
+    question5 = 'When is Old Kingdom?'
+    question6 = 'Who is Khufu?'
+    question7 = 'What does written in stone refer to?'
+    path = '../data/development/set1/a1.txt'
+
     doc = file_rmextra(path)
-    doc = re.sub(paren_pattern, '', doc)
-    doc = re.sub(subtitle_pattern, '', doc).strip()
-    lines = doc.split('\n')
-    # print(lines)
-    # print(psg_path[:24])
-    counter = 0
-    psg = file_rmextra(psg_path)
-    for i in range(len(lines)):
-        if len(lines[i]) < 5:
-            continue
-        if counter % 5 == 0:
-            # print("should change to " + str(counter//5+1))
-            psg_path = psg_path[:24]
-            psg_path += '/a' + str(counter//5 + 1) + '.txt'
-            psg = file_rmextra(psg_path)
-        line = lines[i].strip()
-        sentence = get_most_relevent_sent(line, psg)
-        print(sentence, psg_path)
-        with open ('./test_result.txt', 'a') as out:
-            out.write(str(counter+1) + '. ' + sentence + '\n')
-            out.write('\n')
-
-        counter += 1
-
+    print(get_most_relevent_sent(question7, doc))
 
 
