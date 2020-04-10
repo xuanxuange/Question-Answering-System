@@ -44,4 +44,21 @@ RUN ./infersent_install.sh
 CMD ["chmod 777 ask"]
 CMD ["chmod 777 answer"]
 
-ENTRYPOINT ["/bin/bash", "-c"]
+
+# Download standford NLP
+RUN wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip
+RUN wget http://nlp.stanford.edu/software/stanford-ner-2018-10-16.zip
+RUN unzip stanford-corenlp-full-2018-10-05.zip; \
+unzip stanford-ner-2018-10-16.zip; \
+mv stanford-corenlp-full-2018-10-05 CoreNLP; \
+cd CoreNLP; \
+export CLASSPATH=""; for file in `find . -name "*.jar"`; \
+do export CLASSPATH="$CLASSPATH:`realpath $file`"; done
+
+# Expose port 9090 for standford corenlp
+ENV PORT 9090
+
+EXPOSE 9090
+ENTRYPOINT [ "./start_stanford_corenlp.sh" ]
+
+# ENTRYPOINT ["/bin/bash", "-c"]
