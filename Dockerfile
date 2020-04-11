@@ -1,6 +1,6 @@
 # Ubuntu Linux as the base imag
 #FROM ubuntu:16.04
-FROM python:3.7-slim
+FROM python:3.7
 
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
@@ -13,6 +13,8 @@ WORKDIR /QA
 RUN apt-get -y update && \
     apt-get -y upgrade
 
+# RUN apt-get -y install gcc
+
 # Pytorch
 RUN pip3 install torch torchvision
 
@@ -24,7 +26,7 @@ RUN chmod +x nltk_download_models
 RUN ./nltk_download_models
 
 # pattern library for python3
-RUN apt-get install default-libmysqlclient-dev
+RUN apt-get -y install default-libmysqlclient-dev
 RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
 
 # spacy
