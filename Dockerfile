@@ -58,9 +58,9 @@ export CLASSPATH=""; for file in `find . -name "*.jar"`; \
 do export CLASSPATH="$CLASSPATH:`realpath $file`"; done
 
 # Expose port 9090 for standford corenlp
-ENV PORT 9090
+ENV PORT 9000
 
-EXPOSE 9090
+EXPOSE 9000
 ENTRYPOINT [ "./start_stanford_corenlp.sh" ]
 
 # ENTRYPOINT ["/bin/bash", "-c"]

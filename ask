@@ -20,7 +20,7 @@ if __name__ == "__main__":
     from src.question_generation.question_gen import *
     from src.question_generation.question_gen_preprocess import preprocess
 
-    parser = corenlp.CoreNLPParser(tagtype='pos')
+    parser = corenlp.CoreNLPParser(url='http://localhost:9000', tagtype='pos')
 
     parsed_list = []
     with open(article) as f:

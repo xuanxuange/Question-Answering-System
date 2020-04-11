@@ -11,9 +11,9 @@ sample = 'a4'
 
 debug = True
 
-parser = corenlp.CoreNLPParser(tagtype='pos')
+parser = corenlp.CoreNLPParser(url='http://localhost:9000', tagtype='pos')
 
-corefparser = corenlp.CoreNLPParser()
+corefparser = corenlp.CoreNLPParser(url='http://localhost:9000')
 corefparser.parser_annotator='pos,ner,parse'
 
 tree_list = []

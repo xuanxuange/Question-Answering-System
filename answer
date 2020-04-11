@@ -19,12 +19,12 @@ if __name__ == "__main__":
         questions = qf.read().splitlines()
     article_embedder = ArticleEmbedder(article_file)
     for question in questions:
-        print("find answer for question: {}".format(question))
+        #print("find answer for question: {}".format(question))
         blockPrint()
         relevant_sentence = article_embedder.get_most_relevant_sentence_infersent(question)
-        enablePrint()
-        print("find most relevant sentece: {}".format(relevant_sentence))
+        #print("find most relevant sentece: {}".format(relevant_sentence))
         answer = generate_answer(question, relevant_sentence)
-        print("answer is: {}\n".format(answer))
+        enablePrint()
+        print(answer)
 
 
