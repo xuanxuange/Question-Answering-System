@@ -1,19 +1,20 @@
-# Ubuntu Linux as the base imag
-#FROM ubuntu:16.04
-FROM python:3.7
+FROM ubuntu:18.04
 
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
+RUN apt-get -y update && \
+apt-get -y upgrade && \
+apt-get -y install python3-pip python3-dev && \
+apt-get install -y wget
+
+RUN apt install -y default-jdk
+RUN apt-get install zip unzip
+RUN apt install -y curl
+
 # Add the files
 ADD . /QA
 WORKDIR /QA
-
-# Install basic packages
-RUN apt-get -y update && \
-    apt-get -y upgrade
-
-# RUN apt-get -y install gcc
 
 # Pytorch
 RUN pip3 install torch torchvision
