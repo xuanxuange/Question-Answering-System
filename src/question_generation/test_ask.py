@@ -53,8 +53,7 @@ if __name__ == "__main__":
             line = f.readline()
         f.close()
 
-    preprocessed_list = preprocess(parsed_list)
-    question_list = []
+    preprocessed_list, question_list = preprocess(parsed_list)
 
     for parse in preprocessed_list:
         question_list += getWhoWhat(parse) + getBinarySimple(parse) + getBinaryAuxiliary(parse)
