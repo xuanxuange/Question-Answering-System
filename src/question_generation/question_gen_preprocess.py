@@ -240,3 +240,11 @@ def valid_s(t):
 			if valid_np(t[i]) and valid_vp(t[i+1]):
 				return True
 	return False
+
+def preprocess(treelist, parser):
+	preprocessed_trees = []
+
+	for tree in treelist:
+		root = SenTree(tree, parser)
+
+	return preprocessed_trees

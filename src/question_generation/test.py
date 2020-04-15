@@ -3,9 +3,11 @@
 # pip3 install stanfordcorenlp
 
 from stanfordcorenlp import StanfordCoreNLP
+from os import path
 import pickle
 
 
+debug = False
 sample = 'a1'
 corenlp_folder = '/Users/Thomas/Documents/11-411/CoreNLP'
 
@@ -32,3 +34,5 @@ testline = doctext[4]
 
 parse_tree = nlp.parse(testline)
 ner_data = nlp.ner(testline)
+print(ner_data)
+nlp.close()
