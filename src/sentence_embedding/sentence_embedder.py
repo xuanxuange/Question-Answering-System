@@ -1,18 +1,15 @@
 from pathlib import Path
 from src.answer_generation.tokenizer import file_to_sentence as f_to_sentences
-from src.utils import get_project_root
+from src.utils import get_project_root, cosine
 
-import numpy as np
+
 import torch
-import sys
-
-#sys.path.append('.../InferSent')
 from InferSent.models import InferSent
 
 class InferSentEmbedder:
 
     def __init__(self):
-        print("Initializing Infersent..")
+        #print("Initializing Infersent..")
         model_version = 1
         MODEL_PATH = get_project_root() / Path("encoder/infersent%s.pkl" % model_version)
         params_model = {'bsize': 64, 'word_emb_dim': 300, 'enc_lstm_dim': 2048,
@@ -20,7 +17,7 @@ class InferSentEmbedder:
         model = InferSent(params_model)
         model.load_state_dict(torch.load(MODEL_PATH))
 
-        # using fastText word vector path for the model:
+        # word vector path for the model:
         W2V_PATH = get_project_root() / Path('GloVe/glove.840B.300d.txt' if model_version == 1 else '../fastText/crawl-300d-2M.vec')
         model.set_w2v_path(W2V_PATH)
 
@@ -28,17 +25,11 @@ class InferSentEmbedder:
         model.build_vocab_k_words(K=100000)
 
         self.model = model
-        print("Infersent initializing successful")
+        #print("Infersent initializing successful")
 
     def encode(self, sentences):
         embeddings = self.model.encode(sentences, bsize=128, tokenize=False, verbose=True)
         return embeddings
-
-
-def cosine(u, v):
-    return np.dot(u, v) / (np.linalg.norm(u) * np.linalg.norm(v))
-
-#%%
 
 
 

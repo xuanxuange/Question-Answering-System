@@ -1,22 +1,29 @@
 #!/usr/bin/env python3
-
-from src.answer_generation.article_embedder import ArticleEmbedder
-from src.answer_generation.answer import generate_answer
 import sys, os
 
 # Disable
 def blockPrint():
     sys.stdout = open(os.devnull, 'w')
+    sys.stderr = open(os.devnull, 'w')
+
 
 # Restore
 def enablePrint():
     sys.stdout = sys.__stdout__
+    sys.stderr = sys.__stderr__
+
+
+blockPrint()
+from src.answer_generation.article_embedder import ArticleEmbedder
+from src.answer_generation.answer import generate_answer
+enablePrint()
 
 if __name__ == "__main__":
     article_file = sys.argv[1]
     question_file = sys.argv[2]
     with open(question_file) as qf:
         questions = qf.read().splitlines()
+    blockPrint()
     article_embedder = ArticleEmbedder(article_file)
     for question in questions:
         #print("find answer for question: {}".format(question))

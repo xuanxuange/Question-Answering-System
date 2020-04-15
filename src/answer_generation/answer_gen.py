@@ -1,4 +1,4 @@
-from Parser.nltk_stanford_parser import *
+from src.parser.nltk_stanford_parser import *
 import spacy
 import sys
 import string

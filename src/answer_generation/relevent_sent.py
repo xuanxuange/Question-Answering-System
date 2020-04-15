@@ -3,7 +3,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from rake_nltk import Rake
 import re
-from tokenizer import *
+from src.answer_generation.tokenizer import *
 
 
 def generate_keywords(sentence):

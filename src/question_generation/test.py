@@ -1,14 +1,34 @@
 # pip3 install https://github.com/huggingface/neuralcoref-models/releases/download/en_coref_lg-3.0.0/en_coref_lg-3.0.0.tar.gz
 
-from qgen import *
-from parser import *
+# pip3 install stanfordcorenlp
 
-print("modules imported")
+from stanfordcorenlp import StanfordCoreNLP
+import pickle
 
-results = []
-for tree in tree_list:
-    results += getWhoWhat(tree) + getBinarySimple(tree) + getBinaryAuxiliary(tree)
 
-for result in results:
-    if ',' not in result:
-        print(result)
+sample = 'a1'
+corenlp_folder = '/Users/Thomas/Documents/11-411/CoreNLP'
+
+doctext = []
+if path.exists(sample + '_text.pkl') and not debug:
+    print("loading from pkl")
+    doctext = pickle.load(open(sample + '_text.pkl', 'rb'))
+else:
+    print("pkl not found")
+    with open('../../data/development/set1/' + sample + '.txt') as f:
+        line = f.readline()
+        while line:
+            doctext.append(line)
+            line = f.readline()
+        f.close()
+    pickle.dump(doctext, open(sample + '_text.pkl', 'wb'))
+    print("pkl dumped")
+print("sample loaded")
+
+
+nlp = StanfordCoreNLP(corenlp_folder)
+
+testline = doctext[4]
+
+parse_tree = nlp.parse(testline)
+ner_data = nlp.ner(testline)
