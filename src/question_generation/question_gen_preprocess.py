@@ -62,6 +62,7 @@ class SenTree:
 	#2
 	def fix_sinv(self):
 		result = []
+		return
 
 	#3
 	def sbar_remove(self):
