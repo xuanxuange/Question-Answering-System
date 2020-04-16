@@ -13,17 +13,20 @@ class SenTree:
 		self.flags = defaultdict(lambda:False)
 		self.parentheticals = None
 		self.turns = None
-		self.children = {}
+		self.children = defaultdict(list)
 		self.prevST = prevST
 		self.nextST = nextST
 		self.to_be_swapped = False
+		return
 
 	#1 Replace <NN_> <PRP> turns of phrase
 
 	#2 Replace <has been> <___> <to be> turns of phrase
-	def tobe_turn_of_phrase(self, text=None, pos = [p[1] for p in self.t.pos()],turns = []):
+	def tobe_turn_of_phrase(self, text=None, pos=None,turns = []):
 		if text is None:
 			text = self.text
+		if pos is None:
+			pos = [p[1] for p in self.t.pos()]
 		stage_num = 2
 		first = [("has", "been"),("have", "been"), ("had", "been")]
 		last = [["to", "be"],["as"]]
@@ -52,14 +55,14 @@ class SenTree:
 					end = i+5
 					if text[i+3] == "as":
 						end -= 1
-					turns.append(start,text[i+2])
+					turns.append((start,text[i+2]))
 					restext = text[:start]+[replace]+text[end:]
 					respos = pos[:start]+["REPLACED"]+pos[end:]
 					break
 		if restext:
 			return self.tobe_turn_of_phrase(restext, respos, turns)
 		elif turns:
-			newtree = self.parser.parse_text(text, timeout=5000)
+			newtree = self.parser.raw_parse(text, timeout=5000)
 			newtree = next(newtree)
 			child = SenTree(newtree, self.parser)
 			child.type = stage_num
@@ -81,30 +84,36 @@ class SenTree:
 		stage_num = 4
 		start = None
 		parentheticals = []
+		# print(self.text)
 		for word in self.text:
-			if word == "(":
-				count += 1
+			if word == "-LRB-":
 				if count == 0:
 					parentheticals.append({"index" : len(result), "text":"("})
 				else:
-					parentheticals[-1]["text"].append(" (")
-			elif word == ")":
+					parentheticals[-1]["text"] += " ("
+				count += 1
+			elif word == "-RRB-":
 				count -= 1
-				parentheticals[-1]["text"].append(" )")
+				parentheticals[-1]["text"] += " )"
 			elif count == 0:
 				result.append(word)
 			else:
-				parentheticals[-1]["text"].append(" "+word)
+				parentheticals[-1]["text"] += (" " + word)
 		if parentheticals:
-			newtree = self.parser.parse_text(result, timeout=5000)
-			newtree = next(newtree)
-			child = SenTree(newtree, self.parser)
-			child.type = stage_num
-			child.flags = self.flags
-			child.parentheticals = parentheticals
-			self.children[stage_num] = [child]
-			child.flags["parentheticals_removed"] = True
-		return True
+			if len(result) > 0:
+				temp = reconstitute_sentence(" ".join(result))
+				# print(temp)
+				newtree = self.parser.raw_parse(temp, timeout=5000)
+				newtree = next(newtree)
+				child = SenTree(newtree, self.parser)
+				# print(newtree.leaves())
+				child.type = stage_num
+				child.flags = self.flags
+				child.parentheticals = parentheticals
+				self.children[stage_num] = [child]
+				child.flags["parentheticals_removed"] = True
+				return True
+		return False
 
 	#5 Run apositive removal/manipulation
 	def appositive_removal(self):
@@ -123,22 +132,24 @@ class SenTree:
 				for m in range(i+2,len(self.t)):
 					new_sent += " ".join(self.t[m].leaves()) + " "
 				new_sent = new_sent[:-1]
-				newtree = self.parser.parse_text(new_sent)
+				newtree = self.parser.raw_parse(new_sent)
 				newtree = next(newtree)
 				child = SenTree(newtree, self.parser)
 				child.type = stage_num
 				child.flags = self.flags
 				self.children[stage_num].append(child)
+				print(" ".join(self.t[i+1][2].leaves()))
 
 				temp = "What did " + " ".join(self.t[i].leaves()) + " " + " ".join(self.t[i+1][0].leaves()) + " " + " ".join(self.t[i+1][2].leaves()) + "?"
 				pattern = re.compile(r'\.\s*\?')
-				immediate_questions.append(pattern.sub('?', temp))
+				immediate_questions.append(pattern.sub('?', reconstitute_sentence(temp)))
 				return True
 			elif self.t[i].label() == "NP" and self.t[i+1].label() == "," and self.t[i+2].label() == "SBAR" and self.t[i+2][0].label()[:4] == "WHMP" and self.t[i+2][1].label() == "S" and self.t[i+2][1][-1].label() == "VP":
 				self.flags["SBAR_removal_applied"] = True
+				print(" ".join(self.t[i+1][2].leaves()))
 				temp = "Who or what " + " ".join(self.t[i+2][1][-1].leaves()) + "?"
 				pattern = re.compile(r'\.\s*\?')
-				immediate_questions.append(pattern.sub('?', temp))
+				immediate_questions.append(pattern.sub('?', reconstitute_sentence(temp)))
 				return True
 		return False
 	
@@ -147,9 +158,9 @@ class SenTree:
 		stage_num = 7
 		for i in range(len(self.t)-2):
 			if (valid_s(self.t[i]) and self.t[i+1].label() == "CC" and valid_s(self.t[i+2])):
-				newtree1 = self.parser.parse_text(" ".join(self.t[i].leaves()), timeout=5000)
+				newtree1 = self.parser.raw_parse(" ".join(self.t[i].leaves()), timeout=5000)
 				newtree1 = next(newtree1)
-				newtree2 = self.parser.parse_text(" ".join(self.t[i+2].leaves()), timeout=5000)
+				newtree2 = self.parser.raw_parse(" ".join(self.t[i+2].leaves()), timeout=5000)
 				newtree2 = next(newtree2)
 				child1 = SenTree(newtree1, self.parser)
 				child1.type = stage_num
@@ -160,9 +171,9 @@ class SenTree:
 				self.children[stage_num] = [child1, child2]
 				return True
 			elif i+3 < len(self.t) and valid_s(self.t[i]) and self.t[i+1].label() == "," and self.t[i+2].label() == "CC" and valid_s(self.t[i+3]):
-				newtree1 = self.parser.parse_text(" ".join(self.t[i].leaves()), timeout=5000)
+				newtree1 = self.parser.raw_parse(" ".join(self.t[i].leaves()), timeout=5000)
 				newtree1 = next(newtree1)
-				newtree2 = self.parser.parse_text(" ".join(self.t[i+3].leaves()), timeout=5000)
+				newtree2 = self.parser.raw_parse(" ".join(self.t[i+3].leaves()), timeout=5000)
 				newtree2 = next(newtree2)
 				child1 = SenTree(newtree1, self.parser)
 				child1.type = stage_num
@@ -179,10 +190,10 @@ class SenTree:
 	#9 Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
 	def sbarpp_s_rearrange(self):
 		stage_num = 9
-		if len(self.t) == 2 and self.t[0].label() in ["PP", "SBAR"] and valid_s(self.t[1]):
-			newtree1 = self.parser.parse_text(" ".join(self.t[1].leaves())+" "+" ".join(self.t[0].leaves()), timeout=5000)
+		if self.t[0].label() in ["PP", "SBAR"] and valid_s(self.t[1]):
+			newtree1 = self.parser.raw_parse(" ".join(self.t[1].leaves())+" "+" ".join(self.t[0].leaves()), timeout=5000)
 			newtree1 = next(newtree1)
-			newtree2 = self.parser.parse_text(" ".join(self.t[1].leaves()), timeout=5000)
+			newtree2 = self.parser.raw_parse(" ".join(self.t[1].leaves()), timeout=5000)
 			newtree2 = next(newtree2)
 			child1 = SenTree(newtree1, self.parser)
 			child1.type = stage_num
@@ -192,10 +203,10 @@ class SenTree:
 			child2.flags = self.flags
 			self.children[5] = [child1, child2]
 			return True
-		elif len(self.t) == 3 and self.t[0].label() in ["PP", "SBAR"] and self.t[1].label() == "," and valid_s(self.t[2]):
-			newtree1 = self.parser.parse_text(" ".join(self.t[2].leaves())+" "+" ".join(self.t[0].leaves()), timeout=5000)
+		elif self.t[0].label() in ["PP", "SBAR"] and self.t[1].label() == "," and valid_s(self.t[2]):
+			newtree1 = self.parser.raw_parse(" ".join(self.t[2].leaves())+" "+" ".join(self.t[0].leaves()), timeout=5000)
 			newtree1 = next(newtree1)
-			newtree2 = self.parser.parse_text(" ".join(self.t[2].leaves()), timeout=5000)
+			newtree2 = self.parser.raw_parse(" ".join(self.t[2].leaves()), timeout=5000)
 			newtree2 = next(newtree2)
 			child1 = SenTree(newtree1, self.parser)
 			child1.type = stage_num
@@ -228,7 +239,7 @@ class SenTree:
 					for m in range(i+2,len(self.t)):
 						new_sent += " ".join(self.t[m].leaves()) + " "
 					new_sent = new_sent[:-1]
-					newtree = self.parser.parse_text(new_sent)
+					newtree = self.parser.raw_parse(new_sent)
 					newtree = next(newtree)
 					child = SenTree(newtree, self.parser)
 					child.type = stage_num
@@ -243,15 +254,13 @@ class SenTree:
 		self.flags["npvp_extracted"] = True
 		self.children[stage_num] = []
 		for sub in subs:
-			if len(sub) > 1:
-				for i in range(len(sub)-1):
-					if valid_np(sub[i]) and valid_vp(sub[i+1]):
-						newtree = self.parser.parse_text(" ".join(sub[i].leaves())+" "+" ".join(sub[i+1].leaves()))
-						newtree = next(newtree)
-						child = SenTree(newtree, self.parser)
-						child.type = stage_num
-						child.flags = self.flags
-						self.children[stage_num].append(child)
+			if valid_s(sub):
+				newtree = self.parser.raw_parse(" ".join(sub.leaves()))
+				newtree = next(newtree)
+				child = SenTree(newtree, self.parser)
+				child.type = stage_num
+				child.flags = self.flags
+				self.children[stage_num].append(child)
 		return False
 	
 	def handle_stage(self, stage, immediate_questions):
@@ -294,6 +303,12 @@ class SenTree:
 			return self.npvp_combo()
 		return False
 
+def reconstitute_sentence(raw):
+	pattern1 = re.compile(r' \.')
+	pattern2 = re.compile(r' \'s')
+	pattern3 = re.compile(r' ,')
+	return pattern1.sub('.', pattern2.sub('\'s', pattern3.sub(',', raw)))
+
 def valid_np(t):
 	if t.label() != "NP":
 		return False
@@ -315,43 +330,53 @@ def valid_s(t):
 	elif t.label() != "S":
 		return False
 	else:
+		np_found = False
 		for i in range(len(t)-1):
-			if valid_np(t[i]) and valid_vp(t[i+1]):
+			if np_found or valid_np(t[i]):
+				np_found = True
+			if np_found and valid_vp(t[i]):
 				return True
 	return False
 
 def acc_stage(stage):
 	test = stage + 1
 	if stage == 10:
-		return 3
+		return True,3
 	else:
-		return test
+		return False,test
 
 def preprocess(treelist, parser):
-	node_list = []
-	keep_bools = [True]
 	preprocessed_questions = []
+	preprocessed_trees = []
 
 	FrontierQueue = Queue()
 
 	for tree in treelist:
 		root = SenTree(tree, parser)
-		node_list.append(root)
+
+		node_list = [root]
+		keep_bools = [True]
+
 		FrontierQueue.put_nowait((0, 1))
 
 		while not FrontierQueue.empty():
 			node_id,stage = FrontierQueue.get_nowait()
 			curr_node = node_list[node_id]
+			# print(str(stage) + ": " + " ".join(curr_node.t.leaves()))
 			full_replace = curr_node.handle_stage(stage, preprocessed_questions)
 			if full_replace:
+				# print("What: " + str(stage))
 				keep_bools[node_id] = False
 			if len(curr_node.children[stage]) > 0:
+				# print("Ho: " + str(stage))
+				rollover, new_stage = acc_stage(stage)
 				for child in curr_node.children[stage]:
+					FrontierQueue.put_nowait((len(node_list), new_stage))
 					node_list.append(child)
 					keep_bools.append(True)
-					FrontierQueue.put_nowait((len(node_list), acc_stage(stage)))
 			else:
-				FrontierQueue.put_nowait((node_id, acc_stage(stage)))
-
-	preprocessed_trees = [node_list[i].t for i in range(len(node_list)) if keep_bools[i]]
+				rollover, new_stage = acc_stage(stage)
+				if not rollover:
+					FrontierQueue.put_nowait((node_id, new_stage))
+		preprocessed_trees += [node_list[i].t for i in range(len(node_list)) if keep_bools[i]]
 	return preprocessed_trees, preprocessed_questions

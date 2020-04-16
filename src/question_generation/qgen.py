@@ -4,27 +4,22 @@ import pattern.en
 
 def getWhoWhat(t):
     out = []
-    if t.label() != "ROOT":
-        return out
-    for i in range(len(t)):
-        candidate = t[i]
+    for candidate in t.subtrees():
         if candidate.label() == "S":
-            if len(candidate) == 3 and candidate[0].label() == "NP" and candidate[1].label() == "VP" and candidate[2].label() == ".":
+            if candidate[0].label() == "NP" and candidate[1].label() == "VP":
                 vptext = " ".join(candidate[1].leaves())
                 if vptext and vptext[-1] in ".!?":
                     vptext = vptext[:-1]
                 out.append("Who or what %s?" % vptext)
+                print("yay")
     return out
 
 def getBinarySimple(t):
     out = []
-    if t.label() != "ROOT":
-        return out
-    for i in range(len(t)):
-        candidate = t[i]
+    for candidate in t.subtrees():
         if candidate.label() == "S":
             lemmatizer = nltk.stem.WordNetLemmatizer()
-            if len(candidate) == 3 and candidate[0].label() == "NP" and candidate[1].label() == "VP" and candidate[2].label() == ".":
+            if candidate[0].label() == "NP" and candidate[1].label() == "VP":
                 #Top level verified.
                 nptext = " ".join(candidate[0].leaves())
                 if nptext and nptext[-1] in ".!?":
@@ -63,13 +58,10 @@ def getBinarySimple(t):
 
 def getBinaryAuxiliary(t):
     out = []
-    if t.label() != "ROOT":
-        return out
-    for i in range(len(t)):
-        candidate = t[i]
+    for candidate in t.subtrees():
         if candidate.label() == "S":
             lemmatizer = nltk.stem.WordNetLemmatizer()
-            if len(candidate) == 3 and candidate[0].label() == "NP" and candidate[1].label() == "VP" and candidate[2].label() == ".":
+            if candidate[0].label() == "NP" and candidate[1].label() == "VP":
                 #Top level verified.
                 verbforms1 = ["VBD", "VBP", "VBZ"]
                 verbforms2 = ["VBG", "VBN"]

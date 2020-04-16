@@ -53,7 +53,7 @@ if __name__ == "__main__":
             line = f.readline()
         f.close()
 
-    preprocessed_list, question_list = preprocess(parsed_list)
+    preprocessed_list, question_list = preprocess(parsed_list, parser)
 
     for parse in preprocessed_list:
         question_list += getWhoWhat(parse) + getBinarySimple(parse) + getBinaryAuxiliary(parse)
@@ -64,5 +64,5 @@ if __name__ == "__main__":
     i = 0
     enablePrint()
     while i < len(question_list) and i < nquestions:
-        print(format_question(question_list[i]))
+        # print(format_question(question_list[i]))
         i += 1
