@@ -1,4 +1,4 @@
-from src.parser.nltk_stanford_parser import *
+# from src.parser.nltk_stanford_parser import *
 import spacy
 import sys
 import string
@@ -42,25 +42,30 @@ def answer_whn(question, rel_sentence):
             main_v_index = q_tokens.index(main_v.text)
             
     # find matched v in sentence
-    for i, word in enumerate(s_dep):
+    i = 0
+    for word in s_dep:
+        if word.dep_ == 'punct' or word.dep_ == 'case':
+            continue
         if word.head == word:
             root_index = i     
             root = word
         if word.head.head == word.head and word.lemma_ == main_v.lemma_:
             root_index = i
+        i = i + 1
         
     # check if main subj is the wh word (first word in question)
     if q_tokens[0] == main_subj.text:
-        meaningful_pos = [NOUN, VERB, ADJ, ADV, AUX, PROPN]
+        print("wh is main_subj")
+        meaningful_pos = [NOUN, VERB, AUX, PROPN, ADV, ADJ]
         flag = True
         curr = main_v.children
         for child in curr:
-            if child.dep == dobj or child.dep == pobj or child.pos in meaningful_pos:
+            if (child.dep == dobj or child.dep == pobj) and child.pos in meaningful_pos:
                 main_obj = child
                 break
             if child.dep == prep:
                 for cc in child.children:
-                    if cc.dep == dobj or cc.dep == pobj or cc.pos in meaningful_pos:
+                    if (cc.dep == dobj or cc.dep == pobj) and cc.pos in meaningful_pos:
                         main_obj = cc
                         break
         main_obj_index = sent_tokens.index(main_obj.text)
@@ -82,12 +87,21 @@ def answer_whn(question, rel_sentence):
         else: 
             answer.append(sent_tokens[root_index + 1 : ])
     flat_answer = [item for sub in answer for item in sub]
+    flat_answer = ' '.join(flat_answer)
 
-    # add/change the last element to be period
-    if flat_answer[-1] not in string.punctuation and flat_answer[-1][-1] not in string.punctuation: 
-        flat_answer.append('.')
-    
-    return ' '.join(flat_answer)
+    # find the noun chunk closest to mainv
+    pos_answer = []
+    for chunk in s_dep.noun_chunks:
+        if chunk.text in flat_answer:
+            pos_answer.append(chunk.text)
+    if len(pos_answer) == 1:
+        return pos_answer[0] + '.'
+    elif not pos_answer and flat_answer:
+        return flat_answer + '.'
+    elif len(pos_answer) > 1:
+        return find_closest_answer(pos_answer, main_v.text, rel_sentence) + '.'
+    else:
+        return rel_sentence
 
 def answer_howx(question, rel_sentence):
     """
@@ -310,26 +324,16 @@ def answer_why(question, rel_sentence):
 if __name__ == "__main__":
     # question = "What is the primary weapon of Egyptian armies during the new Kingdom ?"
     # question = "What leads to the death of the princess ?"
-    # question = "How many people are there in the room ?"
-    # question = "How much does it take for you to finish the task ?"
     # question = "What is the Egyptian Empire ?"
-    # question = "Where was the tomb for sons of Ramesses II?"
-    # question = "Where is the Osirian temple?"
-    # sent = "the tomb he built for his sons, many of whom he outlived, in the Valley of the Kings has proven to be the largest funerary complex in Egypt ."
-    # sent = "In the Osirian temple at Denderah, an inscription (translated by Budge, Chapter XV, Osiris and the Egyptian Resurrection) describes in detail the making of wheat paste models of each dismembered piece of Osiris to be sent out to the town where each piece is discovered by Isis."
-    # sent = "It took me $100,000 to finish ."
-    # sent = "There are one hundred people in the room."
     # sent = "Bow and arrow was the principal weapon of the Egyptian army;"
     # sent = "The principal weapon of the Egyptian army was bow and arrow."
     # sent = "The weapon leads to the death of the princess."
     # sent = "The main thing that leads to the death of the princess was apple."
     # sent = "The apple leads to the death of the princess ."
-    sent = "The 4th-6th Dynasties of Egypt, are scarce and historians regard the history of the era as literally 'written in stone' and largely architectural in that it is through the monuments and their inscriptions peacefully that scholars have been able to construct a history."
-    question = "How did the scholars construct a history of the 4th-6th Dynasties of Egypt ?"
-    # question = "How did he complete the task? "
-    # sent = "Under the bridge, he completed the task peacefully under her help."
-    # question = "When did the Old Kingdom and its power reach a zenith ?"
-    # sent = "The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty (26132494 BC), which began with Sneferu (26132589 BC)."
-    print(answer_whadv(question, sent))
-    # print(answer_whn(question, sent))
+    # sent = "Tottenham eventually lost the match on penalties and thus were eliminated from Europe."
+    # question = "who eventually lost the match on penalties and thus were eliminated from Europe ?"
+    question = "who recorded the then fastest goal in US qualifying history with a chest trap and sliding shot 53 seconds into an 8–0 defeat of Barbados ?"
+    sent = "In the us's opening 2010 qualifier, Dempsey recorded the then fastest goal in US qualifying history with a chest trap and sliding shot 53 seconds into an 8–0 defeat of Barbados."
+    # print(answer_whadv(question, sent))
+    print(answer_whn(question, sent))
     # print(answer_howx(question, sent))
