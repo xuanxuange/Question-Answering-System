@@ -62,7 +62,7 @@ class SenTree:
 		if restext:
 			return self.tobe_turn_of_phrase(restext, respos, turns)
 		elif turns:
-			newtree = self.parser.raw_parse(text, timeout=5000)
+			newtree = self.parser.raw_parse(" ".join(text), timeout=5000)
 			newtree = next(newtree)
 			child = SenTree(newtree, self.parser)
 			child.type = stage_num
@@ -305,9 +305,9 @@ class SenTree:
 
 def reconstitute_sentence(raw):
 	pattern1 = re.compile(r' \.')
-	pattern2 = re.compile(r' \'s')
+	pattern2 = re.compile(r' \'s ')
 	pattern3 = re.compile(r' ,')
-	return pattern1.sub('.', pattern2.sub('\'s', pattern3.sub(',', raw)))
+	return pattern1.sub('.', pattern2.sub('\'s ', pattern3.sub(',', raw)))
 
 def valid_np(t):
 	if t.label() != "NP":

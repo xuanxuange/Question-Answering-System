@@ -6,11 +6,18 @@ import os
 import nltk
 from nltk.parse import corenlp
 
+DT_LIST = ['the', 'a', 'an', 'this', 'that', 'these', 'those', 'my', 'your', 'his', 'her', 'its', 'our', 'their', 'much', 'many', 'most', 'some', 'any', 'enough', 'all', 'both', 'half', 'either', 'neither', 'each', 'every', 'another', 'such', 'what', 'rather', 'quite']
+
 
 def format_question(question):
     question = question.replace('-LRB- ', '(')
     question = question.replace(' -RRB-', ')')
+    for det in DT_LIST:
+        question = question.replace('the ' + det, 'the')
+    question = question.replace('the The', 'The')
     question = re.sub(r"\s([,;:\.\?!\'\"])", r"\1", question)
+    question = re.sub(r"\.\s*\?", "?", question)
+    question = re.sub(r",\s*\?", "?", question)
     question = question[0].upper() + question[1:]
     return question
 
@@ -29,9 +36,11 @@ def enablePrint():
 if __name__ == "__main__":
     article = sys.argv[1]
     nquestions = int(sys.argv[2])
-    blockPrint()
+    # blockPrint()
+    print("Hello")
     from src.question_generation.question_gen import *
     from src.question_generation.question_gen_preprocess import preprocess
+    print("Hello")
 
     parser = corenlp.CoreNLPParser(url='http://localhost:9000', tagtype='pos')
 
@@ -52,15 +61,20 @@ if __name__ == "__main__":
                         break
             line = f.readline()
         f.close()
+    print("Hello")
 
-    preprocess(parsed_list)
-    question_list = []
+    preprocessed_list, question_list = preprocess(parsed_list, parser)
+    print("World")
+    print(question_list)
 
-    for parse in parsed_list:
-        question_list += getWhoWhat(parse) + getBinarySimple(parse) + getBinaryAuxiliary(parse)
+    for parse in preprocessed_list:
+        print(parse.pretty_print())
+        question_list += getWhoWhat(parse) + getWhoWhatNP(parse) + getBinarySimple(parse) + getBinaryAuxiliary(parse)
 
     i = 0
-    enablePrint()
-    while i < len(question_list) and i < nquestions:
+    # enablePrint()
+    # while i < len(question_list) and i < nquestions:
+    while i < len(question_list):
         print(format_question(question_list[i]))
         i += 1
+    print(len(question_list))

@@ -1,5 +1,6 @@
 import nltk
 from nltk.parse import corenlp
+from queue import Queue
 import pattern.en
 
 def getWhoWhat(t):
@@ -7,10 +8,55 @@ def getWhoWhat(t):
     for candidate in t.subtrees():
         if candidate.label() == "S":
             if len(candidate) >= 2 and candidate[0].label() == "NP" and candidate[1].label() == "VP":
-                vptext = " ".join(candidate[1].leaves())
+                vptext = candidate[1].leaves()
+                testpos = candidate.pos()
+                if testpos[0][1] != "NNP" and testpos[0][1] != "NNPS":
+                    vptext[0] = vptext[0].lower()
+                vptext = " ".join(vptext)
                 if vptext and vptext[-1] in ".!?":
                     vptext = vptext[:-1]
                 out.append("Who or what %s?" % vptext)
+    return out
+
+def getWhoWhatNP(t):
+    out = []
+    detected_NP = []
+    FrontierQueue = Queue()
+    FrontierQueue.put_nowait(t)
+
+    while not FrontierQueue.empty():
+        curr_node = FrontierQueue.get_nowait()
+        # print(curr_node.height())
+        # print(curr_node)
+
+        if curr_node.label() == "NP":
+            contains_pp = False
+            for i in range(len(curr_node)):
+                if curr_node[i].label() == "PP" or curr_node[i].label() == "JJ":
+                    contains_pp = True
+            if contains_pp:
+                detected_NP.append(curr_node)
+            else:
+                for i in range(len(curr_node)):
+                    FrontierQueue.put_nowait(curr_node[i])
+        elif curr_node.height() > 2:
+            for i in range(len(curr_node)):
+                FrontierQueue.put_nowait(curr_node[i])
+    
+    for NP in detected_NP:
+        temp = " ".join(NP.leaves())
+        was = "was"
+        plural = False
+        testpos = NP.pos()
+        for pos in testpos:
+            if pos[1] == "NNS" or pos[1] == "NNPS":
+                plural = True
+            elif pos[1] == "NN" or pos[1] == "NNP":
+                break
+        if plural:
+            was = "were"
+        out.append("Who or what " + was + " the %s?" % temp)
+
     return out
 
 def getBinarySimple(t):
