@@ -38,7 +38,7 @@ if __name__ == "__main__":
     nquestions = int(sys.argv[2])
     # blockPrint()
     print("Hello")
-    from src.question_generation.question_gen import *
+    from src.question_generation.question_gen import generate_questions
     from src.question_generation.question_gen_preprocess import preprocess
     print("Hello")
 
@@ -68,8 +68,7 @@ if __name__ == "__main__":
     print(question_list)
 
     for parse in preprocessed_list:
-        print(parse.pretty_print())
-        question_list += getWhoWhat(parse) + getWhoWhatNP(parse) + getBinarySimple(parse) + getBinaryAuxiliary(parse)
+        question_list += generate_questions(parse)
 
     i = 0
     # enablePrint()
