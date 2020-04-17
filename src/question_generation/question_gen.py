@@ -492,7 +492,7 @@ def generate_questions(parse_tree):
             possible_answer_phrases.append(node)
             # node.pretty_print()
 
-    print("Potential Phrases:")
+    print("Potential Answer Phrases:")
     for node in possible_answer_phrases:
         print(reconstitute_sentence(" ".join(node.leaves())))
 
@@ -509,4 +509,4 @@ def generate_questions(parse_tree):
 
     # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
     # Stage 6: Post-Process
-    return []
+    return [reconstitute_sentence(" ".join(node.leaves())) for node in possible_answer_phrases]

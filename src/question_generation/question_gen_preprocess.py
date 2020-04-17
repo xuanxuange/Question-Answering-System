@@ -10,6 +10,7 @@ neuralcoref.add_to_pipe(nlp)
 class SenTree:
 	def __init__(self, t, parser, prevST=None, nextST=None, ner=None):
 		self.t = t
+		self.spacy = nlp
 		self.ner = ner
 		self.parser = parser
 		self.fulltext = reconstitute_sentence(" ".join(t.leaves())) if t else ""
@@ -230,14 +231,10 @@ class SenTree:
 				curr = curr.prevST
 			
 			threshold = 0
-			latest = None
 			document_fulltext = ""
 			while not document_stack.empty():
 				curr = document_stack.get_nowait()
-				latest = len(curr.t.leaves())
-				threshold += latest
 				document_fulltext += curr.fulltext + " "
-			threshold -= latest
 
 			doc_info = nlp(document_fulltext)
 			if doc_info._.has_coref:
@@ -245,6 +242,8 @@ class SenTree:
 
 				original_pos = self.t.pos()
 				test = [token.text for token in doc_info]
+				if count > 1:
+					threshold = len(test) - 1 - test[:-1][::-1].index('.')
 				# test = list(self.parser.tokenize(test))
 
 				replace_operations = []
@@ -294,6 +293,8 @@ class SenTree:
 					acc += replace_size - (end_p - start)
 
 				test = reconstitute_sentence(" ".join(test))
+				test = test.replace(" - ", "-")
+
 				newtree = self.parser.raw_parse(test)
 				newtree = next(newtree)
 				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
@@ -436,7 +437,7 @@ def reconstitute_sentence(raw):
 	pattern1 = re.compile(r' \.')
 	pattern2 = re.compile(r' \'s ')
 	pattern3 = re.compile(r' ,')
-	return pattern1.sub('.', pattern2.sub('\'s ', pattern3.sub(',', raw)))
+	return pattern1.sub('.', pattern2.sub('\'s ', pattern3.sub(',', raw))).replace(' \' ', '\' ').replace(' \'s', '\'s').replace(' \'\' ', '\" ').replace(' `` ', ' \"')
 
 def valid_np(t):
 	if t.label() != "NP":
