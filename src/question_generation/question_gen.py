@@ -30,17 +30,18 @@ def getWhoWhatNP(t):
         # print(curr_node.height())
         # print(curr_node)
         contains_pp = False
-        for i in range(len(curr_node)):
-            if curr_node[i].label() == "PP" or curr_node[i].label() == "JJ":
-                contains_pp = True
+        if curr_node.height() > 2:
+            for i in range(len(curr_node)):
+                if curr_node[i].label() == "PP" or curr_node[i].label() == "JJ":
+                    contains_pp = True
 
         if contains_pp:
+            contains_pp = False
             if curr_node.label() == "NP":
                 detected_NP.append(curr_node)
             else:
-                if curr_node.height() > 2:
-                    for i in range(len(curr_node)):
-                        FrontierQueue.put_nowait(curr_node[i])
+                for i in range(len(curr_node)):
+                    FrontierQueue.put_nowait(curr_node[i])
         elif curr_node.height() > 2:
             for i in range(len(curr_node)):
                 FrontierQueue.put_nowait(curr_node[i])
@@ -466,7 +467,7 @@ def handle_stage_1(parse_tree):
     return [VP_List, NP_List, PP_List, S_List, CC_List, ADJP_List, ADVP_List, SBAR_List, S_Tot_List]
 
 def generate_questions(parse_tree):
-    print("Initial TreE:")
+    print("Initial Tree:")
     parse_tree.pretty_print()
 
     # Stage 1: mark as unmovable dangerous nodes
@@ -481,28 +482,30 @@ def generate_questions(parse_tree):
     SBAR_List = handy_lists[7]
     S_Tot_List = handy_lists[8]
 
+    print("Processed Tree:")
+    print(parse_tree.pretty_print())
+
     # Stage 2: Select answer phrases and generate a set of question phrases for it
     possible_answer_phrases = []
     for node in (NP_List + PP_List + SBAR_List):
         if node.label()[:4] != "UNMV":
             possible_answer_phrases.append(node)
-            node.pretty_print()
-    
-    print("Processed Tree:")
-    print(parse_tree.pretty_print())
+            # node.pretty_print()
+
     print("Potential Phrases:")
     for node in possible_answer_phrases:
         print(reconstitute_sentence(" ".join(node.leaves())))
 
     print("===============================================================================================================\n")
-    # Stage 3: Decompose the main verb
-        #1 ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))
-        # decomposition_tregex = "ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))"
+    # If current answer phrase is the subject: do the inversion stuff
+        # Stage 3: Decompose the main verb
+            #1 ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))
 
-    # Stage 4: Invert subject/auxiliary verb
-        #2 ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))
-        #3 ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))
-        # invert_subaux_tregex = ["ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))", "ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))"]
+        # Stage 4: Invert subject/auxiliary verb
+            #2 ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))
+            #3 ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))
+            # invert_subaux_tregex = ["ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))", "ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))"]
+    # else: we're home free
 
     # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
     # Stage 6: Post-Process

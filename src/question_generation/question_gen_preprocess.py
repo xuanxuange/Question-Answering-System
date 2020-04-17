@@ -1,13 +1,18 @@
 from collections import defaultdict
 import re
-from queue import Queue
+from queue import Queue, LifoQueue
+import neuralcoref
+import spacy
+
+nlp = spacy.load('en_core_web_sm')
+neuralcoref.add_to_pipe(nlp)
 
 class SenTree:
-	def __init__(self, t, parser, prevST=None, nextST=None):
+	def __init__(self, t, parser, prevST=None, nextST=None, ner=None):
 		self.t = t
-		self.ner = None
+		self.ner = ner
 		self.parser = parser
-		self.fulltext = " ".join(t.leaves()) if t else ""
+		self.fulltext = reconstitute_sentence(" ".join(t.leaves())) if t else ""
 		self.text = t.leaves()
 		self.type = None
 		self.flags = defaultdict(lambda:False)
@@ -64,12 +69,16 @@ class SenTree:
 		elif turns:
 			newtree = self.parser.raw_parse(" ".join(text), timeout=5000)
 			newtree = next(newtree)
-			child = SenTree(newtree, self.parser)
+			child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 			child.type = stage_num
 			child.flags = self.flags
 			child.turns = self.turns
 			child.flags["turns_removed"] = True
 			self.children[stage_num] = [child]
+			if self.prevST is not None:
+				self.prevST.nextST = child
+			if self.nextST is not None:
+				self.nextST.prevST = child
 			return True
 		return False
 
@@ -105,13 +114,17 @@ class SenTree:
 				# print(temp)
 				newtree = self.parser.raw_parse(temp, timeout=5000)
 				newtree = next(newtree)
-				child = SenTree(newtree, self.parser)
+				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				# print(newtree.leaves())
 				child.type = stage_num
 				child.flags = self.flags
 				child.parentheticals = parentheticals
 				self.children[stage_num] = [child]
 				child.flags["parentheticals_removed"] = True
+				if self.prevST is not None:
+					self.prevST.nextST = child
+				if self.nextST is not None:
+					self.nextST.prevST = child
 				return True
 		return False
 
@@ -134,11 +147,15 @@ class SenTree:
 				new_sent = new_sent[:-1]
 				newtree = self.parser.raw_parse(new_sent)
 				newtree = next(newtree)
-				child = SenTree(newtree, self.parser)
+				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child.type = stage_num
 				child.flags = self.flags
-				self.children[stage_num].append(child)
-				print(" ".join(self.t[i+1][2].leaves()))
+				self.children[stage_num] = [child]
+				if self.prevST is not None:
+					self.prevST.nextST = child
+				if self.nextST is not None:
+					self.nextST.prevST = child
+				# print(" ".join(self.t[i+1][2].leaves()))
 
 				temp = "What did " + " ".join(self.t[i].leaves()) + " " + " ".join(self.t[i+1][0].leaves()) + " " + " ".join(self.t[i+1][2].leaves()) + "?"
 				pattern = re.compile(r'\.\s*\?')
@@ -162,59 +179,172 @@ class SenTree:
 				newtree1 = next(newtree1)
 				newtree2 = self.parser.raw_parse(" ".join(self.t[i+2].leaves()), timeout=5000)
 				newtree2 = next(newtree2)
-				child1 = SenTree(newtree1, self.parser)
+				child1 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child1.type = stage_num
 				child1.flags = self.flags
-				child2 = SenTree(newtree2, self.parser)
+				child2 = SenTree(newtree2, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child2.type = stage_num
 				child2.flags = self.flags
 				self.children[stage_num] = [child1, child2]
+				if self.prevST is not None:
+					self.prevST.nextST = child1
+				if self.nextST is not None:
+					self.nextST.prevST = child2
+				child1.nextST = child2
+				child2.prevST = child1
 				return True
 			elif i+3 < len(self.t) and valid_s(self.t[i]) and self.t[i+1].label() == "," and self.t[i+2].label() == "CC" and valid_s(self.t[i+3]):
 				newtree1 = self.parser.raw_parse(" ".join(self.t[i].leaves()), timeout=5000)
 				newtree1 = next(newtree1)
 				newtree2 = self.parser.raw_parse(" ".join(self.t[i+3].leaves()), timeout=5000)
 				newtree2 = next(newtree2)
-				child1 = SenTree(newtree1, self.parser)
+				child1 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child1.type = stage_num
 				child1.flags = self.flags
-				child2 = SenTree(newtree2, self.parser)
+				child2 = SenTree(newtree2, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child2.type = stage_num
 				child2.flags = self.flags
 				self.children[stage_num] = [child1, child2]
+				if self.prevST is not None:
+					self.prevST.nextST = child1
+				if self.nextST is not None:
+					self.nextST.prevST = child2
+				child1.nextST = child2
+				child2.prevST = child1
 				return True
 		return False
 	
 	#8 NER
+	def run_ner(self):
+		stage_num = 8
+		lookback = 3
+		if self.ner is None and self.text[-1] == ".":
+			document_stack = LifoQueue()
+			document_stack.put_nowait(self)
+			curr = self.prevST
+			count = 1
+			while curr is not None and count <= lookback:
+				if curr.text[-1] == ".":
+					document_stack.put_nowait(curr)
+					count += 1
+				curr = curr.prevST
+			
+			threshold = 0
+			latest = None
+			document_fulltext = ""
+			while not document_stack.empty():
+				curr = document_stack.get_nowait()
+				latest = len(curr.t.leaves())
+				threshold += latest
+				document_fulltext += curr.fulltext + " "
+			threshold -= latest
+
+			doc_info = nlp(document_fulltext)
+			if doc_info._.has_coref:
+				self.ner = doc_info
+
+				original_pos = self.t.pos()
+				test = [token.text for token in doc_info]
+				# test = list(self.parser.tokenize(test))
+
+				replace_operations = []
+				for cluster in doc_info._.coref_clusters:
+					for mention in cluster.mentions:
+						if mention.start >= threshold and mention.text != cluster.main.text:
+							mention_text = test[mention.start: mention.end]
+							mention_pos = original_pos[mention.start - threshold: mention.end - threshold]
+							mention_pos = [pos[1] for pos in mention_pos]
+
+							corrected_main = cluster.main.text
+							if corrected_main[-1] == "s":
+								corrected_main += "\'"
+							else:
+								corrected_main += "\'s"
+
+							print("metadata:")
+							print(mention.start - threshold)
+							print(mention.end - threshold)
+							# print(threshold)
+							# print(original_pos)
+							print([token.text for token in doc_info][threshold:])
+							print(original_pos[mention.start - threshold: mention.end - threshold])
+							print(mention_pos)
+							print(corrected_main)
+							print(cluster.main.text)
+							if 'PRP$' in mention_pos or mention_pos[-1] == 'POS':
+								replace_operations.append((mention.start - threshold, mention.end - threshold, corrected_main))
+							elif len(original_pos) > mention.end - threshold and original_pos[mention.end - threshold][1] == "POS":
+								replace_operations.append((mention.start - threshold, mention.end - threshold + 1, corrected_main))
+							else:
+								replace_operations.append((mention.start - threshold, mention.end - threshold, cluster.main.text))
+
+				acc = 0
+				test = test[threshold:]
+				print("detected last sentencece")
+				print(test)
+				for operation in replace_operations:
+					start = operation[0] + acc
+					end_p = operation[1] + acc
+					replace_text = operation[2].split()
+					print(str(start) + ", " + str(end_p) + ", " + operation[2])
+					replace_size = len(replace_text)
+
+					test = test[:start] + replace_text + test[end_p:]
+
+					acc += replace_size - (end_p - start)
+
+				test = reconstitute_sentence(" ".join(test))
+				newtree = self.parser.raw_parse(test)
+				newtree = next(newtree)
+				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+				if self.prevST is not None:
+					self.prevST.nextST = child
+				if self.nextST is not None:
+					self.nextST.prevST = child
+				self.children[stage_num] = [child]
+				print("YAY: [" + self.fulltext + "]\n====> [" + child.fulltext + "]\n")
+				return True
+		return False
 
 	#9 Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
 	def sbarpp_s_rearrange(self):
 		stage_num = 9
-		if self.t[0].label() in ["PP", "SBAR"] and valid_s(self.t[1]):
-			newtree1 = self.parser.raw_parse(" ".join(self.t[1].leaves())+" "+" ".join(self.t[0].leaves()), timeout=5000)
-			newtree1 = next(newtree1)
-			newtree2 = self.parser.raw_parse(" ".join(self.t[1].leaves()), timeout=5000)
-			newtree2 = next(newtree2)
-			child1 = SenTree(newtree1, self.parser)
-			child1.type = stage_num
-			child1.flags = self.flags
-			child2 = SenTree(newtree2, self.parser)
-			child2.type = stage_num
-			child2.flags = self.flags
-			self.children[5] = [child1, child2]
-			return True
-		elif self.t[0].label() in ["PP", "SBAR"] and self.t[1].label() == "," and valid_s(self.t[2]):
+		#if self.t[0].label() in ["PP", "SBAR"] and valid_s(self.t[1]):
+		#	newtree1 = self.parser.raw_parse(" ".join(self.t[1].leaves())+" "+" ".join(self.t[0].leaves()), timeout=5000)
+		#	newtree1 = next(newtree1)
+		#	newtree2 = self.parser.raw_parse(" ".join(self.t[1].leaves()), timeout=5000)
+		#	newtree2 = next(newtree2)
+		#	child1 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+		#	child1.type = stage_num
+		#	child1.flags = self.flags
+		#	child2 = SenTree(newtree2, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+		#	child2.type = stage_num
+		#	child2.flags = self.flags
+		#	self.children[stage_num] = [child1, child2]
+		#	if self.prevST is not None:
+		#		self.prevST.nextST = child1
+		#	if self.nextST is not None:
+		#		self.nextST.prevST = child2
+		#	return True
+		#el
+		if self.t[0].label() in ["PP", "SBAR"] and self.t[1].label() == "," and valid_s(self.t[2]):
 			newtree1 = self.parser.raw_parse(" ".join(self.t[2].leaves())+" "+" ".join(self.t[0].leaves()), timeout=5000)
 			newtree1 = next(newtree1)
 			newtree2 = self.parser.raw_parse(" ".join(self.t[2].leaves()), timeout=5000)
 			newtree2 = next(newtree2)
-			child1 = SenTree(newtree1, self.parser)
+			child2 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 			child1.type = stage_num
 			child1.flags = self.flags
-			child2 = SenTree(newtree2, self.parser)
+			child1 = SenTree(newtree2, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 			child2.type = stage_num
 			child2.flags = self.flags
 			self.children[stage_num] = [child1, child2]
+			if self.prevST is not None:
+				self.prevST.nextST = child1
+			if self.nextST is not None:
+				self.nextST.prevST = child2
+			child1.nextST = child2
+			child2.prevST = child1
 			return True
 		return False
 
@@ -241,7 +371,7 @@ class SenTree:
 					new_sent = new_sent[:-1]
 					newtree = self.parser.raw_parse(new_sent)
 					newtree = next(newtree)
-					child = SenTree(newtree, self.parser)
+					child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 					child.type = stage_num
 					child.flags = self.flags
 					self.children[stage_num].append(child)
@@ -257,7 +387,7 @@ class SenTree:
 			if valid_s(sub):
 				newtree = self.parser.raw_parse(" ".join(sub.leaves()))
 				newtree = next(newtree)
-				child = SenTree(newtree, self.parser)
+				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child.type = stage_num
 				child.flags = self.flags
 				self.children[stage_num].append(child)
@@ -290,8 +420,7 @@ class SenTree:
 			return self.s_cc_s_separation()
 		elif stage == 8:
 			# Run coreference to replace ambiguous sentences
-			# NOT IMPLEMENTED
-			pass
+			return self.run_ner()
 		elif stage == 9:
 			# Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
 			return self.sbarpp_s_rearrange()
@@ -348,11 +477,21 @@ def acc_stage(stage):
 def preprocess(treelist, parser):
 	preprocessed_questions = []
 	preprocessed_trees = []
+	root_list = []
 
 	FrontierQueue = Queue()
 
-	for tree in treelist:
+	for i in range(len(treelist)):
+		tree = treelist[i]
 		root = SenTree(tree, parser)
+		root_list.append(root)
+
+		if i > 0:
+			root.prevST = root_list[i - 1]
+			root_list[i-1].nextST = root
+
+	updated_root = None
+	for root in root_list:
 
 		node_list = [root]
 		keep_bools = [True]
@@ -370,13 +509,16 @@ def preprocess(treelist, parser):
 			if len(curr_node.children[stage]) > 0:
 				# print("Ho: " + str(stage))
 				rollover, new_stage = acc_stage(stage)
-				for child in curr_node.children[stage]:
-					FrontierQueue.put_nowait((len(node_list), new_stage))
-					node_list.append(child)
-					keep_bools.append(True)
+				# Currently only does one passthrough
+				if not rollover:
+					for child in curr_node.children[stage]:
+						FrontierQueue.put_nowait((len(node_list), new_stage))
+						node_list.append(child)
+						keep_bools.append(True)
 			else:
 				rollover, new_stage = acc_stage(stage)
 				if not rollover:
 					FrontierQueue.put_nowait((node_id, new_stage))
+
 		preprocessed_trees += [node_list[i].t for i in range(len(node_list)) if keep_bools[i]]
 	return preprocessed_trees, preprocessed_questions
