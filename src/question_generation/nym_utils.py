@@ -1,33 +1,3 @@
-def rankStuff(t):
-	score = 0
-	score += len(t.subtrees())
-	score -= math.log(len(t.leaves()))
-	score += t.leaves().count(",")
-	score += math.log(t.height())
-
-# Navigating the tree
-#
-# tree is of tree.Tree format ?
-# len(T) = number of children
-# T.height() = tree height
-# T.label() = node label
-# T.pos() = list of POS tags extracted
-# T.leaves() = tree leaves
-# T.subtrees() <== generates all subtrees
-# T[i] for children indexing
-# n NOUN
-# v VERB
-# a ADJECTIVE
-# s ADJECTIVE SATELLITE - always relating to some other object - covered by 'a'
-# r ADVERB
-
-#synset.similar_tos()
-#lemma.synonyms()
-#lemma.antonyms()
-def getSimilarity(t):
-
-
-
 from nltk.corpus import wordnet as wn
 
 def word_similarity(word1, word2, pos1=None, pos2=None):
