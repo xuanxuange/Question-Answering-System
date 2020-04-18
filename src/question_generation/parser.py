@@ -22,7 +22,7 @@ if path.exists(sample + '.pkl') and not debug:
     tree_list = pickle.load(open(sample + '.pkl', 'rb'))
 else:
     print("pkl not found")
-    with open('../data/development/set1/' + sample + '.txt') as f:
+    with open('../../data/development/set1/' + sample + '.txt') as f:
         line = f.readline()
         while line:
             if len(line.split()) > 0:  # check for empty line
@@ -39,7 +39,6 @@ else:
                     try:
                         next_item = next(parsed_iter)
                         print(next_item)
-
                         tree_list.append(next_item)
                     except StopIteration:
                         break 
