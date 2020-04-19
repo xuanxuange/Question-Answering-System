@@ -36,6 +36,13 @@ def enablePrint():
     sys.stdout = sys.__stdout__
     sys.stderr = sys.__stderr__
 
+# Remove dashes
+def sanitize_line(line):
+    pattern0 = re.compile(r'\s+')           # remove unnecessary whitespace
+    pattern1 = re.compile(r'([^ ])- ')      # remove trailing -
+    pattern2 = re.compile(r' -([^ ])')      # remove trailing -
+    pattern3 = re.compile(r'(\s*)\.\.\.')   # remove ellipsis
+    return pattern0.sub(' ', pattern1.sub(r'\1 ', pattern2.sub(r' \1', pattern3.sub('', line))))
 
 if __name__ == "__main__":
     article = sys.argv[1]
@@ -54,7 +61,7 @@ if __name__ == "__main__":
         while line:
             if len(line.split()) > 0:  # check for empty line
 
-                parsed_iter = parser.parse_text(line,
+                parsed_iter = parser.parse_text(sanitize_line(line),
                                                 timeout=5000)  # native output is a listiterator over detected sentences
 
                 while True:
