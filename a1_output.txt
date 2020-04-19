@@ -1,0 +1,1764 @@
+Hello
+Hello
+Hello
+Stage 1:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', '-LRB-', 'c.', '2686-2181', 'BC', '-RRB-', 'also', 'known', 'as', 'the', '`', 'Age', 'of', 'the', 'Pyramids', "'", 'or', '`', 'Age', 'of', 'the', 'Pyramid', 'Builders', "'", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium -LRB- c. 2686-2181 BC -RRB- also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 2:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', '-LRB-', 'c.', '2686-2181', 'BC', '-RRB-', 'also', 'known', 'as', 'the', '`', 'Age', 'of', 'the', 'Pyramids', "'", 'or', '`', 'Age', 'of', 'the', 'Pyramid', 'Builders', "'", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium -LRB- c. 2686-2181 BC -RRB- also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 3:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', '-LRB-', 'c.', '2686-2181', 'BC', '-RRB-', 'also', 'known', 'as', 'the', '`', 'Age', 'of', 'the', 'Pyramids', "'", 'or', '`', 'Age', 'of', 'the', 'Pyramid', 'Builders', "'", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium -LRB- c. 2686-2181 BC -RRB- also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 4:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', '-LRB-', 'c.', '2686-2181', 'BC', '-RRB-', 'also', 'known', 'as', 'the', '`', 'Age', 'of', 'the', 'Pyramids', "'", 'or', '`', 'Age', 'of', 'the', 'Pyramid', 'Builders', "'", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium -LRB- c. 2686-2181 BC -RRB- also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 5:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '``', 'Age', 'of', 'the', 'Pyramids', "''", 'or', '``', 'Age', 'of', 'the', 'Pyramid', 'Builders', "''", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 6:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '``', 'Age', 'of', 'the', 'Pyramids', "''", 'or', '``', 'Age', 'of', 'the', 'Pyramid', 'Builders', "''", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 7:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '``', 'Age', 'of', 'the', 'Pyramids', "''", 'or', '``', 'Age', 'of', 'the', 'Pyramid', 'Builders', "''", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 8:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '``', 'Age', 'of', 'the', 'Pyramids', "''", 'or', '``', 'Age', 'of', 'the', 'Pyramid', 'Builders', "''", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 9:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '``', 'Age', 'of', 'the', 'Pyramids', "''", 'or', '``', 'Age', 'of', 'the', 'Pyramid', 'Builders', "''", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 10:
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '``', 'Age', 'of', 'the', 'Pyramids', "''", 'or', '``', 'Age', 'of', 'the', 'Pyramid', 'Builders', "''", 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.']
+The Old Kingdom is the period in the third millennium also known as the "Age of the Pyramids" or "Age of the Pyramid Builders" as it includes the great 4th Dynasty when King Sneferu perfected the art of pyramid building and the pyramids of Giza were constructed under the kings Khufu, Khafre, and Menkaure.
+-----------------------
+
+Stage 1:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', '-LRB-', 'followed', 'by', 'the', 'Middle', 'Kingdom', 'and', 'New', 'Kingdom', '-RRB-', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods -LRB- followed by the Middle Kingdom and New Kingdom -RRB- which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 2:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', '-LRB-', 'followed', 'by', 'the', 'Middle', 'Kingdom', 'and', 'New', 'Kingdom', '-RRB-', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods -LRB- followed by the Middle Kingdom and New Kingdom -RRB- which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 3:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', '-LRB-', 'followed', 'by', 'the', 'Middle', 'Kingdom', 'and', 'New', 'Kingdom', '-RRB-', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods -LRB- followed by the Middle Kingdom and New Kingdom -RRB- which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 4:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', '-LRB-', 'followed', 'by', 'the', 'Middle', 'Kingdom', 'and', 'New', 'Kingdom', '-RRB-', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods -LRB- followed by the Middle Kingdom and New Kingdom -RRB- which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 5:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 6:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 7:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 8:
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained its first continuous peak of civilization -- the first of three so-called "Kingdom" periods which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Detected threshold: 61 -- Egypt
+Looking forward in range: 0, 31
+Looking forward in range: 0, 31
+metadata:
+Main position: (61, 62)
+its
+['PRP$']
+Chosen replacement: Egypt's
+['NNP']
+------------------------
+
+detected last sentencece
+['Egypt', 'attained', 'its', 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+post_reconstitution: Egypt attained Egypt's first continuous peak of civilization -- the first of three so-called "Kingdom" periods which mark the high points of civilization in the lower Nile Valley.
+Stage 9:
+['Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained Egypt's first continuous peak of civilization -- the first of three so-called "Kingdom" periods which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 10:
+['Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so-called', '``', 'Kingdom', "''", 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.']
+Egypt attained Egypt's first continuous peak of civilization -- the first of three so-called "Kingdom" periods which mark the high points of civilization in the lower Nile Valley.
+-----------------------
+
+Stage 1:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 2:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 3:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 4:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 5:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 6:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 7:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 8:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between the Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+Detected threshold: 95 -- The
+Looking forward in range: 12, 32
+Looking forward in range: 0, 61
+metadata:
+Main position: (0, 3)
+the Old Kingdom
+['DT', 'NNP', 'NNP']
+Chosen replacement: The Old Kingdom
+['DT', 'NNP', 'NNP']
+------------------------
+
+detected last sentencece
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'the', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+post_reconstitution: The term itself was coined by eighteenth-century historians and the distinction between The Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+Stage 9:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between The Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 10:
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth-century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.']
+The term itself was coined by eighteenth-century historians and the distinction between The Old Kingdom and the Early Dynastic Period is not one which would have been recognized by Ancient Egyptians.
+-----------------------
+
+Stage 1:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 2:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 3:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 4:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 5:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 6:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 7:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 8:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.']
+Detected threshold: 129 -- The
+Stage 9:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 10:
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large-scale', 'building', 'projects', '.']
+The basic justification for a separation between the two periods is the revolutionary change in architecture accompanied by the effects on Egyptian society and economy of large-scale building projects.
+-----------------------
+
+Stage 1:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '-LRB-', '2686', '--', '2181', 'BC', '-RRB-', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty -LRB- 2686 -- 2181 BC -RRB-.
+-----------------------
+
+Stage 2:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '-LRB-', '2686', '--', '2181', 'BC', '-RRB-', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty -LRB- 2686 -- 2181 BC -RRB-.
+-----------------------
+
+Stage 3:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '-LRB-', '2686', '--', '2181', 'BC', '-RRB-', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty -LRB- 2686 -- 2181 BC -RRB-.
+-----------------------
+
+Stage 4:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '-LRB-', '2686', '--', '2181', 'BC', '-RRB-', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty -LRB- 2686 -- 2181 BC -RRB-.
+-----------------------
+
+Stage 5:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty.
+-----------------------
+
+Stage 6:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty.
+-----------------------
+
+Stage 7:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty.
+-----------------------
+
+Stage 8:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.']
+Detected threshold: 161 -- The
+Stage 9:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty.
+-----------------------
+
+Stage 10:
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.']
+The Old Kingdom is most commonly regarded as the period from the Third Dynasty through to the Sixth Dynasty.
+-----------------------
+
+Stage 1:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 2:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 3:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 4:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 5:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 6:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 7:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 8:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in the Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Detected threshold: 181 -- Egyptologists
+Looking forward in range: 10, 23
+Looking forward in range: 0, 61
+metadata:
+Main position: (0, 3)
+the Old Kingdom
+['DT', 'NNP', 'NNP']
+Chosen replacement: The Old Kingdom
+['DT', 'NNP', 'NNP']
+------------------------
+
+detected last sentencece
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'the', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+post_reconstitution: Egyptologists also include the Memphite Seventh and Eighth Dynasties in The Old Kingdom as a continuation of the administration centralized at Memphis.
+Stage 9:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in The Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 10:
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.']
+Egyptologists also include the Memphite Seventh and Eighth Dynasties in The Old Kingdom as a continuation of the administration centralized at Memphis.
+-----------------------
+
+Stage 1:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', '-LRB-', 'not', 'called', 'the', 'Pharaoh', 'until', 'the', 'New', 'Kingdom', '-RRB-', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt -LRB- not called the Pharaoh until the New Kingdom -RRB- became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+Stage 2:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', '-LRB-', 'not', 'called', 'the', 'Pharaoh', 'until', 'the', 'New', 'Kingdom', '-RRB-', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt -LRB- not called the Pharaoh until the New Kingdom -RRB- became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+Stage 3:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', '-LRB-', 'not', 'called', 'the', 'Pharaoh', 'until', 'the', 'New', 'Kingdom', '-RRB-', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt -LRB- not called the Pharaoh until the New Kingdom -RRB- became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+Stage 4:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', '-LRB-', 'not', 'called', 'the', 'Pharaoh', 'until', 'the', 'New', 'Kingdom', '-RRB-', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt -LRB- not called the Pharaoh until the New Kingdom -RRB- became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+Stage 5:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+Stage 6:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+Stage 7:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+Stage 8:
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+During the Old Kingdom, the king of Egypt became a living god who ruled absolutely and could demand the services and wealth of his subjects.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+Detected threshold: 204 -- During
+Looking forward in range: 1, 27
+Looking forward in range: 0, 61
+metadata:
+Main position: (0, 3)
+the Old Kingdom
+['DT', 'NNP', 'NNP']
+Chosen replacement: The Old Kingdom
+['DT', 'NNP', 'NNP']
+------------------------
+
+Looking forward in range: 24, 27
+Looking forward in range: 5, 27
+metadata:
+Main position: (209, 213)
+his
+['PRP$']
+Chosen replacement: the king of Egypt's
+['DT', 'NN', 'IN', 'NNP']
+------------------------
+
+detected last sentencece
+['During', 'the', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'his', 'subjects', '.']
+post_reconstitution: During The Old Kingdom, the king of Egypt became a living god who ruled absolutely and could demand the services and wealth of the king of Egypt's subjects.
+Stage 9:
+['During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.']
+During The Old Kingdom, the king of Egypt became a living god who ruled absolutely and could demand the services and wealth of the king of Egypt's subjects.
+-----------------------
+
+Stage 10:
+['During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.']
+During The Old Kingdom, the king of Egypt became a living god who ruled absolutely and could demand the services and wealth of the king of Egypt's subjects.
+-----------------------
+
+Stage 1:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+Stage 2:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+Stage 3:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+Stage 4:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+Stage 5:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+Stage 6:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+Stage 7:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+Stage 8:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of the Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established his court.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+Detected threshold: 235 -- Under
+Looking forward in range: 12, 32
+Looking forward in range: 0, 61
+metadata:
+Main position: (0, 3)
+the Old Kingdom
+['DT', 'NNP', 'NNP']
+Chosen replacement: The Old Kingdom
+['DT', 'NNP', 'NNP']
+------------------------
+
+Looking forward in range: 29, 32
+Looking forward in range: 27, 32
+metadata:
+Main position: (262, 263)
+his
+['PRP$']
+Chosen replacement: Djoser's
+['NNP']
+------------------------
+
+detected last sentencece
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'the', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'his', 'court', '.']
+post_reconstitution: Under King Djoser, the first king of the Third Dynasty of The Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established Djoser's court.
+Stage 9:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of The Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established Djoser's court.
+-----------------------
+
+Stage 10:
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.']
+Under King Djoser, the first king of the Third Dynasty of The Old Kingdom, the royal capital of Egypt was moved to Memphis, where Djoser established Djoser's court.
+-----------------------
+
+Stage 1:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+Stage 2:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+Stage 3:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+Stage 4:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+Stage 5:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+Stage 6:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+Stage 7:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+Stage 8:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+A new era of building was initiated at Saqqara under his reign.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+Detected threshold: 268 -- A
+Looking forward in range: 10, 13
+Looking forward in range: 0, 13
+metadata:
+Main position: (268, 273)
+his
+['PRP$']
+Chosen replacement: A new era of building's
+['DT', 'JJ', 'NN', 'IN', 'NN']
+------------------------
+
+detected last sentencece
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'his', 'reign', '.']
+post_reconstitution: A new era of building was initiated at Saqqara under A new era of building's reign.
+Stage 9:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.']
+A new era of building was initiated at Saqqara under A new era of building's reign.
+-----------------------
+
+Stage 10:
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.']
+A new era of building was initiated at Saqqara under A new era of building's reign.
+-----------------------
+
+Stage 1:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 2:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 3:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 4:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 5:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 6:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 7:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 8:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+Detected threshold: 286 -- King
+Stage 9:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 10:
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.']
+King Djoser's architect, Imhotep is credited with the development of building with stone and with the conception of the new architectural form -- the Step Pyramid.
+-----------------------
+
+Stage 1:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 2:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 3:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 4:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 5:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 6:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 7:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 8:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'the', 'period', 'in', 'the', 'third', 'millennium', 'also', 'known', 'as', 'the', '"', 'Age', 'of', 'the', 'Pyramids', '"', 'or', '"', 'Age', 'of', 'the', 'Pyramid', 'Builders', '"', 'as', 'it', 'includes', 'the', 'great', '4th', 'Dynasty', 'when', 'King', 'Sneferu', 'perfected', 'the', 'art', 'of', 'pyramid', 'building', 'and', 'the', 'pyramids', 'of', 'Giza', 'were', 'constructed', 'under', 'the', 'kings', 'Khufu', ',', 'Khafre', ',', 'and', 'Menkaure', '.', 'Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+Detected threshold: 315 -- The
+Stage 9:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 10:
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.']
+The Old Kingdom is perhaps best known for the large number of pyramids constructed at this time as burial places for Egypt's kings.
+-----------------------
+
+Stage 1:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 2:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 3:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 4:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 5:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 6:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 7:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 8:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 9:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 10:
+['For', 'this', 'reason', ',', 'the', 'Old', 'Kingdom', 'is', 'frequently', 'referred', 'to', 'as', '``', 'the', 'Age', 'of', 'the', 'Pyramids', '.', "''"]
+For this reason, the Old Kingdom is frequently referred to as "the Age of the Pyramids." 
+-----------------------
+
+Stage 1:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', '-LRB-', 'sometime', 'between', '2691', 'and', '2625', 'BC', '-RRB-', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', '-LRB-', 'the', 'Step', 'Pyramid', '-RRB-', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser -LRB- sometime between 2691 and 2625 BC -RRB- of the third dynasty, who ordered the construction of a pyramid -LRB- the Step Pyramid -RRB- in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 2:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', '-LRB-', 'sometime', 'between', '2691', 'and', '2625', 'BC', '-RRB-', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', '-LRB-', 'the', 'Step', 'Pyramid', '-RRB-', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser -LRB- sometime between 2691 and 2625 BC -RRB- of the third dynasty, who ordered the construction of a pyramid -LRB- the Step Pyramid -RRB- in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 3:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', '-LRB-', 'sometime', 'between', '2691', 'and', '2625', 'BC', '-RRB-', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', '-LRB-', 'the', 'Step', 'Pyramid', '-RRB-', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser -LRB- sometime between 2691 and 2625 BC -RRB- of the third dynasty, who ordered the construction of a pyramid -LRB- the Step Pyramid -RRB- in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 4:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', '-LRB-', 'sometime', 'between', '2691', 'and', '2625', 'BC', '-RRB-', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', '-LRB-', 'the', 'Step', 'Pyramid', '-RRB-', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser -LRB- sometime between 2691 and 2625 BC -RRB- of the third dynasty, who ordered the construction of a pyramid -LRB- the Step Pyramid -RRB- in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 5:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser of the third dynasty, who ordered the construction of a pyramid in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 6:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser of the third dynasty, who ordered the construction of a pyramid in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 7:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser of the third dynasty, who ordered the construction of a pyramid in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 8:
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of the Old Kingdom was Djoser of the third dynasty, who ordered the construction of a pyramid in Memphis' necropolis, Saqqara.
+-----------------------
+
+['Egypt', 'attained', 'Egypt', "'s", 'first', 'continuous', 'peak', 'of', 'civilization', '--', 'the', 'first', 'of', 'three', 'so', '-', 'called', '"', 'Kingdom', '"', 'periods', 'which', 'mark', 'the', 'high', 'points', 'of', 'civilization', 'in', 'the', 'lower', 'Nile', 'Valley', '.', 'The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+Detected threshold: 279 -- The
+Looking forward in range: 4, 28
+Looking forward in range: 12, 32
+metadata:
+Main position: (48, 51)
+the Old Kingdom
+['DT', 'NNP', 'NNP']
+Chosen replacement: The Old Kingdom
+['DT', 'JJ', 'NNP']
+------------------------
+
+detected last sentencece
+['The', 'first', 'Pharaoh', 'of', 'the', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+post_reconstitution: The first Pharaoh of The Old Kingdom was Djoser of the third dynasty, who ordered the construction of a pyramid in Memphis' necropolis, Saqqara.
+Stage 9:
+['The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of The Old Kingdom was Djoser of the third dynasty, who ordered the construction of a pyramid in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 10:
+['The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.']
+The first Pharaoh of The Old Kingdom was Djoser of the third dynasty, who ordered the construction of a pyramid in Memphis' necropolis, Saqqara.
+-----------------------
+
+Stage 1:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+Stage 2:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+Stage 3:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+Stage 4:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+Stage 5:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+Stage 6:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+Stage 7:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+Stage 8:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was his vizier, Imhotep.
+-----------------------
+
+['The', 'term', 'itself', 'was', 'coined', 'by', 'eighteenth', '-', 'century', 'historians', 'and', 'the', 'distinction', 'between', 'The', 'Old', 'Kingdom', 'and', 'the', 'Early', 'Dynastic', 'Period', 'is', 'not', 'one', 'which', 'would', 'have', 'been', 'recognized', 'by', 'Ancient', 'Egyptians', '.', 'The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+Detected threshold: 273 -- An
+Looking forward in range: 9, 14
+Looking forward in range: 0, 14
+metadata:
+Main position: (273, 281)
+his
+['PRP$']
+Chosen replacement: An important person during the reign of Djoser's
+['DT', 'JJ', 'NN', 'IN', 'DT', 'NN', 'IN', 'NNP']
+------------------------
+
+detected last sentencece
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'his', 'vizier', ',', 'Imhotep', '.']
+post_reconstitution: An important person during the reign of Djoser was An important person during the reign of Djoser's vizier, Imhotep.
+Stage 9:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was An important person during the reign of Djoser's vizier, Imhotep.
+-----------------------
+
+Stage 10:
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.']
+An important person during the reign of Djoser was An important person during the reign of Djoser's vizier, Imhotep.
+-----------------------
+
+Stage 1:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 2:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 3:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 4:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 5:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 6:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 7:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 8:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+['The', 'basic', 'justification', 'for', 'a', 'separation', 'between', 'the', 'two', 'periods', 'is', 'the', 'revolutionary', 'change', 'in', 'architecture', 'accompanied', 'by', 'the', 'effects', 'on', 'Egyptian', 'society', 'and', 'economy', 'of', 'large', '-', 'scale', 'building', 'projects', '.', 'The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+Detected threshold: 261 -- The
+Stage 9:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 10:
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.']
+The former rulers were forced to assume the role of governors or otherwise work in tax collection.
+-----------------------
+
+Stage 1:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+Stage 2:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+Stage 3:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+Stage 4:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+Stage 5:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+Stage 6:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+Stage 7:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+Stage 8:
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Egyptians in this era worshipped their Pharaoh as a god, believing that he ensured the annual flooding of the Nile that was necessary for their crops.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'most', 'commonly', 'regarded', 'as', 'the', 'period', 'from', 'the', 'Third', 'Dynasty', 'through', 'to', 'the', 'Sixth', 'Dynasty', '.', 'Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+Detected threshold: 247 -- Egyptians
+Looking forward in range: 2, 28
+Looking forward in range: 0, 18
+metadata:
+Main position: (107, 112)
+this era
+['DT', 'NN']
+Chosen replacement: A new era of building
+['DT', 'JJ', 'NN', 'IN', 'NN']
+------------------------
+
+Looking forward in range: 5, 28
+Looking forward in range: 0, 28
+metadata:
+Main position: (247, 248)
+their
+['PRP$']
+Chosen replacement: Egyptians'
+['NNP']
+------------------------
+
+Looking forward in range: 25, 28
+Looking forward in range: 0, 28
+metadata:
+Main position: (247, 248)
+their
+['PRP$']
+Chosen replacement: Egyptians'
+['NNP']
+------------------------
+
+Looking forward in range: 13, 28
+Looking forward in range: 5, 28
+metadata:
+Main position: (252, 254)
+he
+['PRP']
+Chosen replacement: their Pharaoh
+['PRP$', 'NNP']
+------------------------
+
+detected last sentencece
+['Egyptians', 'in', 'this', 'era', 'worshipped', 'their', 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'he', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'their', 'crops', '.']
+post_reconstitution: Egyptians in A new era of building worshipped Egyptians' Pharaoh as a god, believing that their Pharaoh ensured the annual flooding of the Nile that was necessary for Egyptians' crops.
+Stage 9:
+['Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.']
+Egyptians in A new era of building worshipped Egyptians' Pharaoh as a god, believing that their Pharaoh ensured the annual flooding of the Nile that was necessary for Egyptians' crops.
+-----------------------
+
+Stage 10:
+['Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.']
+Egyptians in A new era of building worshipped Egyptians' Pharaoh as a god, believing that their Pharaoh ensured the annual flooding of the Nile that was necessary for Egyptians' crops.
+-----------------------
+
+Stage 1:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', '-LRB-', '2613', '--', '2494', 'BC', '-RRB-', ',', 'which', 'began', 'with', 'Sneferu', '-LRB-', '2613', '--', '2589', 'BC', '-RRB-', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty -LRB- 2613 -- 2494 BC -RRB-, which began with Sneferu -LRB- 2613 -- 2589 BC -RRB-.
+-----------------------
+
+Stage 2:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', '-LRB-', '2613', '--', '2494', 'BC', '-RRB-', ',', 'which', 'began', 'with', 'Sneferu', '-LRB-', '2613', '--', '2589', 'BC', '-RRB-', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty -LRB- 2613 -- 2494 BC -RRB-, which began with Sneferu -LRB- 2613 -- 2589 BC -RRB-.
+-----------------------
+
+Stage 3:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', '-LRB-', '2613', '--', '2494', 'BC', '-RRB-', ',', 'which', 'began', 'with', 'Sneferu', '-LRB-', '2613', '--', '2589', 'BC', '-RRB-', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty -LRB- 2613 -- 2494 BC -RRB-, which began with Sneferu -LRB- 2613 -- 2589 BC -RRB-.
+-----------------------
+
+Stage 4:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', '-LRB-', '2613', '--', '2494', 'BC', '-RRB-', ',', 'which', 'began', 'with', 'Sneferu', '-LRB-', '2613', '--', '2589', 'BC', '-RRB-', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty -LRB- 2613 -- 2494 BC -RRB-, which began with Sneferu -LRB- 2613 -- 2589 BC -RRB-.
+-----------------------
+
+Stage 5:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty, which began with Sneferu.
+-----------------------
+
+Stage 6:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty, which began with Sneferu.
+-----------------------
+
+Stage 7:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty, which began with Sneferu.
+-----------------------
+
+Stage 8:
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+The Old Kingdom and its royal power reached a zenith under the Fourth Dynasty, which began with Sneferu.
+-----------------------
+
+['Egyptologists', 'also', 'include', 'the', 'Memphite', 'Seventh', 'and', 'Eighth', 'Dynasties', 'in', 'The', 'Old', 'Kingdom', 'as', 'a', 'continuation', 'of', 'the', 'administration', 'centralized', 'at', 'Memphis', '.', 'During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+Detected threshold: 261 -- The
+Looking forward in range: 4, 20
+Looking forward in range: 10, 23
+metadata:
+Main position: (10, 13)
+its
+['PRP$']
+Chosen replacement: The Old Kingdom's
+['NNP', 'NNP', 'NNP']
+------------------------
+
+detected last sentencece
+['The', 'Old', 'Kingdom', 'and', 'its', 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+post_reconstitution: The Old Kingdom and The Old Kingdom's royal power reached a zenith under the Fourth Dynasty, which began with Sneferu.
+Stage 9:
+['The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+The Old Kingdom and The Old Kingdom's royal power reached a zenith under the Fourth Dynasty, which began with Sneferu.
+-----------------------
+
+Stage 10:
+['The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.']
+The Old Kingdom and The Old Kingdom's royal power reached a zenith under the Fourth Dynasty, which began with Sneferu.
+-----------------------
+
+Stage 1:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 2:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 3:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 4:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 5:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 6:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 7:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 8:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+['During', 'The', 'Old', 'Kingdom', ',', 'the', 'king', 'of', 'Egypt', 'became', 'a', 'living', 'god', 'who', 'ruled', 'absolutely', 'and', 'could', 'demand', 'the', 'services', 'and', 'wealth', 'of', 'the', 'king', 'of', 'Egypt', "'s", 'subjects', '.', 'Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+Detected threshold: 261 -- After
+Stage 9:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 10:
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.']
+After Djoser, Pharaoh Snefru was the next great pyramid builder.
+-----------------------
+
+Stage 1:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 2:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 3:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 4:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 5:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 6:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 7:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 8:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+['Under', 'King', 'Djoser', ',', 'the', 'first', 'king', 'of', 'the', 'Third', 'Dynasty', 'of', 'The', 'Old', 'Kingdom', ',', 'the', 'royal', 'capital', 'of', 'Egypt', 'was', 'moved', 'to', 'Memphis', ',', 'where', 'Djoser', 'established', 'Djoser', "'s", 'court', '.', 'A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.']
+Detected threshold: 242 -- The
+Stage 9:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 10:
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above-ground', 'burial', 'chamber', '.']
+The Meidum pyramid was the first to have an above-ground burial chamber.
+-----------------------
+
+Stage 1:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 2:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 3:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 4:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 5:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 6:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 7:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 8:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+['A', 'new', 'era', 'of', 'building', 'was', 'initiated', 'at', 'Saqqara', 'under', 'A', 'new', 'era', 'of', 'building', "'s", 'reign', '.', 'King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.']
+Detected threshold: 224 -- However
+Stage 9:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 10:
+['However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '`', 'The', 'Great', 'Pyramids', "'", 'at', 'Giza', '.']
+However, the full development of the pyramid style of building was reached not at Saqqara, but during the building of "The Great Pyramids" at Giza.
+-----------------------
+
+Stage 1:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', '-LRB-', '2589', '--', '2566', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu -LRB- 2589 -- 2566 BC -RRB-, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 2:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', '-LRB-', '2589', '--', '2566', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu -LRB- 2589 -- 2566 BC -RRB-, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 3:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', '-LRB-', '2589', '--', '2566', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu -LRB- 2589 -- 2566 BC -RRB-, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 4:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', '-LRB-', '2589', '--', '2566', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu -LRB- 2589 -- 2566 BC -RRB-, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 5:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 6:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 7:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 8:
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by his son, Khufu, who built the Great Pyramid of Giza.
+-----------------------
+
+['King', 'Djoser', "'s", 'architect', ',', 'Imhotep', 'is', 'credited', 'with', 'the', 'development', 'of', 'building', 'with', 'stone', 'and', 'with', 'the', 'conception', 'of', 'the', 'new', 'architectural', 'form', '--', 'the', 'Step', 'Pyramid', '.', 'The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Detected threshold: 236 -- Sneferu
+Looking forward in range: 4, 17
+Looking forward in range: 21, 23
+metadata:
+Main position: (177, 178)
+his
+['PRP$']
+Chosen replacement: Sneferu's
+['NNP']
+------------------------
+
+detected last sentencece
+['Sneferu', 'was', 'succeeded', 'by', 'his', 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+post_reconstitution: Sneferu was succeeded by Sneferu's son, Khufu, who built the Great Pyramid of Giza.
+Stage 9:
+['Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by Sneferu's son, Khufu, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 10:
+['Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.']
+Sneferu was succeeded by Sneferu's son, Khufu, who built the Great Pyramid of Giza.
+-----------------------
+
+Stage 1:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', '-LRB-', '2566', '--', '2558', 'BC', '-RRB-', 'and', 'Khafra', '-LRB-', '2558', '--', '2532', 'BC', '-RRB-', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra -LRB- 2566 -- 2558 BC -RRB- and Khafra -LRB- 2558 -- 2532 BC -RRB- may have quarrelled.
+-----------------------
+
+Stage 2:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', '-LRB-', '2566', '--', '2558', 'BC', '-RRB-', 'and', 'Khafra', '-LRB-', '2558', '--', '2532', 'BC', '-RRB-', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra -LRB- 2566 -- 2558 BC -RRB- and Khafra -LRB- 2558 -- 2532 BC -RRB- may have quarrelled.
+-----------------------
+
+Stage 3:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', '-LRB-', '2566', '--', '2558', 'BC', '-RRB-', 'and', 'Khafra', '-LRB-', '2558', '--', '2532', 'BC', '-RRB-', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra -LRB- 2566 -- 2558 BC -RRB- and Khafra -LRB- 2558 -- 2532 BC -RRB- may have quarrelled.
+-----------------------
+
+Stage 4:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', '-LRB-', '2566', '--', '2558', 'BC', '-RRB-', 'and', 'Khafra', '-LRB-', '2558', '--', '2532', 'BC', '-RRB-', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra -LRB- 2566 -- 2558 BC -RRB- and Khafra -LRB- 2558 -- 2532 BC -RRB- may have quarrelled.
+-----------------------
+
+Stage 5:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra and Khafra may have quarrelled.
+-----------------------
+
+Stage 6:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra and Khafra may have quarrelled.
+-----------------------
+
+Stage 7:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra and Khafra may have quarrelled.
+-----------------------
+
+Stage 8:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra and Khafra may have quarrelled.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'is', 'perhaps', 'best', 'known', 'for', 'the', 'large', 'number', 'of', 'pyramids', 'constructed', 'at', 'this', 'time', 'as', 'burial', 'places', 'for', 'Egypt', "'s", 'kings', '.', 'The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.']
+Detected threshold: 225 -- After
+Stage 9:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra and Khafra may have quarrelled.
+-----------------------
+
+Stage 10:
+['After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.']
+After Khufu's death, his sons Djedefra and Khafra may have quarrelled.
+-----------------------
+
+Stage 1:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+Stage 2:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+Stage 3:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+Stage 4:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+Stage 5:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+Stage 6:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+Stage 7:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+Stage 8:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to his father Khufu.
+-----------------------
+
+['The', 'first', 'Pharaoh', 'of', 'The', 'Old', 'Kingdom', 'was', 'Djoser', 'of', 'the', 'third', 'dynasty', ',', 'who', 'ordered', 'the', 'construction', 'of', 'a', 'pyramid', 'in', 'Memphis', "'", 'necropolis', ',', 'Saqqara', '.', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.', 'Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+Detected threshold: 214 -- Recent
+Looking forward in range: 23, 27
+Looking forward in range: 6, 27
+metadata:
+Main position: (220, 223)
+his
+['PRP$']
+Chosen replacement: Egyptologist Vassil Dobrev's
+['NNP', 'NNP', 'NNP']
+------------------------
+
+detected last sentencece
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'his', 'father', 'Khufu', '.']
+post_reconstitution: Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to Egyptologist Vassil Dobrev's father Khufu.
+Stage 9:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to Egyptologist Vassil Dobrev's father Khufu.
+-----------------------
+
+Stage 10:
+['Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.']
+Recent reexamination of evidence has led Egyptologist Vassil Dobrev to propose that the Sphinx had been built by Djedefra as a monument to Egyptologist Vassil Dobrev's father Khufu.
+-----------------------
+
+Stage 1:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', '-LRB-', '2532', '--', '2504', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', '-LRB-', '2504', '--', '2498', 'BC', '-RRB-', 'and', ',', 'perhaps', ',', 'Djedefptah', '-LRB-', '2498', '--', '2496', 'BC', '-RRB-', '.']
+The later kings of the Fourth Dynasty were king Menkaure -LRB- 2532 -- 2504 BC -RRB-, who built the smallest pyramid in Giza, Shepseskaf -LRB- 2504 -- 2498 BC -RRB- and, perhaps, Djedefptah -LRB- 2498 -- 2496 BC -RRB-.
+-----------------------
+
+Stage 2:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', '-LRB-', '2532', '--', '2504', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', '-LRB-', '2504', '--', '2498', 'BC', '-RRB-', 'and', ',', 'perhaps', ',', 'Djedefptah', '-LRB-', '2498', '--', '2496', 'BC', '-RRB-', '.']
+The later kings of the Fourth Dynasty were king Menkaure -LRB- 2532 -- 2504 BC -RRB-, who built the smallest pyramid in Giza, Shepseskaf -LRB- 2504 -- 2498 BC -RRB- and, perhaps, Djedefptah -LRB- 2498 -- 2496 BC -RRB-.
+-----------------------
+
+Stage 3:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', '-LRB-', '2532', '--', '2504', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', '-LRB-', '2504', '--', '2498', 'BC', '-RRB-', 'and', ',', 'perhaps', ',', 'Djedefptah', '-LRB-', '2498', '--', '2496', 'BC', '-RRB-', '.']
+The later kings of the Fourth Dynasty were king Menkaure -LRB- 2532 -- 2504 BC -RRB-, who built the smallest pyramid in Giza, Shepseskaf -LRB- 2504 -- 2498 BC -RRB- and, perhaps, Djedefptah -LRB- 2498 -- 2496 BC -RRB-.
+-----------------------
+
+Stage 4:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', '-LRB-', '2532', '--', '2504', 'BC', '-RRB-', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', '-LRB-', '2504', '--', '2498', 'BC', '-RRB-', 'and', ',', 'perhaps', ',', 'Djedefptah', '-LRB-', '2498', '--', '2496', 'BC', '-RRB-', '.']
+The later kings of the Fourth Dynasty were king Menkaure -LRB- 2532 -- 2504 BC -RRB-, who built the smallest pyramid in Giza, Shepseskaf -LRB- 2504 -- 2498 BC -RRB- and, perhaps, Djedefptah -LRB- 2498 -- 2496 BC -RRB-.
+-----------------------
+
+Stage 5:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.']
+The later kings of the Fourth Dynasty were king Menkaure, who built the smallest pyramid in Giza, Shepseskaf and, perhaps, Djedefptah.
+-----------------------
+
+Stage 6:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.']
+The later kings of the Fourth Dynasty were king Menkaure, who built the smallest pyramid in Giza, Shepseskaf and, perhaps, Djedefptah.
+-----------------------
+
+Stage 7:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.']
+The later kings of the Fourth Dynasty were king Menkaure, who built the smallest pyramid in Giza, Shepseskaf and, perhaps, Djedefptah.
+-----------------------
+
+Stage 8:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.']
+The later kings of the Fourth Dynasty were king Menkaure, who built the smallest pyramid in Giza, Shepseskaf and, perhaps, Djedefptah.
+-----------------------
+
+['An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', 'was', 'An', 'important', 'person', 'during', 'the', 'reign', 'of', 'Djoser', "'s", 'vizier', ',', 'Imhotep', '.', 'The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.', 'Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.', 'The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.']
+Detected threshold: 216 -- The
+Stage 9:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.']
+The later kings of the Fourth Dynasty were king Menkaure, who built the smallest pyramid in Giza, Shepseskaf and, perhaps, Djedefptah.
+-----------------------
+
+Stage 10:
+['The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.']
+The later kings of the Fourth Dynasty were king Menkaure, who built the smallest pyramid in Giza, Shepseskaf and, perhaps, Djedefptah.
+-----------------------
+
+Stage 1:
+['The', 'Fifth', 'Dynasty', '-LRB-', '2494', '--', '2345', 'BC', '-RRB-', 'began', 'with', 'Userkaf', '-LRB-', '2494', '--', '2487', 'BC', '-RRB-', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty -LRB- 2494 -- 2345 BC -RRB- began with Userkaf -LRB- 2494 -- 2487 BC -RRB- and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 2:
+['The', 'Fifth', 'Dynasty', '-LRB-', '2494', '--', '2345', 'BC', '-RRB-', 'began', 'with', 'Userkaf', '-LRB-', '2494', '--', '2487', 'BC', '-RRB-', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty -LRB- 2494 -- 2345 BC -RRB- began with Userkaf -LRB- 2494 -- 2487 BC -RRB- and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 3:
+['The', 'Fifth', 'Dynasty', '-LRB-', '2494', '--', '2345', 'BC', '-RRB-', 'began', 'with', 'Userkaf', '-LRB-', '2494', '--', '2487', 'BC', '-RRB-', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty -LRB- 2494 -- 2345 BC -RRB- began with Userkaf -LRB- 2494 -- 2487 BC -RRB- and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 4:
+['The', 'Fifth', 'Dynasty', '-LRB-', '2494', '--', '2345', 'BC', '-RRB-', 'began', 'with', 'Userkaf', '-LRB-', '2494', '--', '2487', 'BC', '-RRB-', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty -LRB- 2494 -- 2345 BC -RRB- began with Userkaf -LRB- 2494 -- 2487 BC -RRB- and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 5:
+['The', 'Fifth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty began with Userkaf and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 6:
+['The', 'Fifth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty began with Userkaf and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 7:
+['The', 'Fifth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty began with Userkaf and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 8:
+['The', 'Fifth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+The Fifth Dynasty began with Userkaf and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+['The', 'former', 'rulers', 'were', 'forced', 'to', 'assume', 'the', 'role', 'of', 'governors', 'or', 'otherwise', 'work', 'in', 'tax', 'collection', '.', 'Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.', 'Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.', 'The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.', 'The', 'Fifth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+Detected threshold: 220 -- The
+Looking forward in range: 0, 21
+Looking forward in range: 4, 26
+metadata:
+Main position: (198, 201)
+The Fifth Dynasty
+['DT', 'JJ', 'NNP']
+Chosen replacement: the Fourth Dynasty
+['DT', 'JJ', 'NNP']
+------------------------
+
+detected last sentencece
+['The', 'Fifth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+post_reconstitution: the Fourth Dynasty began with Userkaf and was marked by the growing importance of the cult of sun god Ra.
+Stage 9:
+['the', 'Fourth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+the Fourth Dynasty began with Userkaf and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 10:
+['the', 'Fourth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.']
+the Fourth Dynasty began with Userkaf and was marked by the growing importance of the cult of sun god Ra.
+-----------------------
+
+Stage 1:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 2:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 3:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 4:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 5:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 6:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 7:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 8:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the 4th dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+['Egyptians', 'in', 'A', 'new', 'era', 'of', 'building', 'worshipped', 'Egyptians', "'", 'Pharaoh', 'as', 'a', 'god', ',', 'believing', 'that', 'their', 'Pharaoh', 'ensured', 'the', 'annual', 'flooding', 'of', 'the', 'Nile', 'that', 'was', 'necessary', 'for', 'Egyptians', "'", 'crops', '.', 'The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.', 'Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.', 'The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.', 'the', 'Fourth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.', 'Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Detected threshold: 223 -- Consequently
+Looking forward in range: 14, 28
+Looking forward in range: 4, 26
+metadata:
+Main position: (180, 183)
+the 4th dynasty
+['DT', 'JJ', 'NN']
+Chosen replacement: the Fourth Dynasty
+['DT', 'JJ', 'NNP']
+------------------------
+
+detected last sentencece
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', '4th', 'dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+post_reconstitution: Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the Fourth Dynasty and more to the construction of sun temples in Abusir.
+Stage 9:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', 'Fourth', 'Dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the Fourth Dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 10:
+['Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', 'Fourth', 'Dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.']
+Consequently, fewer efforts were devoted to the construction of pyramid complexes than during the Fourth Dynasty and more to the construction of sun temples in Abusir.
+-----------------------
+
+Stage 1:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', '-LRB-', '2487', '--', '2475', 'BC', '-RRB-', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure -LRB- 2487 -- 2475 BC -RRB- who commanded an expedition to Punt.
+-----------------------
+
+Stage 2:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', '-LRB-', '2487', '--', '2475', 'BC', '-RRB-', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure -LRB- 2487 -- 2475 BC -RRB- who commanded an expedition to Punt.
+-----------------------
+
+Stage 3:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', '-LRB-', '2487', '--', '2475', 'BC', '-RRB-', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure -LRB- 2487 -- 2475 BC -RRB- who commanded an expedition to Punt.
+-----------------------
+
+Stage 4:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', '-LRB-', '2487', '--', '2475', 'BC', '-RRB-', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure -LRB- 2487 -- 2475 BC -RRB- who commanded an expedition to Punt.
+-----------------------
+
+Stage 5:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure who commanded an expedition to Punt.
+-----------------------
+
+Stage 6:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure who commanded an expedition to Punt.
+-----------------------
+
+Stage 7:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure who commanded an expedition to Punt.
+-----------------------
+
+Stage 8:
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by his son Sahure who commanded an expedition to Punt.
+-----------------------
+
+['The', 'Old', 'Kingdom', 'and', 'The', 'Old', 'Kingdom', "'s", 'royal', 'power', 'reached', 'a', 'zenith', 'under', 'the', 'Fourth', 'Dynasty', ',', 'which', 'began', 'with', 'Sneferu', '.', 'After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.', 'Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.', 'The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.', 'the', 'Fourth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.', 'Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', 'Fourth', 'Dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.', 'Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Detected threshold: 217 -- Userkaf
+Looking forward in range: 4, 14
+Looking forward in range: 5, 21
+metadata:
+Main position: (173, 174)
+his
+['PRP$']
+Chosen replacement: Userkaf's
+['NN']
+------------------------
+
+detected last sentencece
+['Userkaf', 'was', 'succeeded', 'by', 'his', 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+post_reconstitution: Userkaf was succeeded by Userkaf's son Sahure who commanded an expedition to Punt.
+Stage 9:
+['Userkaf', 'was', 'succeeded', 'by', 'Userkaf', "'s", 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by Userkaf's son Sahure who commanded an expedition to Punt.
+-----------------------
+
+Stage 10:
+['Userkaf', 'was', 'succeeded', 'by', 'Userkaf', "'s", 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.']
+Userkaf was succeeded by Userkaf's son Sahure who commanded an expedition to Punt.
+-----------------------
+
+Stage 1:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', '-LRB-', '2475', '--', '2455', 'BC', '-RRB-', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai -LRB- 2475 -- 2455 BC -RRB- who was Sahure's son.
+-----------------------
+
+Stage 2:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', '-LRB-', '2475', '--', '2455', 'BC', '-RRB-', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai -LRB- 2475 -- 2455 BC -RRB- who was Sahure's son.
+-----------------------
+
+Stage 3:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', '-LRB-', '2475', '--', '2455', 'BC', '-RRB-', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai -LRB- 2475 -- 2455 BC -RRB- who was Sahure's son.
+-----------------------
+
+Stage 4:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', '-LRB-', '2475', '--', '2455', 'BC', '-RRB-', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai -LRB- 2475 -- 2455 BC -RRB- who was Sahure's son.
+-----------------------
+
+Stage 5:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai who was Sahure's son.
+-----------------------
+
+Stage 6:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai who was Sahure's son.
+-----------------------
+
+Stage 7:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai who was Sahure's son.
+-----------------------
+
+Stage 8:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai who was Sahure's son.
+-----------------------
+
+['After', 'Djoser', ',', 'Pharaoh', 'Snefru', 'was', 'the', 'next', 'great', 'pyramid', 'builder', '.', 'The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.', 'Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.', 'The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.', 'the', 'Fourth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.', 'Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', 'Fourth', 'Dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.', 'Userkaf', 'was', 'succeeded', 'by', 'Userkaf', "'s", 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.', 'Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Detected threshold: 209 -- Sahure
+Stage 9:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai who was Sahure's son.
+-----------------------
+
+Stage 10:
+['Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.']
+Sahure was in turn succeeded by Neferirkare Kakai who was Sahure's son.
+-----------------------
+
+Stage 1:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 2:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 3:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 4:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 5:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 6:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 7:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 8:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+['The', 'Meidum', 'pyramid', 'was', 'the', 'first', 'to', 'have', 'an', 'above', '-', 'ground', 'burial', 'chamber', '.', 'However', ',', 'the', 'full', 'development', 'of', 'the', 'pyramid', 'style', 'of', 'building', 'was', 'reached', 'not', 'at', 'Saqqara', ',', 'but', 'during', 'the', 'building', 'of', '"', 'The', 'Great', 'Pyramids', '"', 'at', 'Giza', '.', 'Sneferu', 'was', 'succeeded', 'by', 'Sneferu', "'s", 'son', ',', 'Khufu', ',', 'who', 'built', 'the', 'Great', 'Pyramid', 'of', 'Giza', '.', 'After', 'Khufu', "'s", 'death', ',', 'his', 'sons', 'Djedefra', 'and', 'Khafra', 'may', 'have', 'quarrelled', '.', 'Recent', 'reexamination', 'of', 'evidence', 'has', 'led', 'Egyptologist', 'Vassil', 'Dobrev', 'to', 'propose', 'that', 'the', 'Sphinx', 'had', 'been', 'built', 'by', 'Djedefra', 'as', 'a', 'monument', 'to', 'Egyptologist', 'Vassil', 'Dobrev', "'s", 'father', 'Khufu', '.', 'The', 'later', 'kings', 'of', 'the', 'Fourth', 'Dynasty', 'were', 'king', 'Menkaure', ',', 'who', 'built', 'the', 'smallest', 'pyramid', 'in', 'Giza', ',', 'Shepseskaf', 'and', ',', 'perhaps', ',', 'Djedefptah', '.', 'the', 'Fourth', 'Dynasty', 'began', 'with', 'Userkaf', 'and', 'was', 'marked', 'by', 'the', 'growing', 'importance', 'of', 'the', 'cult', 'of', 'sun', 'god', 'Ra', '.', 'Consequently', ',', 'fewer', 'efforts', 'were', 'devoted', 'to', 'the', 'construction', 'of', 'pyramid', 'complexes', 'than', 'during', 'the', 'Fourth', 'Dynasty', 'and', 'more', 'to', 'the', 'construction', 'of', 'sun', 'temples', 'in', 'Abusir', '.', 'Userkaf', 'was', 'succeeded', 'by', 'Userkaf', "'s", 'son', 'Sahure', 'who', 'commanded', 'an', 'expedition', 'to', 'Punt', '.', 'Sahure', 'was', 'in', 'turn', 'succeeded', 'by', 'Neferirkare', 'Kakai', 'who', 'was', 'Sahure', "'s", 'son', '.', 'Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Detected threshold: 211 -- Neferirkare
+Stage 9:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 10:
+['Neferirkare', 'introduced', 'the', 'prenomen', 'in', 'the', 'royal', 'titulary', '.']
+Neferirkare introduced the prenomen in the royal titulary.
+-----------------------
+
+Stage 1:
+['The', 'last', 'Pharaohs', 'of', 'the', 'dynasty', 'were', 'Menkauhor', 'Kaiu', '-LRB-', '2421', '--', '2414', 'BC', '-RRB-', ',', 'Djedkare', 'Isesi', '-LRB-', '2414', '--', '2375', 'BC', '-RRB-', 'and', 'Unas', '-LRB-', '2375', '--', '2345', '-RRB-', ',', 'the', 'earliest', 'ruler', 'to', 'have', 'the', 'pyramid', 'texts', 'inscribed', 'in', 'his', 'pyramid', '.']
+The last Pharaohs of the dynasty were Menkauhor Kaiu -LRB- 2421 -- 2414 BC -RRB-, Djedkare Isesi -LRB- 2414 -- 2375 BC -RRB- and Unas -LRB- 2375 -- 2345 -RRB-, the earliest ruler to have the pyramid texts inscribed in his pyramid.
+-----------------------
+
+Stage 2:
+['The', 'last', 'Pharaohs', 'of', 'the', 'dynasty', 'were', 'Menkauhor', 'Kaiu', '-LRB-', '2421', '--', '2414', 'BC', '-RRB-', ',', 'Djedkare', 'Isesi', '-LRB-', '2414', '--', '2375', 'BC', '-RRB-', 'and', 'Unas', '-LRB-', '2375', '--', '2345', '-RRB-', ',', 'the', 'earliest', 'ruler', 'to', 'have', 'the', 'pyramid', 'texts', 'inscribed', 'in', 'his', 'pyramid', '.']
+The last Pharaohs of the dynasty were Menkauhor Kaiu -LRB- 2421 -- 2414 BC -RRB-, Djedkare Isesi -LRB- 2414 -- 2375 BC -RRB- and Unas -LRB- 2375 -- 2345 -RRB-, the earliest ruler to have the pyramid texts inscribed in his pyramid.
+-----------------------
+
+Stage 3:
+['The', 'last', 'Pharaohs', 'of', 'the', 'dynasty', 'were', 'Menkauhor', 'Kaiu', '-LRB-', '2421', '--', '2414', 'BC', '-RRB-', ',', 'Djedkare', 'Isesi', '-LRB-', '2414', '--', '2375', 'BC', '-RRB-', 'and', 'Unas', '-LRB-', '2375', '--', '2345', '-RRB-', ',', 'the', 'earliest', 'ruler', 'to', 'have', 'the', 'pyramid', 'texts', 'inscribed', 'in', 'his', 'pyramid', '.']

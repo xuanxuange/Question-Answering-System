@@ -71,7 +71,7 @@ class SenTree:
 		if restext:
 			return self.tobe_turn_of_phrase(restext, respos, turns)
 		elif turns:
-			newtree = self.parser.raw_parse(reconstitute_sentence(text), timeout=5000)
+			newtree = self.parser.parse_text(reconstitute_sentence(text), timeout=5000)
 			newtree = next(newtree)
 			child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 			child.type = stage_num
@@ -116,7 +116,7 @@ class SenTree:
 			if len(result) > 0:
 				temp = reconstitute_sentence(result)
 				# print(temp)
-				newtree = self.parser.raw_parse(temp, timeout=5000)
+				newtree = self.parser.parse_text(temp, timeout=5000)
 				newtree = next(newtree)
 				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				# print(newtree.leaves())
@@ -150,7 +150,7 @@ class SenTree:
 				for m in range(i+2,len(self.t)):
 					new_sent += reconstitute_sentence(self.t[m].leaves()) + " "
 				new_sent = new_sent[:-1]
-				newtree = self.parser.raw_parse(new_sent)
+				newtree = self.parser.parse_text(new_sent)
 				newtree = next(newtree)
 				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child.type = stage_num
@@ -180,9 +180,9 @@ class SenTree:
 		stage_num = 7
 		for i in range(len(self.t[0])-2):
 			if (valid_s(self.t[0][i]) and self.t[0][i+1].label() == "CC" and valid_s(self.t[0][i+2])):
-				newtree1 = self.parser.raw_parse(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5000)
+				newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5000)
 				newtree1 = next(newtree1)
-				newtree2 = self.parser.raw_parse(reconstitute_sentence(self.t[0][i+2].leaves() + ['.']), timeout=5000)
+				newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[0][i+2].leaves() + ['.']), timeout=5000)
 				newtree2 = next(newtree2)
 				child1 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child1.type = stage_num
@@ -199,9 +199,9 @@ class SenTree:
 				child2.prevST = child1
 				return True
 			elif i+3 < len(self.t[0]) and valid_s(self.t[0][i]) and self.t[0][i+1].label() == "," and self.t[0][i+2].label() == "CC" and valid_s(self.t[0][i+3]):
-				newtree1 = self.parser.raw_parse(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5000)
+				newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5000)
 				newtree1 = next(newtree1)
-				newtree2 = self.parser.raw_parse(reconstitute_sentence(self.t[0][i+3].leaves() + ['.']), timeout=5000)
+				newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[0][i+3].leaves() + ['.']), timeout=5000)
 				newtree2 = next(newtree2)
 				child1 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child1.type = stage_num
@@ -231,7 +231,7 @@ class SenTree:
 				threshold = 0
 				if count > 1:
 					print(test)
-					threshold = len(test) - 1 - test[:-1][::-1].index('.')
+					threshold = len(test) - 1 - test[:-1][::-1].index(".")
 					print("Detected threshold: " + str(threshold) + " -- " + str(doc_info[threshold].text))
 				# test = list(self.parser.tokenize(test))
 				original_pos = [token.pos_ for token in doc_info][threshold:]
@@ -281,6 +281,9 @@ class SenTree:
 							# print(mention_ner)
 							print(mention_pos)
 							# print([token.text for token in doc_info][threshold:])
+
+							# TODO: add safety check for main_pos is not None in final version. Leave out now for debug
+
 							if 'PRP$' in mention_pos or mention_pos[-1] == 'POS':
 								if 'PRP$' in main_pos:
 									print("Chosen replacement: " + main_text)
@@ -322,7 +325,7 @@ class SenTree:
 					test = test.replace(" - ", "-")
 					print("post_reconstitution: " + test)
 
-					newtree = self.parser.raw_parse(test)
+					newtree = self.parser.parse_text(test)
 					newtree = next(newtree)
 					child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 					if self.prevST is not None:
@@ -338,9 +341,9 @@ class SenTree:
 	def sbarpp_s_rearrange(self):
 		stage_num = 9
 		#if self.t[0].label() in ["PP", "SBAR"] and valid_s(self.t[1]):
-		#	newtree1 = self.parser.raw_parse(reconstitute_sentence(self.t[1].leaves())+" "+reconstitute_sentence(self.t[0].leaves()), timeout=5000)
+		#	newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[1].leaves())+" "+reconstitute_sentence(self.t[0].leaves()), timeout=5000)
 		#	newtree1 = next(newtree1)
-		#	newtree2 = self.parser.raw_parse(reconstitute_sentence(self.t[1].leaves()), timeout=5000)
+		#	newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[1].leaves()), timeout=5000)
 		#	newtree2 = next(newtree2)
 		#	child1 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 		#	child1.type = stage_num
@@ -356,9 +359,9 @@ class SenTree:
 		#	return True
 		#el
 		if self.t[0].label() in ["PP", "SBAR"] and self.t[1].label() == "," and valid_s(self.t[2]):
-			newtree1 = self.parser.raw_parse(reconstitute_sentence(self.t[2].leaves())+" "+reconstitute_sentence(self.t[0].leaves()), timeout=5000)
+			newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[2].leaves())+" "+reconstitute_sentence(self.t[0].leaves()), timeout=5000)
 			newtree1 = next(newtree1)
-			newtree2 = self.parser.raw_parse(reconstitute_sentence(self.t[2].leaves()), timeout=5000)
+			newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[2].leaves()), timeout=5000)
 			newtree2 = next(newtree2)
 			child2 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 			child1.type = stage_num
@@ -397,7 +400,7 @@ class SenTree:
 					for m in range(i+2,len(self.t)):
 						new_sent += reconstitute_sentence(self.t[m].leaves()) + " "
 					new_sent = new_sent[:-1]
-					newtree = self.parser.raw_parse(new_sent)
+					newtree = self.parser.parse_text(new_sent)
 					newtree = next(newtree)
 					child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 					child.type = stage_num
@@ -413,7 +416,7 @@ class SenTree:
 		self.children[stage_num] = []
 		for sub in subs:
 			if valid_s(sub):
-				newtree = self.parser.raw_parse(reconstitute_sentence(sub.leaves()))
+				newtree = self.parser.parse_text(reconstitute_sentence(sub.leaves()))
 				newtree = next(newtree)
 				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
 				child.type = stage_num
@@ -463,7 +466,7 @@ class SenTree:
 
 	# SpaCY has a coarser POS tagger. Here, we fetch the SpaCY mention's POS tags, according to the Stanford CoreNLP tagset
 	def corenlp_pos(self, mention):
-		# corenlp_tokens = next(self.parser.raw_parse(reconstitute_sentence([token.text for token in mention]).replace(" - ", "-")))
+		# corenlp_tokens = next(self.parser.parse_text(reconstitute_sentence([token.text for token in mention]).replace(" - ", "-")))
 		doc_len = len(self.ner)
 		ind = doc_len - 2
 		count = 0
@@ -593,8 +596,8 @@ class SenTree:
 		while not document_stack.empty():
 			curr = document_stack.get_nowait()
 			document_fulltext += curr.fulltext + " "
-		pattern = re.compile(r'([^ ])\. ')
-		self.ner = nlp(pattern.sub(r"\1 . ", document_fulltext))
+		pattern = re.compile(r'([^a-zA-Z0-9 ])\.(\s*)')
+		self.ner = nlp(pattern.sub(r"\1 .\2", document_fulltext))
 		return count,document_fulltext
 
 	# Assumes NER data is up to date for this SenTree
@@ -648,10 +651,9 @@ def reconstitute_sentence(raw):
 		reconstruct_quotes += elem + space
 	if reconstruct_quotes[-2:] == ". ":
 		reconstruct_quotes = reconstruct_quotes[:-1]
-	pattern1 = re.compile(r' \.')
+	pattern1 = re.compile(r' ([\.,:;])')
 	pattern2 = re.compile(r' \'s ')
-	pattern3 = re.compile(r' ,')
-	return pattern1.sub('.', pattern2.sub('\'s ', pattern3.sub(',', reconstruct_quotes))).replace(' \' ', '\' ')
+	return pattern1.sub(r'\1', pattern2.sub('\'s ', reconstruct_quotes)).replace(' \' ', '\' ')
 
 def valid_np(t):
 	if t.label() != "NP":
