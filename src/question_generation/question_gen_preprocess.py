@@ -301,35 +301,37 @@ class SenTree:
 							print(main_pos)
 							print("------------------------\n")
 
-				acc = 0
-				test = test[threshold:]
-				print("detected last sentencece")
-				print(test)
-				for operation in replace_operations:
-					start = operation[0] + acc
-					end_p = operation[1] + acc
-					replace_text = operation[2].split()
-					# print(str(start) + ", " + str(end_p) + ", " + operation[2])
-					replace_size = len(replace_text)
+				if len(replace_operations) > 0:
+					acc = 0
+					test = test[threshold:]
+					print("detected last sentencece")
+					print(test)
+				
+					for operation in replace_operations:
+						start = operation[0] + acc
+						end_p = operation[1] + acc
+						replace_text = operation[2].split()
+						# print(str(start) + ", " + str(end_p) + ", " + operation[2])
+						replace_size = len(replace_text)
 
-					test = test[:start] + replace_text + test[end_p:]
+						test = test[:start] + replace_text + test[end_p:]
 
-					acc += replace_size - (end_p - start)
+						acc += replace_size - (end_p - start)
 
-				test = reconstitute_sentence(test)
-				test = test.replace(" - ", "-")
-				print("post_reconstitution: " + test)
+					test = reconstitute_sentence(test)
+					test = test.replace(" - ", "-")
+					print("post_reconstitution: " + test)
 
-				newtree = self.parser.raw_parse(test)
-				newtree = next(newtree)
-				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
-				if self.prevST is not None:
-					self.prevST.nextST = child
-				if self.nextST is not None:
-					self.nextST.prevST = child
-				self.children[stage_num] = [child]
-				# print("YAY: [" + self.fulltext + "]\n====> [" + child.fulltext + "]\n")
-				return True
+					newtree = self.parser.raw_parse(test)
+					newtree = next(newtree)
+					child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+					if self.prevST is not None:
+						self.prevST.nextST = child
+					if self.nextST is not None:
+						self.nextST.prevST = child
+					self.children[stage_num] = [child]
+					# print("YAY: [" + self.fulltext + "]\n====> [" + child.fulltext + "]\n")
+					return True
 		return False
 
 	#9 Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
