@@ -171,7 +171,7 @@ def handle_stage_1(parse_tree):
     for sub in VP_List:
         #1 VP < (S=UNMV $,, /,/)
         # Mark S as UNMV if is a child of a VP, and follows after a ,
-        if sub.label() == "VP":
+        if sub.label() == "VP" and sub.height() > 2:
             init_comma = False
             detect_S = None
             for i in range(len(sub)):
@@ -187,7 +187,7 @@ def handle_stage_1(parse_tree):
     #2 "S < PP|ADJP|ADVP|S|SBAR=UNMV > ROOT"
     # Mark nodes directly under the root S as UNMV
     undesirables_2 = ["PP", "ADJP", "ADVP", "S", "SBAR"]
-    if parse_tree.label() == "ROOT" and len(parse_tree) > 0:
+    if parse_tree.label() == "ROOT" and len(parse_tree) > 0 and parse_tree.height() > 2:
         for i in range(len(parse_tree)):
             if parse_tree[i].label() == "S":
                 target = parse_tree[i]
@@ -207,7 +207,7 @@ def handle_stage_1(parse_tree):
     #4 "SBAR < (IN|DT < /[^that]/) << NP|PP=UNMV"
     # If there's a SBAR that begins with something other than "that", then we do not make questions from them
     for sub in SBAR_List:
-        if sub.label() == "SBAR":
+        if sub.label() == "SBAR" and sub.height() > 2:
             failed = False
             for i in range(len(sub)):
                 if sub[i].label() == "IN" or sub[i].label() == "DT":
@@ -224,7 +224,7 @@ def handle_stage_1(parse_tree):
     # If there is a WH_P under the SBAR, mark targets unmovable
     undesirables_5 = undesirables_3
     for sub in SBAR_List:
-        if sub.label() == "SBAR":
+        if sub.label() == "SBAR" and sub.height() > 2:
             found_WHP = False
             for i in range(len(sub)):
                 if sub[i].label()[:2] == "WH" and sub[i].label()[-1] == "P":
@@ -238,7 +238,7 @@ def handle_stage_1(parse_tree):
     #6 "SBAR <, IN|DT < (S < (NP=UNMV !?,, VP))"
     # Avoid generating bad questions due to complement phrases missing complimentizer
     for sub in SBAR_List:
-        if sub.label() == "SBAR":
+        if sub.label() == "SBAR" and sub.height() > 2:
             if len(sub) > 0 and (sub[0].label() == "IN" or sub[0].label() == "DT"):
                 for i in range(len(sub)):
                     if sub[i].label() == "S":
@@ -302,7 +302,7 @@ def handle_stage_1(parse_tree):
     for sub in NP_List:
         if sub.label() == "NP":
             for descendant in sub.subtrees():
-                if descendant.label() == "PP":
+                if descendant.label() == "PP" and sub.height() > 2:
                     found_invalid = False
                     for i in range(len(descendant)):
                         if descendant[i].label() == "IN":
@@ -344,7 +344,7 @@ def handle_stage_1(parse_tree):
     while not frontier.empty():
         curr,parentSuccess = frontier.get_nowait()
 
-        if curr.label() == "SBAR":
+        if curr.label() == "SBAR" and sub.height() > 2:
             found_adverb = False
             for i in range(len(curr)):
                 if curr[i].label() == "RB":
@@ -374,7 +374,7 @@ def handle_stage_1(parse_tree):
     # SBAR that are children of verbs (already tagged), but not complements, should be marked
     desirables_12 = ["that", "whether", "how"]
     for sub in SBAR_List:
-        if sub.label() == "SBAR":
+        if sub.label() == "SBAR" and sub.height() > 2:
             failed_whnp = True
             failed_spec = False
             for i in range(len(sub)):
@@ -396,7 +396,7 @@ def handle_stage_1(parse_tree):
     #13 "NP=UNMV < EX"
     # set NP parents of EX to unavailable
     for sub in NP_List:
-        if sub.label() == "NP":
+        if sub.label() == "NP" and sub.height() > 2:
             for i in range(len(sub)):
                 if sub[i].label() == "EX":
                     sub.set_label("UNMV:NP")
@@ -406,7 +406,8 @@ def handle_stage_1(parse_tree):
     # Mark phrases that occur with direct quotations
     undesirables_14 = undesirables_3
     for sub in S_Tot_List:
-        if sub.label()[0] == 'S':
+        if sub.label()[0] == 'S' and sub.height() > 2:
+            sub.pretty_print()
             for i in range(len(sub)):
                 if sub[i].label() == "``":
                     for descendant in sub.subtrees():
@@ -416,7 +417,7 @@ def handle_stage_1(parse_tree):
     #15 "PP=UNMV !< NP"
     # Mark PP that don't contain a NP
     for sub in PP_List:
-        if sub.label() == "PP":
+        if sub.label() == "PP" and sub.height() > 2:
             found_NP = False
             for i in range(len(sub)):
                 if sub[i].label() == "NP":
@@ -466,7 +467,12 @@ def handle_stage_1(parse_tree):
     # unmv_tregex = ["VP < (S=UNMV $,, /,/)", "S < PP|ADJP|ADVP|S|SBAR=UNMV > ROOT", "/\\.*/ < CC << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR < (IN|DT < /[^that]/) << NP|PP=UNMV", "SBAR < /^WH.*P$/ << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR <, IN|DT < (S < (NP=UNMV !?,, VP))", "S < (VP <+(VP) (VB|VBD|VBN|VBZ < be|being|been|is|are|was|were|am) <+(VP) (S << NP|ADJP|VP|VP|ADVP|PP=UNMV))", "NP << (PP=UNMV !< (IN < of|about))", "PP << PP=UNMV", "NP $ VP << PP=UNMV", "SBAR=UNMV [ !> VP | $-- /,/ | < RB ]", "SBAR=UNMV !< WHNP < (/^[^S].*/ !<< that|whether|how)", "NP=UNMV < EX", "/^S/ < `` << NP|ADJP|VP|ADVP|PP=UNMV", "PP=UNMV !< NP", "NP=UNMV $ @NP", "NP|PP|ADJP|ADVP << NP|ADJP|VP|ADVP|PP=UNMV", "@UNMV << NP|ADJP|VP|ADVP|PP=UNMV"]
     return [VP_List, NP_List, PP_List, S_List, CC_List, ADJP_List, ADVP_List, SBAR_List, S_Tot_List]
 
-def generate_questions(parse_tree):
+def generate_questions(parse):
+    if '.' not in parse.text:
+        return []
+    
+    parse_tree = parse.t
+
     print("Initial Tree:")
     parse_tree.pretty_print()
 
@@ -494,7 +500,7 @@ def generate_questions(parse_tree):
 
     print("Potential Answer Phrases:")
     for node in possible_answer_phrases:
-        print(reconstitute_sentence(" ".join(node.leaves())))
+        print(reconstitute_sentence(node.leaves()))
 
     print("===============================================================================================================\n")
     # If current answer phrase is the subject: do the inversion stuff
@@ -509,4 +515,4 @@ def generate_questions(parse_tree):
 
     # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
     # Stage 6: Post-Process
-    return [reconstitute_sentence(" ".join(node.leaves())) for node in possible_answer_phrases]
+    return [reconstitute_sentence(node.leaves()) for node in possible_answer_phrases]

@@ -19,7 +19,7 @@ def format_question(question):
     for det in DT_LIST:
         question = question.replace('the ' + det + " ", 'the ')
     question = question.replace('the The ', 'The ')
-    question = re.sub(r"\s([,;:\.\?!\'\"])", r"\1", question)
+    question = re.sub(r"\s([,;:\.\?!\'])", r"\1", question)
     question = re.sub(r"\.\s*\?", "?", question)
     question = re.sub(r",\s*\?", "?", question)
     question = question[0].upper() + question[1:]
@@ -74,11 +74,13 @@ if __name__ == "__main__":
     for parse in preprocessed_list:
         # question_list += getWhoWhat(parse) + getWhoWhatNP(parse) + getBinarySimple(parse) + getBinaryAuxiliary(parse)
         question_list += generate_questions(parse)
+        pass
 
     i = 0
     # enablePrint()
     # while i < len(question_list) and i < nquestions:
     while i < len(question_list):
+        print(question_list[i])
         print(format_question(question_list[i]))
         i += 1
     print(len(question_list))
