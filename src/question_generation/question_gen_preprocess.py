@@ -50,7 +50,7 @@ class SenTree:
 
 	def update_text(self):
 		self.text = self.t.leaves()
-		self.filltext = reconstitute_sentence(t.leaves()) if self.t else ""
+		self.fulltext = reconstitute_sentence(self.t.leaves()) if self.t else ""
 
 	#1 Replace <NN_> <PRP> turns of phrase
 
@@ -185,6 +185,46 @@ class SenTree:
 				return True
 		return False
 
+	def is_np_list(self, s, i=0):
+		if s.label() == "NP" and s.height() > 2:
+			a = i
+			is_list = False
+			state = 0
+			while(a < len(s)):
+				if state == 0 :
+					if s[a].label() in ["NP", "NN"]:
+						a += 1
+						state = 1
+					else:
+						break
+				elif state == 1:
+					if s[a].label() == ",":
+						a += 1
+						state = 2
+					elif s[a].label() == "CC":
+						a += 1
+						state = 3
+					else:
+						break
+				elif state == 2:
+					if s[a].label() == "CC":
+						a += 1
+						state = 3
+					elif s[a].label() in ["NP", "NN"]:
+						a += 1
+						state = 1
+					else:
+						break
+				else:
+					if s[a].label() in ["NP", "NN"]:
+						print("SKIPPING, since FOUND LIST in :")
+						s.pretty_print()
+						return True
+						break
+					else:
+						break
+		return False
+
 	#5 Run apositive removal/manipulation
 	def appositive_removal(self, immediate_questions, stage_num=5):
 		# can generate "IS <A> an apt descriptor for <B>?"
@@ -193,58 +233,30 @@ class SenTree:
 		retval = False
 		tree_string = " ".join(self.t.leaves())
 		for s in list(self.t.subtrees()):
-			if s.label() == "NP" and s.height() > 2:
-				if len(s) >= 4:
-					a = 0
-					is_list = False
-					state = 0
-					while(a < len(s)):
-						if state == 0 :
-							if s[a].label() in ["NP", "NN"]:
-								a += 1
-								state = 1
-							else:
-								break
-						elif state == 1:
-							if s[a].label() == ",":
-								a += 1
-								state = 2
-							elif s[a].label() == "CC":
-								a += 1
-								state = 3
-							else:
-								break
-						elif state == 2:
-							if s[a].label() == "CC":
-								a += 1
-								state = 3
-							elif s[a].label() in ["NP", "NN"]:
-								a += 1
-								state = 1
-							else:
-								break
-						else:
-							if s[a].label() in ["NP", "NN"]:
-								is_list = True
-								print("SKIPPING, since FOUND LIST in :")
-								s.pretty_print()
-								break
+			is_list = self.is_np_list(s)
+			if not is_list:
+				if len(s) >= 3 and s.height() > 2 and s.label() == "NP":
+					#print("GOING")
+					#s.pretty_print()
 					i = 0
 					appositives_and_delims = []
 					while not is_list and (i < len(s)-3):
-						if s[i].label() in ["NP", "NN"] and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
-							if s[i+2].pos()[0][1] != "CC":
+						if s[i].label() in ["NP", "NN"] and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims and len(s[i+2].leaves()) > 1:
+							#print("GOT ONE")
+							#s[i+2].pretty_print()
+							#print(self.is_np_list(s, i=i+2))
+							if s[i+2].pos()[0][1] != "CC" and not self.is_np_list(s, i=i+2):
 								appositives_and_delims.append(i+1)
 								appositives_and_delims.append(i+2)
 								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
 								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for" + " ".join(s[i].leaves())+"?")
 								retval = True
 							else:
-								print("SKIPPING child %s, since FOUND LIST in child %s of :" % str(i+2),str(i+2))
+								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside")
 								s.pretty_print()
 						i += 1
 
-					if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables:
+					if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables and len(s[-1].leaves()) > 1:
 						s_idx = -1
 						try:
 							s_idx = tree_string.index(" ".join(s.leaves()))
