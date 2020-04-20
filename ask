@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 
 # pip3 install spacy==2.1.0
 # python3 -m spacy download en_core_web_lg
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     # enablePrint()
     # while i < len(question_list) and i < nquestions:
     while i < len(question_list):
-        print(question_list[i])
-        print(format_question(question_list[i]))
+        print("Original: " + question_list[i])
+        print("Formatted: " + format_question(question_list[i]) + "\n")
         i += 1
     print(len(question_list))
