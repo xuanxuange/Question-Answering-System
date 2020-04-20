@@ -722,7 +722,7 @@ class SenTree:
 	# SpaCY has a coarser POS tagger. Here, we fetch the SpaCY mention's POS tags, according to the Stanford CoreNLP tagset
 	def corenlp_pos(self, mention, mention_per, target_ST):
 		# corenlp_tokens = next(self.parser.parse_text(reconstitute_sentence([token.text for token in mention]).replace(" - ", "-")))
-		target_sent = self
+		target_sent = target_ST
 		hyp_loc = max(0, len(target_sent.text) - 1 - max(0, (mention_per - mention.start)))
 
 		# print("Searching for: [" + reconstitute_sentence([token.text for token in mention]).replace(" - ", "-") + "] in [" + target_sent.fulltext + "]")
