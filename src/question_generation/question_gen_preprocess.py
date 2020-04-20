@@ -192,6 +192,7 @@ class SenTree:
 		allowables = ["NP", "PP", "SBAR", "S", "NN"]
 		retval = False
 		tree_string = " ".join(self.t.leaves())
+		self.t.pretty_print()
 		for s in list(self.t.subtrees()):
 			if s.label() == "NP" and s.height() > 2:
 				if len(s) >= 4:
