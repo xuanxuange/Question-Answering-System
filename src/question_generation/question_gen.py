@@ -410,7 +410,7 @@ def handle_stage_1(parse_tree):
     undesirables_14 = undesirables_3
     for sub in S_Tot_List:
         if sub.label()[0] == 'S' and sub.height() > 2:
-            sub.pretty_print()
+            # sub.pretty_print()
             for i in range(len(sub)):
                 if sub[i].label() == "``":
                     for descendant in sub.subtrees():

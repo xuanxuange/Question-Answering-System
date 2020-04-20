@@ -36,13 +36,44 @@ def enablePrint():
     sys.stdout = sys.__stdout__
     sys.stderr = sys.__stderr__
 
+common_replacements = {}
+common_replacements['c.'] = 'circa'
+common_replacements['ca.'] = 'circa'
+common_replacements['Dr.'] = 'Doctor'
+common_replacements['Esq.'] = 'Esquire'
+common_replacements['Dr.'] = 'Doctor'
+common_replacements['Esq.'] = 'Esquire'
+common_replacements['Hon.'] = 'Honorable'
+common_replacements['Jr.'] = 'Junior'
+common_replacements['Mr.'] = 'Mister'
+common_replacements['Mrs.'] = 'Mistress'
+common_replacements['Ms.'] = 'Miss'
+common_replacements['Messrs.'] = 'Misters'
+common_replacements['Mmes.'] = 'Mistresses'
+common_replacements['Msgr.'] = 'Monsignor'
+common_replacements['Prof.'] = 'Professor'
+common_replacements['Rev.'] = 'Reverend'
+common_replacements['Rt. Hon.'] = 'Right Honorable'
+common_replacements['Hon.'] = 'Honorable'
+common_replacements['Sr.'] = 'Senior'
+common_replacements['St.'] = 'Saint'
+common_replacements['SS.'] = 'Saints'
+common_replacements['Gen.'] = 'General'
+
+
+# Replace common periods
+def replace_common_periods(text):
+    for key,rep in common_replacements.items():
+        text = text.replace(key, rep)
+    return text
+
 # Remove dashes
 def sanitize_line(line):
     pattern0 = re.compile(r'\s+')           # remove unnecessary whitespace
     pattern1 = re.compile(r'([^ ])- ')      # remove trailing -
     pattern2 = re.compile(r' -([^ ])')      # remove trailing -
     pattern3 = re.compile(r'(\s*)\.\.\.')   # remove ellipsis
-    return pattern0.sub(' ', pattern1.sub(r'\1 ', pattern2.sub(r' \1', pattern3.sub('', line))))
+    return replace_common_periods(pattern0.sub(' ', pattern1.sub(r'\1 ', pattern2.sub(r' \1', pattern3.sub('', line)))))
 
 if __name__ == "__main__":
     article = sys.argv[1]

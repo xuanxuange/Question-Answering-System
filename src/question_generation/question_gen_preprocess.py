@@ -11,6 +11,7 @@ from nltk.tag import StanfordNERTagger
 from pattern.en import lemma
 
 
+safety = False
 #st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
 st = None
 nlp = spacy.load('en_core_web_lg')
@@ -229,7 +230,7 @@ class SenTree:
 	def appositive_removal(self, immediate_questions, stage_num=5):
 		# can generate "IS <A> an apt descriptor for <B>?"
 		delims = [";", ":", ",", "."]
-		allowables = ["NP", "PP", "SBAR", "S", "NN"]
+		allowables = ["NP", "PP", "SBAR", "S", "NN", "VP"]
 		retval = False
 		tree_string = " ".join(self.t.leaves())
 		self.t.pretty_print()
@@ -251,6 +252,8 @@ class SenTree:
 								appositives_and_delims.append(i+2)
 								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
 								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for " + " ".join(s[i].leaves())+"?")
+								if s[i+2].label() == "SBAR":
+									immediate_questions += getSBARQuestion(s[i+2], self.t)
 								# retval = True
 							else:
 								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside")
@@ -270,6 +273,8 @@ class SenTree:
 							appositives_and_delims.append(len(s)-2)
 							print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
 							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for " + " ".join(s[-3].leaves())+"?")
+							if s[-1].label() == "SBAR":
+								immediate_questions += getSBARQuestion(s[-1], self.t)
 							# retval = True
 
 					appositives_and_delims.sort(reverse=True)
@@ -463,15 +468,16 @@ class SenTree:
 				main_pos = main_ST.corenlp_pos(cluster.main, thresholds_list[main_id + 1] - 1, main_ST)
 
 				if main_pos is not None and "CC" in main_pos:
-					# Choose a new main, this one is a list
+					# Choose a new main, this one is a list. Give preference to proper nouns
 					generic_list = [item for sublist in generic_NP for item in sublist]
 					success = False
 					for mention in cluster:
-						if mention.text.lower() != cluster.main.text.lower() and mention.text not in generic_list:
+						if mention.text.lower() != cluster.main.text.lower() and (mention.text not in generic_list):
 							test_id = get_sent_num(thresholds_list, mention.start)
 							test_ST = sentree_list[test_id]
 							test_pos = test_ST.corenlp_pos(mention, thresholds_list[test_id + 1] - 1, test_ST)
 
+							# Check that new one is also not a list
 							if test_pos is not None and "CC" not in test_pos:
 								cluster.main = mention
 								main_ner = [token.ent_type_ for token in mention]
@@ -479,30 +485,34 @@ class SenTree:
 								main_ST = test_ST
 								main_pos = test_pos
 								success = True
-							break
+
+								# If this is a proper noun, then hooray we're done. Else, keep searching for a proper noun
+								if main_ST.check_proper(mention):
+									break
 					if not success:
 						main_pos = None
 
+				# only want to do coref if we found a reference to something solid ==> not a generic thing
 				if cluster.main.text.lower() not in generic_descriptors:
 					main_text = cluster.main.text
 					if not main_ST.check_proper(cluster.main):
 						main_text = main_text[0].lower() + main_text[1:]
 
+					# Assuming sentences are relatively clean/simplified, don't want to do coref if found prior descriptor is in the same sentence
 					for mention in cluster.mentions:
 						tar_id = get_sent_num(thresholds_list, mention.start)
 						target_ST = sentree_list[tar_id]
 						# print("TENTATIVE: [" + target_ST.fulltext + "]")
 						# print("CONFiRMED: [" + mention.sent.text + "]")
-						if mention.text.lower() != cluster.main.text.lower():
+
+						# Don't want to replcae if current mention is a proper noun
+						if mention.text.lower() != cluster.main.text.lower() and main_ST != target_ST and not target_ST.check_proper(mention):
 							mention_pos = target_ST.corenlp_pos(mention, thresholds_list[tar_id + 1] - 1, target_ST)
 							mention_text = [token.text for token in mention]
 							mention_ner = [token.ent_type_ for token in mention]
 
 							if not target_ST.match_ner(main_ner, mention_ner, main_pos, mention_pos, cluster.main, mention):
-								if not target_ST.check_proper(mention):
-									main_text = target_ST.custom_ner(mention_ner, mention_text, mention.start)
-								else:
-									main_pos = None
+								main_text,main_pos = target_ST.custom_ner(mention_ner, mention_text, mention.start)
 
 							# TODO: add safety check for main_pos is not None in final version. Leave out now for debug
 							if main_pos is not None:
@@ -864,7 +874,7 @@ class SenTree:
 
 	# Custom NER for when the provided coref fails
 	def custom_ner(self, mention_ner, mention_text, mention_start):
-		return reconstitute_sentence(mention_text)
+		return reconstitute_sentence(mention_text),None
 
 	# New function of NER: just set self.ner properly
 	def update_ner(self, ner):
