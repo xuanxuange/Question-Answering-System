@@ -2,6 +2,7 @@ import nltk
 from nltk.parse import corenlp
 from queue import Queue
 import pattern.en
+from pattern.en import lemma
 from src.question_generation.question_gen_preprocess import *
 
 def getWhoWhat(t):
@@ -128,6 +129,7 @@ def getBinaryAuxiliary(t):
 
 def getSBARQuestion(SBAR, root):
     if SBAR.height() > 2:
+        lemmatizer = nltk.stem.WordNetLemmatizer()
         if SBAR[0].label() == "WHNP":
             # case who/what
             if SBAR[0][0].label() == "WDT":
@@ -145,11 +147,12 @@ def getSBARQuestion(SBAR, root):
                 if S.label()[-1] == "S":
                     if S[0].label()[-2:] == "NP" and S[1].label()[-2:] == "VP":
                         if S[1][0].label()[:2] == "VB" and S[1][1].label()[:2] != "VB":
-                            conj_verb = pattern.en.conjugate(S[1][0].leaves()[0], tense=pattern.en.PAST+pattern.en.PARTICIPLE)
+                            vbn = S[1][0].leaves()[0]
+                            conj_verb = lemma(vbn)
                             verblvs = []
                             for i in range(1, len(S[1])):
                                 verblvs += S[1][i].leaves()
-                            return reconstitute_sentence(SBAR[0][0].leaves() + S[0].leaves() + [conj_verb] + verblvs + ["?"])
+                            return reconstitute_sentence(SBAR[0][0].leaves() + "did" + S[0].leaves() + [conj_verb] + verblvs + ["?"])
         elif SBAR[0].label() == "IN":
             # Case on that = what + invert, although = else
             if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
