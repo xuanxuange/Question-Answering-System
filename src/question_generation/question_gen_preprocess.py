@@ -8,6 +8,8 @@ import spacy
 import nltk
 from nltk.tag import StanfordNERTagger
 
+from pattern.en import lemma
+
 
 st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
 
@@ -49,12 +51,11 @@ class SenTree:
 	#1 Replace <NN_> <PRP> turns of phrase
 
 	#2 Replace <has been> <___> <to be> turns of phrase
-	def tobe_turn_of_phrase(self, text=None, pos=None,turns = []):
+	def tobe_turn_of_phrase(self, text=None, pos=None, turns=[], stage_num=2):
 		if text is None:
 			text = self.text
 		if pos is None:
 			pos = [p[1] for p in self.t.pos()]
-		stage_num = 2
 		first = [("has", "been"),("have", "been"), ("had", "been")]
 		last = [["to", "be"],["as"]]
 		restext = None
@@ -105,8 +106,7 @@ class SenTree:
 		return False
 
 	#3 Remove removable prefixes
-	def remove_prefix(self):
-		stage_num = 3
+	def remove_prefix(self, stage_num=3):
 		if self.t[0].label() == "S":
 			S = self.t[0]
 			if len(S) >= 5 and S[0].label() != "NP" and S[1].label() == ",":
@@ -141,10 +141,9 @@ class SenTree:
 		return False
 
 	#4 Parenthetical removal
-	def parenthetical_removal(self):
+	def parenthetical_removal(self, stage_num=4):
 		result = []
 		count = 0
-		stage_num = 4
 		start = None
 		parentheticals = []
 		# print(self.text)
@@ -183,7 +182,7 @@ class SenTree:
 		return False
 
 	#5 Run apositive removal/manipulation
-	def appositive_removal(self, immediate_questions):
+	def appositive_removal(self, immediate_questions, stage_num=5):
 		# can generate "IS <A> an apt descriptor for <B>?"
 		delims = [";", ":", ",", "."]
 		allowables = ["NP", "PP", "SBAR", "S", "NN"]
@@ -263,46 +262,53 @@ class SenTree:
 		return retval
 
 	#6 Remove NP-prefixed SBAR
-	def sbar_remove(self, immediate_questions):
-		stage_num = 6
-		for i in range(len(self.t)-1):
-			if self.t[i].label() == "NP" and self.t[i+1].label() == "VP" and self.t[i+1][0].label()[:2] == "VB" and self.t[i+1][1].label() == "NP" and self.t[i+1][2].label() == "SBAR":
-				self.flags["SBAR_removal_applied"] = True
-				new_sent = ""
-				for k in range(i+1):
-					new_sent += reconstitute_sentence(self.t[k].leaves()) + " "
-				new_sent += reconstitute_sentence(self.t[i+1].leaves()[:2]+self.t[i+1].leaves()[3:]) + " "
-				for m in range(i+2,len(self.t)):
-					new_sent += reconstitute_sentence(self.t[m].leaves()) + " "
-				new_sent = new_sent[:-1]
-				newtree = self.parser.parse_text(new_sent)
-				newtree = next(newtree)
-				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
-				child.type = stage_num
-				child.flags = self.flags
-				self.children[stage_num] = [child]
-				if self.prevST is not None:
-					self.prevST.nextST = child
-				if self.nextST is not None:
-					self.nextST.prevST = child
-				# print(reconstitute_sentence(self.t[i+1][2].leaves()))
+	# Should only remove trailing SBAR, and only when no CC, because that tends to mean there's a list, so the parser messed up
+	def sbar_remove(self, immediate_questions, stage_num=6):
+		curr = self.t[0]
+		acc_left = []
+		if len(curr) >= 3:
+			for i in range(len(curr) - 2):
+				acc_left += curr[i].leaves()
+			curr = curr[-2]
+			prior_NP = True
+			while curr.height() > 2:
+				found_np = False
+				for i in range(len(curr) - 1):
+					if found_np or curr[i].label() == "NP":
+						found_np = True
+					acc_left += curr[i].leaves()
+				if found_np and len(curr) >= 3 and curr[-3].label() == "NP" and curr[-2].label() == "," and curr[-1].label() == "SBAR":
+					test_pos = [pair[1] for pair in curr[-1].pos()]
+					# Check for no CC
+					if "CC" not in test_pos:
+						if acc_left[-1] == ",":
+							acc_left = acc_left[:-1]
+						immediate_questions += getSBARQuestion(curr, self.t)
 
-				temp = "What did " + reconstitute_sentence(self.t[i].leaves()) + " " + reconstitute_sentence(self.t[i+1][0].leaves()) + " " + reconstitute_sentence(self.t[i+1][2].leaves()) + "?"
-				pattern = re.compile(r'\.\s*\?')
-				immediate_questions.append(pattern.sub('?', temp))
-				return True
-			elif self.t[i].label() == "NP" and self.t[i+1].label() == "," and self.t[i+2].label() == "SBAR" and self.t[i+2][0].label()[:4] == "WHMP" and self.t[i+2][1].label() == "S" and self.t[i+2][1][-1].label() == "VP":
-				self.flags["SBAR_removal_applied"] = True
-				# print(reconstitute_sentence(self.t[i+1][2].leaves()))
-				temp = "Who or what " + reconstitute_sentence(self.t[i+2][1][-1].leaves()) + "?"
-				pattern = re.compile(r'\.\s*\?')
-				immediate_questions.append(pattern.sub('?', temp))
-				return True
+						temp = reconstitute_sentence(acc_left + ["."])
+
+						newtree = self.parser.parse_text(temp, timeout=5000)
+						newtree = next(newtree)
+						child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST)
+						# print(newtree.leaves())
+						child.type = stage_num
+						child.flags = self.flags
+						self.children[stage_num] = [child]
+						if self.prevST is not None:
+							self.prevST.nextST = child
+						if self.nextST is not None:
+							self.nextST.prevST = child
+						
+
+						print("REMOVED TRAILING SBAR. CHANGE [" + self.fulltext + "]")
+						print("=====> [" + child.fulltext + "]\n")
+
+						return True
+				curr = curr[-1]
 		return False
 	
 	#7 Separate root-level <S> <CC> <S>
-	def s_cc_s_separation(self):
-		stage_num = 7
+	def s_cc_s_separation(self, stage_num=7):
 		for i in range(len(self.t[0])-2):
 			if (valid_s(self.t[0][i]) and self.t[0][i+1].label() == "CC" and valid_s(self.t[0][i+2])):
 				newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5000)
@@ -347,8 +353,7 @@ class SenTree:
 	#8 NER coreference resolution
 	# Wrapper so we only do this part once (removed rollover concept)
 	# Assumes this is the very first ner doc
-	def do_all_ner(self, awaiting_ner, node_list, keep_bools):
-		stage_num = 8
+	def do_all_ner(self, awaiting_ner, node_list, keep_bools, stage_num=8):
 		finished_ner = []
 
 		sentree_list = []
@@ -388,14 +393,24 @@ class SenTree:
 
 		# Get all sentence threhsolds at once
 		thresholds_list = [0]
-		for i in range(len(tokenized_doc)):
-			if tokenized_doc[i] == ".":
-				thresholds_list.append(i + 1)
+		curr_size = 0
+		for sent in self.ner.sents:
+			curr_size += len(sent)
+			thresholds_list.append(curr_size)
 		
 		# error check here
 		if len(thresholds_list) != len(sentree_list) + 1:
-			# print(thresholds_list)
-			# print(self.ner.text.replace('.', '.\n'))
+			print(thresholds_list)
+			print(len(sentree_list))
+			i = 0
+
+			last_thresh = 0
+			while i < len(sentree_list) and i < len(thresholds_list) - 1:
+				new_thresh = thresholds_list[i+1]
+				print(sentree_list[i].text)
+				print(self.ner[last_thresh:new_thresh])
+				print("")
+				i += 1
 			raise ValueError
 
 		# Update ner on all ST before running coref
@@ -408,10 +423,33 @@ class SenTree:
 			original_pos = [token.pos_ for token in self.ner]
 			for cluster in self.ner._.coref_clusters:
 				document_metadata["coref"].append(cluster)
+
 				main_ner = [token.ent_type_ for token in cluster.main]
 				main_id = get_sent_num(thresholds_list, cluster.main.start)
 				main_ST = sentree_list[main_id]
 				main_pos = main_ST.corenlp_pos(cluster.main, thresholds_list[main_id + 1] - 1, main_ST)
+
+				if main_pos is not None and "CC" in main_pos:
+					# Choose a new main, this one is a list
+					generic_list = [item for sublist in generic_NP for item in sublist]
+					success = False
+					for mention in cluster:
+						if mention.text.lower() != cluster.main.text.lower() and mention.text not in generic_list:
+							test_id = get_sent_num(thresholds_list, mention.start)
+							test_ST = sentree_list[main_id]
+							test_pos = main_ST.corenlp_pos(mention, thresholds_list[test_id + 1] - 1, test_ST)
+
+							if test_pos is not None and "CC" not in test_pos:
+								cluster.main = mention
+								main_ner = [token.ent_type_ for token in mention]
+								main_id = test_id
+								main_ST = test_ST
+								main_pos = test_pos
+								success = True
+							break
+					if not success:
+						main_pos = None
+
 				if cluster.main.text.lower() not in generic_descriptors:
 					main_text = cluster.main.text
 					if not main_ST.check_proper(cluster.main):
@@ -539,8 +577,7 @@ class SenTree:
 		return finished_ner
 
 	#9 Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
-	def sbarpp_s_rearrange(self):
-		stage_num = 9
+	def sbarpp_s_rearrange(self, stage_num=9):
 		if len(self.t) == 1 and self.t[0].label() == "S":
 			S = self.t[0]
 			if len(S) > 4 and S[0].label() in ["PP", "SBAR"] and S[1].label() == "," and S.height() > 2:
@@ -572,8 +609,7 @@ class SenTree:
 		return False
 
 	#10 Rearrange <NP> <VP>'s <NP> components based on complexity if verb is "to be" - top-level only atm
-	def to_be_equiv(self):
-		stage_num = 10
+	def to_be_equiv(self, stage_num=10):
 		if self.flags["to_be_swapped"]:
 			return
 		else:
@@ -601,8 +637,7 @@ class SenTree:
 		return False
 
 	#11 Include every valid <NP> <VP> combo in the sentence
-	def npvp_combo(self):
-		stage_num = 11
+	def npvp_combo(self, stage_num=11):
 		subs = self.t.subtrees()
 		self.flags["npvp_extracted"] = True
 		self.children[stage_num] = []
@@ -734,6 +769,8 @@ class SenTree:
 		# print(main.label)
 		# print(main_ner)
 		# print(mention_ner)
+		if main_pos is None or mention_pos is None:
+			return False
 
 		if self.check_proper(mention):
 			return False
@@ -971,6 +1008,50 @@ def validate_s(t):
 	else:
 		return has_valid_np(t) and has_valid_vp(t)
 	return False
+
+
+
+def getSBARQuestion(SBAR, root):
+    retlist = []
+    if SBAR.height() > 2:
+        lemmatizer = nltk.stem.WordNetLemmatizer()
+        if SBAR[0].label() == "WHNP":
+            # case who/what
+            if SBAR[0][0].label() == "WDT":
+                retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
+            elif SBAR[0][0].label() == "WP":
+                retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
+        elif SBAR[0].label() == "WHADVP":
+            # case where/when
+            if SBAR[0][0].label() == "WDT":
+                retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
+            elif SBAR[0][0].label() == "WP":
+                retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
+            elif SBAR[0][0].label() == "WRB":
+                S = SBAR[1]
+                if S.label()[-1] == "S":
+                    if S[0].label()[-2:] == "NP" and S[1].label()[-2:] == "VP":
+                        if S[1][0].label()[:2] == "VB" and S[1][1].label()[:2] != "VB":
+                            vbn = S[1][0].leaves()[0]
+                            conj_verb = lemma(vbn)
+                            verblvs = []
+                            for i in range(1, len(S[1])):
+                                verblvs += S[1][i].leaves()
+                            retlist.append(reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
+        elif SBAR[0].label() == "IN":
+            # Case on that = what + invert, although = else
+            if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
+                if len(SBAR[1]) == 2:
+                    retlist.append(reconstitute_sentence(["What"] + SBAR[1][1].leaves() + ["?"]))
+                    # if has_valid_np(SBAR[1][0]) and has_valid_vp(SBAR[1][1]):
+                    #     retlist.append(reconstitute_sentence(["What", "was"] + SBAR[1].leaves() + ["?"]))
+                else:
+                    retlist.append(reconstitute_sentence(["What"] + SBAR[1][0].leaves() + ["?"]))
+        elif SBAR[0].label() == "S":
+            if len(SBAR[0]) == 2:
+                retlist.append(reconstitute_sentence(["What"] + SBAR[0][1].leaves() + ["?"]))
+    return retlist
+
 
 def acc_stage(stage):
 	test = stage + 1

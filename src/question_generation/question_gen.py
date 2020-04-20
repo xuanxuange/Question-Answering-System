@@ -127,48 +127,6 @@ def getBinaryAuxiliary(t):
                     out.append("%s %s %s?" % (verb.capitalize(), nptext, vptext))
     return out
 
-def getSBARQuestion(SBAR, root):
-    retlist = []
-    if SBAR.height() > 2:
-        lemmatizer = nltk.stem.WordNetLemmatizer()
-        if SBAR[0].label() == "WHNP":
-            # case who/what
-            if SBAR[0][0].label() == "WDT":
-                retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
-            elif SBAR[0][0].label() == "WP":
-                retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
-        elif SBAR[0].label() == "WHADVP":
-            # case where/when
-            if SBAR[0][0].label() == "WDT":
-                retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
-            elif SBAR[0][0].label() == "WP":
-                retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
-            elif SBAR[0][0].label() == "WRB":
-                S = SBAR[1]
-                if S.label()[-1] == "S":
-                    if S[0].label()[-2:] == "NP" and S[1].label()[-2:] == "VP":
-                        if S[1][0].label()[:2] == "VB" and S[1][1].label()[:2] != "VB":
-                            vbn = S[1][0].leaves()[0]
-                            conj_verb = lemma(vbn)
-                            verblvs = []
-                            for i in range(1, len(S[1])):
-                                verblvs += S[1][i].leaves()
-                            retlist.append(reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
-        elif SBAR[0].label() == "IN":
-            # Case on that = what + invert, although = else
-            if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
-                if len(SBAR[1]) == 2:
-                    retlist.append(reconstitute_sentence(["What"] + SBAR[1][1].leaves() + ["?"]))
-                    # if has_valid_np(SBAR[1][0]) and has_valid_vp(SBAR[1][1]):
-                    #     retlist.append(reconstitute_sentence(["What", "was"] + SBAR[1].leaves() + ["?"]))
-                else:
-                    retlist.append(reconstitute_sentence(["What"] + SBAR[1][0].leaves() + ["?"]))
-        elif SBAR[0].label() == "S":
-            if len(SBAR[0]) == 2:
-                retlist.append(reconstitute_sentence(["What"] + SBAR[0][1].leaves() + ["?"]))
-    return retlist
-
-
 
 
 def handle_stage_1(parse_tree):
