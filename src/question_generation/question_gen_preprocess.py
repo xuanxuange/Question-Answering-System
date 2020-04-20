@@ -249,7 +249,7 @@ class SenTree:
 							pass
 						if s_idx >= 0:
 							next_idx = s_idx + len(" ".join(s.leaves()))
-						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx].label() in delims:
+						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
 							appositives_and_delims.append(len(s)-1)
 							appositives_and_delims.append(len(s)-2)
 							print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
