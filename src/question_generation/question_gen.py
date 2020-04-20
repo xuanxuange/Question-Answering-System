@@ -586,4 +586,4 @@ def generate_questions(parse):
 
     # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
     # Stage 6: Post-Process
-    return retlist += gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse)
+    return retlist + gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse)
