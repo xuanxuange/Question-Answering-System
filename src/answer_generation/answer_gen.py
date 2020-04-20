@@ -318,7 +318,47 @@ def answer_why(question, rel_sentence):
     Generate answer for why questions
     Return: the answer in str, if fail to process, return rel_sentence
     """
-    pass
+    why_p = ['because', 'since', 'due to', 'because of']
+    why_p_index = -1; index = -1
+    rel_sentence_lower = rel_sentence.lower()
+    for p in why_p:
+        if p in rel_sentence_lower:
+            why_p_index = rel_sentence_lower.find(p)
+    if why_p_index == -1:
+        return rel_sentence
+
+    # extract root and main verb in question
+    nlp = spacy.load("en_core_web_sm")
+    q_dep = nlp(question)
+    root = None; main_v = None
+    for word in q_dep:
+        if word.head == word:
+            root = word
+        if find_sv(word):
+            main_v = word.head
+    root_index = rel_sentence_lower.find(root.text) if root else -1
+    v_index = rel_sentence_lower.find(main_v.text) if main_v else -1
+    index = root_index if root_index != -1 else v_index
+
+    # root and main_v not found in rel_sentence
+    if index == -1: 
+        return rel_sentence
+    
+    # answer should be the sub-sentence after the keywords to the next punctuation
+    end_punct = [',', '.', ';', '!']
+    answer = ''
+    for punct_index in range(why_p_index, len(rel_sentence)):
+        if rel_sentence_lower[punct_index] in end_punct:
+            answer = rel_sentence[why_p_index : punct_index]
+            break
+    if not answer:
+        return rel_sentence
+    else:
+        answer += '.'
+        return answer
+        
+
+
 
 
 if __name__ == "__main__":
@@ -332,8 +372,11 @@ if __name__ == "__main__":
     # sent = "The apple leads to the death of the princess ."
     # sent = "Tottenham eventually lost the match on penalties and thus were eliminated from Europe."
     # question = "who eventually lost the match on penalties and thus were eliminated from Europe ?"
-    question = "who recorded the then fastest goal in US qualifying history with a chest trap and sliding shot 53 seconds into an 8–0 defeat of Barbados ?"
-    sent = "In the us's opening 2010 qualifier, Dempsey recorded the then fastest goal in US qualifying history with a chest trap and sliding shot 53 seconds into an 8–0 defeat of Barbados."
+    # question = "who recorded the then fastest goal in US qualifying history with a chest trap and sliding shot 53 seconds into an 8–0 defeat of Barbados ?"
+    # sent = "In the us's opening 2010 qualifier, Dempsey recorded the then fastest goal in US qualifying history with a chest trap and sliding shot 53 seconds into an 8–0 defeat of Barbados."
+    question = "Why was Osiris associated with death ?"
+    sent = "Because he likes me, he give me 5 stars."
+    # sent = "Due to they incurred the costs of the assimilation rituals, by the New Kingdom all people, not just pharaohs, were believed to be associated with Osiris at death."
     # print(answer_whadv(question, sent))
-    print(answer_whn(question, sent))
+    print(answer_why(question, sent))
     # print(answer_howx(question, sent))
