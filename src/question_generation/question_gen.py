@@ -552,7 +552,7 @@ def generate_questions(parse):
             else:
                 test = getSBARQuestion(node, parse)
                 if test is not None:
-                    retlis.append(test)
+                    retlist.append(test)
                 else:
                     print("FAILED SBAR:")
                     node.pretty_print()
@@ -564,7 +564,7 @@ def generate_questions(parse):
         elif node.label()[-4:] == "SBAR":
             test = getSBARQuestion(node, parse)
             if test is not None:
-                retlis.append(test)
+                retlist.append(test)
             else:
                 print("FAILED SBAR:")
                 node.pretty_print()
