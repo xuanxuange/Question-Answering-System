@@ -398,7 +398,7 @@ class SenTree:
 		for i in range(len(tokenized_doc)):
 			token = tokenized_doc[i]
 			if token == ".":
-				thresholds_list.append(i)
+				thresholds_list.append(i + 1)
 		
 		# error check here
 		if len(thresholds_list) != len(sentree_list) + 1:
