@@ -50,7 +50,7 @@ class SenTree:
 
 	def update_text(self):
 		self.text = self.t.leaves()
-		self.filltext = reconstitute_sentence(t.leaves()) if self.t else ""
+		self.filltext = reconstitute_sentence(self.t.leaves()) if self.t is not None else ""
 
 	#1 Replace <NN_> <PRP> turns of phrase
 
@@ -237,7 +237,7 @@ class SenTree:
 								appositives_and_delims.append(i+1)
 								appositives_and_delims.append(i+2)
 								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
-								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for" + " ".join(s[i].leaves())+"?")
+								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for " + " ".join(s[i].leaves())+"?")
 								retval = True
 							else:
 								print("SKIPPING child %s, since FOUND LIST in child %s of :" % str(i+2),str(i+2))
@@ -256,7 +256,7 @@ class SenTree:
 							appositives_and_delims.append(len(s)-1)
 							appositives_and_delims.append(len(s)-2)
 							print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
-							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for" + " ".join(s[-3].leaves())+"?")
+							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for " + " ".join(s[-3].leaves())+"?")
 							retval = True
 
 					appositives_and_delims.sort(reverse=True)
@@ -949,7 +949,7 @@ def get_sent_num(thresholds_list, start):
 
 	return loind
 
-def reconstitute_sentence(raw):
+def reconstitute_sentence(raw, forCoreNLP=False):
 	found_quote = False
 	found_single = False
 	reconstruct_quotes = ""
@@ -977,7 +977,10 @@ def reconstitute_sentence(raw):
 		reconstruct_quotes = reconstruct_quotes[:-1]
 	pattern1 = re.compile(r' ([\.,:;])')
 	pattern2 = re.compile(r' \'s ')
-	return pattern1.sub(r'\1', pattern2.sub('\'s ', reconstruct_quotes)).replace(' \' ', '\' ')
+	almost = pattern1.sub(r'\1', pattern2.sub('\'s ', reconstruct_quotes)).replace(' \' ', '\' ')
+	if almost[-1] == "." and almost[-2] != " ":
+		almost = almost[:-1] + " ."
+	return almost
 
 def valid_np(t):
 	if t.label() != "NP":
