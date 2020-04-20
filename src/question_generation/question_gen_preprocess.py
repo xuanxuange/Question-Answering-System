@@ -388,29 +388,34 @@ class SenTree:
 			raise ValueError
 
 		pattern = re.compile(r'([^a-zA-Z0-9 ])\.(\s*)')
-		self.ner = nlp(pattern.sub(r"\1 .\2", document_fulltext))
+		spacy_input = pattern.sub(r"\1 .\2", document_fulltext)
+		self.ner = nlp(spacy_input)
 		tokenized_doc = [token.text for token in self.ner]
 
 		# Get all sentence threhsolds at once
 		thresholds_list = [0]
 		curr_size = 0
-		for sent in self.ner.sents:
-			curr_size += len(sent)
-			thresholds_list.append(curr_size)
+		for i in range(len(tokenized_doc)):
+			token = tokenized_doc[i]
+			if token == ".":
+				thresholds_list.append(i)
 		
 		# error check here
 		if len(thresholds_list) != len(sentree_list) + 1:
 			print(thresholds_list)
 			print(len(sentree_list))
-			i = 0
 
-			last_thresh = 0
+			i = 0
 			while i < len(sentree_list) and i < len(thresholds_list) - 1:
 				new_thresh = thresholds_list[i+1]
+				last_thresh = thresholds_list[i]
 				print(sentree_list[i].text)
-				print(self.ner[last_thresh:new_thresh])
+				print([token.text for token in self.ner[last_thresh:new_thresh]])
 				print("")
 				i += 1
+			
+			print("SPACY INPUT:")
+			print(spacy_input)
 			raise ValueError
 
 		# Update ner on all ST before running coref
