@@ -309,7 +309,7 @@ class SenTree:
 						target_ST = sentree_list[tar_id]
 						print("TENTATIVE: [" + target_ST.fulltext + "]")
 						print("CONFiRMED: [" + mention.sent.text + "]")
-						if mention.text != cluster.main.text:
+						if mention.text.lower() != cluster.main.text.lower():
 							mention_pos = target_ST.corenlp_pos(mention, thresholds_list[tar_id + 1] - 1, target_ST)
 							mention_text = [token.text for token in mention]
 							mention_ner = [token.ent_type_ for token in mention]
@@ -898,7 +898,7 @@ def get_sent_num(thresholds_list, start):
 		loval = thresholds_list[loind]
 		hival = thresholds_list[hiind + 1]
 		approx_size = (hival - loval) // (hiind + 1 - loind)
-		hyp = ((start - loval) // approx_size) + loind
+		hyp = min(hiind, ((start - loval) // approx_size) + loind)
 		print(str(loval) + ", " + str(hival) + ", " + str(approx_size) + ", " + str(thresholds_list[hyp]) + ", " + str(start))
 
 		if start >= thresholds_list[hyp]:

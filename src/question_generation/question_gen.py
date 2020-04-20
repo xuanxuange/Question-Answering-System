@@ -140,6 +140,16 @@ def getSBARQuestion(SBAR, root):
                 return reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"])
             elif SBAR[0][0].label() == "WP":
                 return reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"])
+            elif SBAR[0][0].label() == "WRB":
+                S = SBAR[1]
+                if S.label()[-1] == "S":
+                    if S[0].label()[-2:] == "NP" and S[1].label()[-2:] == "VP":
+                        if S[1][0].label()[:2] == "VB" and S[1][1].label()[:2] != "VB":
+                            conj_verb = pattern.en.conjugate(S[1][0].leaves()[0], tense=pattern.en.PAST+pattern.en.PARTICIPLE)
+                            verblvs = []
+                            for i in range(1, len(S[1])):
+                                verblvs += S[1][i].leaves()
+                            return reconstitute_sentence(SBAR[0][0].leaves() + S[0].leaves() + [conj_verb] + verblvs + ["?"])
         elif SBAR[0].label() == "IN":
             # Case on that = what + invert, although = else
             if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
