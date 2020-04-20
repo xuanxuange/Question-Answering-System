@@ -12,6 +12,7 @@ from nltk.tag import StanfordNERTagger
 st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
 
 nlp = spacy.load('en_core_web_lg')
+# nlp = spacy.load('en')
 neuralcoref.add_to_pipe(nlp)
 
 document_metadata = {}

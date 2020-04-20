@@ -152,7 +152,7 @@ def getSBARQuestion(SBAR, root):
                             verblvs = []
                             for i in range(1, len(S[1])):
                                 verblvs += S[1][i].leaves()
-                            return reconstitute_sentence(SBAR[0][0].leaves() + "did" + S[0].leaves() + [conj_verb] + verblvs + ["?"])
+                            return reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"])
         elif SBAR[0].label() == "IN":
             # Case on that = what + invert, although = else
             if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
