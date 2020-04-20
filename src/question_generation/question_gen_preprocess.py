@@ -11,8 +11,8 @@ from nltk.tag import StanfordNERTagger
 from pattern.en import lemma
 
 
-st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
-
+#st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
+st = None
 nlp = spacy.load('en_core_web_lg')
 # nlp = spacy.load('en')
 neuralcoref.add_to_pipe(nlp)
@@ -47,6 +47,10 @@ class SenTree:
 		self.nextST = nextST
 		self.to_be_swapped = False
 		return
+
+	def update_text(self):
+		self.text = self.t.leaves()
+		self.filltext = reconstitute_sentence(t.leaves()) if self.t else ""
 
 	#1 Replace <NN_> <PRP> turns of phrase
 
@@ -259,6 +263,13 @@ class SenTree:
 					for idx in appositives_and_delims:
 						s.__delitem__(idx)
 
+		for s in self.t.subtrees():
+			if s.height() > 1 and s[0] != str(s[0]):
+				for i in range(len(s)-1,-1,-1):
+					if not s[i].leaves():
+						s.__delitem__(i)
+
+		self.update_text()
 		return retval
 
 	#6 Remove NP-prefixed SBAR
@@ -861,7 +872,7 @@ class SenTree:
 	# Assumes NER data is up to date for this SenTree
 	# Gets you a 
 	def align_ner(self):
-		tokens = st.tag(self.text)
+		#tokens = st.tag(self.text)
 		# print("Stanford NER: ")
 		# print(tokens)
 		# print("SpaCY NER: ")
