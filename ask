@@ -87,7 +87,7 @@ if __name__ == "__main__":
     # enablePrint()
     # while i < len(question_list) and i < nquestions:
     while i < len(question_list):
-        print(question_list[i])
-        print(format_question(question_list[i]))
+        print("Original: " + question_list[i])
+        print("Formatted: " + format_question(question_list[i]))
         i += 1
     print(len(question_list))

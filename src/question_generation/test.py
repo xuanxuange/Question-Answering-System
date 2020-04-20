@@ -2,37 +2,33 @@
 
 # pip3 install stanfordcorenlp
 
-from stanfordcorenlp import StanfordCoreNLP
-from os import path
-import pickle
+def get_sent_num(thresholds_list, start):
+	print(thresholds_list)
+	if start >= thresholds_list[-1]:
+		return len(thresholds_list) - 1
 
+	loind = 0
+	hiind = len(thresholds_list) - 2
 
-debug = False
-sample = 'a1'
-corenlp_folder = '/Users/Thomas/Documents/11-411/CoreNLP'
+	while loind < hiind:
+		loval = thresholds_list[loind]
+		hival = thresholds_list[hiind + 1]
+		approx_size = (hival - loval) // (hiind + 1 - loind)
+		hyp = ((start - loval) // approx_size) + loind
+		print(str(loval) + ", " + str(hival) + ", " + str(approx_size) + ", " + str(thresholds_list[hyp]) + ", " + str(start))
 
-doctext = []
-if path.exists(sample + '_text.pkl') and not debug:
-    print("loading from pkl")
-    doctext = pickle.load(open(sample + '_text.pkl', 'rb'))
-else:
-    print("pkl not found")
-    with open('../../data/development/set1/' + sample + '.txt') as f:
-        line = f.readline()
-        while line:
-            doctext.append(line)
-            line = f.readline()
-        f.close()
-    pickle.dump(doctext, open(sample + '_text.pkl', 'wb'))
-    print("pkl dumped")
-print("sample loaded")
+		if start >= thresholds_list[hyp]:
+			if start < thresholds_list[hyp + 1]:
+				hiind = hyp
+				loind = hyp
+			else:
+				loind = hyp + 1
+		else:
+			if start >= thresholds_list[hyp - 1]:
+				loind = hyp - 1
+				hiind = hyp - 1
+			else:
+				hiind = hyp - 2
+	print("Found <" + str(start) + "> in bucket [" + str(thresholds_list[loind]) + ", " + str(thresholds_list[loind + 1]) + ")")
 
-
-nlp = StanfordCoreNLP(corenlp_folder)
-
-testline = doctext[4]
-
-parse_tree = nlp.parse(testline)
-ner_data = nlp.ner(testline)
-print(ner_data)
-nlp.close()
+	return loind

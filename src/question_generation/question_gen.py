@@ -2,7 +2,7 @@ import nltk
 from nltk.parse import corenlp
 from queue import Queue
 import pattern.en
-from src.question_generation.question_gen_preprocess import reconstitute_sentence
+from src.question_generation.question_gen_preprocess import *
 
 def getWhoWhat(t):
     out = []
@@ -125,6 +125,35 @@ def getBinaryAuxiliary(t):
                     verb = candidate[1].leaves()[0]
                     out.append("%s %s %s?" % (verb.capitalize(), nptext, vptext))
     return out
+
+def getSBARQuestion(SBAR, root):
+    if SBAR.height() > 2:
+        if SBAR[0].label() == "WHNP":
+            # case who/what
+            if SBAR[0][0].label() == "WDT":
+                return reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"])
+            elif SBAR[0][0].label() == "WP":
+                return reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"])
+        elif SBAR[0].label() == "WHADVP":
+            # case where/when
+            if SBAR[0][0].label() == "WDT":
+                return reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"])
+            elif SBAR[0][0].label() == "WP":
+                return reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"])
+        elif SBAR[0].label() == "IN":
+            # Case on that = what + invert, although = else
+            if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
+                if len(SBAR[1]) == 2:
+                    return reconstitute_sentence(["What"] + SBAR[1][1].leaves() + ["?"])
+                else:
+                    return reconstitute_sentence(["What"] + SBAR[1][0].leaves() + ["?"])
+        elif SBAR[0].label() == "S":
+            if len(SBAR[0]) == 2:
+                return reconstitute_sentence(["What"] + SBAR[0][1].leaves() + ["?"])
+    return None
+
+
+
 
 def handle_stage_1(parse_tree):
     # Have to manually recreate the logic since can't get Tregex working.
@@ -344,7 +373,7 @@ def handle_stage_1(parse_tree):
     while not frontier.empty():
         curr,parentSuccess = frontier.get_nowait()
 
-        if curr.label() == "SBAR" and sub.height() > 2:
+        if curr.label() == "SBAR" and curr.height() > 2:
             found_adverb = False
             for i in range(len(curr)):
                 if curr[i].label() == "RB":
@@ -361,14 +390,14 @@ def handle_stage_1(parse_tree):
                     elif curr.height() > 2:
                         frontier.put_nowait((curr[i], (parentSuccess and (not found_comma))))
         # minimum layer is 4, likely higher
-        elif curr.height() >= 4:
+        elif curr.height() > 2:
             parentSuccess = (curr.label() == "VP")
             found_comma = False
             for i in range(len(curr)):
                 if curr[i].label() == ",":
                     found_comma = True
                 else:
-                    frontier.put_nowait((curr[i], (parentSuccess and (not found_comma))))
+                    frontier.put_nowait((curr[i], parentSuccess and (not found_comma)))
 
     #12 "SBAR=UNMV !< WHNP < (/^[^S].*/ !<< that|whether|how)"
     # SBAR that are children of verbs (already tagged), but not complements, should be marked
@@ -467,9 +496,27 @@ def handle_stage_1(parse_tree):
     # unmv_tregex = ["VP < (S=UNMV $,, /,/)", "S < PP|ADJP|ADVP|S|SBAR=UNMV > ROOT", "/\\.*/ < CC << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR < (IN|DT < /[^that]/) << NP|PP=UNMV", "SBAR < /^WH.*P$/ << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR <, IN|DT < (S < (NP=UNMV !?,, VP))", "S < (VP <+(VP) (VB|VBD|VBN|VBZ < be|being|been|is|are|was|were|am) <+(VP) (S << NP|ADJP|VP|VP|ADVP|PP=UNMV))", "NP << (PP=UNMV !< (IN < of|about))", "PP << PP=UNMV", "NP $ VP << PP=UNMV", "SBAR=UNMV [ !> VP | $-- /,/ | < RB ]", "SBAR=UNMV !< WHNP < (/^[^S].*/ !<< that|whether|how)", "NP=UNMV < EX", "/^S/ < `` << NP|ADJP|VP|ADVP|PP=UNMV", "PP=UNMV !< NP", "NP=UNMV $ @NP", "NP|PP|ADJP|ADVP << NP|ADJP|VP|ADVP|PP=UNMV", "@UNMV << NP|ADJP|VP|ADVP|PP=UNMV"]
     return [VP_List, NP_List, PP_List, S_List, CC_List, ADJP_List, ADVP_List, SBAR_List, S_Tot_List]
 
+
+
+def gen_PP(phrases, parse):
+    return []
+
+def gen_NP(phrases, parse):
+    return []
+
+def gen_SBAR(phrases, parse):
+    retlist = []
+    for phrase in phrases:
+        test = getSBARQuestion(phrase, parse)
+        if test is not None:
+            retlist.append(test)
+    return retlist
+
 def generate_questions(parse):
     if '.' not in parse.text:
         return []
+    
+    retlist = []
     
     parse_tree = parse.t
 
@@ -493,10 +540,34 @@ def generate_questions(parse):
 
     # Stage 2: Select answer phrases and generate a set of question phrases for it
     possible_answer_phrases = []
+    PP_phrases = []
+    NP_phrases = []
+    SBAR_phrases = []
     for node in (NP_List + PP_List + SBAR_List):
         if node.label()[:4] != "UNMV":
+            if node.label == "PP":
+                PP_phrases.append(node)
+            elif node.label == "NP":
+                NP_phrases.append(node)
+            else:
+                test = getSBARQuestion(node, parse)
+                if test is not None:
+                    retlis.append(test)
+                else:
+                    print("FAILED SBAR:")
+                    node.pretty_print()
+                # SBAR_phrases.append(node)
+            node.flags = ["HAI"]
+            print(node.flags)
             possible_answer_phrases.append(node)
             # node.pretty_print()
+        elif node.label()[-4:] == "SBAR":
+            test = getSBARQuestion(node, parse)
+            if test is not None:
+                retlis.append(test)
+            else:
+                print("FAILED SBAR:")
+                node.pretty_print()
 
     print("Potential Answer Phrases:")
     for node in possible_answer_phrases:
@@ -515,4 +586,4 @@ def generate_questions(parse):
 
     # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
     # Stage 6: Post-Process
-    return [reconstitute_sentence(node.leaves()) for node in possible_answer_phrases]
+    return retlist += gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse)
