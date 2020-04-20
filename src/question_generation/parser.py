@@ -26,6 +26,7 @@ else:
         line = f.readline()
         while line:
             if len(line.split()) > 0:  # check for empty line
+                print(line)
                 parsed_iter = parser.parse_text(line, timeout=5000)  # native output is a listiterator over detected sentences
                 res = corefparser.api_call(line, timeout=5000)
                 # res["parse"]
@@ -33,7 +34,7 @@ else:
                 print(line)
 
                 for sentence in res["sentences"]:
-                    print(sentences["parse"])
+                    print(sentence["parse"])
 
                 while True:
                     try:

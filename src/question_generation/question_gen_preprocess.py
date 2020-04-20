@@ -184,7 +184,82 @@ class SenTree:
 	#5 Run apositive removal/manipulation
 	def appositive_removal(self, immediate_questions, stage_num=5):
 		# can generate "IS <A> an apt descriptor for <B>?"
-		return False
+		delims = [";", ":", ",", "."]
+		allowables = ["NP", "PP", "SBAR", "S", "NN"]
+		retval = False
+		tree_string = " ".join(self.t.leaves())
+		for s in list(self.t.subtrees()):
+			if s.label() == "NP" and s.height() > 2:
+				if len(s) >= 4:
+					a = 0
+					is_list = False
+					state = 0
+					while(a < len(s)):
+						if state == 0 :
+							if s[a].label() in ["NP", "NN"]:
+								a += 1
+								state = 1
+							else:
+								break
+						elif state == 1:
+							if s[a].label() == ",":
+								a += 1
+								state = 2
+							elif s[a].label() == "CC":
+								a += 1
+								state = 3
+							else:
+								break
+						elif state == 2:
+							if s[a].label() == "CC":
+								a += 1
+								state = 3
+							elif s[a].label() in ["NP", "NN"]:
+								a += 1
+								state = 1
+							else:
+								break
+						else:
+							if s[a].label() in ["NP", "NN"]:
+								is_list = True
+								print("SKIPPING, since FOUND LIST in :")
+								s.pretty_print()
+								break
+					i = 0
+					appositives_and_delims = []
+					while not is_list and (i < len(s)-3):
+						if s[i].label() in ["NP", "NN"] and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
+							if s[i+2].pos()[0][1] != "CC":
+								appositives_and_delims.append(i+1)
+								appositives_and_delims.append(i+2)
+								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
+								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for" + " ".join(s[i].leaves())+"?")
+								retval = True
+							else:
+								print("SKIPPING child %s, since FOUND LIST in child %s of :" % str(i+2),str(i+2))
+								s.pretty_print()
+						i += 1
+
+					if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables:
+						s_idx = -1
+						try:
+							s_idx = tree_string.index(" ".join(s.leaves()))
+						except:
+							pass
+						if s_idx >= 0:
+							next_idx = s_idx + len(" ".join(s.leaves()))
+						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx].label() in delims:
+							appositives_and_delims.append(len(s)-1)
+							appositives_and_delims.append(len(s)-2)
+							print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
+							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for" + " ".join(s[-3].leaves())+"?")
+							retval = True
+
+					appositives_and_delims.sort(reverse=True)
+					for idx in appositives_and_delims:
+						s.__delitem__(idx)
+
+		return retval
 
 	#6 Remove NP-prefixed SBAR
 	# Should only remove trailing SBAR, and only when no CC, because that tends to mean there's a list, so the parser messed up
