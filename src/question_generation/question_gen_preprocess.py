@@ -132,7 +132,6 @@ class SenTree:
 					# print(newtree.leaves())
 					child.type = stage_num
 					child.flags = self.flags
-					child.parentheticals = parentheticals
 					self.children[stage_num] = [child]
 					if self.prevST is not None:
 						self.prevST.nextST = child
