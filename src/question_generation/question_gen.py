@@ -128,20 +128,21 @@ def getBinaryAuxiliary(t):
     return out
 
 def getSBARQuestion(SBAR, root):
+    retlist = []
     if SBAR.height() > 2:
         lemmatizer = nltk.stem.WordNetLemmatizer()
         if SBAR[0].label() == "WHNP":
             # case who/what
             if SBAR[0][0].label() == "WDT":
-                return reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"])
+                retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
             elif SBAR[0][0].label() == "WP":
-                return reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"])
+                retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
         elif SBAR[0].label() == "WHADVP":
             # case where/when
             if SBAR[0][0].label() == "WDT":
-                return reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"])
+                retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
             elif SBAR[0][0].label() == "WP":
-                return reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"])
+                retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
             elif SBAR[0][0].label() == "WRB":
                 S = SBAR[1]
                 if S.label()[-1] == "S":
@@ -152,18 +153,20 @@ def getSBARQuestion(SBAR, root):
                             verblvs = []
                             for i in range(1, len(S[1])):
                                 verblvs += S[1][i].leaves()
-                            return reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"])
+                            retlist.append(reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
         elif SBAR[0].label() == "IN":
             # Case on that = what + invert, although = else
             if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
                 if len(SBAR[1]) == 2:
-                    return reconstitute_sentence(["What"] + SBAR[1][1].leaves() + ["?"])
+                    retlist.append(reconstitute_sentence(["What"] + SBAR[1][1].leaves() + ["?"]))
+                    # if has_valid_np(SBAR[1][0]) and has_valid_vp(SBAR[1][1]):
+                    #     retlist.append(reconstitute_sentence(["What", "was"] + SBAR[1].leaves() + ["?"]))
                 else:
-                    return reconstitute_sentence(["What"] + SBAR[1][0].leaves() + ["?"])
+                    retlist.append(reconstitute_sentence(["What"] + SBAR[1][0].leaves() + ["?"]))
         elif SBAR[0].label() == "S":
             if len(SBAR[0]) == 2:
-                return reconstitute_sentence(["What"] + SBAR[0][1].leaves() + ["?"])
-    return None
+                retlist.append(reconstitute_sentence(["What"] + SBAR[0][1].leaves() + ["?"]))
+    return retlist
 
 
 
@@ -564,8 +567,8 @@ def generate_questions(parse):
                 NP_phrases.append(node)
             else:
                 test = getSBARQuestion(node, parse)
-                if test is not None:
-                    retlist.append(test)
+                if len(test) > 0:
+                    retlist += test
                 else:
                     print("FAILED SBAR:")
                     node.pretty_print()
@@ -576,8 +579,8 @@ def generate_questions(parse):
             # node.pretty_print()
         elif node.label()[-4:] == "SBAR":
             test = getSBARQuestion(node, parse)
-            if test is not None:
-                retlist.append(test)
+            if len(test) > 0:
+                retlist += test
             else:
                 print("FAILED SBAR:")
                 node.pretty_print()

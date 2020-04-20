@@ -186,7 +186,7 @@ class SenTree:
 				return True
 			elif self.t[i].label() == "NP" and self.t[i+1].label() == "," and self.t[i+2].label() == "SBAR" and self.t[i+2][0].label()[:4] == "WHMP" and self.t[i+2][1].label() == "S" and self.t[i+2][1][-1].label() == "VP":
 				self.flags["SBAR_removal_applied"] = True
-				print(reconstitute_sentence(self.t[i+1][2].leaves()))
+				# print(reconstitute_sentence(self.t[i+1][2].leaves()))
 				temp = "Who or what " + reconstitute_sentence(self.t[i+2][1][-1].leaves()) + "?"
 				pattern = re.compile(r'\.\s*\?')
 				immediate_questions.append(pattern.sub('?', temp))
@@ -237,6 +237,7 @@ class SenTree:
 				return True
 		return False
 
+	#8 NER coreference resolution
 	# Wrapper so we only do this part once (removed rollover concept)
 	# Assumes this is the very first ner doc
 	def do_all_ner(self, awaiting_ner, node_list, keep_bools):
@@ -286,8 +287,8 @@ class SenTree:
 		
 		# error check here
 		if len(thresholds_list) != len(sentree_list) + 1:
-			print(thresholds_list)
-			print(self.ner.text.replace('.', '.\n'))
+			# print(thresholds_list)
+			# print(self.ner.text.replace('.', '.\n'))
 			raise ValueError
 
 		# Update ner on all ST before running coref
@@ -305,19 +306,20 @@ class SenTree:
 				main_ST = sentree_list[main_id]
 				main_pos = main_ST.corenlp_pos(cluster.main, thresholds_list[main_id + 1] - 1, main_ST)
 				if cluster.main.text.lower() not in generic_descriptors:
+					main_text = cluster.main.text
+					if not main_ST.check_proper(cluster.main):
+						main_text = main_text[0].lower() + main_text[1:]
+
 					for mention in cluster.mentions:
 						tar_id = get_sent_num(thresholds_list, mention.start)
 						target_ST = sentree_list[tar_id]
-						print("TENTATIVE: [" + target_ST.fulltext + "]")
-						print("CONFiRMED: [" + mention.sent.text + "]")
+						# print("TENTATIVE: [" + target_ST.fulltext + "]")
+						# print("CONFiRMED: [" + mention.sent.text + "]")
 						if mention.text.lower() != cluster.main.text.lower():
 							mention_pos = target_ST.corenlp_pos(mention, thresholds_list[tar_id + 1] - 1, target_ST)
 							mention_text = [token.text for token in mention]
 							mention_ner = [token.ent_type_ for token in mention]
 
-							main_text = cluster.main.text
-							main_text = main_text[0].lower() + main_text[1:]
-							
 							if not target_ST.match_ner(main_ner, mention_ner, main_pos, mention_pos, cluster.main, mention):
 								if not target_ST.check_proper(mention):
 									main_text = target_ST.custom_ner(mention_ner, mention_text, mention.start)
@@ -339,8 +341,8 @@ class SenTree:
 								else:
 									corrected_main += "\'s"
 
-								print("metadata:")
-								print("Main position: (" + str(cluster.main.start) + ", " + str(cluster.main.end) + ")")
+								# print("metadata:")
+								# print("Main position: (" + str(cluster.main.start) + ", " + str(cluster.main.end) + ")")
 								# print(mention.start - threshold)
 								# print(mention.end - threshold)
 
@@ -348,34 +350,34 @@ class SenTree:
 								# print(original_pos)
 
 								# print(cluster.main.text)
-								print(main_ner)
-								print([ent.label_ for ent in list(cluster.main.ents)])
-								print([ent.text for ent in list(cluster.main.ents)])
+								# print(main_ner)
+								# print([ent.label_ for ent in list(cluster.main.ents)])
+								# print([ent.text for ent in list(cluster.main.ents)])
 								# print(main_pos)
-								print(mention.text)
-								print(mention_ner)
-								print(mention_pos)
+								# print(mention.text)
+								# print(mention_ner)
+								# print(mention_pos)
 								# print([token.text for token in doc_info][threshold:])
 
 								if 'PRP$' in mention_pos or mention_pos[-1] == 'POS':
 									if 'PRP$' in main_pos:
-										print("Chosen replacement: " + main_text)
+										# print("Chosen replacement: " + main_text)
 										replace_operations.append((mention.start - threshold, mention.end - threshold, main_text))
 									else:
-										print("Chosen replacement: " + corrected_main)
+										# print("Chosen replacement: " + corrected_main)
 										replace_operations.append((mention.start - threshold, mention.end - threshold, corrected_main))
 								elif len(original_pos) > mention.end and original_pos[mention.end][1] == "POS":
 									if 'PRP$' in main_pos:
-										print("Chosen replacement: " + main_text)
+										# print("Chosen replacement: " + main_text)
 										replace_operations.append((mention.start - threshold, mention.end - threshold + 1, main_text))
 									else:
-										print("Chosen replacement: " + corrected_main)
+										# print("Chosen replacement: " + corrected_main)
 										replace_operations.append((mention.start - threshold, mention.end - threshold + 1, corrected_main))
 								else:
-									print("Chosen replacement: " + main_text)
+									# print("Chosen replacement: " + main_text)
 									replace_operations.append((mention.start - threshold, mention.end - threshold, main_text))
-								print(main_pos)
-								print("------------------------\n")
+								# print(main_pos)
+								# print("------------------------\n")
 			for ST_id in range(len(all_doc_list)):
 				replace_operations = all_doc_list[ST_id]
 				threshold = thresholds_list[ST_id]
@@ -390,8 +392,8 @@ class SenTree:
 						test = tokenized_doc[threshold:next_threshold]
 					else:
 						test = tokenized_doc[threshold:]
-					print("detected target sentence")
-					print(test)
+					# print("detected target sentence")
+					# print(test)
 
 					acc = 0
 					for operation in replace_operations:
@@ -407,7 +409,7 @@ class SenTree:
 
 					test = reconstitute_sentence(test)
 					test = test.replace(" - ", "-")
-					print("post_reconstitution: " + test)
+					# print("post_reconstitution: " + test)
 
 					newtree = self.parser.parse_text(test)
 					newtree = next(newtree)
@@ -429,179 +431,37 @@ class SenTree:
 					finished_ner.append(awaiting_ner[ST_id])
 		return finished_ner
 
-	#8 NER coreference resolution
-	def run_ner(self, ner=None, threshold=None, document_fulltext=None):
-		stage_num = 8
-		if self.ner is None and self.text[-1] == ".":
-			count = 0
-			if ner is None:
-				count,document_fulltext = self.old_update_ner()
-			else:
-				self.ner = ner
-			self.align_ner()
-			if self.ner._.has_coref:
-				doc_info = self.ner
-
-				test = [token.text for token in doc_info]
-				if threshold is None:
-					threshold = 0
-					if count > 1:
-						print(test)
-						threshold = len(test) - 1 - test[:-1][::-1].index(".")
-						print("Detected threshold: " + str(threshold) + " -- " + str(doc_info[threshold].text))
-				else:
-					print("Passed threshold: " + str(threshold))
-				# test = list(self.parser.tokenize(test))
-				original_pos = [token.pos_ for token in doc_info][threshold:]
-				# print("Found coref in: ")
-				for st in document_fulltext.split('. '):
-					# print(st)
-					pass
-				# print("------------")
-
-				replace_operations = []
-				generic_descriptors = ["he", "his", "her", "hers", "she", "him", "they", "their", "them", "theirs", "it", "its"]
-				for cluster in doc_info._.coref_clusters:
-					document_metadata["coref"].append(cluster)
-					for mention in cluster.mentions:
-						if mention.start >= threshold and mention.text != cluster.main.text and cluster.main.text.lower() not in generic_descriptors:
-							main_ner = [token.ent_type_ for token in cluster.main]
-							mention_pos = self.corenlp_pos(mention)
-							mention_text = [token.text for token in mention]
-							mention_ner = [token.ent_type_ for token in mention]
-
-							main_text = cluster.main.text
-							main_text = main_text[0].lower() + main_text[1:]
-							main_pos = self.corenlp_pos(cluster.main)
-							if not self.match_ner(main_ner, mention_ner, main_pos, mention_pos, cluster.main, mention):
-								if not self.check_proper(mention):
-									main_text = self.custom_ner(mention_ner, mention_text, mention.start)
-								else:
-									main_pos = None
-
-							# TODO: add safety check for main_pos is not None in final version. Leave out now for debug
-							if main_pos is not None:
-								corrected_main = main_text
-								if corrected_main[-2:] == "\'s":
-									main_text = corrected_main[:-2]
-								elif corrected_main[-2:] == "s\'":
-									main_text = corrected_main[:-1]
-								elif corrected_main[-1] == "s":
-									corrected_main += "\'"
-								else:
-									corrected_main += "\'s"
-
-								print("metadata:")
-								print("Main position: (" + str(cluster.main.start) + ", " + str(cluster.main.end) + ")")
-								# print(mention.start - threshold)
-								# print(mention.end - threshold)
-
-								# print(threshold)
-								# print(original_pos)
-
-								# print(cluster.main.text)
-								print(main_ner)
-								print([ent.label_ for ent in list(cluster.main.ents)])
-								print([ent.text for ent in list(cluster.main.ents)])
-								# print(main_pos)
-								print(mention.text)
-								print(mention_ner)
-								print(mention_pos)
-								# print([token.text for token in doc_info][threshold:])
-
-								if 'PRP$' in mention_pos or mention_pos[-1] == 'POS':
-									if 'PRP$' in main_pos:
-										print("Chosen replacement: " + main_text)
-										replace_operations.append((mention.start - threshold, mention.end - threshold, main_text))
-									else:
-										print("Chosen replacement: " + corrected_main)
-										replace_operations.append((mention.start - threshold, mention.end - threshold, corrected_main))
-								elif len(original_pos) > mention.end - threshold and original_pos[mention.end - threshold][1] == "POS":
-									if 'PRP$' in main_pos:
-										print("Chosen replacement: " + main_text)
-										replace_operations.append((mention.start - threshold, mention.end - threshold + 1, main_text))
-									else:
-										print("Chosen replacement: " + corrected_main)
-										replace_operations.append((mention.start - threshold, mention.end - threshold + 1, corrected_main))
-								else:
-									print("Chosen replacement: " + main_text)
-									replace_operations.append((mention.start - threshold, mention.end - threshold, main_text))
-								print(main_pos)
-								print("------------------------\n")
-
-				if len(replace_operations) > 0:
-					acc = 0
-					test = test[threshold:]
-					print("detected last sentencece")
-					print(test)
-				
-					for operation in replace_operations:
-						start = operation[0] + acc
-						end_p = operation[1] + acc
-						replace_text = operation[2].split()
-						# print(str(start) + ", " + str(end_p) + ", " + operation[2])
-						replace_size = len(replace_text)
-
-						test = test[:start] + replace_text + test[end_p:]
-
-						acc += replace_size - (end_p - start)
-
-					test = reconstitute_sentence(test)
-					test = test.replace(" - ", "-")
-					print("post_reconstitution: " + test)
-
-					newtree = self.parser.parse_text(test)
-					newtree = next(newtree)
-					child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+	#9 Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
+	def sbarpp_s_rearrange(self):
+		stage_num = 9
+		if len(self.t) == 1 and self.t[0].label() == "S":
+			S = self.t[0]
+			if len(S) > 4 and S[0].label() in ["PP", "SBAR"] and S[1].label() == "," and S.height() > 2:
+				found_NP = False
+				valid_next = False
+				for i in range(2, len(S)):
+					if found_NP or has_valid_np(S[i]):
+						found_NP = True
+					if found_NP and has_valid_vp(S[i]):
+						valid_next = True
+						break
+				if valid_next:
+					rest_S = []
+					for i in range(2, len(S) - 1):
+						rest_S += S[i].leaves()
+					fix_first = S[0].leaves()
+					fix_first[0] = fix_first[0].lower()
+					newtree1 = self.parser.parse_text(reconstitute_sentence(rest_S + fix_first + ["."]), timeout=5000)
+					newtree1 = next(newtree1)
+					child = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+					child.type = stage_num
+					child.flags = self.flags
+					self.children[stage_num] = [child]
 					if self.prevST is not None:
 						self.prevST.nextST = child
 					if self.nextST is not None:
 						self.nextST.prevST = child
-					self.children[stage_num] = [child]
-					# print("YAY: [" + self.fulltext + "]\n====> [" + child.fulltext + "]\n")
 					return True
-		return False
-
-	#9 Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
-	def sbarpp_s_rearrange(self):
-		stage_num = 9
-		#if self.t[0].label() in ["PP", "SBAR"] and valid_s(self.t[1]):
-		#	newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[1].leaves())+" "+reconstitute_sentence(self.t[0].leaves()), timeout=5000)
-		#	newtree1 = next(newtree1)
-		#	newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[1].leaves()), timeout=5000)
-		#	newtree2 = next(newtree2)
-		#	child1 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
-		#	child1.type = stage_num
-		#	child1.flags = self.flags
-		#	child2 = SenTree(newtree2, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
-		#	child2.type = stage_num
-		#	child2.flags = self.flags
-		#	self.children[stage_num] = [child1, child2]
-		#	if self.prevST is not None:
-		#		self.prevST.nextST = child1
-		#	if self.nextST is not None:
-		#		self.nextST.prevST = child2
-		#	return True
-		#el
-		if self.t[0].label() in ["PP", "SBAR"] and self.t[1].label() == "," and valid_s(self.t[2]):
-			newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[2].leaves())+" "+reconstitute_sentence(self.t[0].leaves()), timeout=5000)
-			newtree1 = next(newtree1)
-			newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[2].leaves()), timeout=5000)
-			newtree2 = next(newtree2)
-			child2 = SenTree(newtree1, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
-			child1.type = stage_num
-			child1.flags = self.flags
-			child1 = SenTree(newtree2, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
-			child2.type = stage_num
-			child2.flags = self.flags
-			self.children[stage_num] = [child1, child2]
-			if self.prevST is not None:
-				self.prevST.nextST = child1
-			if self.nextST is not None:
-				self.nextST.prevST = child2
-			child1.nextST = child2
-			child2.prevST = child1
-			return True
 		return False
 
 	#10 Rearrange <NP> <VP>'s <NP> components based on complexity if verb is "to be" - top-level only atm
@@ -711,7 +571,7 @@ class SenTree:
 		found_loc = None
 		match_ind = 0
 		# Search forward
-		print("Looking forward in range: " + str(hyp_loc) + ", " + str(len(target_sent.text)))
+		# print("Looking forward in range: " + str(hyp_loc) + ", " + str(len(target_sent.text)))
 		for i in range(hyp_loc, len(target_sent.text)):
 			test = target_sent.text[i]
 			if test == fixed_spacy[match_ind]:
@@ -737,10 +597,10 @@ class SenTree:
 		if found_loc is not None:
 			return [pair[1] for pair in target_sent.t.pos()[found_loc: found_loc + len(fixed_spacy)]]
 		else:
-			print("Could not find :")
-			print(fixed_spacy)
-			print("in:")
-			print(target_sent.text)
+			# print("Could not find :")
+			# print(fixed_spacy)
+			# print("in:")
+			# print(target_sent.text)
 			return None
 
 	# Check if spacy neuralcoref worked properly
@@ -792,7 +652,8 @@ class SenTree:
 				return True
 		return True
 
-	def check_proper(self, mention):
+	# check if this mention is a proper noun
+	def check_proper(self, mention, avoid_recurse=False):
 		generic_list = [item for sublist in generic_NP for item in sublist]
 		if mention.start > 0 and self.ner[mention.start - 1].text == ".":
 			# This is start of sentence, unknown, return True
@@ -800,20 +661,30 @@ class SenTree:
 				for i in range(1, len(mention)):
 					if mention[i].text[0].isupper():
 						return True
+				return False
 			else:					# Singular word
 				if self.ner[mention.start + 1].text[0] == '\'':	# We know this is possessive, so assume is proper noun
 					return True
-			return False
+			
+			# Check for other mentions of this. If any of them are proper, this is proper
+			if not avoid_recurse:
+				cluster = mention._.coref_cluster
+				for c_mention in cluster:
+					if self.check_proper(c_mention, avoid_recurse=True):
+						return True
+
+			# By default, assume is True unless otherwise
+			return True
 		elif len(mention) > 1:
 			# Not start of sentence, multiple words ==> return True if there exists a capital letter
 			for token in mention:
 				if token.text[0].isupper():
 					return True
+			return False
 		else:
 			# Not start of sentence, singular word ==> return True if not a generic thing
 			# Should not have singular things like "The x", or "A x"
 			return mention[0].text.lower() not in generic_list
-		return False
 
 	# Custom NER for when the provided coref fails
 	def custom_ner(self, mention_ner, mention_text, mention_start):
@@ -848,9 +719,9 @@ class SenTree:
 	# Gets you a 
 	def align_ner(self):
 		tokens = st.tag(self.text)
-		print("Stanford NER: ")
-		print(tokens)
-		print("SpaCY NER: ")
+		# print("Stanford NER: ")
+		# print(tokens)
+		# print("SpaCY NER: ")
 		spacy_ents = (list(self.ner.sents)[-1].ents)
 		ents_txt = "["
 		for ent in spacy_ents:
@@ -859,8 +730,8 @@ class SenTree:
 			ents_txt = ents_txt[:-2] + "]"
 		else:
 			ents_txt = "[]"
-		print(ents_txt)
-		print("-----------------------\n")
+		# print(ents_txt)
+		# print("-----------------------\n")
 		return
 
 	# Old version still uses SpaCY
@@ -880,15 +751,16 @@ class SenTree:
 					break
 
 		if to_print:
-			print("COMPARE SPACY to CoreNLP")
-			print(test_spacy)
-			print(self.text)
-			print("=======================================\n")
+			# print("COMPARE SPACY to CoreNLP")
+			# print(test_spacy)
+			# print(self.text)
+			# print("=======================================\n")
+			pass
 		return
 
 # Given a list of sentence ending thresholds and mention, find which sentence it belongs to
 def get_sent_num(thresholds_list, start):
-	print(thresholds_list)
+	# print(thresholds_list)
 	if start >= thresholds_list[-1]:
 		return len(thresholds_list) - 1
 
@@ -900,7 +772,7 @@ def get_sent_num(thresholds_list, start):
 		hival = thresholds_list[hiind + 1]
 		approx_size = (hival - loval) // (hiind + 1 - loind)
 		hyp = min(hiind, ((start - loval) // approx_size) + loind)
-		print(str(loval) + ", " + str(hival) + ", " + str(approx_size) + ", " + str(thresholds_list[hyp]) + ", " + str(start))
+		# print(str(loval) + ", " + str(hival) + ", " + str(approx_size) + ", " + str(thresholds_list[hyp]) + ", " + str(start))
 
 		if start >= thresholds_list[hyp]:
 			if start < thresholds_list[hyp + 1]:
@@ -914,7 +786,7 @@ def get_sent_num(thresholds_list, start):
 				hiind = hyp - 1
 			else:
 				hiind = hyp - 2
-	print("Found <" + str(start) + "> in bucket [" + str(thresholds_list[loind]) + ", " + str(thresholds_list[loind + 1]) + ")")
+	# print("Found <" + str(start) + "> in bucket [" + str(thresholds_list[loind]) + ", " + str(thresholds_list[loind + 1]) + ")")
 
 	return loind
 
@@ -1034,10 +906,10 @@ def preprocess(treelist, parser):
 		while not FrontierQueue.empty():
 			node_id,stage = FrontierQueue.get_nowait()
 			curr_node = node_list[node_id]
-			print("Stage " + str(stage) + ":")
-			print(curr_node.text)
-			print(curr_node.fulltext)
-			print("-----------------------\n")
+			# print("Stage " + str(stage) + ":")
+			# print(curr_node.text)
+			# print(curr_node.fulltext)
+			# print("-----------------------\n")
 			# print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
 			full_replace = curr_node.handle_stage(stage, preprocessed_questions)
 			if full_replace:
@@ -1082,6 +954,7 @@ def preprocess(treelist, parser):
 	# 		tree.update_ner()
 	# 		tree.align_ner()
 	for cluster in document_metadata["coref"]:
-		print(cluster)
-	print("==============================\n")
+		# print(cluster)
+		pass
+	# print("==============================\n")
 	return preprocessed_trees, preprocessed_questions
