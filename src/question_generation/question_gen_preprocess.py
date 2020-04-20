@@ -248,7 +248,7 @@ class SenTree:
 						except:
 							pass
 						if s_idx >= 0:
-							next_idx = s_idx + len(" ".join(s.leaves()))
+							next_idx = s_idx + len(" ".join(s.leaves()))+1
 						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
 							appositives_and_delims.append(len(s)-1)
 							appositives_and_delims.append(len(s)-2)
