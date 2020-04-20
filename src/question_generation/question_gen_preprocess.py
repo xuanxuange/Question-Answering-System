@@ -104,8 +104,41 @@ class SenTree:
 			return True
 		return False
 
-	#3 Fix/Separate SINV phraseology
-	def fix_sinv(self):
+	#3 Remove removable prefixes
+	def remove_prefix(self):
+		stage_num = 3
+		if self.t[0].label() == "S":
+			S = self.t[0]
+			if len(S) >= 5 and S[0].label() != "NP" and S[1].label() == ",":
+				found_NP = False
+				validated = False
+				for i in range(2, len(S)):
+					if found_NP or has_valid_np(S[i]):
+						found_NP = True
+					if found_NP and has_valid_vp(S[i]):
+						validated = True
+				if validated:
+					print("REMOVED PREFIX TEXT [" + S[0].label() + "]: " + reconstitute_sentence(S[0].leaves()))
+
+					result = []
+					for i in range(2, len(S)):
+						result += S[i].leaves()
+
+					temp = reconstitute_sentence(result)
+
+					newtree = self.parser.parse_text(temp, timeout=5000)
+					newtree = next(newtree)
+					child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST)
+					# print(newtree.leaves())
+					child.type = stage_num
+					child.flags = self.flags
+					child.parentheticals = parentheticals
+					self.children[stage_num] = [child]
+					if self.prevST is not None:
+						self.prevST.nextST = child
+					if self.nextST is not None:
+						self.nextST.prevST = child
+					return True
 		return False
 
 	#4 Parenthetical removal
@@ -519,9 +552,8 @@ class SenTree:
 			# Replace <has been> <___> <to be> turns of phrase
 			return self.tobe_turn_of_phrase()
 		elif stage == 3:
-			# Fix/Separate SINV phraseology
-			# NOT IMPLEMENTED
-			return self.fix_sinv()
+			# Remove removable prefixes
+			return self.remove_prefix()
 		elif stage == 4:
 			# Parenthetical removal
 			return self.parenthetical_removal()
