@@ -223,6 +223,8 @@ class SenTree:
 						else:
 							if s[a].label() in ["NP", "NN"]:
 								is_list = True
+								print("SKIPPING, since FOUND LIST in :")
+								s.pretty_print()
 								break
 					i = 0
 					appositives_and_delims = []
@@ -234,6 +236,9 @@ class SenTree:
 								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
 								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for" + " ".join(s[i].leaves())+"?")
 								retval = True
+							else:
+								print("SKIPPING child %s, since FOUND LIST in child %s of :" % str(i+2),str(i+2))
+								s.pretty_print()
 						i += 1
 
 					if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables:
