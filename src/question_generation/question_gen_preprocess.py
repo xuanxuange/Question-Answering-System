@@ -50,7 +50,7 @@ class SenTree:
 
 	def update_text(self):
 		self.text = self.t.leaves()
-		self.filltext = reconstitute_sentence(self.t.leaves()) if self.t is not None else ""
+		self.fulltext = reconstitute_sentence(self.t.leaves()) if self.t is not None else ""
 
 	#1 Replace <NN_> <PRP> turns of phrase
 
@@ -251,7 +251,7 @@ class SenTree:
 								appositives_and_delims.append(i+2)
 								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
 								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for " + " ".join(s[i].leaves())+"?")
-								retval = True
+								# retval = True
 							else:
 								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside")
 								s.pretty_print()
@@ -270,7 +270,7 @@ class SenTree:
 							appositives_and_delims.append(len(s)-2)
 							print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
 							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for " + " ".join(s[-3].leaves())+"?")
-							retval = True
+							# retval = True
 
 					appositives_and_delims.sort(reverse=True)
 					for idx in appositives_and_delims:
@@ -411,6 +411,10 @@ class SenTree:
 				curr = curr.nextST
 			raise ValueError
 
+		print("Detected doctext:")
+		for ST in sentree_list:
+			print(ST.text)
+
 		pattern = re.compile(r'([^a-zA-Z0-9 ])\.(\s*)')
 		spacy_input = pattern.sub(r"\1 .\2", document_fulltext)
 		self.ner = nlp(spacy_input)
@@ -465,8 +469,8 @@ class SenTree:
 					for mention in cluster:
 						if mention.text.lower() != cluster.main.text.lower() and mention.text not in generic_list:
 							test_id = get_sent_num(thresholds_list, mention.start)
-							test_ST = sentree_list[main_id]
-							test_pos = main_ST.corenlp_pos(mention, thresholds_list[test_id + 1] - 1, test_ST)
+							test_ST = sentree_list[test_id]
+							test_pos = test_ST.corenlp_pos(mention, thresholds_list[test_id + 1] - 1, test_ST)
 
 							if test_pos is not None and "CC" not in test_pos:
 								cluster.main = mention
@@ -722,7 +726,7 @@ class SenTree:
 	# SpaCY has a coarser POS tagger. Here, we fetch the SpaCY mention's POS tags, according to the Stanford CoreNLP tagset
 	def corenlp_pos(self, mention, mention_per, target_ST):
 		# corenlp_tokens = next(self.parser.parse_text(reconstitute_sentence([token.text for token in mention]).replace(" - ", "-")))
-		target_sent = target_ST
+		target_sent = self
 		hyp_loc = max(0, len(target_sent.text) - 1 - max(0, (mention_per - mention.start)))
 
 		# print("Searching for: [" + reconstitute_sentence([token.text for token in mention]).replace(" - ", "-") + "] in [" + target_sent.fulltext + "]")
@@ -767,10 +771,10 @@ class SenTree:
 		if found_loc is not None:
 			return [pair[1] for pair in target_sent.t.pos()[found_loc: found_loc + len(fixed_spacy)]]
 		else:
-			# print("Could not find :")
-			# print(fixed_spacy)
-			# print("in:")
-			# print(target_sent.text)
+			print("Could not find :")
+			print(fixed_spacy)
+			print("in:")
+			print(target_sent.text)
 			return None
 
 	# Check if spacy neuralcoref worked properly
@@ -1129,7 +1133,7 @@ def preprocess(treelist, parser):
 			# print(curr_node.text)
 			# print(curr_node.fulltext)
 			# print("-----------------------\n")
-			# print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
+			print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
 			full_replace = curr_node.handle_stage(stage, preprocessed_questions)
 			if full_replace:
 				# print("What: " + str(stage))
