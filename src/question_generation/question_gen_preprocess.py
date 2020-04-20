@@ -50,7 +50,7 @@ class SenTree:
 
 	def update_text(self):
 		self.text = self.t.leaves()
-		self.fulltext = reconstitute_sentence(self.t.leaves()) if self.t else ""
+		self.filltext = reconstitute_sentence(self.t.leaves()) if self.t is not None else ""
 
 	#1 Replace <NN_> <PRP> turns of phrase
 
@@ -232,6 +232,7 @@ class SenTree:
 		allowables = ["NP", "PP", "SBAR", "S", "NN"]
 		retval = False
 		tree_string = " ".join(self.t.leaves())
+		self.t.pretty_print()
 		for s in list(self.t.subtrees()):
 			is_list = self.is_np_list(s)
 			if not is_list:
@@ -249,7 +250,7 @@ class SenTree:
 								appositives_and_delims.append(i+1)
 								appositives_and_delims.append(i+2)
 								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
-								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for" + " ".join(s[i].leaves())+"?")
+								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for " + " ".join(s[i].leaves())+"?")
 								retval = True
 							else:
 								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside")
@@ -268,7 +269,7 @@ class SenTree:
 							appositives_and_delims.append(len(s)-1)
 							appositives_and_delims.append(len(s)-2)
 							print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
-							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for" + " ".join(s[-3].leaves())+"?")
+							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for " + " ".join(s[-3].leaves())+"?")
 							retval = True
 
 					appositives_and_delims.sort(reverse=True)
@@ -961,7 +962,7 @@ def get_sent_num(thresholds_list, start):
 
 	return loind
 
-def reconstitute_sentence(raw):
+def reconstitute_sentence(raw, forCoreNLP=False):
 	found_quote = False
 	found_single = False
 	reconstruct_quotes = ""
@@ -989,7 +990,10 @@ def reconstitute_sentence(raw):
 		reconstruct_quotes = reconstruct_quotes[:-1]
 	pattern1 = re.compile(r' ([\.,:;])')
 	pattern2 = re.compile(r' \'s ')
-	return pattern1.sub(r'\1', pattern2.sub('\'s ', reconstruct_quotes)).replace(' \' ', '\' ')
+	almost = pattern1.sub(r'\1', pattern2.sub('\'s ', reconstruct_quotes)).replace(' \' ', '\' ')
+	if almost[-1] == "." and almost[-2] != " ":
+		almost = almost[:-1] + " ."
+	return almost
 
 def valid_np(t):
 	if t.label() != "NP":
