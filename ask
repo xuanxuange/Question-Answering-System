@@ -60,6 +60,33 @@ common_replacements['St.'] = 'Saint'
 common_replacements['SS.'] = 'Saints'
 common_replacements['Gen.'] = 'General'
 
+# Sometimes, there are periods in weird places. If there's a period in the middle something not
+# covered by replacing common replacements, then it's likely that's part of a citation, which can appear in parens
+def remove_troublesome_paren(line):
+    paren_open = False
+    marked_start = []
+    marked_end = []
+    curr_start = None
+    for i in range(len(line)):
+        if not paren_open:
+            if line[i] == "(":
+                paren_open = True
+                curr_start = i
+        elif line[i] == ".":
+            marked_start.append(curr_start)
+        elif line[i] == ")":
+            paren_open = False
+            if len(marked_start) > len(marked_end):
+                marked_end.append(i)
+    curr_start = 0
+    acc_sent = ""
+    for i in range(len(marked_end)):
+        end = marked_start[i]
+        acc_sent += line[curr_start : end]
+        curr_start = marked_end[i] + 1
+    acc_sent += line[curr_start:]
+    return acc_sent
+
 
 # Replace common periods
 def replace_common_periods(text):
@@ -73,7 +100,9 @@ def sanitize_line(line):
     pattern1 = re.compile(r'([^ ])- ')      # remove trailing -
     pattern2 = re.compile(r' -([^ ])')      # remove trailing -
     pattern3 = re.compile(r'(\s*)\.\.\.')   # remove ellipsis
-    return replace_common_periods(pattern0.sub(' ', pattern1.sub(r'\1 ', pattern2.sub(r' \1', pattern3.sub('', line)))))
+    line = pattern0.sub(' ', pattern1.sub(r'\1 ', pattern2.sub(r' \1', pattern3.sub('', line))))
+    line = replace_common_periods(line)
+    return remove_troublesome_paren(line)
 
 if __name__ == "__main__":
     article = sys.argv[1]

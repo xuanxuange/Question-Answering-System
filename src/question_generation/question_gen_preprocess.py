@@ -12,10 +12,13 @@ from pattern.en import lemma
 
 
 safety = False
-#st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
-st = None
+
+st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
+# st = None
+
 nlp = spacy.load('en_core_web_lg')
 # nlp = spacy.load('en')
+
 neuralcoref.add_to_pipe(nlp)
 
 document_metadata = {}
@@ -382,20 +385,18 @@ class SenTree:
 	#8 NER coreference resolution
 	# Wrapper so we only do this part once (removed rollover concept)
 	# Assumes this is the very first ner doc
-	def do_all_ner(self, awaiting_ner, node_list, keep_bools, stage_num=8):
-		finished_ner = []
+	def do_coref(self, awaiting_ner, node_list, stage_num=8):
+		sentree_list = self.do_corenlp_supersense()
+		count = len(sentree_list)
 
-		sentree_list = []
+		finished_coref = []
 		all_doc_list = []
 		document_fulltext = ""
-		count = 0
-		curr = self
-		while curr is not None:
-			document_fulltext += curr.fulltext + " "
-			sentree_list.append(curr)
+
+		for ST in sentree_list:
+			document_fulltext += ST.fulltext + " "
 			all_doc_list.append([])
-			curr = curr.nextST
-			count += 1
+
 		if count != len(awaiting_ner):
 			print("Detected doctext:")
 			print(document_fulltext + "\n")
@@ -426,22 +427,22 @@ class SenTree:
 		tokenized_doc = [token.text for token in self.ner]
 
 		# Get all sentence threhsolds at once
-		thresholds_list = [0]
+		thresholds = [0]
 		curr_size = 0
 		for i in range(len(tokenized_doc)):
 			token = tokenized_doc[i]
 			if token == ".":
-				thresholds_list.append(i + 1)
+				thresholds.append(i + 1)
 		
 		# error check here
-		if len(thresholds_list) != len(sentree_list) + 1:
-			print(thresholds_list)
+		if len(thresholds) != len(sentree_list) + 1:
+			print(thresholds)
 			print(len(sentree_list))
 
 			i = 0
-			while i < len(sentree_list) and i < len(thresholds_list) - 1:
-				new_thresh = thresholds_list[i+1]
-				last_thresh = thresholds_list[i]
+			while i < len(sentree_list) and i < len(thresholds) - 1:
+				new_thresh = thresholds[i+1]
+				last_thresh = thresholds[i]
 				print(sentree_list[i].text)
 				print([token.text for token in self.ner[last_thresh:new_thresh]])
 				print("")
@@ -452,8 +453,19 @@ class SenTree:
 			raise ValueError
 
 		# Update ner on all ST before running coref
-		for ST in sentree_list:
+		ner_tokens = [token.ent_type_ for token in self.ner]
+		beginning = 0
+		for i in range(1, len(thresholds)):
+			end = thresholds[i]
+
+			curr_slice = ner_tokens[beginning:end]
+
+			ST = sentree_list[i-1]
 			ST.update_ner(self.ner)
+			ST.bubble_ner(curr_slice, corenlp=False)
+			ST.align_ner()
+
+			beginning = end
 
 		if self.ner._.has_coref:
 			replace_operations = []
@@ -463,9 +475,9 @@ class SenTree:
 				document_metadata["coref"].append(cluster)
 
 				main_ner = [token.ent_type_ for token in cluster.main]
-				main_id = get_sent_num(thresholds_list, cluster.main.start)
+				main_id = get_sent_num(thresholds, cluster.main.start)
 				main_ST = sentree_list[main_id]
-				main_pos = main_ST.corenlp_pos(cluster.main, thresholds_list[main_id + 1] - 1, main_ST)
+				main_pos = main_ST.corenlp_pos(cluster.main, thresholds[main_id + 1] - 1, main_ST)
 
 				if main_pos is not None and "CC" in main_pos:
 					# Choose a new main, this one is a list. Give preference to proper nouns
@@ -473,9 +485,9 @@ class SenTree:
 					success = False
 					for mention in cluster:
 						if mention.text.lower() != cluster.main.text.lower() and (mention.text not in generic_list):
-							test_id = get_sent_num(thresholds_list, mention.start)
+							test_id = get_sent_num(thresholds, mention.start)
 							test_ST = sentree_list[test_id]
-							test_pos = test_ST.corenlp_pos(mention, thresholds_list[test_id + 1] - 1, test_ST)
+							test_pos = test_ST.corenlp_pos(mention, thresholds[test_id + 1] - 1, test_ST)
 
 							# Check that new one is also not a list
 							if test_pos is not None and "CC" not in test_pos:
@@ -500,14 +512,14 @@ class SenTree:
 
 					# Assuming sentences are relatively clean/simplified, don't want to do coref if found prior descriptor is in the same sentence
 					for mention in cluster.mentions:
-						tar_id = get_sent_num(thresholds_list, mention.start)
+						tar_id = get_sent_num(thresholds, mention.start)
 						target_ST = sentree_list[tar_id]
 						# print("TENTATIVE: [" + target_ST.fulltext + "]")
 						# print("CONFiRMED: [" + mention.sent.text + "]")
 
 						# Don't want to replcae if current mention is a proper noun
 						if mention.text.lower() != cluster.main.text.lower() and main_ST != target_ST and not target_ST.check_proper(mention):
-							mention_pos = target_ST.corenlp_pos(mention, thresholds_list[tar_id + 1] - 1, target_ST)
+							mention_pos = target_ST.corenlp_pos(mention, thresholds[tar_id + 1] - 1, target_ST)
 							mention_text = [token.text for token in mention]
 							mention_ner = [token.ent_type_ for token in mention]
 
@@ -517,7 +529,7 @@ class SenTree:
 							# TODO: add safety check for main_pos is not None in final version. Leave out now for debug
 							if main_pos is not None:
 								replace_operations = all_doc_list[tar_id]
-								threshold = thresholds_list[tar_id]
+								threshold = thresholds[tar_id]
 
 								corrected_main = main_text
 								if corrected_main[-2:] == "\'s":
@@ -568,10 +580,10 @@ class SenTree:
 								# print("------------------------\n")
 			for ST_id in range(len(all_doc_list)):
 				replace_operations = all_doc_list[ST_id]
-				threshold = thresholds_list[ST_id]
+				threshold = thresholds[ST_id]
 				next_threshold = None
-				if ST_id < len(thresholds_list) - 1:
-					next_threshold = thresholds_list[ST_id + 1]
+				if ST_id < len(thresholds) - 1:
+					next_threshold = thresholds[ST_id + 1]
 				target_ST = sentree_list[ST_id]
 
 				if len(replace_operations) > 0:
@@ -609,15 +621,13 @@ class SenTree:
 					target_ST.children[stage_num] = [child]
 
 					replaced_ST_id = awaiting_ner[ST_id]
-					keep_bools[replaced_ST_id] = False
 
-					finished_ner.append(len(node_list))
+					finished_coref.append(len(node_list))
 
 					node_list.append(child)
-					keep_bools.append(True)
 				else:
-					finished_ner.append(awaiting_ner[ST_id])
-		return finished_ner
+					finished_coref.append(awaiting_ner[ST_id])
+		return finished_coref
 
 	#9 Rearrange <SBAR/PP>, <S> into <S> <SBAR/PP>
 	def sbarpp_s_rearrange(self, stage_num=9):
@@ -873,6 +883,8 @@ class SenTree:
 			return mention[0].text.lower() not in generic_list
 
 	# Custom NER for when the provided coref fails
+	# Return <text for new match>, main_pos
+	# Main_pos is None in case of failure
 	def custom_ner(self, mention_ner, mention_text, mention_start):
 		return reconstitute_sentence(mention_text),None
 
@@ -881,43 +893,107 @@ class SenTree:
 		self.ner = ner
 		return
 
-	# Update the NER data of this SenTree
-	def old_update_ner(self, lookback=5):
-		document_stack = LifoQueue()
-		document_stack.put_nowait(self)
-		curr = self.prevST
-		count = 1
-		while curr is not None and count <= lookback:
-			if curr.text[-1] == ".":
-				document_stack.put_nowait(curr)
-				count += 1
-			curr = curr.prevST
+	# Starting from the root node, get and set corenlp supersense data for all nodes
+	def do_corenlp_supersense(self):
+		curr = self
+		text_tokens = []
+		ST_list = []
+		thresholds = [0]
+		while curr is not None:
+			text_tokens += curr.text
+			thresholds.append(len(text_tokens))
+			ST_list.append(curr)
+			curr = curr.nextST
 
+		ner_tokens = st.tag(text_tokens)
+		beginning = 0
+		for i in range(1, len(thresholds)):
+			end = thresholds[i]
+
+			curr_slice = ner_tokens[beginning:end]
+			ST_list[i-1].bubble_ner(curr_slice, corenlp=True)
+
+			beginning = end
+		return ST_list
+
+	# Starting from the root node, get and set spacy supersense data for all nodes
+	def do_spacy_supersense(self, sentree_list):
+		all_doc_list = []
 		document_fulltext = ""
-		while not document_stack.empty():
-			curr = document_stack.get_nowait()
-			document_fulltext += curr.fulltext + " "
-		pattern = re.compile(r'([^a-zA-Z0-9 ])\.(\s*)')
-		self.ner = nlp(pattern.sub(r"\1 .\2", document_fulltext))
-		return count,document_fulltext
 
-	# Assumes NER data is up to date for this SenTree
-	# Gets you a 
-	def align_ner(self):
-		#tokens = st.tag(self.text)
-		# print("Stanford NER: ")
-		# print(tokens)
-		# print("SpaCY NER: ")
-		spacy_ents = (list(self.ner.sents)[-1].ents)
-		ents_txt = "["
-		for ent in spacy_ents:
-			ents_txt += "(" + ent.text + ", " + ent.label_ + "), "
-		if len(ents_txt) > 2:
-			ents_txt = ents_txt[:-2] + "]"
+		for ST in sentree_list:
+			document_fulltext += ST.fulltext + " "
+			all_doc_list.append([])
+
+		print("Detected doctext:")
+		for ST in sentree_list:
+			print(ST.text)
+
+		pattern = re.compile(r'([^a-zA-Z0-9 ])\.(\s*)')
+		spacy_input = pattern.sub(r"\1 .\2", document_fulltext)
+		self.ner = nlp(spacy_input)
+
+		tokenized_doc = [token.text for token in self.ner]
+
+		# Get all sentence threhsolds at once
+		thresholds = [0]
+		curr_size = 0
+		for i in range(len(tokenized_doc)):
+			token = tokenized_doc[i]
+			if token == ".":
+				thresholds.append(i + 1)
+		
+		# error check here
+		if len(thresholds) != len(sentree_list) + 1:
+			print(thresholds)
+			print(len(sentree_list))
+
+			i = 0
+			while i < len(sentree_list) and i < len(thresholds) - 1:
+				new_thresh = thresholds[i+1]
+				last_thresh = thresholds[i]
+				print(sentree_list[i].text)
+				print([token.text for token in self.ner[last_thresh:new_thresh]])
+				print("")
+				i += 1
+
+			print("SPACY INPUT:")
+			print(spacy_input)
+			raise ValueError
+
+		# Update ner on all ST before running coref
+		ner_tokens = [token.ent_type_ for token in self.ner]
+		beginning = 0
+		for i in range(1, len(thresholds)):
+			end = thresholds[i]
+
+			curr_slice = ner_tokens[beginning:end]
+
+			ST = sentree_list[i-1]
+			ST.update_ner(self.ner)
+			ST.bubble_ner(curr_slice, corenlp=False)
+			ST.align_ner()
+
+			beginning = end
+		return
+
+	# Bubble up NER data, when fed stuff that begins at the ground level
+	def bubble_ner(self, tokens, corenlp=True):
+		if corenlp:
+			# Hooray we can do things
+			node_stack = LifoQueue()
+
+			BFS_frontier = Queue()
+			curr = self.t
 		else:
-			ents_txt = "[]"
-		# print(ents_txt)
-		# print("-----------------------\n")
+			# GDI spacy why do you have to be different
+			corenlp_aligned_tokens = tokens
+			return self.bubble_ner(corenlp_aligned_tokens, corenlp=True)
+		return
+
+	# Assumes all NER data (both spacy and corenlp) has been accumulated and bubbled. have SPACY advanced tags take precedence
+	def align_ner(self):
+		
 		return
 
 	# Old version still uses SpaCY
@@ -945,34 +1021,34 @@ class SenTree:
 		return
 
 # Given a list of sentence ending thresholds and mention, find which sentence it belongs to
-def get_sent_num(thresholds_list, start):
-	# print(thresholds_list)
-	if start >= thresholds_list[-1]:
-		return len(thresholds_list) - 1
+def get_sent_num(thresholds, start):
+	# print(thresholds)
+	if start >= thresholds[-1]:
+		return len(thresholds) - 1
 
 	loind = 0
-	hiind = len(thresholds_list) - 2
+	hiind = len(thresholds) - 2
 
 	while loind < hiind:
-		loval = thresholds_list[loind]
-		hival = thresholds_list[hiind + 1]
+		loval = thresholds[loind]
+		hival = thresholds[hiind + 1]
 		approx_size = (hival - loval) // (hiind + 1 - loind)
 		hyp = min(hiind, ((start - loval) // approx_size) + loind)
-		# print(str(loval) + ", " + str(hival) + ", " + str(approx_size) + ", " + str(thresholds_list[hyp]) + ", " + str(start))
+		# print(str(loval) + ", " + str(hival) + ", " + str(approx_size) + ", " + str(thresholds[hyp]) + ", " + str(start))
 
-		if start >= thresholds_list[hyp]:
-			if start < thresholds_list[hyp + 1]:
+		if start >= thresholds[hyp]:
+			if start < thresholds[hyp + 1]:
 				hiind = hyp
 				loind = hyp
 			else:
 				loind = hyp + 1
 		else:
-			if start >= thresholds_list[hyp - 1]:
+			if start >= thresholds[hyp - 1]:
 				loind = hyp - 1
 				hiind = hyp - 1
 			else:
 				hiind = hyp - 2
-	# print("Found <" + str(start) + "> in bucket [" + str(thresholds_list[loind]) + ", " + str(thresholds_list[loind + 1]) + ")")
+	# print("Found <" + str(start) + "> in bucket [" + str(thresholds[loind]) + ", " + str(thresholds[loind + 1]) + ")")
 
 	return loind
 
@@ -1059,15 +1135,15 @@ def validate_s(t):
 
 def getSBARQuestion(SBAR, root):
     retlist = []
-    if SBAR.height() > 2:
+    if SBAR.height() > 3:
         lemmatizer = nltk.stem.WordNetLemmatizer()
-        if SBAR[0].label() == "WHNP":
+        if SBAR[0].label() == "WHNP" and SBAR[0].height() > 2:
             # case who/what
             if SBAR[0][0].label() == "WDT":
                 retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
             elif SBAR[0][0].label() == "WP":
                 retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
-        elif SBAR[0].label() == "WHADVP":
+        elif len(SBAR) > 1 and SBAR[0].label() == "WHADVP" and SBAR[0].height() > 2:
             # case where/when
             if SBAR[0][0].label() == "WDT":
                 retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
@@ -1075,16 +1151,16 @@ def getSBARQuestion(SBAR, root):
                 retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
             elif SBAR[0][0].label() == "WRB":
                 S = SBAR[1]
-                if S.label()[-1] == "S":
-                    if S[0].label()[-2:] == "NP" and S[1].label()[-2:] == "VP":
-                        if S[1][0].label()[:2] == "VB" and S[1][1].label()[:2] != "VB":
+                if S.label()[-1] == "S" and S.height() > 2:
+                    if len(S[0].label()) >= 2 and S[0].label()[-2:] == "NP" and len(S[1].label()) >= 2 and S[1].label()[-2:] == "VP":
+                        if len(S[1][0].label()) >= 2 and S[1][0].label()[:2] == "VB" and len(S[1][1].label()) >= 2 and S[1][1].label()[:2] != "VB":
                             vbn = S[1][0].leaves()[0]
                             conj_verb = lemma(vbn)
                             verblvs = []
                             for i in range(1, len(S[1])):
                                 verblvs += S[1][i].leaves()
                             retlist.append(reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
-        elif SBAR[0].label() == "IN":
+        elif SBAR[0].label() == "IN" and SBAR[0].height() >= 2:
             # Case on that = what + invert, although = else
             if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
                 if len(SBAR[1]) == 2:
@@ -1127,7 +1203,6 @@ def preprocess(treelist, parser):
 
 	updated_root = root_list[0]
 	node_list = [root for root in root_list]
-	keep_bools = [True for root in root_list]
 	for i in range(len(node_list)):
 		FrontierQueue.put_nowait((i, 1))
 
@@ -1145,9 +1220,6 @@ def preprocess(treelist, parser):
 			# print("-----------------------\n")
 			print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
 			full_replace = curr_node.handle_stage(stage, preprocessed_questions)
-			if full_replace:
-				# print("What: " + str(stage))
-				keep_bools[node_id] = False
 			if len(curr_node.children[stage]) > 0:
 				# print("Ho: " + str(stage))
 				rollover, new_stage = acc_stage(stage)
@@ -1161,7 +1233,6 @@ def preprocess(treelist, parser):
 						else:
 							awaiting_ner.append(len(node_list))
 						node_list.append(child)
-						keep_bools.append(True)
 			else:
 				rollover, new_stage = acc_stage(stage)
 				if not rollover:
@@ -1172,20 +1243,18 @@ def preprocess(treelist, parser):
 		if not_run_ner and len(awaiting_ner) > 0:
 			not_run_ner = False
 
-			finished_ner = updated_root.do_all_ner(awaiting_ner, node_list, keep_bools)
+			finished_coref = updated_root.do_coref(awaiting_ner, node_list)
 
-			for ind in finished_ner:
+			for ind in finished_coref:
 				FrontierQueue.put_nowait((ind, ner_stage + 1))
 
-			updated_root = node_list[finished_ner[0]]
+			updated_root = node_list[finished_coref[0]]
 		else:
 			not_finished = False
+	
+	preprocessed_trees = updated_root.do_corenlp_supersense()
+	updated_root.do_spacy_supersense(preprocessed_trees)
 
-	preprocessed_trees = [node_list[i] for i in range(len(node_list)) if keep_bools[i]]
-	# for tree in preprocessed_trees:
-	# 	if tree.text[-1] == ".":
-	# 		tree.update_ner()
-	# 		tree.align_ner()
 	for cluster in document_metadata["coref"]:
 		# print(cluster)
 		pass
