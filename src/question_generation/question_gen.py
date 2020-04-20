@@ -545,9 +545,9 @@ def generate_questions(parse):
     SBAR_phrases = []
     for node in (NP_List + PP_List + SBAR_List):
         if node.label()[:4] != "UNMV":
-            if node.label == "PP":
+            if node.label() == "PP":
                 PP_phrases.append(node)
-            elif node.label == "NP":
+            elif node.label() == "NP":
                 NP_phrases.append(node)
             else:
                 test = getSBARQuestion(node, parse)
