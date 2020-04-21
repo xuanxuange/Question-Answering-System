@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from collections import defaultdict
 import re
 from queue import Queue, LifoQueue
@@ -9,12 +10,12 @@ import nltk
 from nltk.tag import StanfordNERTagger
 
 from pattern.en import lemma
-
+import pdb
 
 safety = False
 
-st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
-# st = None
+st = StanfordNERTagger('/Users/jarrett/Downloads/nerstuff/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/jarrett/Downloads/nerstuff/stanford-ner.jar', encoding='utf-8')
+
 
 nlp = spacy.load('en_core_web_lg')
 # nlp = spacy.load('en')
@@ -189,6 +190,48 @@ class SenTree:
 				return True
 		return False
 
+	def parenthetical_child_removal(self, stage_num=4):
+		result = []
+		parentheticals = []
+		t = self.t.copy(deep=True)
+		self.recursive_paren_remover(t,result,parentheticals)
+		if parentheticals and result:
+			temp = reconstitute_sentence(result)
+			newtree = self.parser.parse_text(temp, timeout=5000)
+			newtree = next(newtree)
+			child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+			# print(newtree.leaves())
+			child.type = stage_num
+			child.flags = self.flags
+			child.parentheticals = parentheticals
+			self.children[stage_num] = [child]
+			child.flags["parentheticals_removed"] = True
+			if self.prevST is not None:
+				self.prevST.nextST = child
+			if self.nextST is not None:
+				self.nextST.prevST = child
+			return True
+		return False			
+
+	def recursive_paren_remover(self, t, result, parentheticals):
+		if t.height() <= 2:
+			result += t.leaves()
+			return
+		i = 0
+		while(i < len(t)):
+			if t[i].label() == "PRN":
+				paren_text = [x if x != "-LRB-" else "(" for x in t[i].leaves()]
+				paren_text = [x if x != "-RRB-" else ")" for x in t[i].leaves()]
+				paren_text = " ".join(paren_text)
+				parentheticals.append({"index" : len(result), "text": " ".join(paren_text)})
+				t.__delitem__(i)
+			else:
+				self.recursive_paren_remover(t[i], result, parentheticals)
+				i += 1
+		if parentheticals:
+			return
+
+
 	def is_np_list(self, s, i=0):
 		if s.label() == "NP" and s.height() > 2:
 			a = i
@@ -240,30 +283,58 @@ class SenTree:
 		for s in list(self.t.subtrees()):
 			is_list = self.is_np_list(s)
 			if not is_list:
-				if len(s) >= 3 and s.height() > 2 and s.label() == "NP":
+				if len(s) >= 3 and s.height() > 2 and s.label() in ["NP", "VP"]:
 					#print("GOING")
 					#s.pretty_print()
 					i = 0
 					appositives_and_delims = []
+					#pdb.set_trace()
 					while not is_list and (i < len(s)-3):
-						if s[i].label() in ["NP", "NN"] and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims and len(s[i+2].leaves()) > 1:
+						if s[i].label() in ["NP", "NN"] and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
 							#print("GOT ONE")
 							#s[i+2].pretty_print()
 							#print(self.is_np_list(s, i=i+2))
 							if s[i+2].pos()[0][1] != "CC" and not self.is_np_list(s, i=i+2):
-								appositives_and_delims.append(i+1)
-								appositives_and_delims.append(i+2)
-								print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
-								immediate_questions.append("Is "+" ".join(s[i+2].leaves()) + " an apt descriptor for " + " ".join(s[i].leaves())+"?")
-								if s[i+2].label() == "SBAR":
-									immediate_questions += getSBARQuestion(s[i+2], self.t)
+								u_s = use_second(s[i],s[i+1],s[i+2])
+								if len(s[i+2].leaves()) > 1 and not u_s:
+									appositives_and_delims.append(i+1)
+									appositives_and_delims.append(i+2)
+									print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
+									immediate_questions.append("Is '"+" ".join(s[i+2].leaves()) + "' an apt descriptor for " + " ".join(s[i].leaves())+"?")
+									if s[i+2].label() == "SBAR":
+										immediate_questions += getSBARQuestion(s[i+2], self.t)
+								elif (len(s[i].leaves()) > 1 and s[i].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
+									appositives_and_delims.append(i)
+									appositives_and_delims.append(i+1)
+									print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i].leaves()))
+									immediate_questions.append("Is '"+" ".join(s[i].leaves()) + "' an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
+								# retval = True
+							else:
+								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside")
+								s.pretty_print()
+						elif i > 0 and s[i-1].label() in ["NP", "NN"] and s[i].label() == "PP" and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
+							if s[i+2].pos()[0][1] != "CC" and not self.is_np_list(s, i=i+2):
+								u_s = use_second(s[i-1],s[i+1],s[i+2])
+								if len(s[i+2].leaves()) > 1 and not u_s:
+									appositives_and_delims.append(i+1)
+									appositives_and_delims.append(i+2)
+									print(" ".join(s[i-1].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()))
+									immediate_questions.append("Is "+" '".join(s[i+2].leaves()) + "' an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+									if s[i+2].label() == "SBAR":
+										immediate_questions += getSBARQuestion(s[i+2], self.t)
+								elif (len(s[i-1].leaves()) > 1 and s[i-1].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
+									appositives_and_delims.append(i-1)
+									appositives_and_delims.append(i)
+									appositives_and_delims.append(i+1)
+									print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i-1].leaves())+" "+" ".join(s[i].leaves()))
+									immediate_questions.append("Is '"+" ".join(s[i-1].leaves()) + "' an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
 								# retval = True
 							else:
 								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside")
 								s.pretty_print()
 						i += 1
 
-					if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables and len(s[-1].leaves()) > 1:
+					if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables:
 						s_idx = -1
 						try:
 							s_idx = tree_string.index(" ".join(s.leaves()))
@@ -272,13 +343,44 @@ class SenTree:
 						if s_idx >= 0:
 							next_idx = s_idx + len(" ".join(s.leaves()))+1
 						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
-							appositives_and_delims.append(len(s)-1)
-							appositives_and_delims.append(len(s)-2)
-							print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
-							immediate_questions.append("Is "+" ".join(s[-1].leaves()) + " an apt descriptor for " + " ".join(s[-3].leaves())+"?")
-							if s[-1].label() == "SBAR":
-								immediate_questions += getSBARQuestion(s[-1], self.t)
-							# retval = True
+							u_s = use_second(s[-3],s[i-2],s[-1])
+							if len(s[-1].leaves()) > 1 and not u_s:
+								appositives_and_delims.append(len(s)-1)
+								appositives_and_delims.append(len(s)-2)
+								print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
+								immediate_questions.append("Is '"+" ".join(s[-1].leaves()) + "' an apt descriptor for " + " ".join(s[-3].leaves())+"?")
+								if s[-1].label() == "SBAR":
+									immediate_questions += getSBARQuestion(s[-1], self.t)
+							elif (len(s[-3].leaves()) > 1 and s[-3].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
+								appositives_and_delims.append(len(s)-3)
+								appositives_and_delims.append(len(s)-2)
+								print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-3].leaves()))
+								immediate_questions.append("Is '"+" ".join(s[-3].leaves()) + "' an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+
+					elif not is_list and len(s) > 3 and s[-4].label() in ["NP", "NN"] and s[-3].label() == "PP" and s[-2].label() in delims and s[-1].label() in allowables:
+						s_idx = -1
+						try:
+							s_idx = tree_string.index(" ".join(s.leaves()))
+						except:
+							pass
+						if s_idx >= 0:
+							next_idx = s_idx + len(" ".join(s.leaves()))+1
+						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
+							u_s = use_second(s[-4],s[-2],s[-1])
+							if len(s[-1].leaves()) > 1 and not u_s:
+								appositives_and_delims.append(len(s)-1)
+								appositives_and_delims.append(len(s)-2)
+								print(" ".join(s[-4].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()))
+								immediate_questions.append("Is '"+" ".join(s[-1].leaves()) + "' an apt descriptor for " + " ".join(s[-4].leaves())+"?")
+								if s[-1].label() == "SBAR":
+									immediate_questions += getSBARQuestion(s[-1], self.t)						
+								# retval = True
+							elif (len(s[-4].leaves()) > 1 and s[-4].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
+								appositives_and_delims.append(len(s)-4)
+								appositives_and_delims.append(len(s)-3)
+								appositives_and_delims.append(len(s)-2)
+								print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-4].leaves())+" "+" ".join(s[i-3].leaves()))
+								immediate_questions.append("Is '"+" ".join(s[-4].leaves()) + "' an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 
 					appositives_and_delims.sort(reverse=True)
 					for idx in appositives_and_delims:
@@ -291,6 +393,7 @@ class SenTree:
 						s.__delitem__(i)
 
 		self.update_text()
+		#pdb.set_trace()
 		return retval
 
 	#6 Remove NP-prefixed SBAR
@@ -696,12 +799,14 @@ class SenTree:
 		self.children[stage_num] = []
 		for sub in subs:
 			if valid_s(sub):
-				newtree = self.parser.parse_text(reconstitute_sentence(sub.leaves()))
-				newtree = next(newtree)
-				child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
-				child.type = stage_num
-				child.flags = self.flags
-				self.children[stage_num].append(child)
+				for i in range(len(sub)-1):
+					if sub.height() > 2 and valid_np(sub[i]) == "NP" and valid_vp(sub[i+1]):
+						newtree = self.parser.parse_text(reconstitute_sentence(sub.leaves()))
+						newtree = next(newtree)
+						child = SenTree(newtree, self.parser, prevST=self.prevST, nextST=self.nextST, ner=self.ner)
+						child.type = stage_num
+						child.flags = self.flags
+						self.children[stage_num].append(child)
 		return False
 	
 	# Wrapper to handle stage progression
@@ -814,7 +919,7 @@ class SenTree:
 		# LANGUAGE		Any named language.
 		# DATE			Absolute or relative dates or periods.
 		# TIME			Times smaller than a day.
-		# PERCENT		Percentage, including ”%“.
+		# PERCENT		Percentage, including symbol.
 		# MONEY			Monetary values, including unit.
 		# QUANTITY		Measurements, as of weight or distance.
 		# ORDINAL		“first”, “second”, etc.
@@ -1131,7 +1236,25 @@ def validate_s(t):
 		return has_valid_np(t) and has_valid_vp(t)
 	return False
 
+def use_second(np1, delim, np2):
+	if not is_nnp(np1) and is_nnp(np2):
+		return True
+	elif not is_nnp(np1) and not is_nnp(np2) and delim.leaves()[0] == ":":
+		return True
+	return False
 
+def is_nnp(np):
+	if np.label() != "NP":
+		return False
+
+	if "NNP" in [np[i].label() for i in range(len(np))]:
+		return True
+
+	for (word,pos) in np.pos():
+		if pos in ["NN", "NNP", "NNS", "NNPS"]:
+			if not word[0].isupper():
+				return False
+	return True
 
 def getSBARQuestion(SBAR, root):
     retlist = []
