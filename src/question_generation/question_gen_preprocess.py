@@ -14,8 +14,8 @@ import pdb
 
 safety = False
 
-st = StanfordNERTagger('/Users/jarrett/Downloads/nerstuff/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/jarrett/Downloads/nerstuff/stanford-ner.jar', encoding='utf-8')
-
+# st = StanfordNERTagger('/Users/jarrett/Downloads/nerstuff/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/jarrett/Downloads/nerstuff/stanford-ner.jar', encoding='utf-8')
+st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
 
 nlp = spacy.load('en_core_web_lg')
 # nlp = spacy.load('en')
@@ -1331,7 +1331,7 @@ def getSBARQuestion(SBAR, root):
                 S = SBAR[1]
                 if S.label()[-1] == "S" and S.height() > 2:
                     if len(S) >= 2 and len(S[0].label()) >= 2 and S[0].label()[-2:] == "NP" and len(S[1].label()) >= 2 and S[1].label()[-2:] == "VP":
-                        if len(S[1][0].label()) >= 2 and S[1][0].label()[:2] == "VB" and len(S[1][1].label()) >= 2 and S[1][1].label()[:2] != "VB":
+                        if len(S[1]) >= 2 and len(S[1][0].label()) >= 2 and S[1][0].label()[:2] == "VB" and len(S[1][1].label()) >= 2 and S[1][1].label()[:2] != "VB":
                             vbn = S[1][0].leaves()[0]
                             conj_verb = lemma(vbn)
                             verblvs = []
