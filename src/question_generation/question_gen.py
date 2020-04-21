@@ -4,6 +4,8 @@ from queue import Queue
 import pattern.en
 from pattern.en import lemma
 from src.question_generation.question_gen_preprocess import *
+import copy
+
 
 def getWhoWhat(t):
     out = []
@@ -470,13 +472,121 @@ def handle_stage_1(parse_tree):
     # unmv_tregex = ["VP < (S=UNMV $,, /,/)", "S < PP|ADJP|ADVP|S|SBAR=UNMV > ROOT", "/\\.*/ < CC << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR < (IN|DT < /[^that]/) << NP|PP=UNMV", "SBAR < /^WH.*P$/ << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR <, IN|DT < (S < (NP=UNMV !?,, VP))", "S < (VP <+(VP) (VB|VBD|VBN|VBZ < be|being|been|is|are|was|were|am) <+(VP) (S << NP|ADJP|VP|VP|ADVP|PP=UNMV))", "NP << (PP=UNMV !< (IN < of|about))", "PP << PP=UNMV", "NP $ VP << PP=UNMV", "SBAR=UNMV [ !> VP | $-- /,/ | < RB ]", "SBAR=UNMV !< WHNP < (/^[^S].*/ !<< that|whether|how)", "NP=UNMV < EX", "/^S/ < `` << NP|ADJP|VP|ADVP|PP=UNMV", "PP=UNMV !< NP", "NP=UNMV $ @NP", "NP|PP|ADJP|ADVP << NP|ADJP|VP|ADVP|PP=UNMV", "@UNMV << NP|ADJP|VP|ADVP|PP=UNMV"]
     return [VP_List, NP_List, PP_List, S_List, CC_List, ADJP_List, ADVP_List, SBAR_List, S_Tot_List]
 
+# PERSON		People, including fictional.
+# NORP			Nationalities or religious or political groups.
+# FAC			Buildings, airports, highways, bridges, etc.
+# ORG			Companies, agencies, institutions, etc.
+# GPE			Countries, cities, states.
+# LOC			Non-GPE locations, mountain ranges, bodies of water.
+# PRODUCT		Objects, vehicles, foods, etc. (Not services.)
+# EVENT			Named hurricanes, battles, wars, sports events, etc.
+# WORK_OF_ART	Titles of books, songs, etc.
+# LAW			Named documents made into laws.
+# LANGUAGE		Any named language.
+# DATE			Absolute or relative dates or periods.
+# TIME			Times smaller than a day.
+# PERCENT		Percentage, including ”%“.
+# MONEY			Monetary values, including unit.
+# QUANTITY		Measurements, as of weight or distance.
+# ORDINAL		“first”, “second”, etc.
+# CARDINAL		Numerals that do not fall under another type.
 
+who_list = ["PERSON", "NORP", "ORG", "ORGANIZATION"]
+where_list = ["LOC", "LOCATION", "GPE"]
+when_list = ["DATE", "TIME"]
 
 def gen_PP(phrases, parse):
-    return []
+    retlist = []
+    frontier = LifoQueue()
+    for phrase in phrases:
+        print("Potential phrase: " + reconstitute_sentence(phrase.leaves()))
+        tag = None
+        try:
+            tag = phrase.spacy_tag
+            print("SPACY TAG: " + tag)
+            if tag == "":
+                tag = None
+        except AttributeError:
+            pass
+
+        try:
+            tag = phrase.corenlp_tag
+            print("CORENLP TAG: " + tag)
+        except AttributeError:
+            pass
+
+        if tag is not None:
+            initial = ["How (NP)", "did"]
+            if tag in where_list:
+                initial = ["Where (PP)"]
+            elif tag in when_list:
+                initial = ["When (PP)"]
+            
+            frontier.put_nowait(parse.t)
+            while not frontier.empty():
+                curr = frontier.get_nowait()
+
+                # minimum layer is 4, likely higher
+                if curr.height() > 2:
+                    for i in range(len(curr)-1, -1, -1):
+                        if curr[i] != phrase:
+                            frontier.put_nowait(curr[i])
+                else:
+                    test = curr.leaves()
+                    if test[-1] == ".":
+                        test = test[:-1]
+                    initial += test
+            initial += ["?"]
+            retlist.append(reconstitute_sentence(initial))
+        else:
+            print("Phrase failed")
+    return retlist
 
 def gen_NP(phrases, parse):
-    return []
+    retlist = []
+    frontier = LifoQueue()
+    for phrase in phrases:
+        print("Potential phrase: " + reconstitute_sentence(phrase.leaves()))
+        tag = None
+        try:
+            tag = phrase.spacy_tag
+            print("SPACY TAG: " + tag)
+            if tag == "":
+                tag = None
+        except AttributeError:
+            pass
+
+        try:
+            tag = phrase.corenlp_tag
+            print("CORENLP TAG: " + tag)
+        except AttributeError:
+            pass
+
+        # If we know the tag, use it
+        if tag is not None:
+            initial = ["What (NP)"]
+            if tag in who_list:
+                initial = ["Who (NP)"]
+
+            frontier.put_nowait(parse.t)
+            while not frontier.empty():
+                curr = frontier.get_nowait()
+
+                # minimum layer is 4, likely higher
+                if curr.height() > 2:
+                    for i in range(len(curr)-1, -1, -1):
+                        if curr[i] != phrase:
+                            frontier.put_nowait(curr[i])
+                else:
+                    test = curr.leaves()
+                    if test[-1] == ".":
+                        test = test[:-1]
+                    initial += test
+            initial += ["?"]
+            retlist.append(reconstitute_sentence(initial))
+        else:
+            print("Phrase failed")
+    return retlist
 
 def gen_SBAR(phrases, parse):
     retlist = []
@@ -494,8 +604,8 @@ def generate_questions(parse):
     
     parse_tree = parse.t
 
-    print("Initial Tree:")
-    parse_tree.pretty_print()
+    # print("Initial Tree:")
+    # parse_tree.pretty_print()
 
     # Stage 1: mark as unmovable dangerous nodes
     handy_lists = handle_stage_1(parse_tree)
@@ -509,8 +619,8 @@ def generate_questions(parse):
     SBAR_List = handy_lists[7]
     S_Tot_List = handy_lists[8]
 
-    print("Processed Tree:")
-    print(parse_tree.pretty_print())
+    # print("Processed Tree:")
+    # print(parse_tree.pretty_print())
 
     # Stage 2: Select answer phrases and generate a set of question phrases for it
     possible_answer_phrases = []
@@ -531,8 +641,6 @@ def generate_questions(parse):
                     print("FAILED SBAR:")
                     node.pretty_print()
                 # SBAR_phrases.append(node)
-            node.flags = ["HAI"]
-            print(node.flags)
             possible_answer_phrases.append(node)
             # node.pretty_print()
         elif node.label()[-4:] == "SBAR":
@@ -542,11 +650,6 @@ def generate_questions(parse):
             else:
                 print("FAILED SBAR:")
                 node.pretty_print()
-
-    print("Potential Answer Phrases:")
-    for node in possible_answer_phrases:
-        print(reconstitute_sentence(node.leaves()))
-
     print("===============================================================================================================\n")
     # If current answer phrase is the subject: do the inversion stuff
         # Stage 3: Decompose the main verb

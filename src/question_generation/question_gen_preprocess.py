@@ -556,12 +556,11 @@ class SenTree:
 			raise ValueError
 
 		# Update ner on all ST before running coref
-		ner_tokens = [token.ent_type_ for token in self.ner]
 		beginning = 0
 		for i in range(1, len(thresholds)):
 			end = thresholds[i]
 
-			curr_slice = ner_tokens[beginning:end]
+			curr_slice = self.ner[beginning:end]
 
 			ST = sentree_list[i-1]
 			ST.update_ner(self.ner)
@@ -1067,12 +1066,11 @@ class SenTree:
 			raise ValueError
 
 		# Update ner on all ST before running coref
-		ner_tokens = [token.ent_type_ for token in self.ner]
 		beginning = 0
 		for i in range(1, len(thresholds)):
 			end = thresholds[i]
 
-			curr_slice = ner_tokens[beginning:end]
+			curr_slice = self.ner[beginning:end]
 
 			ST = sentree_list[i-1]
 			ST.update_ner(self.ner)
@@ -1084,45 +1082,102 @@ class SenTree:
 
 	# Bubble up NER data, when fed stuff that begins at the ground level
 	def bubble_ner(self, tokens, corenlp=True):
-		if corenlp:
-			# Hooray we can do things
-			node_stack = LifoQueue()
+		# GDI spacy why do you have to be different
+		if not corenlp:
+			tokens = self.align_ner_tokens(tokens)
 
-			BFS_frontier = Queue()
-			curr = self.t
-		else:
-			# GDI spacy why do you have to be different
-			corenlp_aligned_tokens = tokens
-			return self.bubble_ner(corenlp_aligned_tokens, corenlp=True)
+		# Hooray we can do things
+		node_stack = LifoQueue()
+		frontier_1 = Queue()
+		frontier_2 = Queue()
+
+		# Do BFS, put onto a stack, so can pull stuff in reverse BFS order
+		frontier_1.put_nowait((0,self.t))
+		while not frontier_1.empty():
+			while not frontier_1.empty():
+				left_ind,curr = frontier_1.get_nowait()
+				node_stack.put_nowait(curr)
+
+				acclen = 0
+				for i in range(len(curr)):
+					my_ind = left_ind + acclen
+					if curr[i].height() > 2:
+						frontier_2.put_nowait((my_ind, curr[i]))
+					else:
+						if corenlp:
+							curr[i].corenlp_tag = tokens[my_ind][1]
+						else:
+							curr[i].spacy_tag = tokens[my_ind]
+					acclen += len(curr[i].leaves())
+
+			temp = frontier_1
+			frontier_1 = frontier_2
+			frontier_2 = temp
+
+		# Now pull off stack, and allow it to bubble up
+		while not node_stack.empty():
+			node = node_stack.get_nowait()
+			if node.label() == "NP":
+				# dostuff
+				for i in range(len(node)):
+					if node[i].label()[0] == "N":
+						try:
+							if corenlp:
+								node.corenlp_tag = node[i].corenlp_tag
+							else:
+								node.spacy_tag = node[i].spacy_tag
+						except AttributeError:
+							pass
+			elif node.label() == "PP":
+				if len(node) != 2:
+					print("PP FAILURE")
+					node.pretty_print()
+				elif node[1].label() == "NP":
+					try:
+						if corenlp:
+							node.corenlp_tag = node[1].corenlp_tag
+						else:
+							node.spacy_tag = node[1].spacy_tag
+					except AttributeError:
+						pass
 		return
+
+	# align spacy tokens to corenlp tokens
+	def align_ner_tokens(self, spacy_tokens):
+		spacy_len = len(spacy_tokens)
+		corenlp_len = len(self.text)
+		if corenlp_len == spacy_len:
+			return [token.ent_type_ for token in spacy_tokens]
+		else:
+			new_tokens = [''] * corenlp_len
+			if spacy_len > corenlp_len:
+				i = 0
+				while i < corenlp_len:
+					if spacy_tokens[i].text.lower() == self.text[i].lower():
+						new_tokens[i] = spacy_tokens[i].ent_type_
+					else:
+						break
+					i += 1
+				
+				start_offset = i
+				spacy_ind = spacy_len - 1
+				core_ind = corenlp_len - 1
+
+				while spacy_ind > start_offset and core_ind > start_offset:
+					if spacy_tokens[spacy_ind].text.lower() == self.text[core_ind].lower():
+						new_tokens[core_ind] = spacy_tokens[spacy_ind].ent_type_
+					else:
+						break
+					spacy_ind -= 1
+					core_ind -= 1
+				end_offset = spacy_ind
+			else:
+				print("RED ALERT RED ALERT RED ALERT")
+			return new_tokens
 
 	# Assumes all NER data (both spacy and corenlp) has been accumulated and bubbled. have SPACY advanced tags take precedence
 	def align_ner(self):
 		
-		return
-
-	# Old version still uses SpaCY
-	def old_align_ner(self):
-		# Match the subtree things
-		test_spacy = self.ner.text.split('.')[-2].split() + ['.']
-		separate_inds = []
-		replacements = []
-
-		to_print = False
-		if len(test_spacy) != len(self.text):
-			to_print = True
-		else:
-			for i in range(len(test_spacy)):
-				if test_spacy[i] != self.text[i]:
-					to_print = True
-					break
-
-		if to_print:
-			# print("COMPARE SPACY to CoreNLP")
-			# print(test_spacy)
-			# print(self.text)
-			# print("=======================================\n")
-			pass
 		return
 
 # Given a list of sentence ending thresholds and mention, find which sentence it belongs to
@@ -1275,7 +1330,7 @@ def getSBARQuestion(SBAR, root):
             elif SBAR[0][0].label() == "WRB":
                 S = SBAR[1]
                 if S.label()[-1] == "S" and S.height() > 2:
-                    if len(S[0].label()) >= 2 and S[0].label()[-2:] == "NP" and len(S[1].label()) >= 2 and S[1].label()[-2:] == "VP":
+                    if len(S) >= 2 and len(S[0].label()) >= 2 and S[0].label()[-2:] == "NP" and len(S[1].label()) >= 2 and S[1].label()[-2:] == "VP":
                         if len(S[1][0].label()) >= 2 and S[1][0].label()[:2] == "VB" and len(S[1][1].label()) >= 2 and S[1][1].label()[:2] != "VB":
                             vbn = S[1][0].leaves()[0]
                             conj_verb = lemma(vbn)
@@ -1300,7 +1355,7 @@ def getSBARQuestion(SBAR, root):
 
 def acc_stage(stage):
 	test = stage + 1
-	if stage == 10:
+	if stage == 9:
 		return True,3
 	else:
 		return False,test
@@ -1329,54 +1384,46 @@ def preprocess(treelist, parser):
 	for i in range(len(node_list)):
 		FrontierQueue.put_nowait((i, 1))
 
-	not_run_ner = True
 	ner_stage = 8
-	not_finished = True
 	awaiting_ner = []
-	while not_finished:
-		while not FrontierQueue.empty():
-			node_id,stage = FrontierQueue.get_nowait()
-			curr_node = node_list[node_id]
-			# print("Stage " + str(stage) + ":")
-			# print(curr_node.text)
-			# print(curr_node.fulltext)
-			# print("-----------------------\n")
-			print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
-			full_replace = curr_node.handle_stage(stage, preprocessed_questions)
-			if len(curr_node.children[stage]) > 0:
-				# print("Ho: " + str(stage))
-				rollover, new_stage = acc_stage(stage)
-				# Currently only does one passthrough
-				if not rollover:
-					for child in curr_node.children[stage]:
-						if child.prevST is None:
-							updated_root = child
-						if new_stage != ner_stage:
-							FrontierQueue.put_nowait((len(node_list), new_stage))
-						else:
-							awaiting_ner.append(len(node_list))
-						node_list.append(child)
-			else:
-				rollover, new_stage = acc_stage(stage)
-				if not rollover:
+	while not FrontierQueue.empty():
+		node_id,stage = FrontierQueue.get_nowait()
+		curr_node = node_list[node_id]
+		# print("Stage " + str(stage) + ":")
+		# print(curr_node.text)
+		# print(curr_node.fulltext)
+		# print("-----------------------\n")
+		print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
+		full_replace = curr_node.handle_stage(stage, preprocessed_questions)
+		if len(curr_node.children[stage]) > 0:
+			# print("Ho: " + str(stage))
+			rollover, new_stage = acc_stage(stage)
+			# Currently only does one passthrough
+			if not rollover:
+				for child in curr_node.children[stage]:
+					if child.prevST is None:
+						updated_root = child
 					if new_stage != ner_stage:
-						FrontierQueue.put_nowait((node_id, new_stage))
+						FrontierQueue.put_nowait((len(node_list), new_stage))
 					else:
-						awaiting_ner.append(node_id)
-		if not_run_ner and len(awaiting_ner) > 0:
-			not_run_ner = False
-
-			finished_coref = updated_root.do_coref(awaiting_ner, node_list)
-
-			for ind in finished_coref:
-				FrontierQueue.put_nowait((ind, ner_stage + 1))
-
-			updated_root = node_list[finished_coref[0]]
+						awaiting_ner.append(len(node_list))
+					node_list.append(child)
 		else:
-			not_finished = False
-	
-	preprocessed_trees = updated_root.do_corenlp_supersense()
-	updated_root.do_spacy_supersense(preprocessed_trees)
+			rollover, new_stage = acc_stage(stage)
+			if not rollover:
+				if new_stage != ner_stage:
+					FrontierQueue.put_nowait((node_id, new_stage))
+				else:
+					awaiting_ner.append(node_id)
+
+	finished_coref = updated_root.do_coref(awaiting_ner, node_list)
+	updated_root = node_list[finished_coref[0]]
+
+	preprocessed_trees = []
+	curr = updated_root
+	while curr is not None:
+		preprocessed_trees.append(curr)
+		curr = curr.nextST
 
 	for cluster in document_metadata["coref"]:
 		# print(cluster)

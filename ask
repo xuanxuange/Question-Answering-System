@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3
 
 # pip3 install spacy==2.1.0
 # python3 -m spacy download en_core_web_lg
@@ -9,6 +9,7 @@ import sys
 import os
 import nltk
 from nltk.parse import corenlp
+import time
 
 DT_LIST = ['the', 'a', 'an', 'this', 'that', 'these', 'those', 'my', 'your', 'his', 'her', 'its', 'our', 'their', 'much', 'many', 'most', 'some', 'any', 'enough', 'all', 'both', 'half', 'either', 'neither', 'each', 'every', 'another', 'such', 'what', 'rather', 'quite']
 
@@ -105,13 +106,13 @@ def sanitize_line(line):
     return remove_troublesome_paren(line)
 
 if __name__ == "__main__":
+    start = time.time()
     article = sys.argv[1]
     nquestions = int(sys.argv[2])
-    # blockPrint()
-    print("Hello")
     from src.question_generation.question_gen import *
     from src.question_generation.question_gen_preprocess import preprocess
-    print("Hello")
+    end_import = time.time()
+    print("Import complete: " + str(end_import - start) + " seconds\n")
 
     parser = corenlp.CoreNLPParser(url='http://localhost:9000', tagtype='pos')
 
@@ -132,16 +133,22 @@ if __name__ == "__main__":
                         break
             line = f.readline()
         f.close()
-    print("Hello")
+    end_parse = time.time()
+    print("Initial parse complete: " + str(end_parse - end_import) + " seconds\n")
+
 
     preprocessed_list, question_list = preprocess(parsed_list, parser)
-    print("World")
-    print(question_list)
+    end_preprocess = time.time()
+    print("Preprocess complete: " + str(end_preprocess - end_parse) + " seconds\n")
+
 
     for parse in preprocessed_list:
         # question_list += getWhoWhat(parse) + getWhoWhatNP(parse) + getBinarySimple(parse) + getBinaryAuxiliary(parse)
         question_list += generate_questions(parse)
         pass
+
+    end_generation = time.time()
+    print("Generation complete: " + str(end_generation - end_preprocess) + " seconds\n")
 
     i = 0
     # enablePrint()
@@ -151,3 +158,5 @@ if __name__ == "__main__":
         print("Formatted: " + format_question(question_list[i]) + "\n")
         i += 1
     print(len(question_list))
+
+    print("Total time: " + str(end_generation - start) + " seconds\n")
