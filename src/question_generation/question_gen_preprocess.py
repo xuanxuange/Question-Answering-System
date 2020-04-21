@@ -453,12 +453,11 @@ class SenTree:
 			raise ValueError
 
 		# Update ner on all ST before running coref
-		ner_tokens = [token.ent_type_ for token in self.ner]
 		beginning = 0
 		for i in range(1, len(thresholds)):
 			end = thresholds[i]
 
-			curr_slice = ner_tokens[beginning:end]
+			curr_slice = self.ner[beginning:end]
 
 			ST = sentree_list[i-1]
 			ST.update_ner(self.ner)
@@ -962,12 +961,11 @@ class SenTree:
 			raise ValueError
 
 		# Update ner on all ST before running coref
-		ner_tokens = [token.ent_type_ for token in self.ner]
 		beginning = 0
 		for i in range(1, len(thresholds)):
 			end = thresholds[i]
 
-			curr_slice = ner_tokens[beginning:end]
+			curr_slice = self.ner[beginning:end]
 
 			ST = sentree_list[i-1]
 			ST.update_ner(self.ner)
@@ -979,45 +977,105 @@ class SenTree:
 
 	# Bubble up NER data, when fed stuff that begins at the ground level
 	def bubble_ner(self, tokens, corenlp=True):
-		if corenlp:
-			# Hooray we can do things
-			node_stack = LifoQueue()
+		# GDI spacy why do you have to be different
+		if not corenlp:
+			tokens = self.align_ner_tokens(tokens)
 
-			BFS_frontier = Queue()
-			curr = self.t
-		else:
-			# GDI spacy why do you have to be different
-			corenlp_aligned_tokens = tokens
-			return self.bubble_ner(corenlp_aligned_tokens, corenlp=True)
+		# Hooray we can do things
+		node_stack = LifoQueue()
+		frontier_1 = Queue()
+		frontier_2 = Queue()
+
+		# Do BFS, put onto a stack, so can pull stuff in reverse BFS order
+		frontier_1.put_nowait((0,self.t))
+		while not frontier_1.empty():
+			while not frontier_1.empty():
+				left_ind,curr = frontier_1.get_nowait()
+				node_stack.put_nowait(curr)
+
+				acclen = 0
+				for i in range(len(curr)):
+					my_ind = left_ind + acclen
+					if curr[i].height() > 2:
+						frontier_2.put_nowait((my_ind, curr[i]))
+					else:
+						if len(curr[i]) > 2:
+							print("TOTAL FAILURE")
+							curr[i].pretty_print()
+						elif corenlp:
+							curr[i].corenlp_tag = tokens[my_ind]
+						else:
+							curr[i].spacy_tag = tokens[my_ind]
+					acclen += len(curr[i].leaves())
+
+			temp = frontier_1
+			frontier_1 = frontier_2
+			frontier_2 = temp
+
+		# Now pull off stack, and allow it to bubble up
+		while not node_stack.empty():
+			node = node_stack.get_nowait()
+			if node.label() == "NP":
+				# dostuff
+				for i in range(len(node)):
+					if node[i].label()[0] == "N":
+						try:
+							if corenlp:
+								node.corenlp_tag = node[i].corenlp_tag
+							else:
+								node.spacy_tag = node[i].spacy_tag
+						except AttributeError:
+							pass
+			elif node.label() == "PP":
+				if len(node) != 2:
+					print("PP FAILURE")
+					node.pretty_print()
+				elif node[1].label() == "NP":
+					try:
+						if corenlp:
+							node.corenlp_tag = node[i].corenlp_tag
+						else:
+							node.spacy_tag = node[i].spacy_tag
+					except AttributeError:
+						pass
 		return
+
+	# align spacy tokens to corenlp tokens
+	def align_ner_tokens(self, spacy_tokens):
+		spacy_len = len(spacy_tokens)
+		corenlp_len = len(self.text)
+		if corenlp_len == spacy_len:
+			return [token.ent_type_ for token in spacy_tokens]
+		else:
+			new_tokens = [''] * corenlp_len
+			if spacy_len > corenlp_len:
+				i = 0
+				while i < corenlp_len:
+					if spacy_tokens[i].text.lower() == self.text[i].lower():
+						new_tokens[i] = spacy_tokens[i].ent_type_
+					else:
+						break
+					i += 1
+				
+				start_offset = i
+				spacy_ind = spacy_len - 1
+				core_ind = corenlp_len - 1
+
+				while spacy_ind > start_offset and core_ind > start_offset:
+					if spacy_tokens[spacy_ind].text.lower() == self.text[core_ind].lower():
+						new_tokens[core_ind] = spacy_tokens[spacy_ind].ent_type_
+					else:
+						break
+					spacy_ind -= 1
+					core_ind -= 1
+				end_offset = spacy_ind
+			else:
+				print("RED ALERT RED ALERT RED ALERT")
+			return new_tokens
 
 	# Assumes all NER data (both spacy and corenlp) has been accumulated and bubbled. have SPACY advanced tags take precedence
 	def align_ner(self):
 		
-		return
-
-	# Old version still uses SpaCY
-	def old_align_ner(self):
-		# Match the subtree things
-		test_spacy = self.ner.text.split('.')[-2].split() + ['.']
-		separate_inds = []
-		replacements = []
-
-		to_print = False
-		if len(test_spacy) != len(self.text):
-			to_print = True
-		else:
-			for i in range(len(test_spacy)):
-				if test_spacy[i] != self.text[i]:
-					to_print = True
-					break
-
-		if to_print:
-			# print("COMPARE SPACY to CoreNLP")
-			# print(test_spacy)
-			# print(self.text)
-			# print("=======================================\n")
-			pass
 		return
 
 # Given a list of sentence ending thresholds and mention, find which sentence it belongs to
