@@ -518,9 +518,9 @@ def gen_PP(phrases, parse):
         if tag is not None:
             initial = ["How (NP)", "did"]
             if tag in where_list:
-                initial += ["Where (PP)"]
+                initial = ["Where (PP)"]
             elif tag in when_list:
-                initial += ["When (PP)"]
+                initial = ["When (PP)"]
             
             frontier.put_nowait(parse.t)
             while not frontier.empty():

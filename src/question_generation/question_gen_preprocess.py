@@ -1207,7 +1207,7 @@ def getSBARQuestion(SBAR, root):
             elif SBAR[0][0].label() == "WRB":
                 S = SBAR[1]
                 if S.label()[-1] == "S" and S.height() > 2:
-                    if len(S[0].label()) >= 2 and S[0].label()[-2:] == "NP" and len(S[1].label()) >= 2 and S[1].label()[-2:] == "VP":
+                    if len(S) >= 2 and len(S[0].label()) >= 2 and S[0].label()[-2:] == "NP" and len(S[1].label()) >= 2 and S[1].label()[-2:] == "VP":
                         if len(S[1][0].label()) >= 2 and S[1][0].label()[:2] == "VB" and len(S[1][1].label()) >= 2 and S[1][1].label()[:2] != "VB":
                             vbn = S[1][0].leaves()[0]
                             conj_verb = lemma(vbn)
