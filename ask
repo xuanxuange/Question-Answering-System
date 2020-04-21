@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3
 
 # pip3 install spacy==2.1.0
 # python3 -m spacy download en_core_web_lg
@@ -158,3 +158,5 @@ if __name__ == "__main__":
         print("Formatted: " + format_question(question_list[i]) + "\n")
         i += 1
     print(len(question_list))
+
+    print("Total time: " + str(end_generation - start) + " seconds\n")

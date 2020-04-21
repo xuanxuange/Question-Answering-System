@@ -999,11 +999,8 @@ class SenTree:
 					if curr[i].height() > 2:
 						frontier_2.put_nowait((my_ind, curr[i]))
 					else:
-						if len(curr[i]) > 2:
-							print("TOTAL FAILURE")
-							curr[i].pretty_print()
-						elif corenlp:
-							curr[i].corenlp_tag = tokens[my_ind]
+						if corenlp:
+							curr[i].corenlp_tag = tokens[my_ind][1]
 						else:
 							curr[i].spacy_tag = tokens[my_ind]
 					acclen += len(curr[i].leaves())
@@ -1033,9 +1030,9 @@ class SenTree:
 				elif node[1].label() == "NP":
 					try:
 						if corenlp:
-							node.corenlp_tag = node[i].corenlp_tag
+							node.corenlp_tag = node[1].corenlp_tag
 						else:
-							node.spacy_tag = node[i].spacy_tag
+							node.spacy_tag = node[1].spacy_tag
 					except AttributeError:
 						pass
 		return
@@ -1235,7 +1232,7 @@ def getSBARQuestion(SBAR, root):
 
 def acc_stage(stage):
 	test = stage + 1
-	if stage == 10:
+	if stage == 9:
 		return True,3
 	else:
 		return False,test
@@ -1264,54 +1261,46 @@ def preprocess(treelist, parser):
 	for i in range(len(node_list)):
 		FrontierQueue.put_nowait((i, 1))
 
-	not_run_ner = True
 	ner_stage = 8
-	not_finished = True
 	awaiting_ner = []
-	while not_finished:
-		while not FrontierQueue.empty():
-			node_id,stage = FrontierQueue.get_nowait()
-			curr_node = node_list[node_id]
-			# print("Stage " + str(stage) + ":")
-			# print(curr_node.text)
-			# print(curr_node.fulltext)
-			# print("-----------------------\n")
-			print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
-			full_replace = curr_node.handle_stage(stage, preprocessed_questions)
-			if len(curr_node.children[stage]) > 0:
-				# print("Ho: " + str(stage))
-				rollover, new_stage = acc_stage(stage)
-				# Currently only does one passthrough
-				if not rollover:
-					for child in curr_node.children[stage]:
-						if child.prevST is None:
-							updated_root = child
-						if new_stage != ner_stage:
-							FrontierQueue.put_nowait((len(node_list), new_stage))
-						else:
-							awaiting_ner.append(len(node_list))
-						node_list.append(child)
-			else:
-				rollover, new_stage = acc_stage(stage)
-				if not rollover:
+	while not FrontierQueue.empty():
+		node_id,stage = FrontierQueue.get_nowait()
+		curr_node = node_list[node_id]
+		# print("Stage " + str(stage) + ":")
+		# print(curr_node.text)
+		# print(curr_node.fulltext)
+		# print("-----------------------\n")
+		print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()))
+		full_replace = curr_node.handle_stage(stage, preprocessed_questions)
+		if len(curr_node.children[stage]) > 0:
+			# print("Ho: " + str(stage))
+			rollover, new_stage = acc_stage(stage)
+			# Currently only does one passthrough
+			if not rollover:
+				for child in curr_node.children[stage]:
+					if child.prevST is None:
+						updated_root = child
 					if new_stage != ner_stage:
-						FrontierQueue.put_nowait((node_id, new_stage))
+						FrontierQueue.put_nowait((len(node_list), new_stage))
 					else:
-						awaiting_ner.append(node_id)
-		if not_run_ner and len(awaiting_ner) > 0:
-			not_run_ner = False
-
-			finished_coref = updated_root.do_coref(awaiting_ner, node_list)
-
-			for ind in finished_coref:
-				FrontierQueue.put_nowait((ind, ner_stage + 1))
-
-			updated_root = node_list[finished_coref[0]]
+						awaiting_ner.append(len(node_list))
+					node_list.append(child)
 		else:
-			not_finished = False
-	
-	preprocessed_trees = updated_root.do_corenlp_supersense()
-	updated_root.do_spacy_supersense(preprocessed_trees)
+			rollover, new_stage = acc_stage(stage)
+			if not rollover:
+				if new_stage != ner_stage:
+					FrontierQueue.put_nowait((node_id, new_stage))
+				else:
+					awaiting_ner.append(node_id)
+
+	finished_coref = updated_root.do_coref(awaiting_ner, node_list)
+	updated_root = node_list[finished_coref[0]]
+
+	preprocessed_trees = []
+	curr = updated_root
+	while curr is not None:
+		preprocessed_trees.append(curr)
+		curr = curr.nextST
 
 	for cluster in document_metadata["coref"]:
 		# print(cluster)
