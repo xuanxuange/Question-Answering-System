@@ -1,6 +1,6 @@
 import nltk.tree as t
 from src.parser.nltk_stanford_parser import parse_raw_text
-from src.parser.word_processor import get_synonyms
+from src.parser.word_processor import get_synonyms, word_lemmatize
 from nltk.corpus import wordnet
 
 def binary_question_transform(question):
@@ -74,6 +74,7 @@ def check_two_sentence_semantically_equal(sentence1, sentence2):
                 break
 
         if not exists:
+            #print(word)
             return False
 
     return True
@@ -91,11 +92,13 @@ def _recursively_get_keywords_parse_trees(tree, word_set, pos_tag_values):
         if current_label.startswith('NN'):
             # noun
             pos = wordnet.NOUN
+            word = word_lemmatize(word, pos)
             word_set.add(word)
             pos_tag_values[word] = pos
         elif current_label.startswith('VB'):
             # verb
             pos = wordnet.VERB
+            word = word_lemmatize(word, pos)
             word_set.add(word)
             pos_tag_values[word] = pos
         elif current_label.startswith('JJ'):
@@ -118,5 +121,5 @@ def _recursively_get_keywords_parse_trees(tree, word_set, pos_tag_values):
 
 
 if __name__ == "__main__":
-    tree= check_two_sentence_semantically_equal("apple is buying a U.K. startup", "apple is looking at buying U.K. startup for $1 billion")
+    tree= check_two_sentence_semantically_equal("apple is buying a U.K. startup", "apple was looking at buying U.K. startup for $1 billion")
     print(str(tree))
