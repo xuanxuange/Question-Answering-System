@@ -101,7 +101,7 @@ def getBinarySimple(t):
                     prefdict = {"VBZ": "Has", "VBG": "Has", "VBP": "Has/Have", "VBD":"Had", "VBN":"Had"}
                     if lemmatizer.lemmatize(candidate[1][0].leaves()[0]) != "be":
                         if candidate[1][0].label() in prefdict:
-                            out.append("%s %s %s?" % (prefdict[candidate[1][0].label()],nptext,vpptext))
+                            out.append("BS: %s %s %s?" % (prefdict[candidate[1][0].label()],nptext,vpptext))
                     elif candidate[1][0].label() in prefdict:
                         if candidate[1][0].label() == "VBD":
                             pref = "Did"
