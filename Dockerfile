@@ -34,7 +34,10 @@ RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
 RUN pip3 install -U spacy
 RUN pip3 install -U spacy-lookups-data
 RUN python3 -m spacy download en_core_web_sm
+RUN python3 -m spacy download en_core_web_lg
 
+# install neuralcoref
+RUN pip3 install neuralcoref
 
 # other dependencies
 RUN pip3 install -r requirement.txt

@@ -74,7 +74,7 @@ if __name__ == "__main__":
         preprocess = q_preprocess(questions[i])
         keywords, q_type, curr_q = preprocess.preprocess()
 
-        # TODO(xuanxuan): find most relevent sentence
+        # TODO(xuanxuan): find most relevant sentence
         rel_sentence = ''
         
         # Generate answer
