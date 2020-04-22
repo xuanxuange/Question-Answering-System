@@ -35,3 +35,13 @@ def ner_tagging(tokens):
 def dep_parse(text):
     result = dep_parser.parse(text.split())
     return result
+
+
+if __name__ == "__main__":
+    tree = parse_raw_text("Apple is looking at buying U.K. startup for $1 billion")
+    #print(str(parse_raw_text("he where Arthur find in Beijing is not a male")[0][0]))
+    print(str(parse_raw_text("isn't it true that he loves sports?")))
+    print(str(parse_raw_text("was he killed?")))
+    print(str(tree))
+
+

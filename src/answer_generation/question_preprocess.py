@@ -34,7 +34,7 @@ class q_preprocess:
         self.bi_clause = ["SINV", "SQ", "S"]
         self.wh_clause = ["SBAR", "SBARQ"]
 
-    def qtype_recognition(self):
+    def  qtype_recognition(self):
         """
         Recognize the type of the question and remove extra wh/binary words at the beginning of the original question
         Arg: question - the question to process
@@ -76,7 +76,7 @@ class q_preprocess:
         tmp_list = []
         q_list = []
         flag = False
-        tmp_tree = parse_raw_text(quesiton)
+        tmp_tree = parse_raw_text(question)
         for i in range(len(tmp_tree)):
             if tmp_tree[i].label() in self.bi_clause:
                 candidate = tmp_tree[i]
@@ -105,11 +105,11 @@ class q_preprocess:
     def shorten_question(self, q_type, question):
         """
         Remove extra clause before/after the main questioning part
-        Return: list[str], a list of compelete main questions
+        Return: list[str], a list of complete main questions
         """
         q_list = []
-        final_qlist = [] # len=2 if eitheror quesiton, otherwise len=1
-        # split question to two binary quesiton
+        final_qlist = [] # len=2 if either/or question, otherwise len=1
+        # split question to two binary question
         if q_type == EITHER_OR:
             q_list = self.expand_question(question)
         else:

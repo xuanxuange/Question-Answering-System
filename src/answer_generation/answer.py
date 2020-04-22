@@ -1,6 +1,7 @@
 from src.answer_generation.answer_gen import *
 from src.answer_generation.question_preprocess import *
 from src.answer_generation.relevent_sent import *
+from src.answer_generation.binary_question_processor import binary_question_transform, check_two_sentence_semantically_equal
 import re
 
 def format_answer(answer):
@@ -25,7 +26,29 @@ def generate_answer(question, most_relevant_sentence):
     if q_type == "WH_ADV":
         pos_answer = answer_whadv(curr_q[0], most_relevant_sentence)
     elif q_type == "BINARY" or q_type == "EITHER_OR":
-        pos_answer = "Binary question, not implemented yet!"
+        if q_type == "BINARY":
+            try:
+                transformed_q = binary_question_transform(curr_q[0])
+                if check_two_sentence_semantically_equal(transformed_q, most_relevant_sentence):
+                    return "YES!"
+                else:
+                    return "NO!"
+            except Exception:
+                return most_relevant_sentence
+        else:
+            try:
+                transformed_q1 = binary_question_transform(curr_q[0])
+                transformed_q2 = binary_question_transform(curr_q[1])
+                if check_two_sentence_semantically_equal(transformed_q1, most_relevant_sentence) and \
+                   not check_two_sentence_semantically_equal(transformed_q2, most_relevant_sentence):
+                    return "I believe it is the former"
+                elif check_two_sentence_semantically_equal(transformed_q2, most_relevant_sentence) and \
+                   not check_two_sentence_semantically_equal(transformed_q1, most_relevant_sentence):
+                    return "I believe it is the latter"
+                else:
+                    return most_relevant_sentence
+            except Exception:
+                return most_relevant_sentence
     elif q_type == "WH_N":
         pos_answer = answer_whn(curr_q[0], most_relevant_sentence)
     elif q_type == "HOW":
