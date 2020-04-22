@@ -41,11 +41,14 @@ class Ranker:
 		total = 0
 		nouns = 0
 		for word,pos in t.pos():
-			if pos in ["NN","NNS","NNP","NNPS"]:
+			if pos in ["NN","NNS"]:
 				dist = get_word_dist_to_root(word,pos="n")
 				if dist >= 0:
 					total += dist
 					nouns += 1
+			elif pos in ["NNP","NNS"]:
+				total += 25
+				nouns += 1
 		if nouns:
 			return total/nouns
 		else:

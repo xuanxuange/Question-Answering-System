@@ -157,7 +157,7 @@ def getBinaryAuxiliary(t):
     out = []
     for candidate in t.subtrees():
         if candidate.label() == "S":
-            lemmatizer = nltk.stem.WordNetLemmatizer()
+            #lemmatizer = nltk.stem.WordNetLemmatizer()
             if len(candidate) >= 2 and candidate[0].label() == "NP" and candidate[1].label() == "VP":
                 #Top level verified.
                 verbforms1 = ["VBD", "VBP", "VBZ"]
