@@ -521,14 +521,14 @@ def gen_PP(phrases, parse):
                 pass
 
             if tag is not None:
-                initial = ["(PP) How", "did"]
+                initial = ["How", "did"]
                 if tag in where_list:
-                    initial = ["(PP) Where", "did"]
+                    initial = ["Where", "did"]
                 elif tag in when_list:
                     if phrase.leaves()[0] in ["to", "for"]:
-                        initial = ["(PP) For", "how", "long", "did"]
+                        initial = ["For", "how", "long", "did"]
                     else:
-                        initial = ["(PP) When", "did"]
+                        initial = ["When", "did"]
                 
                 root = parse.t
                 main_VB = None
@@ -604,9 +604,9 @@ def gen_NP(phrases, parse):
 
             # If we know the tag, use it
             if tag is not None:
-                initial = ["(NP) What"]
+                initial = ["What"]
                 if tag in who_list:
-                    initial = ["(NP) Who"]
+                    initial = ["Who"]
 
                 frontier.put_nowait(parse.t)
                 while not frontier.empty():
