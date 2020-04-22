@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 
 # pip3 install spacy==2.1.0
 # python3 -m spacy download en_core_web_lg
