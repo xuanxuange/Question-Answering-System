@@ -26,6 +26,7 @@ def format_question(question):
     question = re.sub(r"\s([,;:\.\?!\'])", r"\1", question)
     question = re.sub(r"\.\s*\?", "?", question)
     question = re.sub(r",\s*\?", "?", question)
+    question = question.strip()
     question = question[0].upper() + question[1:]
     return question
 
@@ -128,13 +129,13 @@ if __name__ == "__main__":
             if len(line.split()) > 0:  # check for empty line
 
                 parsed_iter = parser.parse_text(sanitize_line(line),
-                                                timeout=5000)  # native output is a listiterator over detected sentences
+                                                timeout=5)  # native output is a listiterator over detected sentences
 
                 while True:
                     try:
                         next_item = next(parsed_iter)
                         parsed_list.append(next_item)
-                    except StopIteration:
+                    except:
                         break
             line = f.readline()
         f.close()
@@ -161,8 +162,8 @@ if __name__ == "__main__":
     i = 0
     # enablePrint()
     # while i < len(question_list) and i < nquestions:
-    qranker = Ranker(parser)
-    question_list = qranker.top_n_qstr(question_list, n=nquestions)
+    qranker = Ranker(parser, type_weights={"SR": 20, "BA":15, "BS":15, "WW":12, "AP":12, "NP":5, "PP":4})
+    question_list = qranker.top_n_qstr([q[4:] for q in question_list], n=nquestions, typelist=[q[:2] for q in question_list])
     question_list = [b for a,b in question_list]
     while i < len(question_list) and (debug_print or i < nquestions):
         # print("Original: " + question_list[i])

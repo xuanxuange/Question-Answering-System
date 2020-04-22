@@ -2,7 +2,7 @@ from src.question_generation.nym_utils import get_word_dist_to_root
 #init with target sentence length and weights, optionally
 #input list of parsetrees to ranker, optionally with list of ints representing value of question type
 class Ranker:
-	def __init__(self, parser, target_length=14, weights={"height": 0.5, "length": 1, "noun_to_root": 2.0, "sbars": 4.0, "type": 10.0}, type_weights={}):
+	def __init__(self, parser, target_length=14, weights={"height": 0.5, "length": 1.0, "noun_to_root": 2.0, "sbars": 2.0, "type": 5.0}, type_weights={}):
 		self.target_length = target_length
 		self.type_weights = type_weights
 		self.weights = weights
@@ -49,7 +49,7 @@ class Ranker:
 		if nouns:
 			return total/nouns
 		else:
-			return 100
+			return 0
 
 	def top_n_qstr(self, qsl,n=None, typelist=None):
 		qtrees = []
@@ -62,6 +62,10 @@ class Ranker:
 		if not typelist:
 			typelist = [" "]*len(qsl)
 		res = [[self.score_tree(qtrees[i],typelist[i]),qsl[i]] for i in range(len(qtrees))]
+		res2 = [[self.score_tree(qtrees[i],typelist[i]),typelist[i]+": "+qsl[i]] for i in range(len(qtrees))]
+		res2.sort(reverse=True)
+		for q in res2:
+			print(q[-1])
 		res.sort(reverse=True)
 		if n:
 			return res[:n]
