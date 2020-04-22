@@ -378,7 +378,7 @@ class SenTree:
 									appositives_and_delims.append(i+2)
 									if debug_print:
 										print(" ".join(s[i-1].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
-									immediate_questions.append("Is "+" \"".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+									immediate_questions.append("Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 									if s[i+2].label() == "SBAR":
 										immediate_questions += getSBARQuestion(s[i+2], self.t)
 								elif (len(s[i-1].leaves()) > 1 and s[i-1].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
