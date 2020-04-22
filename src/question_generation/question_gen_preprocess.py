@@ -1642,8 +1642,11 @@ def remove_q_dups(ql, t_order):
 		ttext = q[:2]
 		if qtext in out:
 			ttext_2 = out[qtext]
-			if t_order.index(ttext) > t_order.index(ttext_2):
-				out[qtext] = ttext
+			try: #Skip if tags are incomparable
+				if t_order.index(ttext) > t_order.index(ttext_2):
+					out[qtext] = ttext
+			except:
+				pass
 		else:
 			out[qtext] = ttext
 
