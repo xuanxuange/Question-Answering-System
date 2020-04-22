@@ -393,7 +393,7 @@ class SenTree:
 						s.__delitem__(i)
 
 		self.update_text()
-		#pdb.set_trace()
+		pdb.set_trace()
 		return retval
 
 	#6 Remove NP-prefixed SBAR
