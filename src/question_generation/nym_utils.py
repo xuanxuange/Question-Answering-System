@@ -79,7 +79,7 @@ def antonym_get(word,pos=None):
 
 	for lemma in synSet.lemmas():
 		for antolemma in lemma.antonyms():
-	       results["antonyms"].add(antolemma.name())
+			results["antonyms"].add(antolemma.name())
 	for lemma in synSet.hypernyms():
 		for hyperantolemma in lemma.antonyms():
 			results["hyperantonyms"].add(hyperantolemma.name())
