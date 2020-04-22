@@ -42,6 +42,11 @@ generic_NP = [['it', 'its'],
 class SenTree:
 	def __init__(self, t, parser, prevST=None, nextST=None, ner=None, parent=None):
 		self.t = t
+		t2 = t
+		while(t2.height() > 2):
+			t2 = t2[0]
+		if t2.label() not in ["NNP", "NNPS"]:
+			t2[0] = t2[0].lower()
 		self.spacy = nlp
 		self.metadata = None
 		if parent is not None:
@@ -360,7 +365,7 @@ class SenTree:
 									appositives_and_delims.append(i+2)
 									if debug_print:
 										print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
-									immediate_questions.append("Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i].leaves())+"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i].leaves())+"?")
 									if s[i+2].label() == "SBAR":
 										immediate_questions += getSBARQuestion(s[i+2], self.t)
 								elif (len(s[i].leaves()) > 1 and s[i].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
@@ -368,7 +373,7 @@ class SenTree:
 									appositives_and_delims.append(i+1)
 									if debug_print:
 										print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i].leaves()), file=sys.stderr)
-									immediate_questions.append("Is \""+" ".join(s[i].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[i].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
 								# retval = True
 							elif debug_print:
 								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
@@ -381,7 +386,7 @@ class SenTree:
 									appositives_and_delims.append(i+2)
 									if debug_print:
 										print(" ".join(s[i-1].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
-									immediate_questions.append("Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 									if s[i+2].label() == "SBAR":
 										immediate_questions += getSBARQuestion(s[i+2], self.t)
 								elif (len(s[i-1].leaves()) > 1 and s[i-1].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
@@ -390,7 +395,7 @@ class SenTree:
 									appositives_and_delims.append(i+1)
 									if debug_print:
 										print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i-1].leaves())+" "+" ".join(s[i].leaves()), file=sys.stderr)
-									immediate_questions.append("Is \""+" ".join(s[i-1].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[i-1].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
 								# retval = True
 							elif debug_print:
 								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
@@ -412,7 +417,7 @@ class SenTree:
 								appositives_and_delims.append(len(s)-2)
 								if debug_print:
 									print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
-								immediate_questions.append("Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-3].leaves())+"?")
+								immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-3].leaves())+"?")
 								if s[-1].label() == "SBAR":
 									immediate_questions += getSBARQuestion(s[-1], self.t)
 							elif (len(s[-3].leaves()) > 1 and s[-3].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
@@ -420,7 +425,7 @@ class SenTree:
 								appositives_and_delims.append(len(s)-2)
 								if debug_print:
 									print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-3].leaves()), file=sys.stderr)
-								immediate_questions.append("Is \""+" ".join(s[-3].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+								immediate_questions.append("AP: Is \""+" ".join(s[-3].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 
 					elif not is_list and len(s) > 3 and s[-4].label() in ["NP", "NN"] and s[-3].label() == "PP" and s[-2].label() in delims and s[-1].label() in allowables:
 						s_idx = -1
@@ -437,7 +442,7 @@ class SenTree:
 								appositives_and_delims.append(len(s)-2)
 								if debug_print:
 									print(" ".join(s[-4].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
-								immediate_questions.append("Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-4].leaves())+"?")
+								immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-4].leaves())+"?")
 								if s[-1].label() == "SBAR":
 									immediate_questions += getSBARQuestion(s[-1], self.t)						
 								# retval = True
@@ -447,7 +452,7 @@ class SenTree:
 								appositives_and_delims.append(len(s)-2)
 								if debug_print:
 									print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-4].leaves())+" "+" ".join(s[i-3].leaves()), file=sys.stderr)
-								immediate_questions.append("Is \""+" ".join(s[-4].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+								immediate_questions.append("AP: Is \""+" ".join(s[-4].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 
 					appositives_and_delims.sort(reverse=True)
 					for idx in appositives_and_delims:
@@ -1581,15 +1586,15 @@ def getSBARQuestion(SBAR, root):
 			if SBAR[0].label() == "WHNP" and SBAR[0].height() > 2:
 				# case who/what
 				if SBAR[0][0].label() == "WDT":
-					retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: What"] + SBAR.leaves()[1:] + ["?"]))
 				elif SBAR[0][0].label() == "WP":
-					retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: Who"] + SBAR.leaves()[1:] + ["?"]))
 			elif len(SBAR) > 1 and SBAR[0].label() == "WHADVP" and SBAR[0].height() > 2:
 				# case where/when
 				if SBAR[0][0].label() == "WDT":
-					retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: What"] + SBAR.leaves()[1:] + ["?"]))
 				elif SBAR[0][0].label() == "WP":
-					retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: Who"] + SBAR.leaves()[1:] + ["?"]))
 				elif SBAR[0][0].label() == "WRB":
 					S = SBAR[1]
 					if S.label()[-1] == "S" and S.height() > 2:
@@ -1600,19 +1605,19 @@ def getSBARQuestion(SBAR, root):
 								verblvs = []
 								for i in range(1, len(S[1])):
 									verblvs += S[1][i].leaves()
-								retlist.append(reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
+								retlist.append(reconstitute_sentence(["SR: "] + SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
 			elif SBAR[0].label() == "IN" and SBAR[0].height() >= 2:
 				# Case on that = what + invert, although = else
 				if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
 					if len(SBAR[1]) == 2:
-						retlist.append(reconstitute_sentence(["What"] + SBAR[1][1].leaves() + ["?"]))
+						retlist.append(reconstitute_sentence(["SR: What"] + SBAR[1][1].leaves() + ["?"]))
 						# if has_valid_np(SBAR[1][0]) and has_valid_vp(SBAR[1][1]):
 						#	 retlist.append(reconstitute_sentence(["What", "was"] + SBAR[1].leaves() + ["?"]))
 					else:
-						retlist.append(reconstitute_sentence(["What"] + SBAR[1][0].leaves() + ["?"]))
+						retlist.append(reconstitute_sentence(["SR: What"] + SBAR[1][0].leaves() + ["?"]))
 			elif SBAR[0].label() == "S":
 				if len(SBAR[0]) == 2:
-					retlist.append(reconstitute_sentence(["What"] + SBAR[0][1].leaves() + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: What"] + SBAR[0][1].leaves() + ["?"]))
 	except:
 		if debug_print:
 			print("WTH? somehow failed getSBARQuestion", file=sys.stderr)

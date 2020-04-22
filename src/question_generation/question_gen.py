@@ -10,6 +10,29 @@ import copy
 debug_print = False
 
 
+# PERSON		People, including fictional.
+# NORP			Nationalities or religious or political groups.
+# FAC			Buildings, airports, highways, bridges, etc.
+# ORG			Companies, agencies, institutions, etc.
+# GPE			Countries, cities, states.
+# LOC			Non-GPE locations, mountain ranges, bodies of water.
+# PRODUCT		Objects, vehicles, foods, etc. (Not services.)
+# EVENT			Named hurricanes, battles, wars, sports events, etc.
+# WORK_OF_ART	Titles of books, songs, etc.
+# LAW			Named documents made into laws.
+# LANGUAGE		Any named language.
+# DATE			Absolute or relative dates or periods.
+# TIME			Times smaller than a day.
+# PERCENT		Percentage, including ”%“.
+# MONEY			Monetary values, including unit.
+# QUANTITY		Measurements, as of weight or distance.
+# ORDINAL		“first”, “second”, etc.
+# CARDINAL		Numerals that do not fall under another type.
+
+who_list = ["PERSON", "NORP", "ORG", "ORGANIZATION"]
+where_list = ["LOC", "LOCATION", "GPE"]
+when_list = ["DATE", "TIME"]
+
 def getWhoWhat(t):
     out = []
     for candidate in t.subtrees():
@@ -22,7 +45,27 @@ def getWhoWhat(t):
                 vptext = " ".join(vptext)
                 if vptext and vptext[-1] in ".!?":
                     vptext = vptext[:-1]
-                out.append("Who or what %s?" % vptext)
+
+                qword = "What"
+                tag = None
+                try:
+                    tag = candidate[0].spacy_tag
+                    # print("SPACY TAG: " + tag)
+                    if tag == "":
+                        tag = None
+                except AttributeError:
+                    pass
+
+                try:
+                    tag = candidate[0].corenlp_tag
+                    # print("CORENLP TAG: " + tag)
+                except AttributeError:
+                    pass
+            
+                if tag is not None and tag in who_list:
+                    tag = "Who"
+
+                out.append("WW: " + qword + " %s?" % vptext)
     return out
 
 def getWhoWhatNP(t):
@@ -101,13 +144,13 @@ def getBinarySimple(t):
                     prefdict = {"VBZ": "Has", "VBG": "Has", "VBP": "Has/Have", "VBD":"Had", "VBN":"Had"}
                     if lemmatizer.lemmatize(candidate[1][0].leaves()[0]) != "be":
                         if candidate[1][0].label() in prefdict:
-                            out.append("%s %s %s?" % (prefdict[candidate[1][0].label()],nptext,vpptext))
+                            out.append("BS: %s %s %s?" % (prefdict[candidate[1][0].label()],nptext,vpptext))
                     elif candidate[1][0].label() in prefdict:
                         if candidate[1][0].label() == "VBD":
                             pref = "Did"
                         else:
                             pref = "Does"
-                        out.append("%s %s have %s?" % (pref,nptext,vptext[1:]))
+                        out.append("BS: %s %s have %s?" % (pref,nptext,vptext[1:]))
     return out
 
 def getBinaryAuxiliary(t):
@@ -129,7 +172,7 @@ def getBinaryAuxiliary(t):
                     if vptext and vptext[-1] in ".!?":
                         vptext = vptext[:-1]
                     verb = candidate[1].leaves()[0]
-                    out.append("%s %s %s?" % (verb.capitalize(), nptext, vptext))
+                    out.append("BA: %s %s %s?" % (verb.capitalize(), nptext, vptext))
     return out
 
 
@@ -475,28 +518,6 @@ def handle_stage_1(parse_tree):
     # unmv_tregex = ["VP < (S=UNMV $,, /,/)", "S < PP|ADJP|ADVP|S|SBAR=UNMV > ROOT", "/\\.*/ < CC << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR < (IN|DT < /[^that]/) << NP|PP=UNMV", "SBAR < /^WH.*P$/ << NP|ADJP|VP|ADVP|PP=UNMV", "SBAR <, IN|DT < (S < (NP=UNMV !?,, VP))", "S < (VP <+(VP) (VB|VBD|VBN|VBZ < be|being|been|is|are|was|were|am) <+(VP) (S << NP|ADJP|VP|VP|ADVP|PP=UNMV))", "NP << (PP=UNMV !< (IN < of|about))", "PP << PP=UNMV", "NP $ VP << PP=UNMV", "SBAR=UNMV [ !> VP | $-- /,/ | < RB ]", "SBAR=UNMV !< WHNP < (/^[^S].*/ !<< that|whether|how)", "NP=UNMV < EX", "/^S/ < `` << NP|ADJP|VP|ADVP|PP=UNMV", "PP=UNMV !< NP", "NP=UNMV $ @NP", "NP|PP|ADJP|ADVP << NP|ADJP|VP|ADVP|PP=UNMV", "@UNMV << NP|ADJP|VP|ADVP|PP=UNMV"]
     return [VP_List, NP_List, PP_List, S_List, CC_List, ADJP_List, ADVP_List, SBAR_List, S_Tot_List]
 
-# PERSON		People, including fictional.
-# NORP			Nationalities or religious or political groups.
-# FAC			Buildings, airports, highways, bridges, etc.
-# ORG			Companies, agencies, institutions, etc.
-# GPE			Countries, cities, states.
-# LOC			Non-GPE locations, mountain ranges, bodies of water.
-# PRODUCT		Objects, vehicles, foods, etc. (Not services.)
-# EVENT			Named hurricanes, battles, wars, sports events, etc.
-# WORK_OF_ART	Titles of books, songs, etc.
-# LAW			Named documents made into laws.
-# LANGUAGE		Any named language.
-# DATE			Absolute or relative dates or periods.
-# TIME			Times smaller than a day.
-# PERCENT		Percentage, including ”%“.
-# MONEY			Monetary values, including unit.
-# QUANTITY		Measurements, as of weight or distance.
-# ORDINAL		“first”, “second”, etc.
-# CARDINAL		Numerals that do not fall under another type.
-
-who_list = ["PERSON", "NORP", "ORG", "ORGANIZATION"]
-where_list = ["LOC", "LOCATION", "GPE"]
-when_list = ["DATE", "TIME"]
 
 def gen_PP(phrases, parse):
     retlist = []
@@ -521,16 +542,15 @@ def gen_PP(phrases, parse):
                 pass
 
             if tag is not None:
-                initial = ["How", "did"]
+                initial = ["PP: How", "did"]
                 if tag in where_list:
-                    initial = ["Where", "did"]
+                    initial = ["PP: Where", "did"]
                 elif tag in when_list:
                     if phrase.leaves()[0] in ["to", "for"]:
-                        initial = ["For", "how", "long", "did"]
+                        initial = ["PP: For", "how", "long", "did"]
                     else:
-                        initial = ["When", "did"]
-                for i in range(len(initial)):
-                    initial[i] = "PP"+initial[i]
+                        initial = ["PP: When", "did"]
+
                 root = parse.t
                 main_VB = None
                 corrected_verb = None
@@ -543,14 +563,16 @@ def gen_PP(phrases, parse):
                     for i in range(len(main_vp)):
                         if main_vp[i].label()[:2] == "VB":
                             vb = main_vp[0].leaves()[0]
-                            main_VB = vb
+                            main_VB = main_vp[i]
                             test = lemma(vb)
                             if test != "be" and first_modal is None:
                                 corrected_verb = test
                             else:
                                 if test != "be":
                                     corrected_verb = vb
-                                initial[-1] = "were"
+                                    initial[-1] = "were"
+                                else:
+                                    initial[-1] = vb
                             break
 
                 frontier.put_nowait(parse.t)
@@ -609,11 +631,40 @@ def gen_NP(phrases, parse):
 
             # If we know the tag, use it
             if tag is not None:
-                initial = ["What"]
+                initial = ["NP: What", "did"]
                 if tag in who_list:
-                    initial = ["Who"]
-                for i in range(len(initial)):
-                    initial[i] = "NP"+initial[i]
+                    initial = ["NP: Who", "did"]
+                
+                auxiliary = False
+                root = parse.t
+                main_VB = None
+                corrected_verb = None
+                first_modal = None
+                if len(root[0]) >= 3 and (root[0][-2].label() == "VP" or root[0][-2].label() == "UNMV:VP"):
+                    if root[0][0] != phrase:
+                        auxiliary = True
+                    main_vp = root[0][-2]
+                    if main_vp[0].label() == "MD":
+                        first_modal = main_vp[0]
+                        initial[-1] = main_vp[0].leaves()[0]
+                    for i in range(len(main_vp)):
+                        if main_vp[i].label()[:2] == "VB":
+                            vb = main_vp[0].leaves()[0]
+                            main_VB = main_vp[i]
+                            test = lemma(vb)
+                            if test != "be" and first_modal is None and auxiliary:
+                                corrected_verb = test
+                            else:
+                                if test != "be":
+                                    corrected_verb = vb
+                                    initial[-1] = "were"
+                                else:
+                                    initial[-1] = vb
+                            break
+                
+                if initial[-1] == "did" and not auxiliary:
+                    initial = initial[:-1]
+
                 frontier.put_nowait(parse.t)
                 while not frontier.empty():
                     curr = frontier.get_nowait()
@@ -627,6 +678,15 @@ def gen_NP(phrases, parse):
                         test = curr.leaves()
                         if test[-1] == ".":
                             test = test[:-1]
+                        elif curr == main_VB:
+                            if corrected_verb is not None:
+                                test = [corrected_verb]
+                            else:
+                                test = []
+                        elif curr == first_modal:
+                            test = []
+                        elif curr.label()[:2] != "NN":
+                            test = [word.lower() for word in test]
                         initial += test
                 initial += ["?"]
                 retlist.append(reconstitute_sentence(initial))
@@ -702,22 +762,22 @@ def generate_questions(parse):
                 node.pretty_print()
     if debug_print:
         print("===============================================================================================================\n")
-    # If current answer phrase is the subject: do the inversion stuff
-        # Stage 3: Decompose the main verb
-            #1 ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))
+        # If current answer phrase is the subject: do the inversion stuff
+            # Stage 3: Decompose the main verb
+                #1 ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))
 
-        # Stage 4: Invert subject/auxiliary verb
-            #2 ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))
-            #3 ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))
-            # invert_subaux_tregex = ["ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))", "ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))"]
-    # else: we're home free
+            # Stage 4: Invert subject/auxiliary verb
+                #2 ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))
+                #3 ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))
+                # invert_subaux_tregex = ["ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))", "ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))"]
+        # else: we're home free
 
-    # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
-    # Stage 6: Post-Process
-    print("NP PHRASES--------")
-    for p in NP_phrases:
-        print(" ".join(p.leaves()))
-    print("SENTENCE----------")
-    print(" ".join(parse_tree.leaves()))
-    print("------------------")
-    return retlist + gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse)
+        # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
+        # Stage 6: Post-Process
+        print("NP PHRASES--------")
+        for p in NP_phrases:
+            print(" ".join(p.leaves()))
+        print("SENTENCE----------")
+        print(" ".join(parse_tree.leaves()))
+        print("------------------")
+    return retlist + gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse) + getWhoWhat(parse.t) + getBinarySimple(parse.t) + getBinaryAuxiliary(parse.t)
