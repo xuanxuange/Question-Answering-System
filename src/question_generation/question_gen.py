@@ -7,6 +7,9 @@ from src.question_generation.question_gen_preprocess import *
 import copy
 
 
+debug_print = False
+
+
 def getWhoWhat(t):
     out = []
     for candidate in t.subtrees():
@@ -497,95 +500,135 @@ when_list = ["DATE", "TIME"]
 
 def gen_PP(phrases, parse):
     retlist = []
-    frontier = LifoQueue()
-    for phrase in phrases:
-        print("Potential phrase: " + reconstitute_sentence(phrase.leaves()))
-        tag = None
-        try:
-            tag = phrase.spacy_tag
-            print("SPACY TAG: " + tag)
-            if tag == "":
-                tag = None
-        except AttributeError:
-            pass
+    try:
+        frontier = LifoQueue()
+        for phrase in phrases:
+            if debug_print:
+                print("Potential phrase: " + reconstitute_sentence(phrase.leaves()))
+            tag = None
+            try:
+                tag = phrase.spacy_tag
+                # print("SPACY TAG: " + tag)
+                if tag == "":
+                    tag = None
+            except AttributeError:
+                pass
 
-        try:
-            tag = phrase.corenlp_tag
-            print("CORENLP TAG: " + tag)
-        except AttributeError:
-            pass
+            try:
+                tag = phrase.corenlp_tag
+                # print("CORENLP TAG: " + tag)
+            except AttributeError:
+                pass
 
-        if tag is not None:
-            initial = ["How (NP)", "did"]
-            if tag in where_list:
-                initial = ["Where (PP)"]
-            elif tag in when_list:
-                initial = ["When (PP)"]
-            
-            frontier.put_nowait(parse.t)
-            while not frontier.empty():
-                curr = frontier.get_nowait()
+            if tag is not None:
+                initial = ["(PP) How", "did"]
+                if tag in where_list:
+                    initial = ["(PP) Where", "did"]
+                elif tag in when_list:
+                    if phrase.leaves()[0] in ["to", "for"]:
+                        initial = ["(PP) For", "how", "long", "did"]
+                    else:
+                        initial = ["(PP) When", "did"]
+                
+                root = parse.t
+                main_VB = None
+                corrected_verb = None
+                first_modal = None
+                if len(root[0]) >= 3 and (root[0][-2].label() == "VP" or root[0][-2].label() == "UNMV:VP"):
+                    main_vp = root[0][-2]
+                    if main_vp[0].label() == "MD":
+                        first_modal = main_vp[0]
+                        initial[-1] = main_vp[0].leaves()[0]
+                    for i in range(len(main_vp)):
+                        if main_vp[i].label()[:2] == "VB":
+                            vb = main_vp[0].leaves()[0]
+                            main_VB = vb
+                            test = lemma(vb)
+                            if test != "be" and first_modal is None:
+                                corrected_verb = test
+                            else:
+                                corrected_verb = vb
+                                initial[-1] = "were"
+                            break
 
-                # minimum layer is 4, likely higher
-                if curr.height() > 2:
-                    for i in range(len(curr)-1, -1, -1):
-                        if curr[i] != phrase:
-                            frontier.put_nowait(curr[i])
-                else:
-                    test = curr.leaves()
-                    if test[-1] == ".":
-                        test = test[:-1]
-                    initial += test
-            initial += ["?"]
-            retlist.append(reconstitute_sentence(initial))
-        else:
-            print("Phrase failed")
+                frontier.put_nowait(parse.t)
+                while not frontier.empty():
+                    curr = frontier.get_nowait()
+
+                    # minimum layer is 4, likely higher
+                    if curr.height() > 2:
+                        for i in range(len(curr)-1, -1, -1):
+                            if curr[i] != phrase:
+                                frontier.put_nowait(curr[i])
+                    else:
+                        test = curr.leaves()
+                        if test[-1] == ".":
+                            test = test[:-1]
+                        elif curr == main_VB:
+                            test = [corrected_verb]
+                        elif curr == first_modal:
+                            test = []
+                        elif curr.label()[:2] != "NN":
+                            test = [word.lower() for word in test]
+                        initial += test
+                initial += ["?"]
+                retlist.append(reconstitute_sentence(initial))
+            elif debug_print:
+                print("Phrase failed")
+    except:
+        if debug_print:
+            print("Failed to construct Q for [" + reconstitute_sentence(phrase.leaves()) + "] for [" + reconstitute_sentence(parse.t.leaves()) + "]")
     return retlist
 
 def gen_NP(phrases, parse):
     retlist = []
-    frontier = LifoQueue()
-    for phrase in phrases:
-        print("Potential phrase: " + reconstitute_sentence(phrase.leaves()))
-        tag = None
-        try:
-            tag = phrase.spacy_tag
-            print("SPACY TAG: " + tag)
-            if tag == "":
-                tag = None
-        except AttributeError:
-            pass
+    try:
+        frontier = LifoQueue()
+        for phrase in phrases:
+            if debug_print:
+                print("Potential phrase: " + reconstitute_sentence(phrase.leaves()))
+            tag = None
+            try:
+                tag = phrase.spacy_tag
+                # print("SPACY TAG: " + tag)
+                if tag == "":
+                    tag = None
+            except AttributeError:
+                pass
 
-        try:
-            tag = phrase.corenlp_tag
-            print("CORENLP TAG: " + tag)
-        except AttributeError:
-            pass
+            try:
+                tag = phrase.corenlp_tag
+                # print("CORENLP TAG: " + tag)
+            except AttributeError:
+                pass
 
-        # If we know the tag, use it
-        if tag is not None:
-            initial = ["What (NP)"]
-            if tag in who_list:
-                initial = ["Who (NP)"]
+            # If we know the tag, use it
+            if tag is not None:
+                initial = ["(NP) What"]
+                if tag in who_list:
+                    initial = ["(NP) Who"]
 
-            frontier.put_nowait(parse.t)
-            while not frontier.empty():
-                curr = frontier.get_nowait()
+                frontier.put_nowait(parse.t)
+                while not frontier.empty():
+                    curr = frontier.get_nowait()
 
-                # minimum layer is 4, likely higher
-                if curr.height() > 2:
-                    for i in range(len(curr)-1, -1, -1):
-                        if curr[i] != phrase:
-                            frontier.put_nowait(curr[i])
-                else:
-                    test = curr.leaves()
-                    if test[-1] == ".":
-                        test = test[:-1]
-                    initial += test
-            initial += ["?"]
-            retlist.append(reconstitute_sentence(initial))
-        else:
-            print("Phrase failed")
+                    # minimum layer is 4, likely higher
+                    if curr.height() > 2:
+                        for i in range(len(curr)-1, -1, -1):
+                            if curr[i] != phrase:
+                                frontier.put_nowait(curr[i])
+                    else:
+                        test = curr.leaves()
+                        if test[-1] == ".":
+                            test = test[:-1]
+                        initial += test
+                initial += ["?"]
+                retlist.append(reconstitute_sentence(initial))
+            elif debug_print:
+                print("Phrase failed")
+    except:
+        if debug_print:
+            print("Failed to construct Q for [" + reconstitute_sentence(phrase.leaves()) + "] for [" + reconstitute_sentence(parse.t.leaves()) + "]")
     return retlist
 
 def gen_SBAR(phrases, parse):
@@ -619,8 +662,9 @@ def generate_questions(parse):
     SBAR_List = handy_lists[7]
     S_Tot_List = handy_lists[8]
 
-    # print("Processed Tree:")
-    # print(parse_tree.pretty_print())
+    if debug_print:
+        print("Processed Tree:")
+        print(parse_tree.pretty_print())
 
     # Stage 2: Select answer phrases and generate a set of question phrases for it
     possible_answer_phrases = []
@@ -637,7 +681,7 @@ def generate_questions(parse):
                 test = getSBARQuestion(node, parse)
                 if len(test) > 0:
                     retlist += test
-                else:
+                elif debug_print:
                     print("FAILED SBAR:")
                     node.pretty_print()
                 # SBAR_phrases.append(node)
@@ -647,10 +691,11 @@ def generate_questions(parse):
             test = getSBARQuestion(node, parse)
             if len(test) > 0:
                 retlist += test
-            else:
+            elif debug_print:
                 print("FAILED SBAR:")
                 node.pretty_print()
-    print("===============================================================================================================\n")
+    if debug_print:
+        print("===============================================================================================================\n")
     # If current answer phrase is the subject: do the inversion stuff
         # Stage 3: Decompose the main verb
             #1 ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))
