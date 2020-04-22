@@ -23,7 +23,7 @@ def get_word_dist_to_root(word1,pos=None):
 			dist += 1
 
 #Reaches up n layers to get hypernym
-def get_nth_hypernyms(word, pos):
+def get_nth_hypernyms(word, pos,n=3):
 	try:
 		synSet = wn.synset(word+"."+pos+".01")
 	except:
