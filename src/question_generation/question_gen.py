@@ -22,7 +22,7 @@ def getWhoWhat(t):
                 vptext = " ".join(vptext)
                 if vptext and vptext[-1] in ".!?":
                     vptext = vptext[:-1]
-                out.append("Who or what %s?" % vptext)
+                out.append("WW: Who or what %s?" % vptext)
     return out
 
 def getWhoWhatNP(t):
@@ -107,7 +107,7 @@ def getBinarySimple(t):
                             pref = "Did"
                         else:
                             pref = "Does"
-                        out.append("%s %s have %s?" % (pref,nptext,vptext[1:]))
+                        out.append("BS: %s %s have %s?" % (pref,nptext,vptext[1:]))
     return out
 
 def getBinaryAuxiliary(t):
@@ -129,7 +129,7 @@ def getBinaryAuxiliary(t):
                     if vptext and vptext[-1] in ".!?":
                         vptext = vptext[:-1]
                     verb = candidate[1].leaves()[0]
-                    out.append("%s %s %s?" % (verb.capitalize(), nptext, vptext))
+                    out.append("BA: %s %s %s?" % (verb.capitalize(), nptext, vptext))
     return out
 
 
@@ -521,16 +521,15 @@ def gen_PP(phrases, parse):
                 pass
 
             if tag is not None:
-                initial = ["How", "did"]
+                initial = ["PP: How", "did"]
                 if tag in where_list:
-                    initial = ["Where", "did"]
+                    initial = ["PP: Where", "did"]
                 elif tag in when_list:
                     if phrase.leaves()[0] in ["to", "for"]:
-                        initial = ["For", "how", "long", "did"]
+                        initial = ["PP: For", "how", "long", "did"]
                     else:
-                        initial = ["When", "did"]
-                for i in range(len(initial)):
-                    initial[i] = "PP"+initial[i]
+                        initial = ["PP: When", "did"]
+
                 root = parse.t
                 main_VB = None
                 corrected_verb = None
@@ -543,14 +542,16 @@ def gen_PP(phrases, parse):
                     for i in range(len(main_vp)):
                         if main_vp[i].label()[:2] == "VB":
                             vb = main_vp[0].leaves()[0]
-                            main_VB = vb
+                            main_VB = main_vp[i]
                             test = lemma(vb)
                             if test != "be" and first_modal is None:
                                 corrected_verb = test
                             else:
                                 if test != "be":
                                     corrected_verb = vb
-                                initial[-1] = "were"
+                                    initial[-1] = "were"
+                                else:
+                                    initial[-1] = vb
                             break
 
                 frontier.put_nowait(parse.t)
@@ -609,11 +610,40 @@ def gen_NP(phrases, parse):
 
             # If we know the tag, use it
             if tag is not None:
-                initial = ["What"]
+                initial = ["NP: What", "did"]
                 if tag in who_list:
-                    initial = ["Who"]
-                for i in range(len(initial)):
-                    initial[i] = "NP"+initial[i]
+                    initial = ["NP: Who", "did"]
+                
+                auxiliary = False
+                root = parse.t
+                main_VB = None
+                corrected_verb = None
+                first_modal = None
+                if len(root[0]) >= 3 and (root[0][-2].label() == "VP" or root[0][-2].label() == "UNMV:VP"):
+                    if root[0][0] != phrase:
+                        auxiliary = True
+                    main_vp = root[0][-2]
+                    if main_vp[0].label() == "MD":
+                        first_modal = main_vp[0]
+                        initial[-1] = main_vp[0].leaves()[0]
+                    for i in range(len(main_vp)):
+                        if main_vp[i].label()[:2] == "VB":
+                            vb = main_vp[0].leaves()[0]
+                            main_VB = main_vp[i]
+                            test = lemma(vb)
+                            if test != "be" and first_modal is None and auxiliary:
+                                corrected_verb = test
+                            else:
+                                if test != "be":
+                                    corrected_verb = vb
+                                    initial[-1] = "were"
+                                else:
+                                    initial[-1] = vb
+                            break
+                
+                if initial[-1] == "did" and not auxiliary:
+                    initial = initial[:-1]
+
                 frontier.put_nowait(parse.t)
                 while not frontier.empty():
                     curr = frontier.get_nowait()
@@ -627,6 +657,15 @@ def gen_NP(phrases, parse):
                         test = curr.leaves()
                         if test[-1] == ".":
                             test = test[:-1]
+                        elif curr == main_VB:
+                            if corrected_verb is not None:
+                                test = [corrected_verb]
+                            else:
+                                test = []
+                        elif curr == first_modal:
+                            test = []
+                        elif curr.label()[:2] != "NN":
+                            test = [word.lower() for word in test]
                         initial += test
                 initial += ["?"]
                 retlist.append(reconstitute_sentence(initial))
@@ -702,22 +741,22 @@ def generate_questions(parse):
                 node.pretty_print()
     if debug_print:
         print("===============================================================================================================\n")
-    # If current answer phrase is the subject: do the inversion stuff
-        # Stage 3: Decompose the main verb
-            #1 ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))
+        # If current answer phrase is the subject: do the inversion stuff
+            # Stage 3: Decompose the main verb
+                #1 ROOT < (S=clause < (VP=mainvp [ < (/VB.?/=tensed !< is|was|were|am|are|has|have|had|do|does|did) | < /VB.?/=tensed !< VP]))
 
-        # Stage 4: Invert subject/auxiliary verb
-            #2 ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))
-            #3 ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))
-            # invert_subaux_tregex = ["ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))", "ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))"]
-    # else: we're home free
+            # Stage 4: Invert subject/auxiliary verb
+                #2 ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))
+                #3 ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))
+                # invert_subaux_tregex = ["ROOT=root < (S=clause <+(/VP.*/) (VP < /(MD|VB.?)/=aux < (VP < /VB.?/=verb)))", "ROOT=root < (S=clause <+(/VP.*/) (VP < (/VB.?/=copula < is|are|was|were|am !< VP)))"]
+        # else: we're home free
 
-    # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
-    # Stage 6: Post-Process
-    print("NP PHRASES--------")
-    for p in NP_phrases:
-        print(" ".join(p.leaves()))
-    print("SENTENCE----------")
-    print(" ".join(parse_tree.leaves()))
-    print("------------------")
-    return retlist + gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse)
+        # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
+        # Stage 6: Post-Process
+        print("NP PHRASES--------")
+        for p in NP_phrases:
+            print(" ".join(p.leaves()))
+        print("SENTENCE----------")
+        print(" ".join(parse_tree.leaves()))
+        print("------------------")
+    return retlist + gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse) + getWhoWhat(parse.t) + getBinarySimple(parse.t) + getBinaryAuxiliary(parse.t)

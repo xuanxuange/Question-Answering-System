@@ -18,8 +18,8 @@ import sys
 safety = True
 debug_print = False
 
-st = StanfordNERTagger('/Users/jarrett/Downloads/nerstuff/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/jarrett/Downloads/nerstuff/stanford-ner.jar', encoding='utf-8')
-#st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
+# st = StanfordNERTagger('/Users/jarrett/Downloads/nerstuff/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/jarrett/Downloads/nerstuff/stanford-ner.jar', encoding='utf-8')
+st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
 
 nlp = spacy.load('en_core_web_lg')
 # nlp = spacy.load('en')
@@ -1578,15 +1578,15 @@ def getSBARQuestion(SBAR, root):
 			if SBAR[0].label() == "WHNP" and SBAR[0].height() > 2:
 				# case who/what
 				if SBAR[0][0].label() == "WDT":
-					retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: What"] + SBAR.leaves()[1:] + ["?"]))
 				elif SBAR[0][0].label() == "WP":
-					retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: Who"] + SBAR.leaves()[1:] + ["?"]))
 			elif len(SBAR) > 1 and SBAR[0].label() == "WHADVP" and SBAR[0].height() > 2:
 				# case where/when
 				if SBAR[0][0].label() == "WDT":
-					retlist.append(reconstitute_sentence(["What"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: What"] + SBAR.leaves()[1:] + ["?"]))
 				elif SBAR[0][0].label() == "WP":
-					retlist.append(reconstitute_sentence(["Who"] + SBAR.leaves()[1:] + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: Who"] + SBAR.leaves()[1:] + ["?"]))
 				elif SBAR[0][0].label() == "WRB":
 					S = SBAR[1]
 					if S.label()[-1] == "S" and S.height() > 2:
@@ -1597,19 +1597,19 @@ def getSBARQuestion(SBAR, root):
 								verblvs = []
 								for i in range(1, len(S[1])):
 									verblvs += S[1][i].leaves()
-								retlist.append(reconstitute_sentence(SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
+								retlist.append(reconstitute_sentence(["SR: "] + SBAR[0][0].leaves() + ["did"] + S[0].leaves() + [conj_verb] + verblvs + ["?"]))
 			elif SBAR[0].label() == "IN" and SBAR[0].height() >= 2:
 				# Case on that = what + invert, although = else
 				if len(SBAR) > 1 and SBAR[1].label()[-1] == "S":
 					if len(SBAR[1]) == 2:
-						retlist.append(reconstitute_sentence(["What"] + SBAR[1][1].leaves() + ["?"]))
+						retlist.append(reconstitute_sentence(["SR: What"] + SBAR[1][1].leaves() + ["?"]))
 						# if has_valid_np(SBAR[1][0]) and has_valid_vp(SBAR[1][1]):
 						#	 retlist.append(reconstitute_sentence(["What", "was"] + SBAR[1].leaves() + ["?"]))
 					else:
-						retlist.append(reconstitute_sentence(["What"] + SBAR[1][0].leaves() + ["?"]))
+						retlist.append(reconstitute_sentence(["SR: What"] + SBAR[1][0].leaves() + ["?"]))
 			elif SBAR[0].label() == "S":
 				if len(SBAR[0]) == 2:
-					retlist.append(reconstitute_sentence(["What"] + SBAR[0][1].leaves() + ["?"]))
+					retlist.append(reconstitute_sentence(["SR: What"] + SBAR[0][1].leaves() + ["?"]))
 	except:
 		if debug_print:
 			print("WTH? somehow failed getSBARQuestion", file=sys.stderr)
