@@ -1,24 +1,21 @@
 from nym_utils import get_word_dist_to_root
-
 #init with target sentence length and weights, optionally
 #input list of parsetrees to ranker, optionally with list of ints representing value of question type
 class ranker:
-	def __init__(self, target_length=14, weights=None):
+	def __init__(self, parser, target_length=14, weights={"depth": 1.0, "length": 0.1, "noun_to_root": 6.0, "sbars": 2.0, "type": 10.0}, type_weights={}):
 		self.target_length = target_length
-		if weights:
-			self.weights = weights
-		else:
-			self.weights = {"depth": 1.0, "length": 0.1, "noun_to_root": 6.0, "sbars": 2.0, "type": 10.0}
+		self.type_weights = type_weights
+		self.weights = weights
 
 	def top_n_qtrees(self, tl, n=None, typelist=None):
 		if n:
-			return self.rank_treelist(tl)[:n]
+			return self.rank_treelist(tl, typelist=typelist)[:n]
 		else:
-			return self.rank_treelist(tl)
+			return self.rank_treelist(tl, typelist=typelist)
 
 	def rank_treelist(self, tl, typelist=None):
 		if not typelist:
-			typelist = [0.0]*len(tl)
+			typelist = [" "]*len(tl)
 		return [[score_tree(tl[i],typelist[i]),tl[i]] for i in range(len(tl))].sort(reverse=True)
 
 	def score_tree(self, t, qtype=0.0):
@@ -27,7 +24,7 @@ class ranker:
 		score -= self.weights["length"]*((len(t.leaves()) - self.target_length)**2)
 		score += self.weights["sbars"]*self.count_sbars(t)
 		score -= self.weights["noun_to_root"]*self.avg_dist_to_root(t)
-		score += self.weights["type"]*qtype
+		score += self.type_weights.get(qtype,0.0)*self.weights["type"]*qtype
 
 	def count_sbars(self, t):
 		count = 0
@@ -45,8 +42,21 @@ class ranker:
 				nouns += 1
 		return total/nouns
 
-
-
+	def top_n_qstr(self, qsl,n=None, typelist=None):
+		qtrees = []
+		for q in qsl:
+			try:
+				qtree = next(parser.parse_text(q, timeout=5000))
+				qtrees.append(qtree)
+			except:
+				pass
+		if not typelist:
+			typelist = [" "]*len(tl)
+		res = [[score_tree(qtrees[i],typelist[i]),qsl[i]] for i in range(len(qtrees))].sort(reverse=True)
+		if n:
+			return res[:n]
+		else:
+			return res	
 
 # import nltk
 # from nltk.lm.preprocessing import padded_everygram_pipeline
