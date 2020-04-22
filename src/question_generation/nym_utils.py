@@ -8,9 +8,9 @@ def word_similarity(word1, word2, pos1=None, pos2=None):
 		return -1.0
 	return synSet1.path_similarity(synset2)
 
-def get_word_dist_to_root(word1,pos=None):
+def get_word_dist_to_root(word1,pos="n"):
 	try:
-		synSet = wn.synsets(word,pos=pos)[0]
+		synSet = wn.synsets(word1,pos=pos)[0]
 	except:
 		return -1
 	dist=0
@@ -23,7 +23,7 @@ def get_word_dist_to_root(word1,pos=None):
 			dist += 1
 
 #Reaches up n layers to get hypernym
-def get_nth_hypernyms(word, pos):
+def get_nth_hypernyms(word, pos,n=3):
 	try:
 		synSet = wn.synset(word+"."+pos+".01")
 	except:
@@ -79,7 +79,7 @@ def antonym_get(word,pos=None):
 
 	for lemma in synSet.lemmas():
 		for antolemma in lemma.antonyms():
-	       results["antonyms"].add(antolemma.name())
+			results["antonyms"].add(antolemma.name())
 	for lemma in synSet.hypernyms():
 		for hyperantolemma in lemma.antonyms():
 			results["hyperantonyms"].add(hyperantolemma.name())
