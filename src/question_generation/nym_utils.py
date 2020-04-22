@@ -8,9 +8,9 @@ def word_similarity(word1, word2, pos1=None, pos2=None):
 		return -1.0
 	return synSet1.path_similarity(synset2)
 
-def get_word_dist_to_root(word1,pos=None):
+def get_word_dist_to_root(word1,pos="n"):
 	try:
-		synSet = wn.synsets(word,pos=pos)[0]
+		synSet = wn.synsets(word1,pos=pos)[0]
 	except:
 		return -1
 	dist=0
