@@ -6,7 +6,7 @@ def word_similarity(word1, word2, pos1=None, pos2=None):
 		synSet2=wn.synsets(word2,pos=pos2)[0]
 	except:
 		return -1.0
-	return synSet1.path_similarity(synset2)
+	return synSet1.path_similarity(synSet2)
 
 def get_word_dist_to_root(word1,pos="n"):
 	try:
@@ -29,26 +29,27 @@ def get_nth_hypernyms(word, pos,n=3):
 	except:
 		return set(),0
 	for i in range(n):
-		nextSynSet = synSet.hypernyms()[0]
-		if not nestSynSet:
+		nextSynSets = synSet.hypernyms()
+		if not nextSynSets:
 			break
-		synSet = nextSynSet[0]
+		synSet = nextSynSets[0]
 	out = set()
-	for lemma in synSet:
+	for lemma in synSet.lemmas():
 		out.add(lemma.name())
-	return out,i
+	return out,i+1
 
 def synonym_get(word,pos):
 	results = {}
-	try:
-		synSet = wn.synset(word+"."+pos+".01")
-	except:
-		return result
-
 	results["synonyms"] = set()
 	results["hypernyms"] = set()
 	results["meronyms"] = set()
 	results["holonyms"] = set()
+
+	try:
+		synSet = wn.synset(word+"."+pos+".01")
+	except:
+		return results
+
 	for lemma in synSet.lemmas():
 	    results["synonyms"].add(lemma.name())
 	for lemma in synSet.hypernyms():

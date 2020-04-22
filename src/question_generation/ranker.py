@@ -51,7 +51,7 @@ class Ranker:
 		else:
 			return 0
 
-	def top_n_qstr(self, qsl,n=None, typelist=None):
+	def top_n_qstr(self, qsl,n=None, typelist=None, withTypes=False):
 		qtrees = []
 		for q in qsl:
 			try:
@@ -61,11 +61,10 @@ class Ranker:
 				pass
 		if not typelist:
 			typelist = [" "]*len(qsl)
-		res = [[self.score_tree(qtrees[i],typelist[i]),qsl[i]] for i in range(len(qtrees))]
-		res2 = [[self.score_tree(qtrees[i],typelist[i]),typelist[i]+": "+qsl[i]] for i in range(len(qtrees))]
-		res2.sort(reverse=True)
-		for q in res2:
-			print(q[-1])
+		if not withTypes:
+			res = [[self.score_tree(qtrees[i],typelist[i]),qsl[i]] for i in range(len(qtrees))]
+		else:
+			res = [[self.score_tree(qtrees[i],typelist[i]),typelist[i],qsl[i]] for i in range(len(qtrees))]
 		res.sort(reverse=True)
 		if n:
 			return res[:n]
