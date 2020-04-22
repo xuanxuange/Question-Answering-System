@@ -2,7 +2,7 @@
 from collections import defaultdict
 import re
 from queue import Queue, LifoQueue
-
+from pathlib import Path
 import neuralcoref
 import spacy
 
@@ -11,6 +11,7 @@ from nltk.tag import StanfordNERTagger
 
 from pattern.en import lemma
 import pdb
+from src.utils import get_project_root
 
 import sys
 
@@ -18,7 +19,9 @@ import sys
 safety = True
 debug_print = False
 
-st = StanfordNERTagger('/Users/jarrett/Downloads/nerstuff/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/jarrett/Downloads/nerstuff/stanford-ner.jar', encoding='utf-8')
+english_classifiers_path = get_project_root() / Path("corenlp_ner/english.all.3class.distsim.crf.ser.gz")
+ner_jar_path = get_project_root() / Path("corenlp_ner/stanford-ner.jar")
+st = StanfordNERTagger(str(english_classifiers_path), path_to_jar=str(ner_jar_path), encoding='utf-8')
 #st = StanfordNERTagger('/Users/Thomas/Documents/11-411/NER/classifiers/english.all.3class.distsim.crf.ser.gz', '/Users/Thomas/Documents/11-411/NER/stanford-ner.jar', encoding='utf-8')
 
 nlp = spacy.load('en_core_web_lg')
@@ -1693,3 +1696,9 @@ def preprocess(treelist, parser):
 
 
 	return preprocessed_trees, preprocessed_questions
+
+
+if __name__ == "__main__":
+	print(type(str(english_classifiers_path)))
+	st = StanfordNERTagger(str(english_classifiers_path), path_to_jar = str(ner_jar_path), encoding='utf-8')
+	print("OK")
