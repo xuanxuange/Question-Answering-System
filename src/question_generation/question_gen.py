@@ -529,7 +529,8 @@ def gen_PP(phrases, parse):
                         initial = ["For", "how", "long", "did"]
                     else:
                         initial = ["When", "did"]
-                
+                for i in range(len(initial)):
+                    initial[i] = "PP"+initial[i]
                 root = parse.t
                 main_VB = None
                 corrected_verb = None
@@ -547,7 +548,8 @@ def gen_PP(phrases, parse):
                             if test != "be" and first_modal is None:
                                 corrected_verb = test
                             else:
-                                corrected_verb = vb
+                                if test != "be":
+                                    corrected_verb = vb
                                 initial[-1] = "were"
                             break
 
@@ -565,7 +567,10 @@ def gen_PP(phrases, parse):
                         if test[-1] == ".":
                             test = test[:-1]
                         elif curr == main_VB:
-                            test = [corrected_verb]
+                            if corrected_verb is not None:
+                                test = [corrected_verb]
+                            else:
+                                test = []
                         elif curr == first_modal:
                             test = []
                         elif curr.label()[:2] != "NN":
@@ -607,7 +612,8 @@ def gen_NP(phrases, parse):
                 initial = ["What"]
                 if tag in who_list:
                     initial = ["Who"]
-
+                for i in range(len(initial)):
+                    initial[i] = "NP"+initial[i]
                 frontier.put_nowait(parse.t)
                 while not frontier.empty():
                     curr = frontier.get_nowait()
@@ -708,4 +714,10 @@ def generate_questions(parse):
 
     # Stage 5: Remove the answer phrase and insert one of the question phrases at the beginning of the main clause
     # Stage 6: Post-Process
+    print("NP PHRASES--------")
+    for p in NP_phrases:
+        print(" ".join(p.leaves()))
+    print("SENTENCE----------")
+    print(" ".join(parse_tree.leaves()))
+    print("------------------")
     return retlist + gen_PP(PP_phrases, parse) + gen_NP(NP_phrases, parse)

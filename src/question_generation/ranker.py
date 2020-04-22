@@ -2,7 +2,7 @@ from src.question_generation.nym_utils import get_word_dist_to_root
 #init with target sentence length and weights, optionally
 #input list of parsetrees to ranker, optionally with list of ints representing value of question type
 class Ranker:
-	def __init__(self, parser, target_length=14, weights={"height": 1.0, "length": 0.1, "noun_to_root": 6.0, "sbars": 2.0, "type": 10.0}, type_weights={}):
+	def __init__(self, parser, target_length=14, weights={"height": 0.5, "length": 1, "noun_to_root": 2.0, "sbars": 4.0, "type": 10.0}, type_weights={}):
 		self.target_length = target_length
 		self.type_weights = type_weights
 		self.weights = weights
@@ -26,7 +26,7 @@ class Ranker:
 		score -= self.weights["height"]*t.height()**2
 		score -= self.weights["length"]*((len(t.leaves()) - self.target_length)**2) #distance ^2
 		score += self.weights["sbars"]*self.count_sbars(t)
-		score -= self.weights["noun_to_root"]*self.avg_dist_to_root(t)
+		score += self.weights["noun_to_root"]*self.avg_dist_to_root(t)
 		score += self.type_weights.get(qtype,0.0)*self.weights["type"]
 		return score
 

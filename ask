@@ -158,14 +158,11 @@ if __name__ == "__main__":
     if debug_print:
         print("Generation complete: " + str(end_generation - end_preprocess) + " seconds\n")
 
-    ranker = ranker(parser)
-    question_list = ranker.top_n_qstr(question_list, n=nquestions)
-
     i = 0
     # enablePrint()
     # while i < len(question_list) and i < nquestions:
     qranker = Ranker(parser)
-    question_list = qranker.top_n_qstr(question_list)
+    question_list = qranker.top_n_qstr(question_list, n=nquestions)
     question_list = [b for a,b in question_list]
     while i < len(question_list) and (debug_print or i < nquestions):
         # print("Original: " + question_list[i])
