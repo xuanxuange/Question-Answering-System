@@ -76,7 +76,7 @@ class q_preprocess:
         tmp_list = []
         q_list = []
         flag = False
-        tmp_tree = parse_raw_text(quesiton)
+        tmp_tree = parse_raw_text(question)
         for i in range(len(tmp_tree)):
             if tmp_tree[i].label() in self.bi_clause:
                 candidate = tmp_tree[i]
