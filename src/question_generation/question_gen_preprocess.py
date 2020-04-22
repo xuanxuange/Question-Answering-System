@@ -1633,6 +1633,24 @@ def acc_stage(stage):
 	else:
 		return False,test
 
+def remove_q_dups(ql, t_order):
+	t_order = list(reversed(t_order))
+	out = {}
+	res = []
+	for q in ql:
+		qtext = q[4:]
+		ttext = q[:2]
+		if qtext in out:
+			ttext_2 = out[qtext]
+			if t_order.index(ttext) > t_order.index(ttext_2):
+				out[qtext] = ttext
+		else:
+			out[qtext] = ttext
+
+	for qtext in out:
+		res.append(out[qtext]+": "+qtext)
+	return res
+
 def preprocess(treelist, parser):
 	preprocessed_questions = []
 	preprocessed_trees = []

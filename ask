@@ -114,7 +114,7 @@ if __name__ == "__main__":
     article = sys.argv[1]
     nquestions = int(sys.argv[2])
     from src.question_generation.question_gen import *
-    from src.question_generation.question_gen_preprocess import preprocess
+    from src.question_generation.question_gen_preprocess import preprocess, remove_q_dups
     from src.question_generation.ranker import Ranker
     from src.question_generation.question_gen_postprocess import postprocess
     end_import = time.time()
@@ -163,6 +163,7 @@ if __name__ == "__main__":
     i = 0
     # enablePrint()
     # while i < len(question_list) and i < nquestions:
+    question_list = remove_q_dups(question_list, ["SR","BA","BS","WW","AP","NP","PP"])
     qranker = Ranker(parser, type_weights={"SR": 20, "BA":15, "BS":15, "WW":12, "AP":12, "NP":5, "PP":4})
     question_list = qranker.top_n_qstr([q[4:] for q in question_list], n=nquestions, typelist=[q[:2] for q in question_list], withTypes=True)
     type_list = [q[-2] for q in question_list]
