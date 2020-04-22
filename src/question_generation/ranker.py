@@ -1,4 +1,4 @@
-from nym_utils import get_word_dist_to_root
+from src.question_generation.nym_utils import get_word_dist_to_root
 #init with target sentence length and weights, optionally
 #input list of parsetrees to ranker, optionally with list of ints representing value of question type
 class ranker:

@@ -114,6 +114,7 @@ if __name__ == "__main__":
     nquestions = int(sys.argv[2])
     from src.question_generation.question_gen import *
     from src.question_generation.question_gen_preprocess import preprocess
+    from src.question_generation.ranker import ranker
     end_import = time.time()
     if debug_print:
         print("Import complete: " + str(end_import - start) + " seconds\n")
@@ -156,6 +157,9 @@ if __name__ == "__main__":
     end_generation = time.time()
     if debug_print:
         print("Generation complete: " + str(end_generation - end_preprocess) + " seconds\n")
+
+    ranker = ranker(parser)
+    question_list = ranker.top_n_qstr(question_list, n=nquestions)
 
     i = 0
     # enablePrint()
