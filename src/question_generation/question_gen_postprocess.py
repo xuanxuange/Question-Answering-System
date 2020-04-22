@@ -16,13 +16,8 @@ def postprocess(qlist, tlist, parser):
 		try:
 			p = parser.parse_text(qlist[i],timeout=5)
 			qtree = next(p)
-			print("success")
-			print(t)
-			print(qlist[i])
 		except:
 			results.append(qlist[i])
-			print("fail")
-			print(qlist[i])
 			continue
 		qpos = qtree.pos()
 		new_sent = []
@@ -96,8 +91,8 @@ def postprocess(qlist, tlist, parser):
 								break
 					if add_not and idx > 0:
 						new_sent = new_sent[:idx]+['not']+new_sent[idx:]
-
-		print(" ".join(new_sent))
+		#print(qlist[i])
+		#print(" ".join(new_sent))
 		results.append(" ".join(new_sent))
 	return results
 
