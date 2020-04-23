@@ -1664,74 +1664,79 @@ def remove_q_dups(ql, t_order):
 def preprocess(treelist, parser):
 	preprocessed_questions = []
 	preprocessed_trees = []
-	root_list = []
+	try:
+		root_list = []
 
-	FrontierQueue = Queue()
+		FrontierQueue = Queue()
 
-	ind = 0
-	for i in range(len(treelist)):
-		tree = treelist[i]
-		if validate_s(tree):
-			root = SenTree(tree, parser)
-			root_list.append(root)
+		ind = 0
+		for i in range(len(treelist)):
+			tree = treelist[i]
+			if validate_s(tree):
+				root = SenTree(tree, parser)
+				root_list.append(root)
 
-			if ind > 0:
-				root.prevST = root_list[ind - 1]
-				root_list[ind - 1].nextST = root
-			ind += 1
+				if ind > 0:
+					root.prevST = root_list[ind - 1]
+					root_list[ind - 1].nextST = root
+				ind += 1
 
-	updated_root = root_list[0]
-	node_list = [root for root in root_list]
-	for i in range(len(node_list)):
-		FrontierQueue.put_nowait((i, 1))
+		updated_root = root_list[0]
+		node_list = [root for root in root_list]
+		for i in range(len(node_list)):
+			FrontierQueue.put_nowait((i, 1))
 
-	ner_stage = 8
-	awaiting_ner = []
-	while not FrontierQueue.empty():
-		node_id,stage = FrontierQueue.get_nowait()
-		curr_node = node_list[node_id]
-		if debug_print:
-			print("Stage " + str(stage) + ":", file=sys.stderr)
-			print(curr_node.text, file=sys.stderr)
-			print(curr_node.fulltext, file=sys.stderr)
-			print("-----------------------\n", file=sys.stderr)
-			# print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()), file=sys.stderr)
-		full_replace = curr_node.handle_stage(stage, preprocessed_questions)
-		if len(curr_node.children[stage]) > 0:
-			# print("Ho: " + str(stage), file=sys.stderr)
-			rollover, new_stage = acc_stage(stage)
-			# Currently only does one passthrough
-			if not rollover:
-				for child in curr_node.children[stage]:
-					if child.prevST is None:
-						updated_root = child
+		ner_stage = 8
+		awaiting_ner = []
+		while not FrontierQueue.empty():
+			node_id,stage = FrontierQueue.get_nowait()
+			curr_node = node_list[node_id]
+			if debug_print:
+				print("Stage " + str(stage) + ":", file=sys.stderr)
+				print(curr_node.text, file=sys.stderr)
+				print(curr_node.fulltext, file=sys.stderr)
+				print("-----------------------\n", file=sys.stderr)
+				# print(str(stage) + ": " + reconstitute_sentence(curr_node.t.leaves()), file=sys.stderr)
+			full_replace = curr_node.handle_stage(stage, preprocessed_questions)
+			if len(curr_node.children[stage]) > 0:
+				# print("Ho: " + str(stage), file=sys.stderr)
+				rollover, new_stage = acc_stage(stage)
+				# Currently only does one passthrough
+				if not rollover:
+					for child in curr_node.children[stage]:
+						if child.prevST is None:
+							updated_root = child
+						if new_stage != ner_stage:
+							FrontierQueue.put_nowait((len(node_list), new_stage))
+						else:
+							awaiting_ner.append(len(node_list))
+						node_list.append(child)
+			else:
+				rollover, new_stage = acc_stage(stage)
+				if not rollover:
 					if new_stage != ner_stage:
-						FrontierQueue.put_nowait((len(node_list), new_stage))
+						FrontierQueue.put_nowait((node_id, new_stage))
 					else:
-						awaiting_ner.append(len(node_list))
-					node_list.append(child)
-		else:
-			rollover, new_stage = acc_stage(stage)
-			if not rollover:
-				if new_stage != ner_stage:
-					FrontierQueue.put_nowait((node_id, new_stage))
-				else:
-					awaiting_ner.append(node_id)
+						awaiting_ner.append(node_id)
 
-	finished_coref = updated_root.do_coref(awaiting_ner, node_list)
-	updated_root = node_list[finished_coref[0]]
+		finished_coref = updated_root.do_coref(awaiting_ner, node_list)
+		updated_root = node_list[finished_coref[0]]
 
-	preprocessed_trees = []
-	curr = updated_root
-	while curr is not None:
-		preprocessed_trees.append(curr)
-		curr = curr.nextST
-
-
+		preprocessed_trees = []
+		curr = updated_root
+		while curr is not None:
+			preprocessed_trees.append(curr)
+			curr = curr.nextST
+	except:
+		if debug_print:
+			print("Failed at everything: likely CoreNLP not running", file=sys.stderr)
+		if not safety:
+			raise
 	return preprocessed_trees, preprocessed_questions
 
 
 if __name__ == "__main__":
-	print(type(str(english_classifiers_path)))
-	st = StanfordNERTagger(str(english_classifiers_path), path_to_jar = str(ner_jar_path), encoding='utf-8')
-	print("OK")
+	if debug_print:
+		print(type(str(english_classifiers_path)))
+		st = StanfordNERTagger(str(english_classifiers_path), path_to_jar = str(ner_jar_path), encoding='utf-8')
+		print("OK")
