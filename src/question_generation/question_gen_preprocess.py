@@ -345,124 +345,131 @@ class SenTree:
 		tree_string = " ".join(self.t.leaves())
 		# self.t.pretty_print()
 		for s in list(self.t.subtrees()):
-			is_list = self.is_np_list(s)
-			if not is_list:
-				if len(s) >= 3 and s.height() > 2 and s.label() in ["NP", "VP"]:
-					#print("GOING", file=sys.stderr)
-					#s.pretty_print()
-					i = 0
-					appositives_and_delims = []
-					#pdb.set_trace()
-					while not is_list and (i < len(s)-3):
-						if s[i].label() in ["NP", "NN"] and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
-							#print("GOT ONE", file=sys.stderr)
-							#s[i+2].pretty_print()
-							#print(self.is_np_list(s, i=i+2), file=sys.stderr)
-							if s[i+2].pos()[0][1] != "CC" and not self.is_np_list(s, i=i+2):
-								u_s = use_second(s[i],s[i+1],s[i+2])
-								if len(s[i+2].leaves()) > 1 and not u_s:
-									appositives_and_delims.append(i+1)
-									appositives_and_delims.append(i+2)
-									if debug_print:
-										print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i].leaves())+"?")
-									if s[i+2].label() == "SBAR":
-										immediate_questions += getSBARQuestion(s[i+2], self.t)
-								elif (len(s[i].leaves()) > 1 and s[i].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
-									appositives_and_delims.append(i)
-									appositives_and_delims.append(i+1)
-									if debug_print:
-										print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[i].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
-								# retval = True
-							elif debug_print:
-								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
-								s.pretty_print()
-						elif i > 0 and s[i-1].label() in ["NP", "NN"] and s[i].label() == "PP" and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
-							if s[i+2].pos()[0][1] != "CC" and not self.is_np_list(s, i=i+2):
-								u_s = use_second(s[i-1],s[i+1],s[i+2])
-								if len(s[i+2].leaves()) > 1 and not u_s:
-									appositives_and_delims.append(i+1)
-									appositives_and_delims.append(i+2)
-									if debug_print:
-										print(" ".join(s[i-1].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
-									if s[i+2].label() == "SBAR":
-										immediate_questions += getSBARQuestion(s[i+2], self.t)
-								elif (len(s[i-1].leaves()) > 1 and s[i-1].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
-									appositives_and_delims.append(i-1)
-									appositives_and_delims.append(i)
-									appositives_and_delims.append(i+1)
-									if debug_print:
-										print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i-1].leaves())+" "+" ".join(s[i].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[i-1].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
-								# retval = True
-							elif debug_print:
-								print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
-								s.pretty_print()
-						i += 1
+			try:
+				is_list = self.is_np_list(s)
+				if not is_list:
+					if len(s) >= 3 and s.height() > 2 and s.label() in ["NP", "VP"]:
+						#print("GOING", file=sys.stderr)
+						#s.pretty_print()
+						i = 0
+						appositives_and_delims = []
+						#pdb.set_trace()
+						while not is_list and (i < len(s)-3):
+							if s[i].label() in ["NP", "NN"] and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
+								#print("GOT ONE", file=sys.stderr)
+								#s[i+2].pretty_print()
+								#print(self.is_np_list(s, i=i+2), file=sys.stderr)
+								if s[i+2].pos()[0][1] != "CC" and not self.is_np_list(s, i=i+2):
+									u_s = use_second(s[i],s[i+1],s[i+2])
+									if len(s[i+2].leaves()) > 1 and not u_s:
+										appositives_and_delims.append(i+1)
+										appositives_and_delims.append(i+2)
+										if debug_print:
+											print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
+										immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i].leaves())+"?")
+										if s[i+2].label() == "SBAR":
+											immediate_questions += getSBARQuestion(s[i+2], self.t)
+									elif (len(s[i].leaves()) > 1 and s[i].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
+										appositives_and_delims.append(i)
+										appositives_and_delims.append(i+1)
+										if debug_print:
+											print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i].leaves()), file=sys.stderr)
+										immediate_questions.append("AP: Is \""+" ".join(s[i].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
+									# retval = True
+								elif debug_print:
+									print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
+									s.pretty_print()
+							elif i > 0 and s[i-1].label() in ["NP", "NN"] and s[i].label() == "PP" and s[i+1].label() in delims and s[i+2].label() in allowables and s[i+3].label() in delims:
+								if s[i+2].pos()[0][1] != "CC" and not self.is_np_list(s, i=i+2):
+									u_s = use_second(s[i-1],s[i+1],s[i+2])
+									if len(s[i+2].leaves()) > 1 and not u_s:
+										appositives_and_delims.append(i+1)
+										appositives_and_delims.append(i+2)
+										if debug_print:
+											print(" ".join(s[i-1].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
+										immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+										if s[i+2].label() == "SBAR":
+											immediate_questions += getSBARQuestion(s[i+2], self.t)
+									elif (len(s[i-1].leaves()) > 1 and s[i-1].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
+										appositives_and_delims.append(i-1)
+										appositives_and_delims.append(i)
+										appositives_and_delims.append(i+1)
+										if debug_print:
+											print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i-1].leaves())+" "+" ".join(s[i].leaves()), file=sys.stderr)
+										immediate_questions.append("AP: Is \""+" ".join(s[i-1].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
+									# retval = True
+								elif debug_print:
+									print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
+									s.pretty_print()
+							i += 1
 
-					if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables:
-						s_idx = -1
-						try:
-							s_idx = tree_string.index(" ".join(s.leaves()))
-						except:
-							pass
-						if s_idx >= 0:
-							next_idx = s_idx + len(" ".join(s.leaves()))+1
-						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
-							u_s = use_second(s[-3],s[i-2],s[-1])
-							if len(s[-1].leaves()) > 1 and not u_s:
-								appositives_and_delims.append(len(s)-1)
-								appositives_and_delims.append(len(s)-2)
-								if debug_print:
-									print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
-								immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-3].leaves())+"?")
-								if s[-1].label() == "SBAR":
-									immediate_questions += getSBARQuestion(s[-1], self.t)
-							elif (len(s[-3].leaves()) > 1 and s[-3].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
-								appositives_and_delims.append(len(s)-3)
-								appositives_and_delims.append(len(s)-2)
-								if debug_print:
-									print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-3].leaves()), file=sys.stderr)
-								immediate_questions.append("AP: Is \""+" ".join(s[-3].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+						if not is_list and len(s) > 2 and s[-3].label() in ["NP", "NN"] and s[-2].label() in delims and s[-1].label() in allowables:
+							s_idx = -1
+							try:
+								s_idx = tree_string.index(" ".join(s.leaves()))
+							except:
+								pass
+							if s_idx >= 0:
+								next_idx = s_idx + len(" ".join(s.leaves()))+1
+							if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
+								u_s = use_second(s[-3],s[i-2],s[-1])
+								if len(s[-1].leaves()) > 1 and not u_s:
+									appositives_and_delims.append(len(s)-1)
+									appositives_and_delims.append(len(s)-2)
+									if debug_print:
+										print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
+									immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-3].leaves())+"?")
+									if s[-1].label() == "SBAR":
+										immediate_questions += getSBARQuestion(s[-1], self.t)
+								elif (len(s[-3].leaves()) > 1 and s[-3].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
+									appositives_and_delims.append(len(s)-3)
+									appositives_and_delims.append(len(s)-2)
+									if debug_print:
+										print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-3].leaves()), file=sys.stderr)
+									immediate_questions.append("AP: Is \""+" ".join(s[-3].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 
-					elif not is_list and len(s) > 3 and s[-4].label() in ["NP", "NN"] and s[-3].label() == "PP" and s[-2].label() in delims and s[-1].label() in allowables:
-						s_idx = -1
-						try:
-							s_idx = tree_string.index(" ".join(s.leaves()))
-						except:
-							pass
-						if s_idx >= 0:
-							next_idx = s_idx + len(" ".join(s.leaves()))+1
-						if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
-							u_s = use_second(s[-4],s[-2],s[-1])
-							if len(s[-1].leaves()) > 1 and not u_s:
-								appositives_and_delims.append(len(s)-1)
-								appositives_and_delims.append(len(s)-2)
-								if debug_print:
-									print(" ".join(s[-4].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
-								immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-4].leaves())+"?")
-								if s[-1].label() == "SBAR":
-									immediate_questions += getSBARQuestion(s[-1], self.t)						
-								# retval = True
-							elif (len(s[-4].leaves()) > 1 and s[-4].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
-								appositives_and_delims.append(len(s)-4)
-								appositives_and_delims.append(len(s)-3)
-								appositives_and_delims.append(len(s)-2)
-								if debug_print:
-									print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-4].leaves())+" "+" ".join(s[i-3].leaves()), file=sys.stderr)
-								immediate_questions.append("AP: Is \""+" ".join(s[-4].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
+						elif not is_list and len(s) > 3 and s[-4].label() in ["NP", "NN"] and s[-3].label() == "PP" and s[-2].label() in delims and s[-1].label() in allowables:
+							s_idx = -1
+							try:
+								s_idx = tree_string.index(" ".join(s.leaves()))
+							except:
+								pass
+							if s_idx >= 0:
+								next_idx = s_idx + len(" ".join(s.leaves()))+1
+							if s[-1].pos()[0][1] != "CC" and next_idx < len(tree_string) and tree_string[next_idx] in delims:
+								u_s = use_second(s[-4],s[-2],s[-1])
+								if len(s[-1].leaves()) > 1 and not u_s:
+									appositives_and_delims.append(len(s)-1)
+									appositives_and_delims.append(len(s)-2)
+									if debug_print:
+										print(" ".join(s[-4].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
+									immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-4].leaves())+"?")
+									if s[-1].label() == "SBAR":
+										immediate_questions += getSBARQuestion(s[-1], self.t)						
+									# retval = True
+								elif (len(s[-4].leaves()) > 1 and s[-4].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
+									appositives_and_delims.append(len(s)-4)
+									appositives_and_delims.append(len(s)-3)
+									appositives_and_delims.append(len(s)-2)
+									if debug_print:
+										print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-4].leaves())+" "+" ".join(s[i-3].leaves()), file=sys.stderr)
+									immediate_questions.append("AP: Is \""+" ".join(s[-4].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 
-					appositives_and_delims.sort(reverse=True)
-					for idx in appositives_and_delims:
-						s.__delitem__(idx)
-
-		for s in self.t.subtrees():
-			if s.height() > 1 and s[0] != str(s[0]):
-				for i in range(len(s)-1,-1,-1):
-					if not s[i].leaves():
-						s.__delitem__(i)
+						appositives_and_delims.sort(reverse=True)
+						for idx in appositives_and_delims:
+							s.__delitem__(idx)
+			except:
+				if debug_print:
+					print("...what just happed to appositive...")
+		try:
+			for s in self.t.subtrees():
+				if s.height() > 1 and s[0] != str(s[0]):
+					for i in range(len(s)-1,-1,-1):
+						if not s[i].leaves():
+							s.__delitem__(i)
+		except:
+			if debug_print:
+				print("Appositive_removal node trimming failed!")
 
 		self.update_text()
 		#pdb.set_trace()

@@ -14,7 +14,7 @@ import time
 
 DT_LIST = ['the', 'a', 'an', 'this', 'that', 'these', 'those', 'my', 'your', 'his', 'her', 'its', 'our', 'their', 'much', 'many', 'most', 'some', 'any', 'enough', 'all', 'both', 'half', 'either', 'neither', 'each', 'every', 'another', 'such', 'what', 'rather', 'quite']
 debug_print = False
-final_stats = True
+final_stats = False
 
 
 def format_question(question):
