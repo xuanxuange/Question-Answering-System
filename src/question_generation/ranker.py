@@ -40,10 +40,14 @@ class Ranker:
 	def avg_dist_to_root(self, t):
 		total = 0
 		nouns = 0
+		pronouns = ["he", "her", "she", "him", "they", "them", "it"]
 		for word,pos in t.pos():
 			if pos in ["NN","NNS"]:
-				dist = get_word_dist_to_root(word,pos="n")
-				if dist >= 0:
+				if word in pronouns:
+					dist = -5
+				else:
+					dist = get_word_dist_to_root(word,pos="n")
+				if dist >= 0 or word in pronouns:
 					total += dist
 					nouns += 1
 			elif pos in ["NNP","NNS"]:
