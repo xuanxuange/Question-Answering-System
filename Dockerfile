@@ -8,7 +8,8 @@ apt-get -y upgrade
 
 # install python 3.7
 RUN apt-get -y install software-properties-common
-RUN add-apt-repository -y ppa:deadsnakes/ppaapt_pkg
+# RUN apt-get -y install --reinstall ca-certificates
+RUN add-apt-repository -y ppa:deadsnakes/ppa
 RUN apt -y install python3.7
 RUN apt-get -y install python3-pip
 RUN apt-get -y install python3.7-dev && \
