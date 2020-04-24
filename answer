@@ -13,10 +13,10 @@ def enablePrint():
     sys.stderr = sys.__stderr__
 
 
-blockPrint()
+# blockPrint()
 from src.answer_generation.article_embedder import ArticleEmbedder
 from src.answer_generation.answer import generate_answer
-enablePrint()
+# enablePrint()
 
 if __name__ == "__main__":
     article_file = sys.argv[1]
@@ -26,11 +26,16 @@ if __name__ == "__main__":
     blockPrint()
     article_embedder = ArticleEmbedder(article_file)
     for question in questions:
-        #print("find answer for question: {}".format(question))
+        if len(question) < 3:
+            break
         blockPrint()
+        print("find answer for question: {}".format(question))
         relevant_sentence = article_embedder.get_most_relevant_sentence_infersent(question)
-        #print("find most relevant sentece: {}".format(relevant_sentence))
-        answer = generate_answer(question, relevant_sentence)
+        print("find most relevant sentece: {}".format(relevant_sentence))
+        try:
+            answer = generate_answer(question, relevant_sentence)
+        except:
+            answer = relevant_sentence
         enablePrint()
         print(answer)
 
