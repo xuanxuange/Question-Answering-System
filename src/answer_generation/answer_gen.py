@@ -9,7 +9,7 @@ def find_sv(word):
     Check if given node is the main subject
     Return: T if the node is main subject, F otherwise
     """
-    if word.dep == nsubj and (word.head.pos == VERB or word.head.pos == AUX or (len(rights) > 0 and word.head.pos == NOUN and rights[0] == ADP)):
+    if (word.dep == nsubj or word.dep == nsubjpass) and (word.head.pos == VERB or word.head.pos == AUX or (len(rights) > 0 and word.head.pos == NOUN and rights[0] == ADP)):
         return True
     else:
         return False
@@ -20,12 +20,14 @@ def answer_whn(question, rel_sentence):
     Generate answer for whn questions which focus on nouns
     Return: the answer in str, if fail to process, return rel_sentence
     """
+    stops = ['who', 'where', 'when', 'that', 'what', 'which']
     answer = []
     sent_tokens = rel_sentence.split()
+    for i in range(len(sent_tokens)):
+        sent_tokens[i] = sent_tokens[i].strip(",.;:?!")
     q_tokens = question.split()
     main_subj = ''
     main_obj = ''
-    main_v = ''
     main_v_index = 0
     root_index = 0
     flag = False 
@@ -49,25 +51,28 @@ def answer_whn(question, rel_sentence):
         if word.head == word:
             root_index = i     
             root = word
-        if word.head.head == word.head and word.lemma_ == main_v.lemma_:
+        if word.lemma_ == main_v.lemma_:
+            root = word
             root_index = i
+            break
         i = i + 1
-        
+
     # check if main subj is the wh word (first word in question)
     if q_tokens[0] == main_subj.text:
-        print("wh is main_subj")
-        meaningful_pos = [NOUN, VERB, AUX, PROPN, ADV, ADJ]
+        meaningful_pos = [NOUN, PROPN]
         flag = True
         curr = main_v.children
         for child in curr:
-            if (child.dep == dobj or child.dep == pobj) and child.pos in meaningful_pos:
+            if child.pos in meaningful_pos:
                 main_obj = child
                 break
-            if child.dep == prep:
+            if child.dep == prep or child.dep == agent:
                 for cc in child.children:
-                    if (cc.dep == dobj or cc.dep == pobj) and cc.pos in meaningful_pos:
+                    if cc.pos in meaningful_pos:
                         main_obj = cc
                         break
+        if main_obj.text not in sent_tokens:
+            return rel_sentence
         main_obj_index = sent_tokens.index(main_obj.text)
                 
     else:
@@ -78,28 +83,53 @@ def answer_whn(question, rel_sentence):
     # append answer
     if not flag:
         if main_subj_index > root_index:
-            answer.append(sent_tokens[ : root_index])
+            answer.append(sent_tokens[ : root_index + 1])
         else: 
             answer.append(sent_tokens[root_index + 1 : ])
     else:
         if main_obj_index > root_index:
-            answer.append(sent_tokens[ : root_index])
+            answer.append(sent_tokens[ : root_index + 1])
         else: 
             answer.append(sent_tokens[root_index + 1 : ])
     flat_answer = [item for sub in answer for item in sub]
     flat_answer = ' '.join(flat_answer)
 
+    # find dobj, dsubj in flat_answer
+    sdsubj = ''; sdobj = ''
+    answer_dep = nlp(flat_answer)
+    for word in answer_dep:
+        if find_sv(word) and not sdsubj:
+            sdsubj = word.text
+        if word.dep == dobj and not sdobj:
+            sdobj = word.text
+
     # find the noun chunk closest to mainv
     pos_answer = []
     for chunk in s_dep.noun_chunks:
-        if chunk.text in flat_answer:
-            pos_answer.append(chunk.text)
+        skip = False
+        if chunk.text in flat_answer and chunk.text.lower() not in stops and chunk.text.lower() not in question.lower():
+            tmp = chunk.text.split()
+            for t in tmp:
+                if t.isdigit():
+                    skip = True
+            if not skip: 
+                pos_answer.append(chunk.text)
     if len(pos_answer) == 1:
         return pos_answer[0] + '.'
     elif not pos_answer and flat_answer:
         return flat_answer + '.'
     elif len(pos_answer) > 1:
-        return find_closest_answer(pos_answer, main_v.text, rel_sentence) + '.'
+        answer_list = []
+        for p in pos_answer:
+            if (sdobj and sdobj.lower() in p.lower()) or (sdsubj and sdsubj.lower() in p.lower()):
+                answer_list.append(p)
+        if not answer_list:
+            return find_closest_answer(pos_answer, main_v.text, rel_sentence) + '.'
+        elif len(answer_list) == 1:
+            return answer_list[0] + '.'
+        else:
+            return find_closest_answer(answer_list, main_v.text, rel_sentence) + '.'
+        
     else:
         return rel_sentence
 

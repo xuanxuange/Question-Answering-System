@@ -1,7 +1,7 @@
 from rake_nltk import Rake
 import spacy
 from spacy.symbols import nsubj, VERB, dobj, NOUN, PROPN, PRON
-from src.parser.nltk_stanford_parser import *
+from src.Parser.nltk_stanford_parser import *
 
 """
 Preprocess the question, generate keywords, question type and processed complete question
@@ -132,10 +132,13 @@ class q_preprocess:
                             result_question.append(candidate[j].leaves())
 
             result = [item for sublist in result_question for item in sublist]
-            if result[-1] != '?':
-                result.append('?')
-            result = ' '.join(result)
-            final_qlist.append(result)          
+            if not result:
+                final_qlist.append(question)
+            else:
+                if result[-1] != '?':
+                    result.append('?')
+                result = ' '.join(result)
+                final_qlist.append(result)          
         return final_qlist
                         
 
