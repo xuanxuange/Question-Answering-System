@@ -4,10 +4,11 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
 RUN apt-get -y update && \
-apt-get -y upgrade && \
+apt-get -y upgrade
 
 # install python 3.7
-RUN add-apt-repository -y ppa:deadsnakes/ppa
+RUN apt-get -y install software-properties-common
+RUN add-apt-repository -y ppa:deadsnakes/ppaapt_pkg
 RUN apt -y install python3.7
 RUN apt-get -y install python3-pip
 RUN apt-get -y install python3.7-dev && \
@@ -33,7 +34,7 @@ RUN ./nltk_download_models
 
 # pattern library for python3
 RUN apt-get -y install default-libmysqlclient-dev
-export PYTHONPATH="${PYTHONPATH}:$(pwd)/site-packages/"
+RUN export PYTHONPATH="${PYTHONPATH}:$(pwd)/site-packages/"
 
 # RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
 
