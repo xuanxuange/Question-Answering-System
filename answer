@@ -25,16 +25,18 @@ if __name__ == "__main__":
         questions = qf.read().splitlines()
     blockPrint()
     article_embedder = ArticleEmbedder(article_file)
+    enablePrint()
     for question in questions:
         if len(question) < 3:
             break
         blockPrint()
-        print("find answer for question: {}".format(question))
+        #print("find answer for question: {}".format(question))
         relevant_sentence = article_embedder.get_most_relevant_sentence_infersent(question)
-        print("find most relevant sentece: {}".format(relevant_sentence))
+        #print("find most relevant sentence: {}".format(relevant_sentence))
         try:
             answer = generate_answer(question, relevant_sentence)
-        except:
+        #print("TEST:" + answer)
+        except Exception:
             answer = relevant_sentence
         enablePrint()
         print(answer)

@@ -1,7 +1,7 @@
 from rake_nltk import Rake
 import spacy
 from spacy.symbols import nsubj, VERB, dobj, NOUN, PROPN, PRON
-from src.Parser.nltk_stanford_parser import *
+from src.parser.nltk_stanford_parser import *
 
 """
 Preprocess the question, generate keywords, question type and processed complete question

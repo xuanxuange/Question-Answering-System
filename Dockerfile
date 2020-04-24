@@ -46,14 +46,14 @@ RUN python3 -m spacy download en_core_web_sm
 RUN python3 -m spacy download en_core_web_lg
 
 # other dependencies
-RUN pip3 install -r requirement.txt
+RUN./infersent_install.sh pip3 install -r requirement.txt
 
 # install neuralcoref
 RUN pip3 install neuralcoref --no-binary neuralcoref
 
 # download infersent dependecies
 RUN chmod +x infersent_install.sh
-RUN ./infersent_install.sh
+RUN
 
 CMD ["chmod 777 ask"]
 CMD ["chmod 777 answer"]

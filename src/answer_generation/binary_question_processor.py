@@ -1,6 +1,6 @@
 import nltk.tree as t
-from src.Parser.nltk_stanford_parser import parse_raw_text
-from src.Parser.word_processor import get_synonyms, word_lemmatize
+from src.parser.nltk_stanford_parser import parse_raw_text
+from src.parser.word_processor import get_synonyms, word_lemmatize
 from nltk.corpus import wordnet
 
 def binary_question_transform(question):
