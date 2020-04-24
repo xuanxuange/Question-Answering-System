@@ -5,7 +5,12 @@ ENV LC_ALL C.UTF-8
 
 RUN apt-get -y update && \
 apt-get -y upgrade && \
-apt-get -y install python3-pip python3-dev && \
+
+# install python 3.7
+RUN add-apt-repository -y ppa:deadsnakes/ppa
+RUN apt -y install python3.7
+RUN apt-get -y install python3-pip
+RUN apt-get -y install python3.7-dev && \
 apt-get install -y wget
 
 RUN apt install -y default-jdk
@@ -28,20 +33,21 @@ RUN ./nltk_download_models
 
 # pattern library for python3
 RUN apt-get -y install default-libmysqlclient-dev
-RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
+export PYTHONPATH="${PYTHONPATH}:$(pwd)/site-packages/"
+
+# RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
 
 # spacy
-RUN pip3 install -U spacy
+RUN pip3 install -U spacy==2.1.0
 RUN pip3 install -U spacy-lookups-data
 RUN python3 -m spacy download en_core_web_sm
 RUN python3 -m spacy download en_core_web_lg
 
-# install neuralcoref
-RUN pip3 install neuralcoref
-
 # other dependencies
 RUN pip3 install -r requirement.txt
 
+# install neuralcoref
+RUN pip3 install neuralcoref --no-binary neuralcoref
 
 # download infersent dependecies
 RUN chmod +x infersent_install.sh
