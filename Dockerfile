@@ -46,7 +46,7 @@ RUN python3 -m spacy download en_core_web_sm
 RUN python3 -m spacy download en_core_web_lg
 
 # other dependencies
-pip3 install -r requirement.txt
+RUN pip3 install -r requirement.txt
 
 # install neuralcoref
 RUN pip3 install neuralcoref --no-binary neuralcoref
