@@ -31,9 +31,6 @@ RUN python3.7 -m pip install -U spacy-lookups-data
 RUN python3.7 -m spacy download en_core_web_sm
 RUN python3.7 -m spacy download en_core_web_lg
 
-# other dependencies
-RUN python3.7 -m pip install -r requirement.txt
-
 # install neuralcoref
 RUN python3.7 -m pip install neuralcoref --no-binary neuralcoref
 
@@ -41,6 +38,8 @@ RUN python3.7 -m pip install neuralcoref --no-binary neuralcoref
 ADD . /QA
 WORKDIR /QA
 
+# other dependencies
+RUN python3.7 -m pip install -r requirement.txt
 
 # download nltk data
 RUN chmod +x nltk_download_models
