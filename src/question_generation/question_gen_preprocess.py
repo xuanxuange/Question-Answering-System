@@ -114,7 +114,7 @@ class SenTree:
 			elif turns:
 				newtree = None
 				try:
-					newtree = self.parser.parse_text(reconstitute_sentence(text), timeout=5000)
+					newtree = self.parser.parse_text(reconstitute_sentence(text), timeout=5)
 					newtree = next(newtree)
 				except:
 					if debug_print:
@@ -162,7 +162,7 @@ class SenTree:
 						temp = reconstitute_sentence(result)
 						newtree = None
 						try:
-							newtree = self.parser.parse_text(temp, timeout=5000)
+							newtree = self.parser.parse_text(temp, timeout=5)
 							newtree = next(newtree)
 						except:
 							if debug_print:
@@ -214,7 +214,7 @@ class SenTree:
 
 					newtree = None
 					try:
-						newtree = self.parser.parse_text(temp, timeout=5000)
+						newtree = self.parser.parse_text(temp, timeout=5)
 						newtree = next(newtree)
 					except:
 						if debug_print:
@@ -251,7 +251,7 @@ class SenTree:
 
 				newtree = None
 				try:
-					newtree = self.parser.parse_text(temp, timeout=5000)
+					newtree = self.parser.parse_text(temp, timeout=5)
 					newtree = next(newtree)
 				except:
 					if debug_print:
@@ -366,7 +366,7 @@ class SenTree:
 										appositives_and_delims.append(i+2)
 										if debug_print:
 											print(" ".join(s[i].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
-										immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for \"" + " ".join(s[i].leaves())+"\"?")
+										immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i].leaves())+"?")
 										if s[i+2].label() == "SBAR":
 											immediate_questions += getSBARQuestion(s[i+2], self.t)
 									elif (len(s[i].leaves()) > 1 and s[i].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
@@ -374,7 +374,7 @@ class SenTree:
 										appositives_and_delims.append(i+1)
 										if debug_print:
 											print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i].leaves()), file=sys.stderr)
-										immediate_questions.append("AP: Is \""+" ".join(s[i].leaves()) + "\" an apt descriptor for \"" + " ".join(s[i+2].leaves())+"\"?")
+										immediate_questions.append("AP: Is \""+" ".join(s[i].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
 									# retval = True
 								elif debug_print:
 									print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
@@ -387,7 +387,7 @@ class SenTree:
 										appositives_and_delims.append(i+2)
 										if debug_print:
 											print(" ".join(s[i-1].leaves()) + " is NP to the appositive " + " ".join(s[i+2].leaves()), file=sys.stderr)
-										immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for \"" + " ".join(s[i-1].leaves())+"\"?")
+										immediate_questions.append("AP: Is \""+" ".join(s[i+2].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 										if s[i+2].label() == "SBAR":
 											immediate_questions += getSBARQuestion(s[i+2], self.t)
 									elif (len(s[i-1].leaves()) > 1 and s[i-1].label() == "NP" and s[i+2].label == "NP" and s[i+2].height() > 2 and s[i+2][0].label() in ["NNP","NNPS"]) or u_s:
@@ -396,7 +396,7 @@ class SenTree:
 										appositives_and_delims.append(i+1)
 										if debug_print:
 											print(" ".join(s[i+2].leaves()) + " is NP to the appositive " + " ".join(s[i-1].leaves())+" "+" ".join(s[i].leaves()), file=sys.stderr)
-										immediate_questions.append("AP: Is \""+" ".join(s[i-1].leaves()) + "\" an apt descriptor for \"" + " ".join(s[i+2].leaves())+"\"?")
+										immediate_questions.append("AP: Is \""+" ".join(s[i-1].leaves()) + "\" an apt descriptor for " + " ".join(s[i+2].leaves())+"?")
 									# retval = True
 								elif debug_print:
 									print("SKIPPING child " + str(i+2) +", since FOUND LIST inside", file=sys.stderr)
@@ -418,7 +418,7 @@ class SenTree:
 									appositives_and_delims.append(len(s)-2)
 									if debug_print:
 										print(" ".join(s[-3].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for \"" + " ".join(s[-3].leaves())+"\"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-3].leaves())+"?")
 									if s[-1].label() == "SBAR":
 										immediate_questions += getSBARQuestion(s[-1], self.t)
 								elif (len(s[-3].leaves()) > 1 and s[-3].label() == "NP" and s[-1].label == "NP" and s[-1].height() > 2 and s[-1][0].label() in ["NNP","NNPS"]) or u_s:
@@ -426,7 +426,7 @@ class SenTree:
 									appositives_and_delims.append(len(s)-2)
 									if debug_print:
 										print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-3].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[-3].leaves()) + "\" an apt descriptor for \"" + " ".join(s[i-1].leaves())+"\"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[-3].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 
 						elif not is_list and len(s) > 3 and s[-4].label() in ["NP", "NN"] and s[-3].label() == "PP" and s[-2].label() in delims and s[-1].label() in allowables:
 							s_idx = -1
@@ -443,7 +443,7 @@ class SenTree:
 									appositives_and_delims.append(len(s)-2)
 									if debug_print:
 										print(" ".join(s[-4].leaves()) + " is NP to the appositive " + " ".join(s[-1].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for \"" + " ".join(s[-4].leaves())+"\"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[-1].leaves()) + "\" an apt descriptor for " + " ".join(s[-4].leaves())+"?")
 									if s[-1].label() == "SBAR":
 										immediate_questions += getSBARQuestion(s[-1], self.t)						
 									# retval = True
@@ -453,7 +453,7 @@ class SenTree:
 									appositives_and_delims.append(len(s)-2)
 									if debug_print:
 										print(" ".join(s[-1].leaves()) + " is NP to the appositive " + " ".join(s[-4].leaves())+" "+" ".join(s[i-3].leaves()), file=sys.stderr)
-									immediate_questions.append("AP: Is \""+" ".join(s[-4].leaves()) + "\" an apt descriptor for \"" + " ".join(s[i-1].leaves())+"\"?")
+									immediate_questions.append("AP: Is \""+" ".join(s[-4].leaves()) + "\" an apt descriptor for " + " ".join(s[i-1].leaves())+"?")
 
 						appositives_and_delims.sort(reverse=True)
 						for idx in appositives_and_delims:
@@ -504,7 +504,7 @@ class SenTree:
 
 							newtree = None
 							try:
-								newtree = self.parser.parse_text(temp, timeout=5000)
+								newtree = self.parser.parse_text(temp, timeout=5)
 								newtree = next(newtree)
 							except:
 								if debug_print:
@@ -542,7 +542,7 @@ class SenTree:
 				newtree2 = None
 				if (valid_s(self.t[0][i]) and self.t[0][i+1].label() == "CC" and valid_s(self.t[0][i+2])):
 					try:
-						newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5000)
+						newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5)
 						newtree1 = next(newtree1)
 					except:
 						if debug_print:
@@ -550,7 +550,7 @@ class SenTree:
 						raise
 
 					try:
-						newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[0][i+2].leaves() + ['.']), timeout=5000)
+						newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[0][i+2].leaves() + ['.']), timeout=5)
 						newtree2 = next(newtree2)
 					except:
 						if debug_print:
@@ -573,14 +573,14 @@ class SenTree:
 					return True
 				elif i+3 < len(self.t[0]) and valid_s(self.t[0][i]) and self.t[0][i+1].label() == "," and self.t[0][i+2].label() == "CC" and valid_s(self.t[0][i+3]):
 					try:
-						newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5000)
+						newtree1 = self.parser.parse_text(reconstitute_sentence(self.t[0][i].leaves() + ['.']), timeout=5)
 						newtree1 = next(newtree1)
 					except:
 						if debug_print:
 							print("Failed new parse [" + str(stage_num) + "] on sentence [" + reconstitute_sentence(self.t[0][i].leaves() + ['.']) + "]\n", file=sys.stderr)
 						raise
 					try:
-						newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[0][i+3].leaves() + ['.']), timeout=5000)
+						newtree2 = self.parser.parse_text(reconstitute_sentence(self.t[0][i+3].leaves() + ['.']), timeout=5)
 						newtree2 = next(newtree2)
 					except:
 						if debug_print:
@@ -886,7 +886,7 @@ class SenTree:
 						fix_first[0] = fix_first[0].lower()
 						newtree = None
 						try:
-							newtree = self.parser.parse_text(reconstitute_sentence(rest_S + fix_first + ["."]), timeout=5000)
+							newtree = self.parser.parse_text(reconstitute_sentence(rest_S + fix_first + ["."]), timeout=5)
 							newtree = next(newtree)
 						except:
 							if debug_print:
@@ -1729,7 +1729,7 @@ def preprocess(treelist, parser):
 			curr = curr.nextST
 	except:
 		if debug_print:
-			print("Failed at everything: likely CoreNLP not running", file=sys.stderr)
+			print("Failed at everything: likely CoreNLP not running since we have literally no treesß", file=sys.stderr)
 		if not safety:
 			raise
 	return preprocessed_trees, preprocessed_questions
