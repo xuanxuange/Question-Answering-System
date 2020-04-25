@@ -35,7 +35,7 @@ RUN ./nltk_download_models
 
 # pattern library for python3
 RUN apt-get -y install default-libmysqlclient-dev
-RUN export PYTHONPATH="${PYTHONPATH}:$(pwd)/site-packages/"
+ENV PYTHONPATH "${PYTHONPATH}:$(pwd)/site-packages/"
 
 # RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
 
