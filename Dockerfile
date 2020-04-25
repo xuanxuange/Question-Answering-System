@@ -19,25 +19,11 @@ RUN apt install -y default-jdk
 RUN apt-get install zip unzip
 RUN apt install -y curl
 
-# Add the files
-ADD . /QA
-WORKDIR /QA
-
-# Pytorch
-RUN python3.7 -m pip install torch torchvision
-
 # nltk
 RUN python3.7 -m pip install -U nltk
 
-# download nltk data
-RUN chmod +x nltk_download_models
-RUN ./nltk_download_models
-
-# pattern library for python3
-RUN apt-get -y install default-libmysqlclient-dev
-ENV PYTHONPATH "${PYTHONPATH}:$(pwd)/site-packages/"
-
-# RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
+# Pytorch
+RUN python3.7 -m pip install torch torchvision
 
 # spacy
 RUN python3.7 -m pip install -U spacy==2.1.0
@@ -50,6 +36,20 @@ RUN python3.7 -m pip install -r requirement.txt
 
 # install neuralcoref
 RUN python3.7 -m pip install neuralcoref --no-binary neuralcoref
+
+# Add the files
+ADD . /QA
+WORKDIR /QA
+
+
+# download nltk data
+RUN chmod +x nltk_download_models
+RUN ./nltk_download_models
+
+# pattern library for python3
+RUN apt-get -y install default-libmysqlclient-dev
+ENV PYTHONPATH "${PYTHONPATH}:/QA/site-packages/"
+# RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
 
 # download infersent dependecies
 RUN chmod +x infersent_install.sh

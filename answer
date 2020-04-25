@@ -33,11 +33,11 @@ if __name__ == "__main__":
         #print("find answer for question: {}".format(question))
         relevant_sentence = article_embedder.get_most_relevant_sentence_infersent(question)
         #print("find most relevant sentence: {}".format(relevant_sentence))
-        try:
-            answer = generate_answer(question, relevant_sentence)
+        #try:
+        answer = generate_answer(question, relevant_sentence)
         #print("TEST:" + answer)
-        except Exception:
-            answer = relevant_sentence
+        #except Exception:
+        answer = relevant_sentence
         #enablePrint()
         print(answer)
 
