@@ -113,10 +113,12 @@ if __name__ == "__main__":
     start = time.time()
     article = sys.argv[1]
     nquestions = int(sys.argv[2])
+    blockPrint()
     from src.question_generation.question_gen import *
     from src.question_generation.question_gen_preprocess import preprocess, remove_q_dups
     from src.question_generation.ranker import Ranker
     from src.question_generation.question_gen_postprocess import postprocess
+    enablePrint()
     end_import = time.time()
     if debug_print:
         print("Import complete: " + str(end_import - start) + " seconds\n")
