@@ -24,10 +24,10 @@ ADD . /QA
 WORKDIR /QA
 
 # Pytorch
-RUN pip3 install torch torchvision
+RUN python3.7 -m pip install torch torchvision
 
 # nltk
-RUN pip3 install -U nltk
+RUN python3.7 -m pip install -U nltk
 
 # download nltk data
 RUN chmod +x nltk_download_models
@@ -40,16 +40,16 @@ RUN export PYTHONPATH="${PYTHONPATH}:$(pwd)/site-packages/"
 # RUN pip3 install https://github.com/clips/pattern/archive/python3.zip
 
 # spacy
-RUN pip3 install -U spacy==2.1.0
-RUN pip3 install -U spacy-lookups-data
-RUN python3 -m spacy download en_core_web_sm
-RUN python3 -m spacy download en_core_web_lg
+RUN python3.7 -m pip install -U spacy==2.1.0
+RUN python3.7 -m pip install -U spacy-lookups-data
+RUN python3.7 -m spacy download en_core_web_sm
+RUN python3.7 -m spacy download en_core_web_lg
 
 # other dependencies
-RUN pip3 install -r requirement.txt
+RUN python3.7 -m pip install -r requirement.txt
 
 # install neuralcoref
-RUN pip3 install neuralcoref --no-binary neuralcoref
+RUN python3.7 -m pip install neuralcoref --no-binary neuralcoref
 
 # download infersent dependecies
 RUN chmod +x infersent_install.sh
@@ -73,6 +73,7 @@ do export CLASSPATH="$CLASSPATH:`realpath $file`"; done
 ENV PORT 9000
 
 EXPOSE 9000
+RUN chmod +x start_stanford_corenlp.sh
 ENTRYPOINT [ "./start_stanford_corenlp.sh" ]
 
 # ENTRYPOINT ["/bin/bash", "-c"]
