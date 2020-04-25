@@ -13,10 +13,10 @@ def enablePrint():
     sys.stderr = sys.__stderr__
 
 
-# blockPrint()
+blockPrint()
 from src.answer_generation.article_embedder import ArticleEmbedder
 from src.answer_generation.answer import generate_answer
-# enablePrint()
+enablePrint()
 
 if __name__ == "__main__":
     article_file = sys.argv[1]
