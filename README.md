@@ -15,3 +15,5 @@ docker build {path} -t {repo:tag}
 then ./test.sh {repo:tag}
 
 Modify file path in test.sh to specify the path for the article, number of questions and given questions
+
+Introduction video: https://www.youtube.com/watch?v=X2VY4y52XF0&feature=youtu.be
